@@ -1,8 +1,13 @@
 import logging
 from contextlib import asynccontextmanager
+from pathlib import Path
 
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+# Load .env from backend/ directory
+load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
 from app.api import cases, student, analytics
 
