@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+  /* Primary Colors */
+  --color-cream-white: #FFFCF7;
+  --color-warm-gray-50: #F5F3F0;
+  --color-warm-gray-100: #E8E5E0;
+  --color-warm-gray-200: #D4D0CA;
+  --color-warm-gray-900: #2A2520;
+
+  /* Accent Colors */
+  --color-forest-green: #2D5C3F;
+  --color-forest-green-dark: #234730;
+  --color-sage-green: #6B8E6F;
+  --color-terracotta: #C85835;
+  --color-soft-blue: #4A7C8C;
+
+  /* Feedback Colors */
+  --color-success: #2D5C3F;
+  --color-warning: #D4803F;
+  --color-error: #C85835;
+
+  /* Text Colors */
+  --color-text-primary: #2A2520;
+  --color-text-secondary: #5A5147;
+  --color-text-tertiary: #8A8179;
+
+  /* Font sizes - Larger scale */
+  --font-size-xs: 0.875rem;
+  --font-size-sm: 1rem;
+  --font-size-base: 1.125rem;
+  --font-size-lg: 1.375rem;
+  --font-size-xl: 1.75rem;
+  --font-size-2xl: 2.25rem;
+  --font-size-3xl: 3rem;
+
+  /* Font family */
+  --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
+
+  /* Border radius */
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+}
+
+/* Base styles */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-cream-white);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes scalePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-gentle-float {
+  animation: gentleFloat 4s ease-in-out infinite;
+}
+
+.animate-scale-pulse {
+  animation: scalePulse 2s ease-in-out infinite;
+}
+
+/* Staggered animations */
+.animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-200 { animation-delay: 200ms; }
+.animate-delay-300 { animation-delay: 300ms; }
+.animate-delay-400 { animation-delay: 400ms; }
+.animate-delay-500 { animation-delay: 500ms; }
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-warm-gray-50);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-warm-gray-200);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-tertiary);
+}
