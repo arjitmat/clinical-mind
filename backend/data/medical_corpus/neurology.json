@@ -198,5 +198,57 @@
       "Disease-modifying therapy: Start early - interferon-beta, glatiramer, dimethyl fumarate, fingolimod, natalizumab, ocrelizumab"
     ],
     "india_context": "MS prevalence in India estimated 7-10 per 100,000 (lower than West but increasing recognition). NMOSD is relatively more common in India compared to Western countries. Anti-AQP4 testing is important as treatment differs significantly. DMTs are increasingly available through insurance coverage and patient assistance programs. NIMHANS and AIIMS are reference centers for MS care."
+  },
+  {
+    "id": "NEURO-009",
+    "title": "Status Epilepticus Management Protocol",
+    "specialty": "neurology",
+    "difficulty": "advanced",
+    "source": "Indian Epilepsy Society Guidelines",
+    "demographics": {"age": 19, "gender": "Male", "location": "Lucknow, Uttar Pradesh"},
+    "chief_complaint": "Continuous seizures for 40 minutes without regaining consciousness",
+    "presentation": "A 19-year-old undergraduate student from Lucknow with known epilepsy (on sodium valproate 500 mg BD) is brought to the ER by ambulance with ongoing generalized tonic-clonic seizures. His hostel warden reports that the first seizure began approximately 40 minutes ago and he has had 4-5 continuous episodes without regaining consciousness between them. He had recently run out of his antiepileptic medication 3 days ago and could not afford a refill. No IV benzodiazepine was given en route.",
+    "vital_signs": {"bp": "160/100", "hr": 130, "rr": 8, "temp": 38.8, "spo2": 82},
+    "history": "Known epilepsy since age 14, diagnosed as juvenile myoclonic epilepsy (JME). On sodium valproate 500 mg BD - discontinued 3 days ago due to financial constraints. History of 2 prior breakthrough seizures when non-compliant. No prior status epilepticus. Seizure onset 40 minutes ago, witnessed by hostel warden. Multiple GTCS episodes without recovery of consciousness. No recent fever, head trauma, or alcohol use. Sleep deprived (exams ongoing). Family history: Elder sister has epilepsy.",
+    "physical_exam": "Actively seizing on arrival (generalized tonic-clonic). GCS between seizures: 3/15 (no eye opening, no verbal, no motor response to pain). Bilateral pupillary dilation (6 mm, sluggishly reactive). Cyanosed. Tongue bitten (lateral, bleeding). Incontinent of urine. Tachycardic. Shallow, irregular respirations. Temperature 38.8°C (hyperthermia from prolonged seizure activity). No focal neurological signs assessable during seizures. No rash. No signs of head trauma.",
+    "investigations": "ABG (on arrival): pH 7.18, PaCO2 55, PaO2 58, Lactate 8.5 mmol/L (severe lactic acidosis from prolonged seizure activity). Blood glucose: 65 mg/dL (low-normal, consumption by seizing muscles). Serum sodium: 132 mEq/L (mild hyponatremia). Serum calcium: Normal. Valproate level: Undetectable (confirms non-compliance). CBC: WBC 15,000 (stress leukocytosis). Renal function: Creatinine 1.8 (rhabdomyolysis beginning). CPK: 12,000 U/L (rhabdomyolysis). CT brain (post-stabilization): Normal (no structural lesion, no hemorrhage). EEG (post-treatment): Generalized slowing with intermittent epileptiform discharges, no electrographic seizures after treatment.",
+    "diagnosis": "Convulsive status epilepticus secondary to antiepileptic drug withdrawal (sodium valproate) in a patient with juvenile myoclonic epilepsy, complicated by rhabdomyolysis and aspiration risk",
+    "differentials": ["Convulsive status epilepticus (AED withdrawal)", "Status epilepticus secondary to CNS infection (meningitis/encephalitis)", "Metabolic seizures (hypoglycemia, hyponatremia, hypocalcemia)", "Eclampsia (if female of childbearing age)", "Psychogenic non-epileptic status (PNES)", "Status epilepticus due to new structural lesion (tumor, stroke, hemorrhage)"],
+    "learning_points": [
+      "Status epilepticus (SE) defined as continuous seizure ≥5 minutes or ≥2 seizures without regaining consciousness",
+      "Stage 1 (0-5 min): IV lorazepam 0.1 mg/kg (max 4 mg) or IM midazolam 10 mg if no IV access",
+      "Stage 2 (5-20 min, established SE): IV fosphenytoin 20 mg PE/kg or IV valproate 40 mg/kg or IV levetiracetam 60 mg/kg",
+      "Stage 3 (20-40 min, refractory SE): Repeat second-line agent OR proceed to anesthetic doses of midazolam/propofol/thiopentone with intubation",
+      "Stage 4 (>60 min, super-refractory SE): Continuous EEG monitoring, ketamine, immunotherapy consideration",
+      "AED non-compliance is the commonest cause of status epilepticus - always check drug levels and explore reasons for non-compliance",
+      "Complications of prolonged SE: Rhabdomyolysis, acute kidney injury, aspiration pneumonia, neuronal death, DIC"
+    ],
+    "india_context": "Epilepsy affects 10-12 million Indians, with a treatment gap of 50-70% (higher in rural areas). AED non-compliance due to cost, stigma, and lack of availability at PHC level is a major cause of breakthrough seizures and SE. Lorazepam is available on the Essential Drug List. Indian Epilepsy Society recommends lorazepam as first-line for SE. Many district hospitals lack continuous EEG monitoring and ICU facilities for refractory SE. PMJAY and state insurance schemes now cover epilepsy treatment. Valproate and levetiracetam are available under Jan Aushadhi at significantly reduced cost."
+  },
+  {
+    "id": "NEURO-010",
+    "title": "Parkinson's Disease — Early Diagnosis and Management",
+    "specialty": "neurology",
+    "difficulty": "intermediate",
+    "source": "Movement Disorder Society of India Guidelines",
+    "demographics": {"age": 62, "gender": "Male", "location": "Kolkata, West Bengal"},
+    "chief_complaint": "Progressive trembling of right hand and slowness of movements for 1 year",
+    "presentation": "A 62-year-old retired schoolteacher from Kolkata presents with gradually progressive trembling of his right hand for 1 year, noticed first by his wife when he was reading the newspaper. He has become slower in daily activities — takes much longer to button his shirt, his handwriting has become smaller (micrographia), and his family notes he walks with a stooped posture and shuffling gait. He also reports constipation for 2 years, anosmia (loss of smell) for 3 years, and vivid dreams with thrashing in sleep (REM sleep behavior disorder) for 4 years. His wife notes that his face has become 'expressionless'.",
+    "vital_signs": {"bp": "140/85 supine, 110/70 standing", "hr": 72, "rr": 16, "temp": 37.0, "spo2": 98},
+    "history": "Right hand tremor for 1 year - first noticed at rest while reading, improves with action. Progressive slowness in activities of daily living (bradykinesia) - difficulty with buttons, zippers, brushing teeth. Smaller handwriting (micrographia) noticed over 6 months. Stooped posture and shuffling gait for 8 months. Reduced arm swing on the right side. Soft speech (hypophonia) for 6 months. Premotor symptoms: Constipation for 2 years. Anosmia for 3 years. REM sleep behavior disorder (RBD) for 4 years - vivid dreams, shouting, kicking in sleep. Depression and apathy for 1 year. No exposure to antipsychotics or metoclopramide. No family history of Parkinson's. No history of repeated head trauma. No exposure to pesticides or well water.",
+    "physical_exam": "Hypomimia (masked facies - reduced facial expression). Speech: Soft, monotonous (hypophonia). Resting tremor: 4-5 Hz, pill-rolling, right hand (re-emergent on posture). Rigidity: Cogwheel rigidity right upper limb > left upper limb. Bradykinesia: Decrementing finger taps, hand opening-closing, and toe tapping (right > left). Gait: Stooped posture, reduced right arm swing, short shuffling steps, no festination yet. Postural reflexes: Mildly impaired on pull test (1 step backward, self-corrects). No cerebellar signs. No vertical gaze palsy (rules out PSP). No autonomic failure disproportionate to disease duration. Orthostatic hypotension: 30 mmHg systolic drop. Cognition: MMSE 28/30 (mild visuospatial difficulty). No hallucinations.",
+    "investigations": "Clinical diagnosis (no confirmatory lab test for PD). MRI brain: Age-appropriate changes, no vascular parkinsonism, no features of MSA or PSP (normal pons, cerebellum, midbrain). DaTSCAN (if available): Reduced dopamine transporter uptake in left putamen (contralateral to clinically affected side), confirming presynaptic dopaminergic deficit. Blood investigations: TSH normal, serum ceruloplasmin normal (to rule out Wilson's disease given age <50 is not applicable here but good practice), Vitamin B12 normal. Neuropsychological assessment: Mild executive dysfunction on frontal assessment battery. Autonomic function tests: Orthostatic hypotension confirmed, reduced heart rate variability.",
+    "diagnosis": "Idiopathic Parkinson's disease (Hoehn and Yahr Stage 2) — early stage with unilateral predominant motor features and significant non-motor symptoms including RBD, anosmia, constipation, orthostatic hypotension, and depression",
+    "differentials": ["Idiopathic Parkinson's disease", "Drug-induced parkinsonism (antipsychotics, metoclopramide)", "Vascular parkinsonism", "Progressive supranuclear palsy (PSP)", "Multiple system atrophy (MSA)", "Dementia with Lewy bodies (DLB)", "Wilson's disease (in younger patients)", "Essential tremor (action tremor, not resting)"],
+    "learning_points": [
+      "Cardinal motor features of PD: Bradykinesia (mandatory) + at least one of: rest tremor, rigidity",
+      "Premotor (prodromal) features may precede motor symptoms by years: anosmia, constipation, RBD, depression",
+      "Asymmetric onset and good response to levodopa are strong supportive features",
+      "Red flags against PD: Symmetric onset, early falls, vertical gaze palsy (PSP), early severe autonomic failure (MSA), poor levodopa response",
+      "Treatment initiation: Levodopa (most effective), dopamine agonists (pramipexole/ropinirole in younger patients to delay dyskinesia), MAO-B inhibitors (rasagiline/selegiline) for mild symptoms",
+      "Non-motor symptoms require active screening and treatment: depression (SSRIs), orthostatic hypotension (fludrocortisone, midodrine), constipation (polyethylene glycol), RBD (clonazepam, melatonin)",
+      "Orthostatic hypotension in PD: Check standing BP routinely, avoid abrupt position changes, review medications"
+    ],
+    "india_context": "Parkinson's disease prevalence in India is estimated at 50-300 per 100,000 in those over 60 years. Often under-diagnosed, especially in rural areas where tremor is attributed to 'old age' or 'weakness'. Levodopa-carbidopa is available in Jan Aushadhi stores at Rs 1-2 per tablet. DaTSCAN availability is limited to major tertiary centers (NIMHANS, AIIMS, select private hospitals). Movement Disorder Society of India (MDSI) conducts outreach programs and training. Deep brain stimulation (DBS) is offered at select centers (AIIMS Delhi, NIMHANS, Medanta, etc.) for advanced PD with motor fluctuations. Caregiver burden is significant as disease progresses — need for structured support services is growing."
   }
 ]

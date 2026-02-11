@@ -7,12 +7,20 @@ router = APIRouter()
 case_generator = CaseGenerator()
 
 SPECIALTIES = [
-    {"id": "cardiology", "name": "Cardiology", "icon": "heart", "cases_available": 30, "description": "Heart failure, ACS, arrhythmias, valvular disease"},
-    {"id": "respiratory", "name": "Respiratory", "icon": "lungs", "cases_available": 25, "description": "Pneumonia, COPD, TB, ILD, asthma"},
-    {"id": "infectious", "name": "Infectious Disease", "icon": "virus", "cases_available": 28, "description": "Dengue, malaria, typhoid, scrub typhus, leptospirosis"},
-    {"id": "neurology", "name": "Neurology", "icon": "brain", "cases_available": 20, "description": "Stroke, meningitis, seizures, GBS, NCC"},
-    {"id": "gastro", "name": "Gastroenterology", "icon": "microscope", "cases_available": 22, "description": "Liver disease, pancreatitis, GI bleeds, celiac"},
-    {"id": "emergency", "name": "Emergency Medicine", "icon": "alert", "cases_available": 35, "description": "DKA, sepsis, snake bite, poisoning, anaphylaxis"},
+    {"id": "cardiology", "name": "Cardiology", "icon": "heart", "cases_available": 12, "description": "STEMI, heart failure, IE, AF, aortic dissection, rheumatic heart disease"},
+    {"id": "respiratory", "name": "Respiratory", "icon": "lungs", "cases_available": 10, "description": "Pneumonia, COPD, TB pleural effusion, asthma, ILD, lung cancer"},
+    {"id": "infectious", "name": "Infectious Disease", "icon": "virus", "cases_available": 10, "description": "Dengue, malaria, typhoid, scrub typhus, leptospirosis, HIV"},
+    {"id": "neurology", "name": "Neurology", "icon": "brain", "cases_available": 10, "description": "Stroke, meningitis, GBS, myasthenia gravis, epilepsy, Parkinson's"},
+    {"id": "gastro", "name": "Gastroenterology", "icon": "microscope", "cases_available": 10, "description": "Liver abscess, cirrhosis, pancreatitis, IBD, GI bleed, celiac, HCC"},
+    {"id": "emergency", "name": "Emergency Medicine", "icon": "alert", "cases_available": 10, "description": "DKA, snake bite, poisoning, burns, anaphylaxis, acute MI"},
+    {"id": "nephrology", "name": "Nephrology", "icon": "droplet", "cases_available": 10, "description": "CKD, nephrotic syndrome, AKI, RPGN, RTA, lupus nephritis"},
+    {"id": "endocrinology", "name": "Endocrinology", "icon": "activity", "cases_available": 10, "description": "Thyroid storm, Addison crisis, Cushing, pheochromocytoma, HHS"},
+    {"id": "pediatrics", "name": "Pediatrics", "icon": "baby", "cases_available": 10, "description": "Bronchiolitis, TOF, Kawasaki, malnutrition, thalassemia, ALL"},
+    {"id": "obstetrics", "name": "Obstetrics & Gynecology", "icon": "heart-pulse", "cases_available": 10, "description": "Eclampsia, ectopic, PPH, PCOS, placenta previa, cervical cancer"},
+    {"id": "hematology", "name": "Hematology", "icon": "test-tubes", "cases_available": 10, "description": "IDA, sickle cell, ITP, DIC, CML, hemophilia, TTP"},
+    {"id": "psychiatry", "name": "Psychiatry", "icon": "brain-cog", "cases_available": 10, "description": "Schizophrenia, depression, bipolar, delirium tremens, OCD, NMS"},
+    {"id": "dermatology", "name": "Dermatology", "icon": "scan", "cases_available": 10, "description": "SJS/TEN, leprosy, pemphigus, psoriasis, DRESS, vitiligo"},
+    {"id": "orthopedics", "name": "Orthopedics", "icon": "bone", "cases_available": 10, "description": "Fractures, septic arthritis, osteosarcoma, Pott spine, AVN, ACL"},
 ]
 
 

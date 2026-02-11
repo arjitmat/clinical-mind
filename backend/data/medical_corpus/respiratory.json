@@ -198,5 +198,55 @@
       "Epworth Sleepiness Scale ≥10 is abnormal, ≥16 indicates severe sleepiness"
     ],
     "india_context": "OSA prevalence in India estimated 9-14% in urban males. Grossly underdiagnosed due to low awareness and limited sleep lab access. ICMR recommends screening in patients with resistant hypertension, uncontrolled DM, and unexplained polycythemia. CPAP compliance is challenged by noise, discomfort, and cultural factors (joint family sleeping arrangements)."
+  },
+  {
+    "id": "RESP-009",
+    "title": "Acute Pulmonary Embolism with Hemodynamic Compromise",
+    "specialty": "respiratory",
+    "difficulty": "advanced",
+    "source": "ESC Guidelines - Pulmonary Embolism Management",
+    "demographics": {"age": 38, "gender": "Female", "location": "Hyderabad, Telangana"},
+    "chief_complaint": "Sudden onset breathlessness and chest pain after long train journey",
+    "presentation": "A 38-year-old software engineer from Hyderabad presents to the emergency department with sudden onset severe breathlessness, right-sided pleuritic chest pain, and one episode of syncope. She returned yesterday from a 36-hour train journey from Kolkata in a sleeper class berth. She is on oral contraceptive pills for the past 2 years and has a BMI of 32. She developed acute dyspnea this morning while walking to the bathroom and nearly collapsed.",
+    "vital_signs": {"bp": "90/60", "hr": 125, "rr": 32, "temp": 37.2, "spo2": 86},
+    "history": "Sudden onset breathlessness this morning while getting up to walk. Right-sided pleuritic chest pain. One episode of near-syncope (felt lightheaded, vision darkened, caught by husband). Completed 36-hour train journey yesterday (Kolkata to Hyderabad, minimal mobility). On combined oral contraceptive pills (ethinyl estradiol + levonorgestrel) for 2 years. BMI 32 (obese). Mild right calf swelling and pain noticed 2 days ago during train journey, ignored. No prior history of DVT/PE. No recent surgery. No known thrombophilia. No malignancy. No smoking. Mother had DVT during pregnancy at age 35.",
+    "physical_exam": "Anxious, diaphoretic, tachypneic. Hypotensive (BP 90/60). Elevated JVP (distended neck veins). Chest: Clear lung fields bilaterally (no crepitations, no wheeze - classic for PE). CVS: Loud P2, right ventricular heave, tricuspid regurgitation murmur. Right lower limb: Calf tenderness, mild edema (2 cm circumference difference), positive Homans sign. No petechiae. No skin rash.",
+    "investigations": "Wells score: 7.5 (clinical signs of DVT 3 + PE most likely diagnosis 3 + heart rate >100 1.5) - HIGH probability. D-dimer: 4500 ng/mL (markedly elevated, but not needed when Wells score high). CTPA (CT pulmonary angiography): Bilateral pulmonary emboli - large saddle embolus at main pulmonary artery bifurcation, extending into bilateral lobar arteries. RV/LV ratio 1.5 (RV strain). ECG: Sinus tachycardia, S1Q3T3 pattern, right axis deviation, T-wave inversion V1-V4 (RV strain). Echocardiogram (bedside): Dilated RV, RV hypokinesis (McConnell sign), moderate tricuspid regurgitation, estimated PASP 55 mmHg, flattened interventricular septum (D-sign). Troponin I: 0.8 ng/mL (elevated - myocardial injury). NT-proBNP: 3500 pg/mL (elevated - RV strain). Doppler lower limb: Right popliteal and femoral vein DVT. ABG: pH 7.48, PaCO2 28, PaO2 55 (type 1 respiratory failure with respiratory alkalosis). CBC: Normal. Renal: Normal. Coagulation: PT/INR normal.",
+    "diagnosis": "Acute massive (high-risk) pulmonary embolism with hemodynamic compromise and right ventricular dysfunction, secondary to deep vein thrombosis",
+    "differentials": ["Pulmonary embolism", "Acute coronary syndrome", "Aortic dissection", "Tension pneumothorax", "Cardiac tamponade", "Acute severe pneumonia"],
+    "learning_points": [
+      "Wells score classifies PE probability: Low (0-1), Intermediate (2-6), High (≥7) - guides investigation",
+      "D-dimer is useful to EXCLUDE PE in low/intermediate probability; not needed when clinical probability is high",
+      "CTPA is the gold standard investigation for PE diagnosis",
+      "High-risk (massive) PE: Systemic hypotension or cardiac arrest - needs thrombolysis (alteplase) or embolectomy",
+      "S1Q3T3 is the classic but not sensitive ECG finding; sinus tachycardia and RV strain pattern are more common",
+      "Virchow triad: Stasis (prolonged travel) + endothelial injury + hypercoagulability (OCP + obesity) all present here"
+    ],
+    "india_context": "VTE (venous thromboembolism) is underdiagnosed in India with an estimated incidence of 17-26 per 100,000. Prolonged train travel (common in India with journeys exceeding 24-48 hours) is an important but often overlooked risk factor for DVT/PE. OCP use is increasing among urban Indian women. CTPA access is limited to tertiary centers; many district hospitals rely on clinical scoring and D-dimer. Thrombolysis with streptokinase is commonly used in India as it is cheaper than alteplase."
+  },
+  {
+    "id": "RESP-010",
+    "title": "Non-Small Cell Lung Cancer Presenting with Hemoptysis",
+    "specialty": "respiratory",
+    "difficulty": "advanced",
+    "source": "ICMR - Lung Cancer Management Guidelines India",
+    "demographics": {"age": 58, "gender": "Male", "location": "Kolkata, West Bengal"},
+    "chief_complaint": "Persistent cough with blood-stained sputum and weight loss for 3 months",
+    "presentation": "A 58-year-old man from Kolkata, a retired jute mill worker, presents with persistent cough and recurrent hemoptysis (blood-streaked sputum) for 3 months, progressive breathlessness, hoarseness of voice for 1 month, and unintentional weight loss of 10 kg. He is a heavy smoker (45 pack-years of cigarettes) with occupational exposure to asbestos dust during his 25 years of work in the jute and construction industry. He also reports dull aching right shoulder pain not related to injury.",
+    "vital_signs": {"bp": "130/85", "hr": 96, "rr": 22, "temp": 37.0, "spo2": 92},
+    "history": "Persistent cough for 3 months, initially dry, now with blood-streaked sputum (hemoptysis daily for 3 weeks). Progressive breathlessness (MMRC Grade 2). Hoarseness of voice for 1 month (recurrent laryngeal nerve palsy). Unintentional weight loss 10 kg in 3 months. Dull right shoulder pain for 6 weeks (referred pain or Pancoast involvement). Loss of appetite and fatigue. Heavy smoker - 45 pack-years (started at age 15). Worked in jute mill and construction for 25 years with asbestos exposure. No family history of lung cancer. No TB history. Occasional alcohol use.",
+    "physical_exam": "Thin, cachectic male. BMI 18. Clubbing grade II. Left supraclavicular lymphadenopathy (Virchow's node - 2 cm, hard, non-tender, fixed). Hoarse voice. Chest: Reduced breath sounds right upper zone, dullness to percussion right upper zone (mass/collapse). Focal wheeze right upper zone (endobronchial obstruction). No SVC obstruction signs. Right shoulder: No local pathology, full range of motion (referred pain). Horner syndrome absent. No hepatomegaly.",
+    "investigations": "CXR: Right upper lobe mass (5 cm, irregular margins, spiculated) with right hilar lymphadenopathy. Mediastinal widening. CT chest with contrast: 5.2 cm spiculated mass right upper lobe with mediastinal invasion, right hilar and subcarinal lymphadenopathy (N2 disease), no contralateral nodes. Left vocal cord palsy on CT (recurrent laryngeal nerve involvement). No pleural effusion. CT abdomen: No liver or adrenal metastases. MRI brain: No brain metastases. PET-CT: FDG-avid right upper lobe mass (SUVmax 12.5), FDG-avid right hilar and subcarinal nodes, no distant metastases. CT-guided biopsy: Non-small cell lung cancer - Squamous cell carcinoma (p40 positive, TTF-1 negative). PD-L1 (TPS): 60%. EGFR mutation: Negative. ALK/ROS1 rearrangement: Negative. KRAS: Wild type. Staging: T4N2M0 - Stage IIIB (locally advanced, unresectable). Spirometry: FEV1 1.8L (58% predicted), FEV1/FVC 0.62 (mild obstruction - underlying COPD). CBC: Hb 11.0, WBC 9500, Platelets 380,000. Calcium: 11.8 mg/dL (hypercalcemia of malignancy - PTHrP mediated, common in squamous cell). LFT: Normal. Renal: Normal.",
+    "diagnosis": "Non-small cell lung cancer (squamous cell carcinoma) Stage IIIB (T4N2M0) with paraneoplastic hypercalcemia",
+    "differentials": ["Lung carcinoma (NSCLC)", "Pulmonary tuberculosis", "Lung abscess", "Metastatic cancer to lung", "Pulmonary lymphoma", "Chronic pulmonary aspergillosis"],
+    "learning_points": [
+      "Hemoptysis in a smoker >40 years must be investigated with CT chest and bronchoscopy to rule out malignancy",
+      "Squamous cell carcinoma: Central, cavitating, associated with hypercalcemia (PTHrP) - commonest type in smokers in India",
+      "Hoarseness in lung cancer indicates recurrent laryngeal nerve palsy (left > right) - locally advanced disease",
+      "Virchow's node (left supraclavicular) is a classic sign of intrathoracic/abdominal malignancy",
+      "PD-L1 TPS ≥50%: First-line pembrolizumab monotherapy is an option for advanced NSCLC without driver mutations",
+      "Staging with PET-CT is essential: Determines resectability and guides concurrent chemoradiation vs systemic therapy"
+    ],
+    "india_context": "Lung cancer is the commonest cancer in Indian men (11.3% of all cancers). India has the second-highest number of lung cancer cases globally. Bidi and cigarette smoking remain the primary risk factors. Occupational exposures (asbestos in construction, jute mills, ship-breaking in Gujarat/West Bengal) contribute significantly. Most patients present at advanced stages (Stage III/IV) due to lack of screening programs. ICMR guidelines recommend concurrent chemoradiation for unresectable Stage III disease. Immunotherapy (pembrolizumab, nivolumab) access is improving but cost remains a barrier (Rs 3-4 lakh per cycle without insurance)."
   }
 ]
