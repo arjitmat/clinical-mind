@@ -1,11 +1,39 @@
+import logging
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from app.api import cases, student, analytics
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(name)s] %(levelname)s: %(message)s")
+logger = logging.getLogger(__name__)
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Initialize RAG system on startup."""
+    logger.info("Initializing Clinical-Mind RAG system...")
+    from app.core.rag.vector_store import MedicalVectorStore
+
+    store = MedicalVectorStore()
+    if store.count() == 0:
+        logger.info("Vector store empty — ingesting seed corpus...")
+        count = store.ingest_corpus()
+        logger.info(f"Ingested {count} document chunks into ChromaDB")
+    else:
+        logger.info(f"ChromaDB loaded with {store.count()} documents")
+
+    yield
+
+    logger.info("Clinical-Mind shutting down")
+
 
 app = FastAPI(
     title="Clinical-Mind API",
     description="AI-powered clinical reasoning simulator for medical students",
-    version="1.0.0",
+    version="2.0.0",
+    lifespan=lifespan,
 )
 
 app.add_middleware(
@@ -23,9 +51,16 @@ app.include_router(analytics.router, prefix="/api/analytics", tags=["analytics"]
 
 @app.get("/")
 async def root():
-    return {"message": "Clinical-Mind API", "version": "1.0.0"}
+    return {"message": "Clinical-Mind API", "version": "2.0.0", "rag": "enabled"}
 
 
 @app.get("/health")
 async def health():
-    return {"status": "healthy"}
+    from app.core.rag.vector_store import MedicalVectorStore
+
+    store = MedicalVectorStore()
+    return {
+        "status": "healthy",
+        "rag_documents": store.count(),
+        "rag_status": "loaded" if store.count() > 0 else "empty",
+    }

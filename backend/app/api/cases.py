@@ -7,12 +7,12 @@ router = APIRouter()
 case_generator = CaseGenerator()
 
 SPECIALTIES = [
-    {"id": "cardiology", "name": "Cardiology", "icon": "heart", "cases_available": 30, "description": "Heart failure, ACS, arrhythmias"},
-    {"id": "respiratory", "name": "Respiratory", "icon": "lungs", "cases_available": 25, "description": "Pneumonia, COPD, TB"},
-    {"id": "infectious", "name": "Infectious Disease", "icon": "virus", "cases_available": 28, "description": "Dengue, malaria, typhoid"},
-    {"id": "neurology", "name": "Neurology", "icon": "brain", "cases_available": 20, "description": "Stroke, meningitis, seizures"},
-    {"id": "gastro", "name": "Gastroenterology", "icon": "microscope", "cases_available": 22, "description": "Liver disease, pancreatitis, GI bleeds"},
-    {"id": "emergency", "name": "Emergency Medicine", "icon": "alert", "cases_available": 35, "description": "Acute MI, sepsis, trauma"},
+    {"id": "cardiology", "name": "Cardiology", "icon": "heart", "cases_available": 30, "description": "Heart failure, ACS, arrhythmias, valvular disease"},
+    {"id": "respiratory", "name": "Respiratory", "icon": "lungs", "cases_available": 25, "description": "Pneumonia, COPD, TB, ILD, asthma"},
+    {"id": "infectious", "name": "Infectious Disease", "icon": "virus", "cases_available": 28, "description": "Dengue, malaria, typhoid, scrub typhus, leptospirosis"},
+    {"id": "neurology", "name": "Neurology", "icon": "brain", "cases_available": 20, "description": "Stroke, meningitis, seizures, GBS, NCC"},
+    {"id": "gastro", "name": "Gastroenterology", "icon": "microscope", "cases_available": 22, "description": "Liver disease, pancreatitis, GI bleeds, celiac"},
+    {"id": "emergency", "name": "Emergency Medicine", "icon": "alert", "cases_available": 35, "description": "DKA, sepsis, snake bite, poisoning, anaphylaxis"},
 ]
 
 
@@ -50,6 +50,12 @@ async def generate_case(request: CaseRequest):
         return case
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/corpus-stats")
+async def get_corpus_stats():
+    """Get RAG corpus statistics."""
+    return case_generator.get_corpus_stats()
 
 
 @router.get("/{case_id}")
