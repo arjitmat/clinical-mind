@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import { Card, Badge } from '../components/ui';
+import { fetchKnowledgeGraph, type KnowledgeGraphDTO } from '../hooks/useApi';
 
 interface GraphNode extends d3.SimulationNodeDatum {
   id: string;
@@ -14,63 +15,6 @@ interface GraphLink {
   target: string | GraphNode;
   strength: number;
 }
-
-const sampleData = {
-  nodes: [
-    { id: 'Cardiology', strength: 0.82, size: 12, category: 'specialty' },
-    { id: 'Respiratory', strength: 0.65, size: 8, category: 'specialty' },
-    { id: 'Infectious', strength: 0.78, size: 10, category: 'specialty' },
-    { id: 'Neurology', strength: 0.45, size: 5, category: 'specialty' },
-    { id: 'Gastro', strength: 0.70, size: 7, category: 'specialty' },
-    { id: 'Emergency', strength: 0.55, size: 6, category: 'specialty' },
-    { id: 'STEMI', strength: 0.85, size: 8, category: 'diagnosis' },
-    { id: 'Pulmonary Embolism', strength: 0.40, size: 4, category: 'diagnosis' },
-    { id: 'Dengue', strength: 0.80, size: 9, category: 'diagnosis' },
-    { id: 'Pneumonia', strength: 0.72, size: 7, category: 'diagnosis' },
-    { id: 'Meningitis', strength: 0.35, size: 3, category: 'diagnosis' },
-    { id: 'GI Bleed', strength: 0.68, size: 6, category: 'diagnosis' },
-    { id: 'Stroke', strength: 0.50, size: 5, category: 'diagnosis' },
-    { id: 'Chest Pain', strength: 0.90, size: 10, category: 'symptom' },
-    { id: 'Dyspnea', strength: 0.75, size: 8, category: 'symptom' },
-    { id: 'Fever', strength: 0.85, size: 11, category: 'symptom' },
-    { id: 'Headache', strength: 0.60, size: 6, category: 'symptom' },
-    { id: 'Abdominal Pain', strength: 0.70, size: 7, category: 'symptom' },
-    { id: 'ECG', strength: 0.88, size: 9, category: 'investigation' },
-    { id: 'Troponin', strength: 0.80, size: 7, category: 'investigation' },
-    { id: 'CT Scan', strength: 0.55, size: 5, category: 'investigation' },
-    { id: 'Blood Culture', strength: 0.65, size: 6, category: 'investigation' },
-  ] as GraphNode[],
-  links: [
-    { source: 'Chest Pain', target: 'STEMI', strength: 0.9 },
-    { source: 'Chest Pain', target: 'Pulmonary Embolism', strength: 0.3 },
-    { source: 'Chest Pain', target: 'Cardiology', strength: 0.85 },
-    { source: 'Cardiology', target: 'STEMI', strength: 0.9 },
-    { source: 'Cardiology', target: 'ECG', strength: 0.88 },
-    { source: 'STEMI', target: 'ECG', strength: 0.9 },
-    { source: 'STEMI', target: 'Troponin', strength: 0.85 },
-    { source: 'Dyspnea', target: 'Pneumonia', strength: 0.75 },
-    { source: 'Dyspnea', target: 'Pulmonary Embolism', strength: 0.35 },
-    { source: 'Dyspnea', target: 'Respiratory', strength: 0.7 },
-    { source: 'Respiratory', target: 'Pneumonia', strength: 0.72 },
-    { source: 'Fever', target: 'Dengue', strength: 0.8 },
-    { source: 'Fever', target: 'Infectious', strength: 0.78 },
-    { source: 'Fever', target: 'Meningitis', strength: 0.4 },
-    { source: 'Infectious', target: 'Dengue', strength: 0.82 },
-    { source: 'Infectious', target: 'Blood Culture', strength: 0.65 },
-    { source: 'Headache', target: 'Meningitis', strength: 0.35 },
-    { source: 'Headache', target: 'Stroke', strength: 0.5 },
-    { source: 'Headache', target: 'Neurology', strength: 0.48 },
-    { source: 'Neurology', target: 'Meningitis', strength: 0.38 },
-    { source: 'Neurology', target: 'Stroke', strength: 0.5 },
-    { source: 'Neurology', target: 'CT Scan', strength: 0.55 },
-    { source: 'Abdominal Pain', target: 'GI Bleed', strength: 0.68 },
-    { source: 'Abdominal Pain', target: 'Gastro', strength: 0.7 },
-    { source: 'Gastro', target: 'GI Bleed', strength: 0.7 },
-    { source: 'Emergency', target: 'STEMI', strength: 0.6 },
-    { source: 'Emergency', target: 'Stroke', strength: 0.55 },
-    { source: 'Pulmonary Embolism', target: 'CT Scan', strength: 0.4 },
-  ] as GraphLink[],
-};
 
 const categoryColors: Record<string, string> = {
   specialty: '#2D5C3F',
@@ -91,6 +35,11 @@ export const KnowledgeGraphPage: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedNode, setSelectedNode] = useState<GraphNode | null>(null);
   const [dimensions, setDimensions] = useState({ width: 900, height: 600 });
+  const [graphData, setGraphData] = useState<KnowledgeGraphDTO | null>(null);
+
+  useEffect(() => {
+    fetchKnowledgeGraph().then(setGraphData).catch(() => {});
+  }, []);
 
   useEffect(() => {
     const updateDimensions = () => {
@@ -105,7 +54,7 @@ export const KnowledgeGraphPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (!svgRef.current) return;
+    if (!svgRef.current || !graphData) return;
 
     const { width, height } = dimensions;
 
@@ -116,8 +65,8 @@ export const KnowledgeGraphPage: React.FC = () => {
       .attr('height', height);
 
     // Deep copy data for D3 mutation
-    const nodes: GraphNode[] = sampleData.nodes.map(d => ({ ...d }));
-    const links: GraphLink[] = sampleData.links.map(d => ({ ...d }));
+    const nodes: GraphNode[] = graphData.nodes.map(d => ({ ...d }));
+    const links: GraphLink[] = graphData.links.map(d => ({ ...d }));
 
     const simulation = d3.forceSimulation<GraphNode>(nodes)
       .force('link', d3.forceLink<GraphNode, any>(links).id((d: any) => d.id).distance(100))
@@ -202,7 +151,12 @@ export const KnowledgeGraphPage: React.FC = () => {
     return () => {
       simulation.stop();
     };
-  }, [dimensions]);
+  }, [dimensions, graphData]);
+
+  const weakLinks = (graphData?.links || [])
+    .filter((l) => l.strength < 0.5)
+    .sort((a, b) => a.strength - b.strength)
+    .slice(0, 5);
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-8 space-y-8">
@@ -220,7 +174,11 @@ export const KnowledgeGraphPage: React.FC = () => {
         <div className="lg:col-span-3">
           <Card padding="md">
             <div ref={containerRef} className="w-full">
-              <svg ref={svgRef} className="w-full" />
+              {graphData ? (
+                <svg ref={svgRef} className="w-full" />
+              ) : (
+                <div className="h-[500px] flex items-center justify-center text-text-tertiary">Loading knowledge graph...</div>
+              )}
             </div>
             {/* Legend */}
             <div className="flex flex-wrap gap-6 mt-4 pt-4 border-t border-warm-gray-100">
@@ -256,7 +214,7 @@ export const KnowledgeGraphPage: React.FC = () => {
                   <span className="text-sm text-text-tertiary">Category</span>
                   <div className="mt-1">
                     <Badge variant={selectedNode.strength > 0.6 ? 'success' : 'warning'}>
-                      {categoryLabels[selectedNode.category]}
+                      {categoryLabels[selectedNode.category] || selectedNode.category}
                     </Badge>
                   </div>
                 </div>
@@ -291,50 +249,50 @@ export const KnowledgeGraphPage: React.FC = () => {
           <Card padding="md">
             <h3 className="text-base font-semibold text-text-primary mb-4">Weak Connections</h3>
             <div className="space-y-3">
-              {sampleData.links
-                .filter((l) => l.strength < 0.5)
-                .sort((a, b) => a.strength - b.strength)
-                .slice(0, 5)
-                .map((link, i) => (
-                  <div key={i} className="flex items-center justify-between text-sm">
-                    <span className="text-text-secondary">
-                      {typeof link.source === 'string' ? link.source : link.source.id} →{' '}
-                      {typeof link.target === 'string' ? link.target : link.target.id}
-                    </span>
-                    <Badge variant="error" size="sm">
-                      {Math.round(link.strength * 100)}%
-                    </Badge>
-                  </div>
-                ))}
+              {weakLinks.map((link, i) => (
+                <div key={i} className="flex items-center justify-between text-sm">
+                  <span className="text-text-secondary">
+                    {String(link.source)} → {String(link.target)}
+                  </span>
+                  <Badge variant="error" size="sm">
+                    {Math.round(link.strength * 100)}%
+                  </Badge>
+                </div>
+              ))}
+              {weakLinks.length === 0 && (
+                <p className="text-sm text-text-tertiary">No weak connections found</p>
+              )}
             </div>
           </Card>
 
           {/* Summary Stats */}
-          <Card padding="md">
-            <h3 className="text-base font-semibold text-text-primary mb-4">Graph Summary</h3>
-            <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-text-secondary">Total Concepts</span>
-                <span className="font-semibold">{sampleData.nodes.length}</span>
+          {graphData && (
+            <Card padding="md">
+              <h3 className="text-base font-semibold text-text-primary mb-4">Graph Summary</h3>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-text-secondary">Total Concepts</span>
+                  <span className="font-semibold">{graphData.nodes.length}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-text-secondary">Connections</span>
+                  <span className="font-semibold">{graphData.links.length}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-text-secondary">Avg. Mastery</span>
+                  <span className="font-semibold">
+                    {Math.round(graphData.nodes.reduce((a, n) => a + n.strength, 0) / graphData.nodes.length * 100)}%
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-text-secondary">Weak Links</span>
+                  <span className="font-semibold text-terracotta">
+                    {graphData.links.filter(l => l.strength < 0.5).length}
+                  </span>
+                </div>
               </div>
-              <div className="flex justify-between">
-                <span className="text-text-secondary">Connections</span>
-                <span className="font-semibold">{sampleData.links.length}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-text-secondary">Avg. Mastery</span>
-                <span className="font-semibold">
-                  {Math.round(sampleData.nodes.reduce((a, n) => a + n.strength, 0) / sampleData.nodes.length * 100)}%
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-text-secondary">Weak Links</span>
-                <span className="font-semibold text-terracotta">
-                  {sampleData.links.filter(l => l.strength < 0.5).length}
-                </span>
-              </div>
-            </div>
-          </Card>
+            </Card>
+          )}
         </div>
       </div>
     </div>

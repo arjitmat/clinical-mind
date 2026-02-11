@@ -1,50 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Card, Badge, Input } from '../components/ui';
-import type { Message, VitalSigns } from '../types';
-
-interface CaseData {
-  patient: { age: number; gender: string; location: string };
-  chiefComplaint: string;
-  initialPresentation: string;
-  vitalSigns: VitalSigns;
-  stages: { stage: string; info: string; revealed: boolean }[];
-  diagnosis: string;
-  differentials: string[];
-}
-
-const sampleCase: CaseData = {
-  patient: { age: 28, gender: 'Male', location: 'Mumbai' },
-  chiefComplaint: 'Acute onset chest pain radiating to left arm',
-  initialPresentation:
-    'A 28-year-old male software engineer presents to the ED at 2 AM with crushing chest pain that started 45 minutes ago while he was sleeping. He appears anxious, diaphoretic, and is clutching his chest. He denies any previous cardiac history but mentions significant work stress and recent cocaine use at a party.',
-  vitalSigns: { bp: '160/95', hr: 110, rr: 22, temp: 37.2, spo2: 96 },
-  stages: [
-    {
-      stage: 'history',
-      info: 'Pain started suddenly, woke him from sleep. Severity: 8/10, crushing quality. Radiates to left arm and jaw. Associated with nausea and sweating. He admits to cocaine use ~3 hours ago. No prior cardiac history. Family history: father had MI at age 52. Smokes 5 cigarettes/day. No diabetes, hypertension on medications.',
-      revealed: false,
-    },
-    {
-      stage: 'physical_exam',
-      info: 'Alert, anxious, diaphoretic. Cardiovascular: Tachycardic, regular rhythm, no murmurs. S1/S2 normal. JVP not elevated. Chest: Clear bilateral air entry. Abdomen: Soft, non-tender. Extremities: No edema. Pupils dilated bilaterally (? cocaine effect).',
-      revealed: false,
-    },
-    {
-      stage: 'labs',
-      info: 'ECG: Sinus tachycardia, ST elevation in leads II, III, aVF (inferior leads). Troponin I: 0.8 ng/mL (elevated, normal <0.04). CBC: Normal. BMP: Normal. Urine drug screen: Positive for cocaine. CXR: Normal cardiac silhouette, clear lung fields.',
-      revealed: false,
-    },
-  ],
-  diagnosis: 'Cocaine-induced acute coronary syndrome (inferior STEMI)',
-  differentials: [
-    'Acute coronary syndrome (STEMI)',
-    'Cocaine-induced coronary vasospasm',
-    'Aortic dissection',
-    'Pulmonary embolism',
-    'Pericarditis',
-  ],
-};
+import type { Message } from '../types';
+import { generateCase, submitDiagnosis, sendTutorMessage, type GeneratedCase, type DiagnosisResult } from '../hooks/useApi';
 
 const stageLabels: Record<string, string> = {
   history: 'History',
@@ -58,17 +16,11 @@ const stageIcons: Record<string, string> = {
   labs: '🔬',
 };
 
-const tutorResponses = [
-  "Interesting choice. Before we jump to conclusions, what other diagnoses could present with chest pain and ST elevation in a young male?",
-  "You're thinking about ACS, which is reasonable given the ECG. But what's unusual about this presentation? What risk factor stands out for a 28-year-old?",
-  "Good - you identified the cocaine use. Now, how does cocaine cause myocardial ischemia? And importantly, how does this change your management compared to a typical STEMI?",
-  "Exactly. Cocaine causes coronary vasospasm AND increases myocardial oxygen demand. This is critical because beta-blockers - typically used in ACS - are contraindicated here. Why?",
-  "Correct. Unopposed alpha stimulation with beta-blockers can worsen coronary vasospasm. Benzodiazepines and nitroglycerin are first-line. You've demonstrated strong reasoning - the key learning point is: always screen for cocaine in young patients with ACS.",
-];
-
 export const CaseInterface: React.FC = () => {
   const navigate = useNavigate();
-  const [caseData] = useState<CaseData>(sampleCase);
+  const { id } = useParams<{ id: string }>();
+  const [caseData, setCaseData] = useState<GeneratedCase | null>(null);
+  const [loadingCase, setLoadingCase] = useState(true);
   const [revealedStages, setRevealedStages] = useState<Set<number>>(new Set());
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -79,11 +31,24 @@ export const CaseInterface: React.FC = () => {
     },
   ]);
   const [inputValue, setInputValue] = useState('');
-  const [tutorIndex, setTutorIndex] = useState(0);
+  const [sendingMessage, setSendingMessage] = useState(false);
   const [showDiagnosis, setShowDiagnosis] = useState(false);
   const [studentDiagnosis, setStudentDiagnosis] = useState('');
   const [showDiagnosisInput, setShowDiagnosisInput] = useState(false);
+  const [diagnosisResult, setDiagnosisResult] = useState<DiagnosisResult | null>(null);
   const chatEndRef = useRef<HTMLDivElement>(null);
+
+  // Load or generate case
+  useEffect(() => {
+    setLoadingCase(true);
+    // Generate a new case from the backend (the id is just a route param)
+    const specialty = 'cardiology'; // default
+    const difficulty = 'intermediate';
+    generateCase(specialty, difficulty)
+      .then((data) => setCaseData(data))
+      .catch(() => setCaseData(null))
+      .finally(() => setLoadingCase(false));
+  }, [id]);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -93,8 +58,8 @@ export const CaseInterface: React.FC = () => {
     setRevealedStages((prev) => new Set(prev).add(index));
   };
 
-  const sendMessage = () => {
-    if (!inputValue.trim()) return;
+  const sendMessage = async () => {
+    if (!inputValue.trim() || !caseData) return;
 
     const studentMsg: Message = {
       id: Date.now().toString(),
@@ -102,39 +67,74 @@ export const CaseInterface: React.FC = () => {
       content: inputValue,
       timestamp: new Date(),
     };
-
     setMessages((prev) => [...prev, studentMsg]);
     setInputValue('');
+    setSendingMessage(true);
 
-    // Simulate AI response
-    setTimeout(() => {
+    try {
+      const res = await sendTutorMessage(caseData.id, inputValue);
       const aiResponse: Message = {
         id: (Date.now() + 1).toString(),
         role: 'ai',
-        content: tutorResponses[tutorIndex] || "Excellent reasoning. You've identified the key features of this case. Ready to make your diagnosis?",
+        content: res.response,
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, aiResponse]);
-      setTutorIndex((prev) => prev + 1);
-    }, 1200);
+    } catch {
+      const aiResponse: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'ai',
+        content: "Good thinking. Can you explain your reasoning further? What evidence supports your hypothesis?",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, aiResponse]);
+    } finally {
+      setSendingMessage(false);
+    }
   };
 
-  const submitDiagnosis = () => {
-    if (!studentDiagnosis.trim()) return;
+  const handleSubmitDiagnosis = async () => {
+    if (!studentDiagnosis.trim() || !caseData) return;
     setShowDiagnosis(true);
 
-    const aiMsg: Message = {
-      id: Date.now().toString(),
-      role: 'ai',
-      content: `You diagnosed: "${studentDiagnosis}". The correct diagnosis is: ${caseData.diagnosis}. ${
-        studentDiagnosis.toLowerCase().includes('cocaine')
-          ? "Excellent work! You correctly identified the cocaine-induced etiology, which is critical for management."
-          : "Close, but the key differentiator here is the cocaine use. Always screen for substance use in young patients with ACS - it fundamentally changes your management approach."
-      }`,
-      timestamp: new Date(),
-    };
-    setMessages((prev) => [...prev, aiMsg]);
+    try {
+      const result = await submitDiagnosis(caseData.id, studentDiagnosis, '');
+      setDiagnosisResult(result);
+
+      const aiMsg: Message = {
+        id: Date.now().toString(),
+        role: 'ai',
+        content: result.feedback,
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, aiMsg]);
+    } catch {
+      const aiMsg: Message = {
+        id: Date.now().toString(),
+        role: 'ai',
+        content: `You diagnosed: "${studentDiagnosis}". Review the case details and learning points for feedback.`,
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, aiMsg]);
+    }
   };
+
+  if (loadingCase) {
+    return (
+      <div className="max-w-7xl mx-auto px-6 py-20 text-center">
+        <div className="animate-pulse text-lg text-text-tertiary">Generating your case...</div>
+      </div>
+    );
+  }
+
+  if (!caseData) {
+    return (
+      <div className="max-w-7xl mx-auto px-6 py-20 text-center">
+        <p className="text-lg text-terracotta mb-4">Failed to load case</p>
+        <Button onClick={() => navigate('/cases')}>Back to Cases</Button>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-8">
@@ -142,11 +142,13 @@ export const CaseInterface: React.FC = () => {
       <div className="flex items-center justify-between mb-8">
         <div>
           <div className="flex items-center gap-3 mb-2">
-            <Badge variant="warning">Intermediate</Badge>
-            <Badge variant="info">Cardiology</Badge>
+            <Badge variant={caseData.difficulty === 'beginner' ? 'success' : caseData.difficulty === 'advanced' ? 'error' : 'warning'}>
+              {caseData.difficulty.charAt(0).toUpperCase() + caseData.difficulty.slice(1)}
+            </Badge>
+            <Badge variant="info">{caseData.specialty}</Badge>
           </div>
           <h1 className="text-xl md:text-2xl font-bold text-text-primary">
-            Chest Pain in a Young Male
+            {caseData.chief_complaint}
           </h1>
         </div>
         <Button variant="tertiary" onClick={() => navigate('/cases')}>
@@ -172,10 +174,10 @@ export const CaseInterface: React.FC = () => {
             </div>
             <div className="bg-warm-gray-50 rounded-xl p-4 mb-4">
               <span className="text-sm font-medium text-text-tertiary block mb-1">Chief Complaint</span>
-              <p className="text-base text-text-primary font-medium">{caseData.chiefComplaint}</p>
+              <p className="text-base text-text-primary font-medium">{caseData.chief_complaint}</p>
             </div>
             <p className="text-base text-text-secondary leading-relaxed">
-              {caseData.initialPresentation}
+              {caseData.initial_presentation}
             </p>
           </Card>
 
@@ -184,11 +186,11 @@ export const CaseInterface: React.FC = () => {
             <h3 className="text-base font-semibold text-text-primary mb-4">Vital Signs</h3>
             <div className="grid grid-cols-5 gap-4">
               {[
-                { label: 'BP', value: caseData.vitalSigns.bp, unit: 'mmHg' },
-                { label: 'HR', value: caseData.vitalSigns.hr, unit: 'bpm' },
-                { label: 'RR', value: caseData.vitalSigns.rr, unit: '/min' },
-                { label: 'Temp', value: caseData.vitalSigns.temp, unit: '°C' },
-                { label: 'SpO2', value: caseData.vitalSigns.spo2, unit: '%' },
+                { label: 'BP', value: caseData.vital_signs.bp, unit: 'mmHg' },
+                { label: 'HR', value: caseData.vital_signs.hr, unit: 'bpm' },
+                { label: 'RR', value: caseData.vital_signs.rr, unit: '/min' },
+                { label: 'Temp', value: caseData.vital_signs.temp, unit: '°C' },
+                { label: 'SpO2', value: caseData.vital_signs.spo2, unit: '%' },
               ].map((vital) => (
                 <div key={vital.label} className="text-center bg-warm-gray-50 rounded-xl p-3">
                   <div className="text-sm text-text-tertiary mb-1">{vital.label}</div>
@@ -209,14 +211,14 @@ export const CaseInterface: React.FC = () => {
                     className="w-full justify-start"
                     onClick={() => revealStage(index)}
                   >
-                    <span className="mr-2">{stageIcons[stage.stage]}</span>
+                    <span className="mr-2">{stageIcons[stage.stage] || '📄'}</span>
                     {stageLabels[stage.stage] || stage.stage}
                   </Button>
                 ) : (
                   <Card padding="md" className="animate-fade-in-up">
                     <h3 className="text-base font-semibold text-text-primary mb-3 flex items-center gap-2">
-                      <span>{stageIcons[stage.stage]}</span>
-                      {stageLabels[stage.stage]}
+                      <span>{stageIcons[stage.stage] || '📄'}</span>
+                      {stageLabels[stage.stage] || stage.stage}
                     </h3>
                     <p className="text-base text-text-secondary leading-relaxed whitespace-pre-line">
                       {stage.info}
@@ -245,10 +247,10 @@ export const CaseInterface: React.FC = () => {
                     placeholder="Enter your diagnosis..."
                     value={studentDiagnosis}
                     onChange={setStudentDiagnosis}
-                    onKeyPress={(e) => e.key === 'Enter' && submitDiagnosis()}
+                    onKeyPress={(e) => e.key === 'Enter' && handleSubmitDiagnosis()}
                   />
                   <div className="mt-4 flex gap-3">
-                    <Button onClick={submitDiagnosis}>Submit Diagnosis</Button>
+                    <Button onClick={handleSubmitDiagnosis}>Submit Diagnosis</Button>
                     <Button variant="tertiary" onClick={() => setShowDiagnosisInput(false)}>
                       Gather More Info
                     </Button>
@@ -263,18 +265,59 @@ export const CaseInterface: React.FC = () => {
             <Card padding="lg" className="border-forest-green animate-fade-in-up">
               <h3 className="text-lg font-semibold text-forest-green mb-4">Case Complete</h3>
               <div className="space-y-4">
+                {diagnosisResult && (
+                  <div className="bg-warm-gray-50 rounded-xl p-4">
+                    <div className="flex items-center gap-3 mb-2">
+                      <Badge variant={diagnosisResult.is_correct ? 'success' : 'warning'}>
+                        {diagnosisResult.accuracy_score}% Accuracy
+                      </Badge>
+                    </div>
+                    <p className="text-base text-text-secondary">{diagnosisResult.feedback}</p>
+
+                    {diagnosisResult.reasoning_strengths?.length > 0 && (
+                      <div className="mt-3">
+                        <span className="text-sm font-medium text-forest-green">Strengths:</span>
+                        <ul className="text-sm text-text-secondary mt-1 list-disc list-inside">
+                          {diagnosisResult.reasoning_strengths.map((s, i) => <li key={i}>{s}</li>)}
+                        </ul>
+                      </div>
+                    )}
+
+                    {diagnosisResult.reasoning_gaps?.length > 0 && (
+                      <div className="mt-3">
+                        <span className="text-sm font-medium text-terracotta">Gaps to review:</span>
+                        <ul className="text-sm text-text-secondary mt-1 list-disc list-inside">
+                          {diagnosisResult.reasoning_gaps.map((g, i) => <li key={i}>{g}</li>)}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                )}
+
                 <div className="bg-forest-green/5 rounded-xl p-4">
                   <span className="text-sm font-medium text-forest-green block mb-1">Correct Diagnosis</span>
-                  <p className="text-base font-semibold text-text-primary">{caseData.diagnosis}</p>
+                  <p className="text-base font-semibold text-text-primary">
+                    {diagnosisResult?.correct_diagnosis || caseData.diagnosis}
+                  </p>
                 </div>
                 <div>
                   <span className="text-sm font-medium text-text-tertiary block mb-2">Key Differentials</span>
                   <div className="flex flex-wrap gap-2">
-                    {caseData.differentials.map((d) => (
+                    {(diagnosisResult?.differentials || caseData.differentials).map((d) => (
                       <Badge key={d} variant="default">{d}</Badge>
                     ))}
                   </div>
                 </div>
+
+                {caseData.learning_points && caseData.learning_points.length > 0 && (
+                  <div>
+                    <span className="text-sm font-medium text-text-tertiary block mb-2">Learning Points</span>
+                    <ul className="text-sm text-text-secondary list-disc list-inside space-y-1">
+                      {caseData.learning_points.map((lp, i) => <li key={i}>{lp}</li>)}
+                    </ul>
+                  </div>
+                )}
+
                 <div className="flex gap-3 pt-2">
                   <Button onClick={() => navigate('/cases')}>Next Case</Button>
                   <Button variant="secondary" onClick={() => navigate('/dashboard')}>
@@ -315,6 +358,11 @@ export const CaseInterface: React.FC = () => {
                     {msg.content}
                   </div>
                 ))}
+                {sendingMessage && (
+                  <div className="p-3 rounded-xl text-sm bg-forest-green/5 border border-forest-green/10 text-text-tertiary animate-pulse">
+                    Thinking...
+                  </div>
+                )}
                 <div ref={chatEndRef} />
               </div>
 
@@ -326,9 +374,10 @@ export const CaseInterface: React.FC = () => {
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-                    className="flex-1 p-3 rounded-xl border-[1.5px] border-warm-gray-100 bg-cream-white text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:border-forest-green transition-colors"
+                    disabled={sendingMessage}
+                    className="flex-1 p-3 rounded-xl border-[1.5px] border-warm-gray-100 bg-cream-white text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:border-forest-green transition-colors disabled:opacity-50"
                   />
-                  <Button size="sm" onClick={sendMessage}>
+                  <Button size="sm" onClick={sendMessage} disabled={sendingMessage}>
                     Send
                   </Button>
                 </div>
