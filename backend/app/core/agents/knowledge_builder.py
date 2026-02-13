@@ -1,11 +1,18 @@
 """Dynamic knowledge builder — uses RAG + Claude to create role-specific expertise per case.
 
-When a gastritis case arrives:
-- Patient agent learns: how gastritis feels to a layperson, realistic symptom descriptions in Hinglish
-- Nurse agent learns: nursing protocols for gastritis, what vitals to monitor, when to escalate
-- Senior doctor learns: differential diagnosis algorithm, Indian guidelines (API/ICMR), NEET-PG patterns
+ACCURACY PRINCIPLES:
+1. ONLY state facts that are grounded in the RAG corpus or well-established medical knowledge
+2. Every clinical claim must be traceable to a source (corpus case, named guideline, or textbook)
+3. When uncertain, explicitly say so — "This needs verification" is better than a confident wrong answer
+4. Indian hospital context must reflect REAL govt hospital workflows, not idealized textbook scenarios
+5. Agents must never invent guidelines, statistics, or protocols
 
-This is what makes each agent a genuine specialist for the current case, not a generic responder.
+Source hierarchy (most to least trusted):
+- Named Indian guidelines: ICMR, API, CSI, INASL, ISCCM, NVBDCP/NCVBDC, NACO, IAP, FOGSI
+- Indian medical journals: JAPI, IJMR, Indian Heart Journal, Indian J Gastroenterology
+- RAG corpus cases (with source attribution)
+- Standard medical textbooks: Harrison's, Robbins, Bailey & Love, OP Ghai, DC Dutta
+- Well-established clinical consensus (must be labelled as such)
 """
 
 import logging
@@ -19,10 +26,52 @@ from app.core.rag.retriever import MedicalRetriever
 
 logger = logging.getLogger(__name__)
 
+# ---- Grounding rules injected into every synthesis prompt ----
+
+SOURCE_GROUNDING_RULES = """
+STRICT ACCURACY RULES — VIOLATIONS ARE UNACCEPTABLE:
+
+1. ONLY USE INFORMATION FROM:
+   a) The reference material provided below (RAG corpus)
+   b) Well-established medical facts from standard Indian textbooks (Harrison's, Robbins, Park's PSM, OP Ghai)
+   c) Named Indian guidelines you are CERTAIN exist: ICMR, API, CSI, INASL, ISCCM, NVBDCP, NACO, IAP, FOGSI, NHM
+   d) Named Indian journals: JAPI, IJMR, Indian Heart Journal
+
+2. NEVER:
+   - Invent a guideline or protocol that doesn't exist
+   - Cite a specific statistic unless it's in the reference material or you are >95% confident
+   - State "ICMR recommends X" unless you are certain ICMR actually recommends X
+   - Fabricate drug dosages — if unsure, say "dose per institutional protocol"
+   - Assume resource availability — Indian govt hospitals often lack CT, MRI, certain drugs
+
+3. WHEN UNCERTAIN, SAY SO:
+   - "Per standard teaching hospital protocol..." (when exact guideline unclear)
+   - "Commonly practiced in Indian hospitals..." (when no specific guideline)
+   - "Verify current dosing with hospital formulary" (when dose uncertain)
+   - "Exact prevalence data varies by region" (when stats uncertain)
+
+4. SOURCE ATTRIBUTION:
+   - Tag each clinical fact with its source: [Corpus], [Harrison's], [API Guidelines], [Clinical consensus]
+   - If a fact comes from the reference material below, tag it [Corpus: CASE-ID] where possible
+   - If it's standard textbook knowledge, tag it [Textbook]
+   - If it's from a named guideline, tag it [Guideline: NAME]
+
+5. INDIAN HOSPITAL REALITY (not textbook fantasy):
+   - Govt hospital: 1 doctor per 50+ patients, overworked nurses, limited beds
+   - Often no CT/MRI — rely on clinical skills + basic labs + X-ray + ultrasound
+   - Drug availability: generic drugs, NLEM (National List of Essential Medicines)
+   - Referral system: PHC → CHC → District Hospital → Medical College Hospital
+   - Common constraints: power cuts, blood bank shortages, delayed lab reports
+   - Patient reality: delayed presentation (came after trying home remedies/local doctor/ayurvedic)
+"""
+
 # ---- Role-specific synthesis prompts ----
 
-PATIENT_KNOWLEDGE_PROMPT = """You are a medical knowledge synthesizer. Given the clinical reference material below about a specific condition/case, create a PATIENT EXPERIENCE PROFILE that a patient agent can use to realistically roleplay this condition.
+PATIENT_KNOWLEDGE_PROMPT = """You are building a PATIENT EXPERIENCE PROFILE for a clinical simulation agent.
 
+{grounding_rules}
+
+REFERENCE MATERIAL FROM MEDICAL CORPUS:
 {rag_context}
 
 CURRENT CASE:
@@ -31,24 +80,44 @@ CURRENT CASE:
 - Chief complaint: {chief_complaint}
 - Presentation: {presentation}
 
-Synthesize this into a patient experience profile. Write in second person ("you feel...") as instructions for the patient agent:
+Create a patient experience profile grounded ONLY in the reference material and established clinical knowledge.
+Write in second person ("you feel...") as instructions for the patient agent:
 
-1. SYMPTOM EXPERIENCE: How does this condition feel to a layperson? Describe the pain, discomfort, sensations in simple Hindi-English terms a real Indian patient would use. Be specific — "chest mein jalan hoti hai khana khane ke baad" not just "chest pain".
+1. SYMPTOM EXPERIENCE [Source-tagged]:
+   How this condition actually feels. Use Hinglish — "pet mein jalan", "saans phoolna", "haath pair sunn hona".
+   Be specific to THIS diagnosis from the reference material. Tag sources.
 
-2. SYMPTOM TIMELINE: How did symptoms develop? What happened first, what got worse? When did the patient decide to come to the hospital?
+2. SYMPTOM TIMELINE [Source-tagged]:
+   Realistic timeline based on the case presentation. Indian patients typically delay — "pehle socha gas hai",
+   "local doctor ne antacid di par kaam nahi kiya", "2-3 din wait kiya phir aaya".
 
-3. PERSONAL HISTORY: Realistic lifestyle details for an Indian patient with this condition — diet (spicy food, chai, gutka?), work stress, family history patterns common in India.
+3. PATIENT BACKGROUND [Based on Indian demographics]:
+   Realistic for the patient's age/gender/location from the case data.
+   - Diet: based on region (North Indian = roti/ghee/chai, South = rice/sambar, etc.)
+   - Habits: common risk factors for this condition in Indian population
+   - Home remedies tried: "haldi wala doodh piya", "Hajmola khaya", "jhadu-phoonk karwaya"
+   Only include what's relevant to THIS condition.
 
-4. WHAT PATIENT KNOWS vs DOESN'T: What would this patient realistically know about their condition? What misconceptions might they have? (e.g., "Mujhe laga gas ki problem hai")
+4. WHAT PATIENT KNOWS vs DOESN'T:
+   - Knows: symptoms they feel, what local doctor said, what family members suggested
+   - Doesn't know: medical terms, lab values, their actual diagnosis
+   - Misconceptions: common ones for this condition in India (e.g., "heart attack = gas")
 
-5. EMOTIONAL STATE: Based on severity — is the patient scared? In denial? Frustrated because "dawai kha raha hoon par theek nahi ho raha"?
+5. EMOTIONAL STATE:
+   Based on case severity and Indian cultural context.
+   - Male patients may minimize symptoms ("kuch nahi hoga")
+   - Female patients may worry about family impact ("bacche kaun dekhega")
+   - Elderly may be fatalistic ("upar wale ki marzi")
 
-6. RESPONSES TO COMMON QUESTIONS: How would this patient respond to standard history-taking questions (onset, duration, aggravating/relieving factors, associated symptoms)?
+6. RESPONSES TO HISTORY QUESTIONS [Source-tagged]:
+   Grounded in the case presentation data. Only answer what this patient would realistically know.
+   If the student asks about something not in the case data, the patient should say "pata nahi doctor"."""
 
-Keep it concise but specific to THIS condition. Write in a mix of English and Hindi as the patient would speak."""
+NURSE_KNOWLEDGE_PROMPT = """You are building a NURSING PROTOCOL BRIEF for a clinical simulation agent in an Indian government hospital.
 
-NURSE_KNOWLEDGE_PROMPT = """You are a medical knowledge synthesizer. Given the clinical reference material below, create a NURSING PROTOCOL BRIEF that a nurse agent can use to realistically assist in managing this case in an Indian hospital setting.
+{grounding_rules}
 
+REFERENCE MATERIAL FROM MEDICAL CORPUS:
 {rag_context}
 
 CURRENT CASE:
@@ -57,28 +126,52 @@ CURRENT CASE:
 - Vital signs: BP {bp}, HR {hr}, RR {rr}, Temp {temp}°C, SpO2 {spo2}%
 - Chief complaint: {chief_complaint}
 
-Synthesize into a nursing protocol brief:
+Create a nursing protocol brief. EVERY clinical action must be grounded in established protocol.
 
-1. TRIAGE ASSESSMENT: Based on these vitals and presentation, what is the triage category? What are the RED FLAGS the nurse should watch for?
+1. TRIAGE ASSESSMENT [Source-tagged]:
+   - Category based on vitals (use standard triage: RED/YELLOW/GREEN)
+   - RED FLAGS specific to this condition from reference material
+   - What to communicate to the casualty medical officer (CMO)
 
-2. MONITORING PRIORITIES: What specific parameters need close monitoring? How often? What changes would indicate deterioration?
+2. MONITORING PRIORITIES [Source-tagged]:
+   - What parameters, how often (e.g., "vitals q15min if unstable, q1h if stable")
+   - Specific to THIS condition — what deterioration looks like
+   - What to escalate immediately vs. document for rounds
 
-3. IMMEDIATE NURSING ACTIONS: What should the nurse prepare/initiate even before the doctor's orders? (IV access, O2, positioning, monitoring)
+3. IMMEDIATE NURSING ACTIONS [Practical Indian hospital]:
+   - What's realistically available: pulse oximeter, BP cuff, thermometer, glucometer
+   - IV access: what gauge, what fluid (NS/RL — what's available)
+   - Positioning: specific to condition (e.g., propped up for cardiac, left lateral for liver abscess drainage)
+   - What to prepare from the ward stock vs. what needs pharmacy indent
 
-4. EXPECTED INVESTIGATIONS: What labs/tests will likely be ordered? What samples should be ready? What equipment is needed?
+4. INVESTIGATION PREPARATION [Practical]:
+   - Standard labs available in govt hospital: CBC, RFT, LFT, blood sugar, urine routine
+   - What needs special request: troponin, d-dimer, ABG, blood culture
+   - Imaging: X-ray (available), ultrasound (may need radiology call), CT/MRI (referral)
+   - Sample collection: which tubes, timing, special handling (e.g., ABG on ice)
 
-5. MEDICATION AWARENESS: What medications are commonly used for this condition in Indian hospitals? What should the nurse have ready? Any contraindications to watch for?
+5. MEDICATION AWARENESS [NLEM-grounded]:
+   - Only drugs commonly available in Indian govt hospitals (NLEM preferred)
+   - Doses only if from reference material — otherwise "as per order"
+   - Route, preparation, rate if IV
+   - Contraindications the nurse must verify (allergies, pregnancy, renal function)
 
-6. CLINICAL OBSERVATIONS: What specific physical signs should the nurse report to the doctor? What nursing assessment findings are critical?
+6. WARD WORKFLOW [Real Indian hospital]:
+   - Duty handover communication (SBAR format)
+   - Documentation: what to note in case sheet
+   - When to call the senior resident vs. attend to yourself
+   - Night duty considerations: limited staff, skeleton lab services
 
-7. EMERGENCY PREPAREDNESS: If this patient deteriorates, what emergency equipment/medications should be at bedside?
+7. EMERGENCY PREPARATION [Condition-specific]:
+   - Crash cart check: what drugs/equipment for THIS condition
+   - Nearest higher center for referral if needed
+   - Blood bank: crossmatch if bleeding risk"""
 
-8. INDIAN HOSPITAL CONTEXT: Any specific considerations for Indian government hospital setting — bed availability, referral protocols, commonly available drugs.
+SENIOR_KNOWLEDGE_PROMPT = """You are building a TEACHING & DIAGNOSTIC EXPERTISE BRIEF for a senior consultant agent in an Indian medical college hospital.
 
-Be specific to THIS case. Use proper medical terminology as an experienced Indian ward nurse would."""
+{grounding_rules}
 
-SENIOR_KNOWLEDGE_PROMPT = """You are a medical knowledge synthesizer. Given the clinical reference material below, create a TEACHING & DIAGNOSTIC EXPERTISE BRIEF that a senior consultant can use to guide a medical student through this case using the Socratic method.
-
+REFERENCE MATERIAL FROM MEDICAL CORPUS:
 {rag_context}
 
 CURRENT CASE:
@@ -89,39 +182,99 @@ CURRENT CASE:
 - Key differentials: {differentials}
 - Learning points: {learning_points}
 
-Synthesize into a teaching expertise brief:
+Create a teaching expertise brief. Every fact must be source-tagged.
 
-1. DIAGNOSTIC ALGORITHM: Step-by-step clinical reasoning path for this case. What findings point toward the diagnosis? What rules out the key differentials? Include the "golden finding" — the single most specific clue.
+1. DIAGNOSTIC ALGORITHM [Source-tagged]:
+   Step-by-step reasoning path from the reference material:
+   - Presenting complaint → What to consider first (life-threatening causes)
+   - History clues → Which differential they support/refute
+   - Examination findings → Pathognomonic signs if any
+   - Investigation interpretation → Confirmatory test
+   - "GOLDEN FINDING": The single most specific clue [Source: which reference case/guideline]
 
-2. DIFFERENTIAL DIAGNOSIS MATRIX: For each major differential, list:
-   - What findings SUPPORT it
-   - What findings ARGUE AGAINST it
-   - The ONE investigation that distinguishes it
+2. DIFFERENTIAL DIAGNOSIS MATRIX [Source-tagged]:
+   From the reference material, for each major differential:
+   | Differential | Supporting findings | Against | Key distinguishing test |
+   ONLY include differentials mentioned in the reference material or the case data.
 
-3. INDIAN EPIDEMIOLOGY: Prevalence and patterns in India. Why is this condition important in Indian context? Risk factors specific to Indian population (diet, lifestyle, genetic).
+3. INDIAN EPIDEMIOLOGY [Source-tagged, verified only]:
+   - ONLY cite statistics that are in the reference material
+   - If not in reference material, use hedged language: "India has a significant burden of..."
+   - Regional patterns if mentioned in corpus
+   - Do NOT invent prevalence numbers
 
-4. INDIAN GUIDELINES: Relevant ICMR, API (Association of Physicians of India), NHM, or specialty-specific Indian guidelines for management. Standard of care in Indian teaching hospitals.
+4. INDIAN GUIDELINES [Only if actually exist]:
+   - Name the specific guideline document if it exists
+   - If unsure whether a guideline exists, say "Per standard teaching hospital practice..."
+   - Reference: API, CSI, ISCCM, INASL, ICMR — ONLY if you are certain they have guidelines for THIS condition
+   - For common conditions: reference standard textbook approach (Harrison's, Sabiston, etc.)
 
-5. NEET-PG EXAM RELEVANCE: How is this condition typically tested? Common question patterns. High-yield facts that students must know. Classic "one-liner" descriptions used in exams.
+5. NEET-PG/EXAM RELEVANCE [Verified]:
+   - Classic "one-liner" descriptions (well-established ones only)
+   - Question patterns: "A patient presents with X, Y, Z — diagnosis?"
+   - High-yield facts from the reference material's learning points
+   - ONLY include exam facts you are certain are correct
 
-6. SOCRATIC TEACHING PLAN:
-   - 3 progressive Socratic questions to guide the student (easy → hard)
-   - Key hints to give if student is stuck (without revealing diagnosis)
-   - How to redirect if student is on wrong track
-   - Teaching points to cover AFTER diagnosis is made
+6. SOCRATIC TEACHING PLAN [Based on case data]:
+   - 3 progressive questions grounded in THIS case's findings
+   - Hints that point to specific findings in the case data (not generic)
+   - Redirect strategies if student picks wrong differential (using case evidence)
+   - Post-diagnosis teaching: pathophysiology connecting ALL findings
 
-7. PATHOPHYSIOLOGY DEPTH: The mechanism of disease that explains ALL the clinical findings. How to connect symptoms → signs → investigation findings through pathophysiology.
+7. MANAGEMENT [Source-tagged, Indian context]:
+   - First-line: only drugs available in NLEM or commonly stocked
+   - If advanced treatment needed (e.g., PCI for STEMI): note referral requirements
+   - Monitoring plan: what's realistic in a ward with 1 nurse per 20 patients
+   - Disposition: admission criteria, discharge criteria, follow-up plan
+   - Cost-consciousness: generic drugs, government scheme eligibility (PMJAY, etc.)"""
 
-8. MANAGEMENT OVERVIEW: First-line treatment, Indian-context alternatives, monitoring plan, disposition.
 
-Be comprehensive but focused on THIS specific case. Reference Indian medical education context throughout."""
+# Verified Indian medical source patterns for confidence classification
+VERIFIED_SOURCES = {
+    "high_confidence": [
+        "ICMR", "NVBDCP", "NCVBDC", "NACO", "INASL", "ISCCM", "CSI", "IAP",
+        "FOGSI", "NHM", "API Guidelines", "National Snakebite Protocol",
+        "RNTCP", "NTEP", "NLEM",
+    ],
+    "medium_confidence": [
+        "JAPI", "IJMR", "Indian Heart Journal", "Indian Journal",
+        "Indian J Gastroenterology", "ISG", "NDMA",
+    ],
+    "textbook_grade": [
+        "Harrison", "Robbins", "Park", "OP Ghai", "DC Dutta",
+        "Bailey", "Sabiston", "Nelson", "Schwartz",
+    ],
+}
+
+
+def classify_source_confidence(source_str: str) -> str:
+    """Classify a source string into a confidence tier.
+
+    Returns: 'verified_guideline', 'indian_journal', 'textbook', 'corpus_case', or 'unverified'
+    """
+    if not source_str:
+        return "unverified"
+    src = source_str.upper()
+    for keyword in VERIFIED_SOURCES["high_confidence"]:
+        if keyword.upper() in src:
+            return "verified_guideline"
+    for keyword in VERIFIED_SOURCES["medium_confidence"]:
+        if keyword.upper() in src:
+            return "indian_journal"
+    for keyword in VERIFIED_SOURCES["textbook_grade"]:
+        if keyword.upper() in src:
+            return "textbook"
+    if "case" in source_str.lower() or "series" in source_str.lower():
+        return "corpus_case"
+    return "unverified"
 
 
 class DynamicKnowledgeBuilder:
     """Builds role-specific medical expertise dynamically using RAG + Claude synthesis.
 
-    For each case, queries the medical corpus for relevant knowledge, then uses
-    Claude Opus to synthesize it into specialized "skills" for each agent role.
+    Key principle: ACCURACY OVER COMPREHENSIVENESS.
+    Better to say less that's correct than more that's wrong.
+    Every fact must trace to: corpus, named guideline, or established textbook.
     """
 
     def __init__(self):
@@ -157,114 +310,139 @@ class DynamicKnowledgeBuilder:
             logger.info(f"Knowledge cache hit: {role} for case {case_id}")
             return self._cache[cache_key]
 
-        # Step 1: Gather RAG context
-        rag_context = self._gather_rag_context(case_data, role)
+        # Step 1: Gather RAG context with source metadata
+        rag_context, sources = self._gather_rag_context(case_data, role)
 
-        # Step 2: Synthesize with Claude
+        # Step 2: Synthesize with Claude (strict grounding)
         knowledge = self._synthesize_knowledge(case_data, role, rag_context)
 
-        # Step 3: Cache and return
+        # Step 3: Append source manifest with confidence levels
+        if knowledge and sources:
+            source_manifest = "\n\n=== SOURCES USED (with confidence) ===\n"
+            for src in sources:
+                conf = src.get("confidence", "unverified").upper()
+                source_manifest += (
+                    f"- [{src['case_id']}] {src['title']} "
+                    f"(Source: {src['source']}) "
+                    f"[{src['chunk_type']}] "
+                    f"[Confidence: {conf}]\n"
+                )
+            source_manifest += (
+                "\nNOTE: Prioritize HIGH CONFIDENCE sources. "
+                "For LOW/UNVERIFIED sources, hedge your language.\n"
+            )
+            knowledge += source_manifest
+
+        # Step 4: Cache and return
         if knowledge:
             self._cache[cache_key] = knowledge
-            logger.info(f"Built {role} knowledge for case {case_id} ({len(knowledge)} chars)")
+            logger.info(f"Built {role} knowledge for case {case_id} ({len(knowledge)} chars, {len(sources)} sources)")
 
         return knowledge or ""
 
-    def _gather_rag_context(self, case_data: dict, role: str) -> str:
-        """Query RAG for role-appropriate medical knowledge."""
+    def _gather_rag_context(self, case_data: dict, role: str) -> tuple[str, list[dict]]:
+        """Query RAG for role-appropriate medical knowledge.
+
+        Returns (context_text, source_list) where source_list tracks provenance.
+        """
         specialty = case_data.get("specialty", "")
         diagnosis = case_data.get("diagnosis", "")
         chief_complaint = case_data.get("chief_complaint", "")
 
         context_parts = []
+        sources = []
+
+        def _add_results(results: list[dict], label: str):
+            if not results:
+                return
+            context_parts.append(f"=== {label} ===")
+            for r in results:
+                meta = r.get("metadata", {})
+                raw_source = meta.get("source", "corpus")
+                confidence = classify_source_confidence(raw_source)
+                confidence_label = {
+                    "verified_guideline": "HIGH CONFIDENCE - Verified Indian Guideline",
+                    "indian_journal": "MEDIUM CONFIDENCE - Indian Medical Journal",
+                    "textbook": "HIGH CONFIDENCE - Standard Textbook",
+                    "corpus_case": "MODERATE - Corpus Case",
+                    "unverified": "LOW - Unverified Source",
+                }.get(confidence, "UNKNOWN")
+                source_tag = f"[Source: {raw_source} | Case: {meta.get('case_id', 'unknown')} | Confidence: {confidence_label}]"
+                context_parts.append(source_tag)
+                context_parts.append(r["content"])
+                context_parts.append("")
+                sources.append({
+                    "case_id": meta.get("case_id", "unknown"),
+                    "title": meta.get("title", "Untitled"),
+                    "source": raw_source,
+                    "confidence": confidence,
+                    "specialty": meta.get("specialty", ""),
+                    "chunk_type": meta.get("chunk_type", ""),
+                    "relevance": r.get("relevance_score", 0),
+                })
 
         if role == "patient":
-            # Get presentation-focused chunks — how conditions present clinically
-            query = f"Patient presenting with {chief_complaint}. Symptoms, history, clinical presentation for {diagnosis}"
             results = self.vector_store.query(
-                query_text=query,
+                query_text=f"Patient presenting with {chief_complaint}. Symptoms, history for {diagnosis}",
                 specialty=specialty,
                 n_results=5,
                 chunk_type="presentation",
             )
-            if results:
-                context_parts.append("=== SIMILAR PATIENT PRESENTATIONS ===")
-                for r in results:
-                    context_parts.append(r["content"])
-                    context_parts.append("")
+            _add_results(results, "SIMILAR PATIENT PRESENTATIONS FROM CORPUS")
 
-            # Also get full narratives for richer context
             full_results = self.vector_store.query(
                 query_text=f"Clinical case {specialty} {diagnosis}",
                 specialty=specialty,
                 n_results=3,
                 chunk_type="full_narrative",
             )
-            if full_results:
-                context_parts.append("=== REFERENCE CASES ===")
-                for r in full_results:
-                    context_parts.append(r["content"])
-                    context_parts.append("")
+            _add_results(full_results, "REFERENCE CASES FROM CORPUS")
 
         elif role == "nurse":
-            # Get full clinical cases for nursing protocol context
-            query = f"Clinical management of {diagnosis}. Vital signs, monitoring, nursing assessment, emergency protocols for {chief_complaint}"
             results = self.vector_store.query(
-                query_text=query,
+                query_text=f"Clinical management {diagnosis}. Vitals monitoring nursing assessment {chief_complaint}",
                 specialty=specialty,
                 n_results=5,
                 chunk_type="full_narrative",
             )
-            if results:
-                context_parts.append("=== CLINICAL REFERENCE FOR NURSING PROTOCOLS ===")
-                for r in results:
-                    context_parts.append(r["content"])
-                    context_parts.append("")
+            _add_results(results, "CLINICAL REFERENCE FOR NURSING PROTOCOLS")
 
-            # Get learning material for clinical knowledge
             learning_results = self.vector_store.query(
-                query_text=f"Diagnosis and management: {diagnosis}",
+                query_text=f"Diagnosis management learning points: {diagnosis}",
                 specialty=specialty,
                 n_results=3,
                 chunk_type="learning",
             )
-            if learning_results:
-                context_parts.append("=== DIAGNOSTIC & LEARNING MATERIAL ===")
-                for r in learning_results:
-                    context_parts.append(r["content"])
-                    context_parts.append("")
+            _add_results(learning_results, "DIAGNOSTIC & LEARNING MATERIAL")
 
         elif role == "senior_doctor":
-            # Get everything — full cases, learning, presentations
             for chunk_type, label, n in [
                 ("full_narrative", "COMPLETE CASE REFERENCES", 5),
                 ("learning", "DIAGNOSTIC & TEACHING MATERIAL", 5),
                 ("presentation", "CLINICAL PRESENTATIONS", 3),
             ]:
-                query = f"{diagnosis} differential diagnosis pathophysiology management {specialty}"
                 results = self.vector_store.query(
-                    query_text=query,
+                    query_text=f"{diagnosis} differential diagnosis pathophysiology management {specialty}",
                     specialty=specialty,
                     n_results=n,
                     chunk_type=chunk_type,
                 )
-                if results:
-                    context_parts.append(f"=== {label} ===")
-                    for r in results:
-                        context_parts.append(r["content"])
-                        context_parts.append("")
+                _add_results(results, f"{label} FROM CORPUS")
 
-        return "\n".join(context_parts) if context_parts else ""
+        context_text = "\n".join(context_parts) if context_parts else ""
+        return context_text, sources
 
     def _synthesize_knowledge(
         self, case_data: dict, role: str, rag_context: str
     ) -> Optional[str]:
-        """Use Claude Opus with extended thinking to synthesize role-specific expertise."""
+        """Use Claude Opus with extended thinking to synthesize role-specific expertise.
+
+        The grounding rules ensure Claude only states verifiable facts.
+        """
         if not self.client:
-            logger.warning("No Claude client — returning RAG context as-is for knowledge")
+            logger.warning("No Claude client — returning structured RAG context")
             return self._fallback_knowledge(case_data, role, rag_context)
 
-        # Select the role-specific synthesis prompt
         prompts = {
             "patient": PATIENT_KNOWLEDGE_PROMPT,
             "nurse": NURSE_KNOWLEDGE_PROMPT,
@@ -274,10 +452,12 @@ class DynamicKnowledgeBuilder:
         if not prompt_template:
             return None
 
-        # Build the synthesis prompt
         vitals = case_data.get("vital_signs", {})
+
+        # Build prompt with grounding rules + RAG context
         prompt = prompt_template.format(
-            rag_context=rag_context or "No RAG context available — use your medical knowledge.",
+            grounding_rules=SOURCE_GROUNDING_RULES,
+            rag_context=rag_context or "NO REFERENCE MATERIAL AVAILABLE. Use ONLY well-established textbook facts. Tag everything [Textbook] and be conservative.",
             diagnosis=case_data.get("diagnosis", "unknown"),
             specialty=case_data.get("specialty", "general"),
             difficulty=case_data.get("difficulty", "intermediate"),
@@ -304,7 +484,6 @@ class DynamicKnowledgeBuilder:
                 messages=[{"role": "user", "content": prompt}],
             )
 
-            # Extract the text content (skip thinking blocks)
             content = ""
             for block in response.content:
                 if block.type == "text":
@@ -322,45 +501,51 @@ class DynamicKnowledgeBuilder:
     def _fallback_knowledge(
         self, case_data: dict, role: str, rag_context: str
     ) -> str:
-        """Fallback when Claude is unavailable — return structured RAG context."""
+        """Fallback when Claude is unavailable — return structured RAG context with source tags.
+
+        This is a conservative fallback: only raw corpus data, no synthesis.
+        """
         diagnosis = case_data.get("diagnosis", "")
         specialty = case_data.get("specialty", "")
         chief_complaint = case_data.get("chief_complaint", "")
 
+        header = (
+            "NOTE: Dynamic knowledge synthesis unavailable. Using RAG corpus directly.\n"
+            "ONLY use facts from the reference material below. Do NOT invent or assume.\n\n"
+        )
+
         if role == "patient":
             return (
-                f"CONDITION KNOWLEDGE:\n"
-                f"You are presenting with {chief_complaint}.\n"
-                f"The underlying condition is related to {specialty}.\n"
-                f"Describe your symptoms in simple Hinglish terms.\n"
-                f"You have been experiencing these symptoms and they brought you to the hospital.\n\n"
-                f"REFERENCE MATERIAL:\n{rag_context[:2000]}"
+                f"{header}"
+                f"CONDITION: {chief_complaint} ({specialty})\n"
+                f"Describe symptoms based ONLY on the presentation data provided to you.\n"
+                f"If asked something not in your case data, say 'pata nahi doctor'.\n\n"
+                f"REFERENCE MATERIAL [Corpus]:\n{rag_context[:2000]}"
             )
 
         if role == "nurse":
             vitals = case_data.get("vital_signs", {})
             return (
-                f"CLINICAL PROTOCOL KNOWLEDGE:\n"
-                f"Patient presenting with {chief_complaint} ({specialty}).\n"
-                f"Vitals: BP {vitals.get('bp')}, HR {vitals.get('hr')}, "
-                f"RR {vitals.get('rr')}, SpO2 {vitals.get('spo2')}%.\n"
-                f"Monitor vitals closely. Prepare for standard investigations.\n"
-                f"Have emergency cart ready if vitals deteriorate.\n\n"
-                f"REFERENCE MATERIAL:\n{rag_context[:2000]}"
+                f"{header}"
+                f"PATIENT: {chief_complaint} ({specialty})\n"
+                f"VITALS: BP {vitals.get('bp')}, HR {vitals.get('hr')}, "
+                f"RR {vitals.get('rr')}, SpO2 {vitals.get('spo2')}%\n"
+                f"Report only what you observe. For protocols, say 'as per hospital protocol'.\n\n"
+                f"REFERENCE MATERIAL [Corpus]:\n{rag_context[:2000]}"
             )
 
         if role == "senior_doctor":
             return (
-                f"TEACHING KNOWLEDGE:\n"
-                f"Case: {chief_complaint} ({specialty})\n"
-                f"Diagnosis: {diagnosis}\n"
-                f"Differentials: {', '.join(case_data.get('differentials', []))}\n"
-                f"Learning points: {'; '.join(case_data.get('learning_points', []))}\n"
-                f"Guide the student using Socratic method.\n\n"
-                f"REFERENCE MATERIAL:\n{rag_context[:3000]}"
+                f"{header}"
+                f"CASE: {chief_complaint} ({specialty})\n"
+                f"DIAGNOSIS: {diagnosis}\n"
+                f"DIFFERENTIALS: {', '.join(case_data.get('differentials', []))}\n"
+                f"LEARNING POINTS: {'; '.join(case_data.get('learning_points', []))}\n"
+                f"Teach using Socratic method. Only reference facts from the case data or reference material.\n\n"
+                f"REFERENCE MATERIAL [Corpus]:\n{rag_context[:3000]}"
             )
 
-        return rag_context[:2000] if rag_context else ""
+        return f"{header}{rag_context[:2000]}" if rag_context else header
 
 
 # Singleton instance
