@@ -68,16 +68,19 @@ async def agent_action(request: AgentActionRequest):
     """Process a student action through the simulation pipeline.
 
     action_type options:
-    - talk_to_patient: Talk to the patient
+    - talk_to_patient: Talk to the patient (family may interject)
     - ask_nurse: Ask Nurse Priya
-    - consult_senior: Consult Dr. Sharma
-    - examine_patient: Perform physical examination (triggers patient + nurse)
-    - order_investigation: Order tests (goes through investigation lifecycle)
+    - consult_senior: Consult Dr. Sharma (Socratic teaching)
+    - talk_to_family: Talk to patient's family member (cultural context, Hinglish)
+    - ask_lab: Talk to Lab Tech Ramesh (investigation status, sample info)
+    - examine_patient: Perform physical examination (triggers exam modal)
+    - order_investigation: Order tests (Lab Tech processes, realistic delays)
     - order_treatment: Order treatment (safety validated, effects modeled)
-    - team_huddle: All agents discuss the case together
+    - team_huddle: All 5 agents discuss the case together
 
-    Each action advances the simulation clock. Returns agent responses,
-    updated vitals, timeline events, and investigation status.
+    Each action advances the simulation clock and checks the complication engine.
+    Returns agent responses, updated vitals, timeline events, investigation status,
+    and any triggered complications.
     """
     result = orchestrator.process_action(
         session_id=request.session_id,

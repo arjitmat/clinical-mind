@@ -2,12 +2,10 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import Optional
 from app.core.rag.generator import CaseGenerator
-from app.core.agents.tutor import SocraticTutor
 from app.core.session import session
 
 router = APIRouter()
 case_generator = CaseGenerator()
-tutor = SocraticTutor()
 
 SPECIALTIES = [
     {"id": "cardiology", "name": "Cardiology", "icon": "heart", "cases_available": 12, "description": "STEMI, heart failure, IE, AF, aortic dissection, rheumatic heart disease"},
@@ -43,11 +41,6 @@ class DiagnosisRequest(BaseModel):
     case_id: str
     diagnosis: str
     reasoning: str = ""
-
-
-class TutorMessageRequest(BaseModel):
-    case_id: str
-    message: str
 
 
 @router.get("/specialties")
@@ -106,15 +99,3 @@ async def submit_diagnosis(case_id: str, request: DiagnosisRequest):
         )
 
     return result
-
-
-@router.post("/tutor")
-async def tutor_chat(request: TutorMessageRequest):
-    case = case_generator.get_case(request.case_id)
-    case_context = {
-        "chief_complaint": case.get("chief_complaint", "") if case else "",
-        "specialty": case.get("specialty", "") if case else "",
-        "difficulty": case.get("difficulty", "") if case else "",
-    }
-    response = tutor.respond(request.message, case_context)
-    return {"response": response}

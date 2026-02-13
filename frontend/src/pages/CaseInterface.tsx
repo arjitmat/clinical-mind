@@ -1,7 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { Button, Card, Badge, Input } from '../components/ui';
-import { AgentMessage, type AgentMessageData } from '../components/case/AgentMessage';
+import {
+  AgentMessage,
+  type AgentMessageData,
+  TypingIndicator,
+  LanguageToggle,
+  ExaminationModal,
+  type ExaminationFindings,
+  UrgentTimer,
+} from '../components/case';
 import {
   fetchCase,
   generateCase,
@@ -28,17 +36,31 @@ const stageIcons: Record<string, string> = {
   labs: '\u{1F52C}',
 };
 
-type ActionMode = 'talk_to_patient' | 'ask_nurse' | 'consult_senior' | 'examine_patient' | 'order_investigation' | 'order_treatment' | 'team_huddle';
+type ActionMode = 'talk_to_patient' | 'ask_nurse' | 'consult_senior' | 'talk_to_family' | 'ask_lab' | 'examine_patient' | 'order_investigation' | 'order_treatment' | 'team_huddle';
 
 const ACTION_CONFIG: { key: ActionMode; label: string; shortLabel: string; color: string; placeholder: string }[] = [
   { key: 'talk_to_patient', label: 'Talk to Patient', shortLabel: 'Patient', color: 'amber', placeholder: 'Ask the patient about their symptoms...' },
+  { key: 'talk_to_family', label: 'Talk to Family', shortLabel: 'Family', color: 'purple', placeholder: 'Talk to the family member (Hinglish response)...' },
   { key: 'ask_nurse', label: 'Ask Nurse', shortLabel: 'Nurse', color: 'blue', placeholder: 'Ask Nurse Priya about vitals, observations...' },
+  { key: 'ask_lab', label: 'Ask Lab Tech', shortLabel: 'Lab', color: 'cyan', placeholder: 'Ask Lab Tech Ramesh about test status, samples...' },
   { key: 'consult_senior', label: 'Consult Senior', shortLabel: 'Dr. Sharma', color: 'emerald', placeholder: 'Discuss your clinical reasoning...' },
-  { key: 'examine_patient', label: 'Examine', shortLabel: 'Examine', color: 'purple', placeholder: 'What do you want to examine? (e.g., cardiovascular system)' },
-  { key: 'order_investigation', label: 'Order Test', shortLabel: 'Investigate', color: 'cyan', placeholder: 'Order investigation (e.g., CBC, ECG, chest X-ray)' },
+  { key: 'examine_patient', label: 'Examine', shortLabel: 'Examine', color: 'violet', placeholder: 'What do you want to examine? (e.g., cardiovascular system)' },
+  { key: 'order_investigation', label: 'Order Test', shortLabel: 'Investigate', color: 'teal', placeholder: 'Order investigation (e.g., CBC, ECG, chest X-ray)' },
   { key: 'order_treatment', label: 'Order Treatment', shortLabel: 'Treat', color: 'rose', placeholder: 'Order treatment (e.g., IV NS 1L stat, O2 via nasal cannula)' },
-  { key: 'team_huddle', label: 'Team Huddle', shortLabel: 'Huddle', color: 'indigo', placeholder: 'Call a team discussion \u2014 all agents respond...' },
+  { key: 'team_huddle', label: 'Team Huddle', shortLabel: 'Huddle', color: 'indigo', placeholder: 'Call a team discussion — all 5 agents respond...' },
 ];
+
+const ACTION_COLORS: Record<string, string> = {
+  amber: 'bg-amber-100 text-amber-800',
+  purple: 'bg-purple-100 text-purple-800',
+  blue: 'bg-blue-100 text-blue-800',
+  cyan: 'bg-cyan-100 text-cyan-800',
+  emerald: 'bg-emerald-100 text-emerald-800',
+  violet: 'bg-violet-100 text-violet-800',
+  teal: 'bg-teal-100 text-teal-800',
+  rose: 'bg-rose-100 text-rose-800',
+  indigo: 'bg-indigo-100 text-indigo-800',
+};
 
 function formatTime(minutes: number): string {
   const h = Math.floor(minutes / 60);
@@ -89,11 +111,22 @@ export const CaseInterface: React.FC = () => {
   const [activeAction, setActiveAction] = useState<ActionMode>('talk_to_patient');
   const [inputValue, setInputValue] = useState('');
   const [sendingMessage, setSendingMessage] = useState(false);
+  const [typingAgent, setTypingAgent] = useState<{ name: string; type: string } | null>(null);
 
   // Simulation state
   const [vitalsData, setVitalsData] = useState<VitalsData | null>(null);
   const [investigations, setInvestigations] = useState<InvestigationItem[]>([]);
   const [, setTimeline] = useState<TimelineEvent[]>([]);
+
+  // Language toggle
+  const [language, setLanguage] = useState<'en' | 'hi'>('hi');
+
+  // Examination modal
+  const [examFindings, setExamFindings] = useState<ExaminationFindings | null>(null);
+  const [showExamModal, setShowExamModal] = useState(false);
+
+  // Urgent timer
+  const [urgentTimer, setUrgentTimer] = useState<{ seconds: number; label: string; active: boolean }>({ seconds: 0, label: '', active: false });
 
   // Diagnosis state
   const [showDiagnosis, setShowDiagnosis] = useState(false);
@@ -136,11 +169,15 @@ export const CaseInterface: React.FC = () => {
         setInvestigations(res.investigations || []);
         const initialMsgs: AgentMessageData[] = res.messages.map((m, i) => ({
           id: `init-${i}`,
-          agent_type: m.agent_type,
+          agent_type: m.agent_type as AgentMessageData['agent_type'],
           display_name: m.display_name,
           content: m.content,
           distress_level: m.distress_level,
           urgency_level: m.urgency_level,
+          is_event: m.is_event,
+          is_teaching: m.is_teaching,
+          is_intervention: m.is_intervention,
+          event_type: m.event_type,
           timestamp: new Date(),
         }));
         setAgentMessages(initialMsgs);
@@ -160,6 +197,16 @@ export const CaseInterface: React.FC = () => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [agentMessages]);
 
+  // Check for urgent situations from vitals
+  useEffect(() => {
+    if (!vitalsData) return;
+    if (vitalsData.trajectory === 'critical') {
+      setUrgentTimer({ seconds: 300, label: 'Patient Critical — Act NOW', active: true });
+    } else if (vitalsData.trajectory === 'deteriorating') {
+      setUrgentTimer({ seconds: 600, label: 'Patient Deteriorating', active: true });
+    }
+  }, [vitalsData?.trajectory]);
+
   const updateSimState = (res: { vitals: VitalsData; timeline?: TimelineEvent[]; investigations?: InvestigationItem[] }) => {
     if (res.vitals) setVitalsData(res.vitals);
     if (res.timeline) setTimeline(res.timeline);
@@ -168,6 +215,21 @@ export const CaseInterface: React.FC = () => {
 
   const revealStage = (index: number) => {
     setRevealedStages((prev) => new Set(prev).add(index));
+  };
+
+  const getTypingAgentForAction = (action: ActionMode): { name: string; type: string } => {
+    const agentMap: Record<string, { name: string; type: string }> = {
+      talk_to_patient: { name: 'Patient', type: 'patient' },
+      talk_to_family: { name: "Patient's Family", type: 'family' },
+      ask_nurse: { name: 'Nurse Priya', type: 'nurse' },
+      ask_lab: { name: 'Lab Tech Ramesh', type: 'lab_tech' },
+      consult_senior: { name: 'Dr. Sharma', type: 'senior_doctor' },
+      examine_patient: { name: 'Nurse Priya', type: 'nurse' },
+      order_investigation: { name: 'Lab Tech Ramesh', type: 'lab_tech' },
+      order_treatment: { name: 'Nurse Priya', type: 'nurse' },
+      team_huddle: { name: 'Hospital Team', type: 'nurse' },
+    };
+    return agentMap[action] || { name: 'Dr. Sharma', type: 'senior_doctor' };
   };
 
   const sendMessage = async () => {
@@ -184,21 +246,37 @@ export const CaseInterface: React.FC = () => {
     const currentInput = inputValue;
     setInputValue('');
     setSendingMessage(true);
+    setTypingAgent(getTypingAgentForAction(activeAction));
 
     try {
       const res = await sendAgentAction(agentSessionId, activeAction, currentInput);
-      const newMsgs: AgentMessageData[] = res.messages.map((m, i) => ({
-        id: `${Date.now()}-${i}`,
-        agent_type: m.agent_type,
-        display_name: m.display_name,
-        content: m.content,
-        distress_level: m.distress_level,
-        urgency_level: m.urgency_level,
-        timestamp: new Date(),
-      }));
+      setTypingAgent(null);
+
+      const newMsgs: AgentMessageData[] = res.messages.map((m, i) => {
+        // Check for examination findings
+        if (m.examination_findings) {
+          setExamFindings(m.examination_findings as unknown as ExaminationFindings);
+          setShowExamModal(true);
+        }
+
+        return {
+          id: `${Date.now()}-${i}`,
+          agent_type: m.agent_type as AgentMessageData['agent_type'],
+          display_name: m.display_name,
+          content: m.content,
+          distress_level: m.distress_level,
+          urgency_level: m.urgency_level,
+          is_event: m.is_event,
+          is_teaching: m.is_teaching,
+          is_intervention: m.is_intervention,
+          event_type: m.event_type,
+          timestamp: new Date(),
+        };
+      });
       setAgentMessages((prev) => [...prev, ...newMsgs]);
       updateSimState(res);
     } catch {
+      setTypingAgent(null);
       setAgentMessages((prev) => [...prev, {
         id: (Date.now() + 1).toString(),
         agent_type: 'senior_doctor',
@@ -214,13 +292,18 @@ export const CaseInterface: React.FC = () => {
   const handleWaitForResults = async () => {
     if (!agentSessionId) return;
     setSendingMessage(true);
+    setTypingAgent({ name: 'Hospital Ward', type: 'nurse' });
     try {
       const res = await advanceSimulationTime(agentSessionId, 30);
+      setTypingAgent(null);
       const newMsgs: AgentMessageData[] = res.messages.map((m, i) => ({
         id: `wait-${Date.now()}-${i}`,
-        agent_type: m.agent_type,
+        agent_type: m.agent_type as AgentMessageData['agent_type'],
         display_name: m.display_name,
         content: m.content,
+        urgency_level: m.urgency_level,
+        is_event: m.is_event,
+        event_type: m.event_type,
         timestamp: new Date(),
       }));
       if (newMsgs.length > 0) {
@@ -228,7 +311,7 @@ export const CaseInterface: React.FC = () => {
       }
       updateSimState(res);
     } catch {
-      // silent
+      setTypingAgent(null);
     } finally {
       setSendingMessage(false);
     }
@@ -241,11 +324,13 @@ export const CaseInterface: React.FC = () => {
     try {
       const result = await submitDiagnosis(caseData.id, studentDiagnosis, '');
       setDiagnosisResult(result);
+      setUrgentTimer({ seconds: 0, label: '', active: false });
       setAgentMessages((prev) => [...prev, {
         id: Date.now().toString(),
         agent_type: 'senior_doctor',
         display_name: 'Dr. Sharma',
         content: result.feedback,
+        is_teaching: true,
         timestamp: new Date(),
       }]);
     } catch {
@@ -263,7 +348,7 @@ export const CaseInterface: React.FC = () => {
     return (
       <div className="max-w-7xl mx-auto px-6 py-20 text-center">
         <div className="animate-pulse text-lg text-text-tertiary">Setting up the hospital ward...</div>
-        <p className="text-sm text-text-tertiary mt-2">Agents are learning about this case...</p>
+        <p className="text-sm text-text-tertiary mt-2">5 agents are learning about this case...</p>
       </div>
     );
   }
@@ -294,7 +379,7 @@ export const CaseInterface: React.FC = () => {
               <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
                 vitalsData.trajectory === 'improving' ? 'bg-emerald-100 text-emerald-700' :
                 vitalsData.trajectory === 'deteriorating' ? 'bg-red-100 text-red-700' :
-                vitalsData.trajectory === 'critical' ? 'bg-red-200 text-red-800' :
+                vitalsData.trajectory === 'critical' ? 'bg-red-200 text-red-800 animate-pulse' :
                 'bg-gray-100 text-gray-600'
               }`}>
                 {vitalsData.trajectory}
@@ -310,10 +395,37 @@ export const CaseInterface: React.FC = () => {
             {caseData.chief_complaint}
           </h1>
         </div>
-        <Button variant="tertiary" onClick={() => navigate('/')}>
-          Exit Case
-        </Button>
+        <div className="flex items-center gap-3">
+          <LanguageToggle language={language} onToggle={setLanguage} />
+          <Button variant="tertiary" onClick={() => navigate('/')}>
+            Exit Case
+          </Button>
+        </div>
       </div>
+
+      {/* Urgent Timer */}
+      {urgentTimer.active && (
+        <div className="mb-4 flex justify-center">
+          <UrgentTimer
+            totalSeconds={urgentTimer.seconds}
+            label={urgentTimer.label}
+            isActive={urgentTimer.active}
+            onExpire={() => {
+              setUrgentTimer(prev => ({ ...prev, active: false }));
+              setAgentMessages(prev => [...prev, {
+                id: `timer-${Date.now()}`,
+                agent_type: 'nurse',
+                display_name: 'Nurse Priya',
+                content: 'Doctor, time is critical! The patient needs an immediate decision. What do you want to do?',
+                urgency_level: 'critical',
+                is_event: true,
+                event_type: 'timer_expired',
+                timestamp: new Date(),
+              }]);
+            }}
+          />
+        </div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Main Case Area (5/12) */}
@@ -324,7 +436,7 @@ export const CaseInterface: React.FC = () => {
               <h3 className="text-sm font-semibold text-text-primary">Live Vitals</h3>
               {vitalsData && (
                 <span className={`text-xs font-medium ${
-                  vitalsData.urgency_level === 'critical' ? 'text-red-600' :
+                  vitalsData.urgency_level === 'critical' ? 'text-red-600 animate-pulse' :
                   vitalsData.urgency_level === 'urgent' ? 'text-amber-600' :
                   'text-emerald-600'
                 }`}>
@@ -534,7 +646,7 @@ export const CaseInterface: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-sm font-semibold text-text-primary">Hospital Ward</h3>
-                    <p className="text-[10px] text-text-tertiary">Patient + Nurse Priya + Dr. Sharma</p>
+                    <p className="text-[10px] text-text-tertiary">Patient + Family + Nurse Priya + Lab Tech Ramesh + Dr. Sharma</p>
                   </div>
                 </div>
                 {vitalsData && (
@@ -553,13 +665,7 @@ export const CaseInterface: React.FC = () => {
                     onClick={() => setActiveAction(action.key)}
                     className={`text-[10px] font-medium py-1 px-2 rounded-md transition-colors ${
                       activeAction === action.key
-                        ? action.color === 'amber' ? 'bg-amber-100 text-amber-800'
-                        : action.color === 'blue' ? 'bg-blue-100 text-blue-800'
-                        : action.color === 'emerald' ? 'bg-emerald-100 text-emerald-800'
-                        : action.color === 'purple' ? 'bg-purple-100 text-purple-800'
-                        : action.color === 'cyan' ? 'bg-cyan-100 text-cyan-800'
-                        : action.color === 'rose' ? 'bg-rose-100 text-rose-800'
-                        : 'bg-indigo-100 text-indigo-800'
+                        ? ACTION_COLORS[action.color] || 'bg-gray-100 text-gray-800'
                         : 'text-text-tertiary hover:text-text-secondary'
                     }`}
                   >
@@ -569,14 +675,12 @@ export const CaseInterface: React.FC = () => {
               </div>
 
               {/* Messages */}
-              <div className="flex-1 overflow-y-auto space-y-2 mb-3">
+              <div className="flex-1 overflow-y-auto space-y-1 mb-3 px-1">
                 {agentMessages.map((msg) => (
                   <AgentMessage key={msg.id} message={msg} />
                 ))}
-                {sendingMessage && (
-                  <div className="p-2 rounded-lg text-xs bg-forest-green/5 border border-forest-green/10 text-text-tertiary animate-pulse">
-                    Agents are responding...
-                  </div>
+                {typingAgent && (
+                  <TypingIndicator agentName={typingAgent.name} agentType={typingAgent.type} />
                 )}
                 <div ref={chatEndRef} />
               </div>
@@ -602,6 +706,15 @@ export const CaseInterface: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Examination Modal */}
+      {examFindings && (
+        <ExaminationModal
+          isOpen={showExamModal}
+          onClose={() => setShowExamModal(false)}
+          findings={examFindings}
+        />
+      )}
     </div>
   );
 };

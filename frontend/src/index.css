@@ -91,10 +91,52 @@ body {
 
 /* Staggered animations */
 .animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-150 { animation-delay: 150ms; }
 .animate-delay-200 { animation-delay: 200ms; }
 .animate-delay-300 { animation-delay: 300ms; }
 .animate-delay-400 { animation-delay: 400ms; }
 .animate-delay-500 { animation-delay: 500ms; }
+
+/* ── Chat component animations ── */
+
+/* Simple fade-in (no translate) for overlays */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+/* Typing indicator bouncing dots */
+@keyframes typingBounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+.animate-typing-bounce {
+  animation: typingBounce 1.4s ease-in-out infinite;
+}
+
+/* Urgent timer pulsing glow */
+@keyframes urgentPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.25);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px 4px rgba(220, 38, 38, 0.3);
+  }
+}
+.animate-urgent-pulse {
+  animation: urgentPulse 1.5s ease-in-out infinite;
+}
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {

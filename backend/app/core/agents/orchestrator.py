@@ -2,23 +2,28 @@
 
 This is the BRAIN of the simulation:
 - Manages sessions with full case state (time, vitals, investigations, treatments)
-- Routes student actions through safety validation → treatment engine → agents
+- Routes student actions through safety validation -> treatment engine -> agents
 - Enables multi-agent interaction (agents respond to each other, not just student)
 - Generates simulation events (lab results arriving, vitals changing, patient deteriorating)
-- Provides state context to each agent so they're aware of the full picture
+- Manages complication engine for probabilistic emergencies
+- Includes Family agent (cultural context) and Lab Tech agent (investigation lifecycle)
 """
 
 import logging
+import random
 import uuid
 from typing import Optional
 
 from app.core.agents.patient_agent import PatientAgent
 from app.core.agents.nurse_agent import NurseAgent
 from app.core.agents.senior_agent import SeniorDoctorAgent
+from app.core.agents.family_agent import FamilyAgent
+from app.core.agents.lab_tech_agent import LabTechAgent
 from app.core.agents.knowledge_builder import knowledge_builder
 from app.core.agents.case_state_manager import CaseStateManager
 from app.core.agents.treatment_engine import treatment_engine
 from app.core.agents.clinical_validator import clinical_validator
+from app.core.agents.complication_engine import ComplicationEngine
 
 logger = logging.getLogger(__name__)
 
@@ -31,21 +36,28 @@ class AgentSession:
         self.case_data = case_data
         self.student_level = student_level
 
-        # Initialize agents
+        # Initialize all 5 agents
         self.patient = PatientAgent()
         self.nurse = NurseAgent()
         self.senior = SeniorDoctorAgent()
+        self.family = FamilyAgent()
+        self.lab_tech = LabTechAgent()
 
         # Configure agents with case data
         self.patient.configure(case_data)
         self.nurse.configure(case_data)
         self.senior.configure(case_data)
+        self.family.configure(case_data)
+        self.lab_tech.configure(case_data)
 
         # Build dynamic knowledge — each agent specializes for this case
         self._build_agent_knowledge(case_data)
 
         # Initialize case state manager — time, vitals, investigations
         self.state = CaseStateManager(case_data, student_level)
+
+        # Initialize complication engine
+        self.complication_engine = ComplicationEngine(case_data, self.state)
 
         # Conversation tracking
         self.message_history: list[dict] = []
@@ -57,6 +69,8 @@ class AgentSession:
             ("patient", self.patient, "Patient"),
             ("nurse", self.nurse, "Nurse"),
             ("senior_doctor", self.senior, "Senior Doctor"),
+            ("family", self.family, "Family"),
+            ("lab_tech", self.lab_tech, "Lab Tech"),
         ]:
             try:
                 knowledge = knowledge_builder.build_knowledge(case_data, role)
@@ -66,17 +80,8 @@ class AgentSession:
                 logger.warning(f"{label} knowledge build failed: {e}")
 
     def get_enriched_context(self) -> dict:
-        """Build context dict enriched with current simulation state.
-
-        This is passed to agents so they're aware of:
-        - Current vitals (which may have changed from baseline)
-        - Elapsed time
-        - Pending investigations
-        - Treatments administered
-        - Patient trajectory
-        """
+        """Build context dict enriched with current simulation state."""
         state_summary = self.state.get_state_summary()
-
         return {
             "chief_complaint": self.case_data.get("chief_complaint", ""),
             "specialty": self.case_data.get("specialty", ""),
@@ -116,7 +121,7 @@ class AgentOrchestrator:
         student_level: str = "intern",
         hospital_setting: str = "medical_college",
     ) -> dict:
-        """Create a new simulation session.
+        """Create a new simulation session with all 5 agents.
 
         Returns initial messages from all agents + simulation state.
         """
@@ -134,7 +139,11 @@ class AgentOrchestrator:
         patient_greeting = session.patient.get_initial_greeting()
         initial_messages.append(patient_greeting)
 
-        # 3. Senior doctor sets the teaching context
+        # 3. Family member provides context
+        family_context = session.family.get_initial_context()
+        initial_messages.append(family_context)
+
+        # 4. Senior doctor sets the teaching context
         senior_guidance = session.senior.get_initial_guidance()
         initial_messages.append(senior_guidance)
 
@@ -161,8 +170,9 @@ class AgentOrchestrator:
         2. Advance simulation clock
         3. Route to appropriate agent(s)
         4. Process treatment effects (if treatment)
-        5. Check for triggered events
-        6. Return responses + updated state
+        5. Check for complications (complication engine)
+        6. Check for triggered events
+        7. Return responses + updated state
         """
         session = self.sessions.get(session_id)
         if not session:
@@ -183,7 +193,6 @@ class AgentOrchestrator:
                 ],
             )
 
-            # If dangerous, agents intervene
             if validation["safety_level"] == "dangerous":
                 if validation.get("nurse_intervention"):
                     messages.append({
@@ -207,8 +216,6 @@ class AgentOrchestrator:
                         "content": f"Teaching point: {validation['teaching_point']}",
                         "is_teaching": True,
                     })
-
-                # Don't proceed with the dangerous action
                 if not validation.get("proceed", True):
                     self._store_messages(session, student_input, messages)
                     return self._build_response(session, messages)
@@ -239,7 +246,26 @@ class AgentOrchestrator:
             inv_messages = self._process_investigation(session, student_input)
             messages.extend(inv_messages)
 
-        # Step 6: Deliver triggered events as agent messages
+        # Step 6: Check complication engine
+        complication_events = session.complication_engine.check_complications(
+            elapsed_minutes=session.state.elapsed_minutes,
+            current_vitals=session.state.current_vitals,
+            treatments=session.state.treatments,
+            investigations=session.state.investigations,
+        )
+        for event in complication_events:
+            if not event.delivered:
+                event.delivered = True
+                messages.append({
+                    "agent_type": event.agent_type or "nurse",
+                    "display_name": "Nurse Priya" if event.agent_type == "nurse" else "Dr. Sharma",
+                    "content": event.description,
+                    "event_type": event.event_type,
+                    "is_event": True,
+                    "urgency_level": "critical" if "critical" in event.event_type else "urgent",
+                })
+
+        # Step 7: Deliver triggered state events as agent messages
         for event in triggered_events:
             if not event.delivered:
                 event.delivered = True
@@ -251,7 +277,7 @@ class AgentOrchestrator:
                     "is_event": True,
                 })
 
-        # Step 7: Store and return
+        # Store and return
         self._store_messages(session, student_input, messages)
         return self._build_response(session, messages)
 
@@ -273,6 +299,14 @@ class AgentOrchestrator:
             )
             messages.append(resp)
 
+            # Family may interject (50% chance on patient conversations)
+            if random.random() < 0.5:
+                family_resp = session.family.respond(
+                    f"The doctor is asking the patient: {enriched_input}. You may add context or interject.",
+                    context,
+                )
+                messages.append(family_resp)
+
         elif action_type == "ask_nurse":
             resp = session.nurse.respond(
                 enriched_input or "What are the current vitals?",
@@ -287,8 +321,21 @@ class AgentOrchestrator:
             )
             messages.append(resp)
 
+        elif action_type == "talk_to_family":
+            resp = session.family.respond(
+                enriched_input or "Can you tell me about the patient's background?",
+                context,
+            )
+            messages.append(resp)
+
+        elif action_type == "ask_lab":
+            resp = session.lab_tech.respond(
+                enriched_input or "What is the status of the investigations?",
+                context,
+            )
+            messages.append(resp)
+
         elif action_type == "examine_patient":
-            # Physical examination — patient reacts, nurse assists
             patient_resp = session.patient.respond(
                 f"The doctor is examining you. {enriched_input or 'General examination.'}",
                 context,
@@ -301,8 +348,18 @@ class AgentOrchestrator:
             )
             messages.append(nurse_resp)
 
+            exam_data = self._extract_examination_findings(session, enriched_input)
+            if exam_data:
+                messages.append({
+                    "agent_type": "system",
+                    "display_name": "Examination",
+                    "content": "Examination findings available",
+                    "examination_findings": exam_data,
+                    "is_event": True,
+                    "event_type": "examination",
+                })
+
         elif action_type == "team_huddle":
-            # ALL agents contribute — this is the multi-agent interaction
             nurse_resp = session.nurse.respond(
                 f"Team huddle called. Report current patient status, pending investigations, and any concerns. Student's question: {enriched_input or 'Let us discuss the case.'}",
                 context,
@@ -315,6 +372,12 @@ class AgentOrchestrator:
             )
             messages.append(patient_resp)
 
+            family_resp = session.family.respond(
+                "The medical team is discussing your relative's case. Share any concerns.",
+                context,
+            )
+            messages.append(family_resp)
+
             senior_resp = session.senior.respond(
                 f"Team huddle. Nurse has reported: {nurse_resp.get('content', '')[:200]}. "
                 f"Student asks: {enriched_input or 'What should we focus on?'}. "
@@ -324,11 +387,9 @@ class AgentOrchestrator:
             messages.append(senior_resp)
 
         elif action_type in ("order_treatment", "order_investigation"):
-            # Handled separately in process_action
-            pass
+            pass  # Handled separately in process_action
 
         else:
-            # Default: route to senior
             resp = session.senior.respond(
                 enriched_input or "I need guidance on what to do next.",
                 context,
@@ -336,6 +397,59 @@ class AgentOrchestrator:
             messages.append(resp)
 
         return messages
+
+    def _extract_examination_findings(self, session: AgentSession, exam_request: str) -> Optional[dict]:
+        """Extract structured examination findings from case data for the exam modal."""
+        findings: dict = {}
+
+        for stage in session.case_data.get("stages", []):
+            if stage.get("stage") == "physical_exam":
+                exam_text = stage.get("info", "")
+                sections = {
+                    "inspection": [],
+                    "palpation": [],
+                    "percussion": [],
+                    "auscultation": [],
+                    "special_tests": [],
+                }
+
+                current_section = "inspection"
+                for line in exam_text.split("\n"):
+                    line = line.strip()
+                    if not line:
+                        continue
+                    line_lower = line.lower()
+                    if "inspection" in line_lower or "general" in line_lower or "look" in line_lower:
+                        current_section = "inspection"
+                    elif "palpat" in line_lower or "feel" in line_lower or "tender" in line_lower:
+                        current_section = "palpation"
+                    elif "percuss" in line_lower:
+                        current_section = "percussion"
+                    elif "auscult" in line_lower or "listen" in line_lower or "heart sound" in line_lower or "breath" in line_lower:
+                        current_section = "auscultation"
+                    elif "special" in line_lower or "test" in line_lower or "sign" in line_lower:
+                        current_section = "special_tests"
+                    sections[current_section].append(line)
+
+                for key, lines in sections.items():
+                    if lines:
+                        findings[key] = "\n".join(lines)
+                break
+
+        if not findings:
+            return None
+
+        specialty = session.case_data.get("specialty", "")
+        if specialty in ("cardiology", "respiratory"):
+            findings["sounds"] = [
+                {"label": "Heart sounds", "description": "Auscultation findings as described above"},
+            ]
+        if specialty == "dermatology":
+            findings["images"] = [
+                {"label": "Skin findings", "description": "Visual examination findings as described above"},
+            ]
+
+        return findings
 
     def _process_treatment(self, session: AgentSession, treatment_description: str) -> list[dict]:
         """Process a treatment order through the treatment engine."""
@@ -351,7 +465,6 @@ class AgentOrchestrator:
             specialized_knowledge=session.nurse.specialized_knowledge,
         )
 
-        # Record the treatment with its effects
         session.state.record_treatment(
             description=treatment_description,
             effects=assessment.get("vital_effects", {}),
@@ -359,7 +472,6 @@ class AgentOrchestrator:
             safety_note=assessment.get("reasoning", ""),
         )
 
-        # Nurse acknowledges the treatment
         nurse_msg = assessment.get("nurse_response", f"Starting {treatment_description} as ordered.")
         messages.append({
             "agent_type": "nurse",
@@ -368,7 +480,6 @@ class AgentOrchestrator:
             "urgency_level": "routine",
         })
 
-        # If monitoring is needed, nurse mentions it
         monitoring = assessment.get("monitoring")
         if monitoring and monitoring != "Continue routine monitoring.":
             messages.append({
@@ -389,8 +500,15 @@ class AgentOrchestrator:
 
         investigation = session.state.order_investigation(inv_type, is_urgent)
 
+        lab_resp = session.lab_tech.respond(
+            f"New investigation ordered: {investigation.label}. {'Mark as URGENT.' if is_urgent else 'Routine.'} Process this investigation.",
+            session.get_enriched_context(),
+        )
+        messages.append(lab_resp)
+
         eta_text = f"{investigation.turnaround} minutes" if investigation.turnaround < 60 else f"{investigation.turnaround // 60} hours"
         urgency_text = "URGENT — " if is_urgent else ""
+
         messages.append({
             "agent_type": "nurse",
             "display_name": "Nurse Priya",
@@ -410,36 +528,30 @@ class AgentOrchestrator:
 
         mappings = {
             "cbc": "cbc", "complete blood count": "cbc", "blood count": "cbc", "hemogram": "cbc",
-            "rft": "rft", "renal function": "rft", "kidney function": "rft", "creatinine": "rft", "urea": "rft",
-            "lft": "lft", "liver function": "lft", "bilirubin": "lft", "sgpt": "lft", "sgot": "lft",
-            "blood sugar": "blood_sugar", "rbs": "rbs", "random blood sugar": "rbs",
-            "fbs": "fbs", "fasting blood sugar": "fbs",
+            "rft": "rft", "renal function": "rft", "kidney function": "rft", "creatinine": "rft",
+            "lft": "lft", "liver function": "lft", "bilirubin": "lft", "sgpt": "lft",
+            "blood sugar": "blood_sugar", "rbs": "rbs", "fbs": "fbs",
             "abg": "abg", "arterial blood gas": "abg", "blood gas": "abg",
             "ecg": "ecg", "ekg": "ecg", "electrocardiogram": "ecg",
             "chest x-ray": "xray_chest", "cxr": "xray_chest", "chest xray": "xray_chest",
             "x-ray": "xray", "xray": "xray",
-            "ultrasound": "ultrasound", "usg": "ultrasound", "sonography": "ultrasound",
+            "ultrasound": "ultrasound", "usg": "ultrasound",
             "echo": "echo", "echocardiography": "echo", "2d echo": "echo",
-            "ct scan": "ct_scan", "ct": "ct_scan", "cect": "ct_scan",
+            "ct scan": "ct_scan", "ct": "ct_scan",
             "mri": "mri",
-            "troponin": "troponin", "trop i": "troponin", "trop t": "troponin",
-            "d-dimer": "d_dimer", "d dimer": "d_dimer",
+            "troponin": "troponin", "d-dimer": "d_dimer", "d dimer": "d_dimer",
             "blood culture": "blood_culture",
-            "urine routine": "urine_routine", "urine r/m": "urine_routine",
-            "urine culture": "urine_culture",
-            "electrolytes": "serum_electrolytes", "sodium": "serum_electrolytes", "potassium": "serum_electrolytes",
+            "urine routine": "urine_routine", "urine culture": "urine_culture",
+            "electrolytes": "serum_electrolytes", "sodium": "serum_electrolytes",
             "coagulation": "coagulation", "pt inr": "pt_inr", "pt/inr": "pt_inr",
             "thyroid": "thyroid", "tft": "thyroid", "tsh": "thyroid",
-            "hba1c": "hba1c",
-            "amylase": "amylase", "lipase": "lipase",
+            "hba1c": "hba1c", "amylase": "amylase", "lipase": "lipase",
             "dengue": "dengue_ns1", "ns1": "dengue_ns1",
-            "malaria": "malaria_smear", "mp": "malaria_smear", "peripheral smear": "malaria_smear",
-            "widal": "widal",
-            "hiv": "hiv", "hbsag": "hbsag", "hepatitis": "hbsag",
+            "malaria": "malaria_smear", "peripheral smear": "malaria_smear",
+            "widal": "widal", "hiv": "hiv", "hbsag": "hbsag",
             "csf": "csf_analysis", "lumbar puncture": "csf_analysis",
             "blood group": "blood_group", "crossmatch": "crossmatch",
-            "procalcitonin": "procalcitonin",
-            "bnp": "bnp",
+            "procalcitonin": "procalcitonin", "bnp": "bnp",
         }
 
         for keyword, inv_type in mappings.items():
@@ -466,6 +578,7 @@ class AgentOrchestrator:
             "vitals": session.get_vitals(),
             "timeline": session.state.get_timeline(),
             "investigations": session.state.get_investigation_status(),
+            "complications_fired": session.complication_engine.get_fired_complications(),
         }
 
     def process_team_huddle(self, session_id: str, student_input: Optional[str] = None) -> dict:
@@ -480,21 +593,24 @@ class AgentOrchestrator:
 
         messages = []
 
-        # Advance in the state manager
         session.state.elapsed_minutes += minutes
         session.state._evolve_vitals(minutes)
 
-        # Check for events
         events = session.state._check_investigations()
         events.extend(session.state._check_patient_events())
 
-        # Record vitals
+        complication_events = session.complication_engine.check_complications(
+            elapsed_minutes=session.state.elapsed_minutes,
+            current_vitals=session.state.current_vitals,
+            treatments=session.state.treatments,
+            investigations=session.state.investigations,
+        )
+
         session.state.vitals_history.append({
             "time": session.state.elapsed_minutes,
             **session.state.current_vitals,
         })
 
-        # Deliver events
         for event in events:
             if not event.delivered:
                 event.delivered = True
@@ -506,7 +622,18 @@ class AgentOrchestrator:
                     "is_event": True,
                 })
 
-        # Nurse gives time update if no events happened
+        for event in complication_events:
+            if not event.delivered:
+                event.delivered = True
+                messages.append({
+                    "agent_type": event.agent_type or "nurse",
+                    "display_name": "Nurse Priya" if event.agent_type == "nurse" else "Dr. Sharma",
+                    "content": event.description,
+                    "event_type": event.event_type,
+                    "is_event": True,
+                    "urgency_level": "critical" if "critical" in event.event_type else "urgent",
+                })
+
         if not messages:
             messages.append({
                 "agent_type": "nurse",

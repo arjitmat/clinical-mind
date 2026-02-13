@@ -72,19 +72,6 @@ export function submitDiagnosis(caseId: string, diagnosis: string, reasoning: st
   });
 }
 
-// --- Tutor ---
-
-export interface TutorResponse {
-  response: string;
-}
-
-export function sendTutorMessage(caseId: string, message: string): Promise<TutorResponse> {
-  return request('/cases/tutor', {
-    method: 'POST',
-    body: JSON.stringify({ case_id: caseId, message }),
-  });
-}
-
 // --- Student ---
 
 export interface StudentProfile {
@@ -109,6 +96,7 @@ export interface BiasReport {
   }[];
   cases_analyzed: number;
   overall_accuracy: number;
+  message?: string;
 }
 
 export function fetchProfile(): Promise<StudentProfile> {
@@ -122,6 +110,7 @@ export function fetchBiases(): Promise<BiasReport> {
 export interface KnowledgeGraphDTO {
   nodes: { id: string; strength: number; size: number; category: string }[];
   links: { source: string; target: string; strength: number }[];
+  message?: string;
 }
 
 export function fetchKnowledgeGraph(): Promise<KnowledgeGraphDTO> {
@@ -135,7 +124,8 @@ export interface PerformanceData {
   cases_completed: number;
   avg_time_minutes: number;
   peer_percentile: number;
-  history: { week: string; accuracy: number; avg_time: number }[];
+  history: { week?: string; batch?: string; accuracy: number; avg_time?: number; count?: number }[];
+  message?: string;
 }
 
 export interface RecommendationItem {
@@ -157,16 +147,16 @@ export function fetchRecommendations(): Promise<RecommendationItem[]> {
 // --- Multi-Agent Simulation System ---
 
 export interface AgentMessageDTO {
-  agent_type: 'patient' | 'nurse' | 'senior_doctor' | 'student';
+  agent_type: 'patient' | 'nurse' | 'senior_doctor' | 'family' | 'lab_tech' | 'student' | 'system';
   display_name: string;
   content: string;
   distress_level?: string;
   urgency_level?: string;
-  thinking?: string;
   is_intervention?: boolean;
   is_event?: boolean;
   is_teaching?: boolean;
   event_type?: string;
+  examination_findings?: Record<string, unknown>;
 }
 
 export interface VitalsData {
@@ -203,6 +193,7 @@ export interface AgentSessionResponse {
   vitals: VitalsData;
   timeline: TimelineEvent[];
   investigations: InvestigationItem[];
+  complications_fired?: string[];
 }
 
 export function initializeAgents(

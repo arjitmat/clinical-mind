@@ -1,4 +1,8 @@
-"""In-memory session tracker for student case history and dynamic analytics."""
+"""In-memory session tracker for student case history and dynamic analytics.
+
+All analytics data is derived from REAL session activity. No hardcoded demo data.
+Analytics start empty and build up as the student completes cases.
+"""
 
 from datetime import datetime
 from typing import Optional
@@ -36,7 +40,6 @@ class SessionTracker:
         }
         self.case_history.append(result)
 
-        # Update specialty tracking
         if specialty not in self.specialty_results:
             self.specialty_results[specialty] = {"correct": 0, "total": 0, "scores": []}
         self.specialty_results[specialty]["total"] += 1
@@ -68,85 +71,70 @@ class SessionTracker:
         scores = self.get_specialty_scores()
         return [s for s, score in scores.items() if score < 60]
 
-    def get_performance_data(self, base_cases: int = 48, base_accuracy: float = 75) -> dict:
-        """Build performance data merging base demo data with real session results."""
-        session_completed = self.cases_completed
-        total_completed = base_cases + session_completed
+    def get_performance_data(self) -> dict:
+        """Build performance data from real session results only."""
+        if not self.case_history:
+            return {
+                "overall_accuracy": 0,
+                "cases_completed": 0,
+                "avg_time_minutes": 0,
+                "peer_percentile": 0,
+                "history": [],
+                "message": "No cases completed yet. Start a case to see your performance data.",
+            }
 
-        if session_completed > 0:
-            # Blend base accuracy with session accuracy
-            session_acc = self.overall_accuracy
-            blended = round((base_accuracy * base_cases + session_acc * session_completed) / total_completed, 1)
-        else:
-            blended = base_accuracy
-
-        # Build history: base weeks + session weeks
-        history = [
-            {"week": "W1", "accuracy": 55, "avg_time": 18},
-            {"week": "W2", "accuracy": 60, "avg_time": 16},
-            {"week": "W3", "accuracy": 58, "avg_time": 15},
-            {"week": "W4", "accuracy": 68, "avg_time": 14},
-            {"week": "W5", "accuracy": 72, "avg_time": 12},
-            {"week": "W6", "accuracy": 75, "avg_time": 11},
-            {"week": "W7", "accuracy": 78, "avg_time": 10},
-        ]
-
-        if session_completed > 0:
+        # Build history from actual case results, grouped in batches of 5
+        history = []
+        batch_size = 5
+        for i in range(0, len(self.case_history), batch_size):
+            batch = self.case_history[i:i + batch_size]
+            batch_accuracy = round(sum(c["accuracy_score"] for c in batch) / len(batch))
             history.append({
-                "week": "Now",
-                "accuracy": round(self.overall_accuracy),
-                "avg_time": 8,
+                "batch": f"Cases {i + 1}-{i + len(batch)}",
+                "accuracy": batch_accuracy,
+                "count": len(batch),
             })
 
         return {
-            "overall_accuracy": blended,
-            "cases_completed": total_completed,
-            "avg_time_minutes": 9 if session_completed > 0 else 10,
-            "peer_percentile": max(5, 15 - session_completed),
+            "overall_accuracy": self.overall_accuracy,
+            "cases_completed": self.cases_completed,
+            "avg_time_minutes": 0,
+            "peer_percentile": 0,
             "history": history,
         }
 
     def get_student_profile(self) -> dict:
-        """Build dynamic student profile merging base data with session results."""
-        base_scores = {
-            "cardiology": 82, "respiratory": 65, "infectious": 78,
-            "neurology": 45, "gastro": 70, "emergency": 55,
-        }
-
-        # Merge session specialty scores into base
-        session_scores = self.get_specialty_scores()
-        merged_scores = {**base_scores}
-        for spec, score in session_scores.items():
-            if spec in merged_scores:
-                # Average base with session
-                merged_scores[spec] = round((merged_scores[spec] + score) / 2)
-            else:
-                merged_scores[spec] = score
-
-        weak = [s for s, sc in merged_scores.items() if sc < 60]
+        """Build dynamic student profile from real session data only."""
+        scores = self.get_specialty_scores()
+        weak = [s for s, sc in scores.items() if sc < 60]
 
         return {
             "id": "student-001",
             "name": "Medical Student",
             "year_level": "final_year",
-            "cases_completed": 48 + self.cases_completed,
-            "accuracy": self.get_performance_data()["overall_accuracy"],
-            "avg_time": 9 if self.cases_completed > 0 else 10,
-            "percentile": max(5, 15 - self.cases_completed),
-            "specialty_scores": merged_scores,
-            "weak_areas": weak or ["neurology", "emergency"],
+            "cases_completed": self.cases_completed,
+            "accuracy": self.overall_accuracy,
+            "avg_time": 0,
+            "percentile": 0,
+            "specialty_scores": scores,
+            "weak_areas": weak,
         }
 
     def detect_biases(self) -> dict:
         """Detect cognitive biases from session case history."""
         if self.cases_completed < 3:
-            # Not enough data — return base demo biases
-            return self._demo_biases()
+            return {
+                "biases_detected": [],
+                "cases_analyzed": 0,
+                "overall_accuracy": 0,
+                "message": "Complete at least 3 cases to get bias analysis.",
+                "generated_at": datetime.now().isoformat(),
+            }
 
         biases = []
         recent = self.case_history[-10:]
 
-        # Anchoring: if student gets similar diagnoses wrong repeatedly
+        # Anchoring: repeated wrong diagnoses
         wrong_cases = [c for c in recent if not c["is_correct"]]
         if len(wrong_cases) >= 3:
             biases.append({
@@ -211,23 +199,17 @@ class SessionTracker:
         }
 
     def build_knowledge_graph(self) -> dict:
-        """Build knowledge graph from session data merged with base graph."""
-        base_nodes = [
-            {"id": "Cardiology", "strength": 0.82, "size": 12, "category": "specialty"},
-            {"id": "Respiratory", "strength": 0.65, "size": 8, "category": "specialty"},
-            {"id": "Infectious", "strength": 0.78, "size": 10, "category": "specialty"},
-            {"id": "Neurology", "strength": 0.45, "size": 5, "category": "specialty"},
-            {"id": "Gastro", "strength": 0.70, "size": 7, "category": "specialty"},
-            {"id": "Emergency", "strength": 0.55, "size": 6, "category": "specialty"},
-        ]
-        base_links = [
-            {"source": "Cardiology", "target": "Respiratory", "strength": 0.6},
-            {"source": "Infectious", "target": "Respiratory", "strength": 0.7},
-            {"source": "Neurology", "target": "Emergency", "strength": 0.4},
-            {"source": "Gastro", "target": "Emergency", "strength": 0.5},
-        ]
+        """Build knowledge graph from real session data only."""
+        if not self.case_history:
+            return {
+                "nodes": [],
+                "links": [],
+                "message": "Complete cases to build your knowledge graph.",
+            }
 
-        # Add diagnosis nodes from session history
+        nodes = []
+        links = []
+        seen_specialties: dict[str, dict] = {}
         seen_diagnoses: dict[str, dict] = {}
         diagnosis_links: list[dict] = []
 
@@ -235,9 +217,21 @@ class SessionTracker:
             diag = case["correct_diagnosis"]
             spec = case["specialty"].capitalize()
 
+            # Build specialty nodes
+            if spec not in seen_specialties:
+                seen_specialties[spec] = {
+                    "id": spec, "strength": 0.0, "size": 0, "category": "specialty",
+                    "correct": 0, "total": 0,
+                }
+            seen_specialties[spec]["total"] += 1
+            seen_specialties[spec]["size"] += 1
+            if case["is_correct"]:
+                seen_specialties[spec]["correct"] += 1
+
+            # Build diagnosis nodes
             if diag not in seen_diagnoses:
                 seen_diagnoses[diag] = {
-                    "id": diag, "strength": 0.0, "size": 0, "category": "diagnosis"
+                    "id": diag, "strength": 0.0, "size": 0, "category": "diagnosis",
                 }
             seen_diagnoses[diag]["size"] += 1
             if case["is_correct"]:
@@ -255,24 +249,41 @@ class SessionTracker:
                     "strength": 0.8 if case["is_correct"] else 0.3,
                 })
 
-        # Update base specialty nodes with session data
-        session_scores = self.get_specialty_scores()
-        for node in base_nodes:
-            spec_lower = node["id"].lower()
-            if spec_lower in session_scores:
-                node["strength"] = round(session_scores[spec_lower] / 100, 2)
-                node["size"] += self.specialty_results.get(spec_lower, {}).get("total", 0)
+        # Calculate specialty strengths
+        for spec_data in seen_specialties.values():
+            if spec_data["total"] > 0:
+                spec_data["strength"] = round(spec_data["correct"] / spec_data["total"], 2)
+            del spec_data["correct"]
+            del spec_data["total"]
 
-        nodes = base_nodes + list(seen_diagnoses.values())
-        links = base_links + diagnosis_links
+        nodes = list(seen_specialties.values()) + list(seen_diagnoses.values())
+
+        # Add cross-specialty links
+        spec_list = list(seen_specialties.keys())
+        for i in range(len(spec_list)):
+            for j in range(i + 1, len(spec_list)):
+                links.append({
+                    "source": spec_list[i],
+                    "target": spec_list[j],
+                    "strength": 0.4,
+                })
+
+        links.extend(diagnosis_links)
 
         return {"nodes": nodes, "links": links}
 
     def get_recommendations(self) -> list[dict]:
-        """Generate recommendations based on session performance."""
-        profile = self.get_student_profile()
-        scores = profile["specialty_scores"]
+        """Generate recommendations based on real session performance."""
+        if not self.case_history:
+            return [{
+                "type": "start",
+                "specialty": "Any",
+                "difficulty": "beginner",
+                "reason": "Start with any specialty to begin building your clinical skills.",
+                "priority": "high",
+            }]
 
+        scores = self.get_specialty_scores()
         recommendations = []
 
         # Weak areas
@@ -290,7 +301,7 @@ class SessionTracker:
 
         # Bias counter
         biases = self.detect_biases()
-        high_biases = [b for b in biases["biases_detected"] if b["severity"] in ("moderate", "high")]
+        high_biases = [b for b in biases.get("biases_detected", []) if b["severity"] in ("moderate", "high")]
         if high_biases:
             recommendations.append({
                 "type": "bias_counter",
@@ -313,36 +324,15 @@ class SessionTracker:
             })
 
         if not recommendations:
-            recommendations = [
-                {"type": "weak_area", "specialty": "Neurology", "difficulty": "beginner",
-                 "reason": "Your neurology accuracy is only 45%. Let's strengthen this foundation.", "priority": "high"},
-                {"type": "challenge", "specialty": "Cardiology", "difficulty": "advanced",
-                 "reason": "Your cardiology accuracy is 82%. Ready for advanced cases!", "priority": "low"},
-            ]
+            recommendations.append({
+                "type": "continue",
+                "specialty": "Mixed",
+                "difficulty": "intermediate",
+                "reason": "Keep practicing across different specialties to build well-rounded skills.",
+                "priority": "medium",
+            })
 
         return recommendations
-
-    def _demo_biases(self) -> dict:
-        """Return demo biases when not enough session data."""
-        return {
-            "biases_detected": [
-                {"type": "anchoring", "severity": "moderate", "score": 65,
-                 "evidence": "You stuck with your initial diagnosis in 7 out of 10 recent cases, even when new information contradicted it.",
-                 "recommendation": "Practice cases with atypical presentations. Force yourself to reconsider after each new piece of information."},
-                {"type": "premature_closure", "severity": "low", "score": 40,
-                 "evidence": "In 4 out of 10 cases, you considered fewer than 3 differential diagnoses before settling on your answer.",
-                 "recommendation": "Before finalizing, always list at least 3 differential diagnoses and explain why you're ruling each one out."},
-                {"type": "availability", "severity": "moderate", "score": 55,
-                 "evidence": "After studying cardiology, you diagnosed 3 consecutive non-cardiac cases as cardiac.",
-                 "recommendation": "Before diagnosing, list 3 differential diagnoses from different organ systems."},
-                {"type": "confirmation", "severity": "low", "score": 30,
-                 "evidence": "Minimal confirmation bias detected. You generally consider contradicting evidence.",
-                 "recommendation": "Continue actively seeking evidence that contradicts your working diagnosis."},
-            ],
-            "cases_analyzed": 48,
-            "overall_accuracy": 75,
-            "generated_at": datetime.now().isoformat(),
-        }
 
 
 # Singleton instance shared across the app
