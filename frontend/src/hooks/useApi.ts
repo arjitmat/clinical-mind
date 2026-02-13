@@ -154,7 +154,7 @@ export function fetchRecommendations(): Promise<RecommendationItem[]> {
   return request('/analytics/recommendations');
 }
 
-// --- Multi-Agent System ---
+// --- Multi-Agent Simulation System ---
 
 export interface AgentMessageDTO {
   agent_type: 'patient' | 'nurse' | 'senior_doctor' | 'student';
@@ -163,22 +163,60 @@ export interface AgentMessageDTO {
   distress_level?: string;
   urgency_level?: string;
   thinking?: string;
+  is_intervention?: boolean;
+  is_event?: boolean;
+  is_teaching?: boolean;
+  event_type?: string;
+}
+
+export interface VitalsData {
+  vitals: { bp: string; hr: number; rr: number; temp: number; spo2: number };
+  trends: Record<string, 'rising' | 'falling' | 'stable'>;
+  trajectory: 'stable' | 'improving' | 'deteriorating' | 'critical';
+  elapsed_minutes: number;
+  urgency_level: string;
+  patient_distress: string;
+}
+
+export interface InvestigationItem {
+  id: string;
+  type: string;
+  label: string;
+  status: 'ordered' | 'sample_collected' | 'processing' | 'ready' | 'delivered';
+  ordered_at: number;
+  estimated_ready: number;
+  remaining_minutes: number;
+  is_urgent: boolean;
+  result: string | null;
+}
+
+export interface TimelineEvent {
+  time: number;
+  type: string;
+  title: string;
+  description: string;
 }
 
 export interface AgentSessionResponse {
   session_id: string;
   messages: AgentMessageDTO[];
-  vitals: {
-    vitals: { bp: string; hr: number; rr: number; temp: number; spo2: number };
-    urgency_level: string;
-    patient_distress: string;
-  };
+  vitals: VitalsData;
+  timeline: TimelineEvent[];
+  investigations: InvestigationItem[];
 }
 
-export function initializeAgents(caseId: string): Promise<AgentSessionResponse> {
+export function initializeAgents(
+  caseId: string,
+  studentLevel: string = 'intern',
+  hospitalSetting: string = 'medical_college',
+): Promise<AgentSessionResponse> {
   return request('/agents/initialize', {
     method: 'POST',
-    body: JSON.stringify({ case_id: caseId }),
+    body: JSON.stringify({
+      case_id: caseId,
+      student_level: studentLevel,
+      hospital_setting: hospitalSetting,
+    }),
   });
 }
 
@@ -197,6 +235,24 @@ export function sendAgentAction(
   });
 }
 
-export function fetchAgentVitals(sessionId: string): Promise<AgentSessionResponse['vitals']> {
+export function advanceSimulationTime(
+  sessionId: string,
+  minutes: number = 30,
+): Promise<AgentSessionResponse> {
+  return request('/agents/advance-time', {
+    method: 'POST',
+    body: JSON.stringify({ session_id: sessionId, minutes }),
+  });
+}
+
+export function fetchAgentVitals(sessionId: string): Promise<VitalsData> {
   return request(`/agents/vitals/${sessionId}`);
+}
+
+export function fetchInvestigations(sessionId: string): Promise<{ investigations: InvestigationItem[] }> {
+  return request(`/agents/investigations/${sessionId}`);
+}
+
+export function fetchTimeline(sessionId: string): Promise<{ timeline: TimelineEvent[] }> {
+  return request(`/agents/timeline/${sessionId}`);
 }
