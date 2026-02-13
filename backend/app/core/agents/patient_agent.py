@@ -84,7 +84,7 @@ class PatientAgent(BaseAgent):
     def get_system_prompt(self, case_context: dict) -> str:
         info = {**self.patient_info, **case_context}
         info["distress_level"] = self.distress_level
-        return PATIENT_SYSTEM_PROMPT.format(
+        base_prompt = PATIENT_SYSTEM_PROMPT.format(
             age=info.get("age", 45),
             gender=info.get("gender", "Male"),
             location=info.get("location", "Delhi"),
@@ -93,6 +93,16 @@ class PatientAgent(BaseAgent):
             history=info.get("history", ""),
             distress_level=self.distress_level,
         )
+
+        if self.specialized_knowledge:
+            base_prompt += (
+                "\n\n=== YOUR CONDITION-SPECIFIC KNOWLEDGE ===\n"
+                "Use this medical knowledge to accurately portray your symptoms and experience. "
+                "Remember: you are a patient, so express this as feelings and experiences, NOT medical terms.\n\n"
+                f"{self.specialized_knowledge}"
+            )
+
+        return base_prompt
 
     def get_fallback_response(self, message: str, case_context: dict) -> str:
         msg = message.lower()

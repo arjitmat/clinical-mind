@@ -18,6 +18,7 @@ class BaseAgent(ABC):
 
     def __init__(self):
         self.conversation_history: list[dict] = []
+        self.specialized_knowledge: str = ""  # Dynamic RAG+Claude expertise
         self.api_key = os.environ.get("ANTHROPIC_API_KEY")
         self.client: Optional[anthropic.Anthropic] = None
         if self.api_key and self.api_key != "sk-ant-your-key-here":
@@ -25,6 +26,10 @@ class BaseAgent(ABC):
                 self.client = anthropic.Anthropic(api_key=self.api_key)
             except Exception as e:
                 logger.warning(f"{self.display_name} client init failed: {e}")
+
+    def set_specialized_knowledge(self, knowledge: str):
+        """Inject dynamically built expertise into this agent."""
+        self.specialized_knowledge = knowledge
 
     @abstractmethod
     def get_system_prompt(self, case_context: dict) -> str:

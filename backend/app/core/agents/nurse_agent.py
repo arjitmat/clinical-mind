@@ -89,7 +89,7 @@ class NurseAgent(BaseAgent):
 
     def get_system_prompt(self, case_context: dict) -> str:
         info = {**self.case_info, **case_context}
-        return NURSE_SYSTEM_PROMPT.format(
+        base_prompt = NURSE_SYSTEM_PROMPT.format(
             age=info.get("age", 45),
             gender=info.get("gender", "Male"),
             location=info.get("location", "Delhi"),
@@ -102,6 +102,16 @@ class NurseAgent(BaseAgent):
             physical_exam=info.get("physical_exam", "Not yet examined"),
             labs=info.get("labs", "Pending"),
         )
+
+        if self.specialized_knowledge:
+            base_prompt += (
+                "\n\n=== YOUR CLINICAL PROTOCOL KNOWLEDGE ===\n"
+                "Use this specialized knowledge for accurate clinical observations, "
+                "nursing assessments, and protocol-based responses specific to this condition.\n\n"
+                f"{self.specialized_knowledge}"
+            )
+
+        return base_prompt
 
     def get_fallback_response(self, message: str, case_context: dict) -> str:
         msg = message.lower()

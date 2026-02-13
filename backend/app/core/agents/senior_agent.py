@@ -65,7 +65,7 @@ class SeniorDoctorAgent(BaseAgent):
 
     def get_system_prompt(self, case_context: dict) -> str:
         info = {**self.case_info, **case_context}
-        return SENIOR_SYSTEM_PROMPT.format(
+        base_prompt = SENIOR_SYSTEM_PROMPT.format(
             age=info.get("age", 45),
             gender=info.get("gender", "Male"),
             chief_complaint=info.get("chief_complaint", "unknown"),
@@ -75,6 +75,17 @@ class SeniorDoctorAgent(BaseAgent):
             differentials=info.get("differentials", ""),
             learning_points=info.get("learning_points", ""),
         )
+
+        if self.specialized_knowledge:
+            base_prompt += (
+                "\n\n=== YOUR DIAGNOSTIC & TEACHING EXPERTISE ===\n"
+                "Use this specialized knowledge for accurate Socratic teaching. "
+                "This contains the diagnostic algorithm, Indian guidelines, NEET-PG patterns, "
+                "and differential reasoning specific to this case.\n\n"
+                f"{self.specialized_knowledge}"
+            )
+
+        return base_prompt
 
     def get_fallback_response(self, message: str, case_context: dict) -> str:
         msg = message.lower()

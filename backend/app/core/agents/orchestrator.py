@@ -1,4 +1,10 @@
-"""Agent orchestrator — coordinates patient, nurse, and senior doctor agents."""
+"""Agent orchestrator — coordinates patient, nurse, and senior doctor agents.
+
+Each agent dynamically specializes via the DynamicKnowledgeBuilder:
+- RAG retrieves condition-specific medical knowledge from the corpus
+- Claude Opus synthesizes it into role-specific expertise
+- Patient learns symptom experience, Nurse learns protocols, Senior learns diagnostic algorithms
+"""
 
 import logging
 import uuid
@@ -7,6 +13,7 @@ from typing import Optional
 from app.core.agents.patient_agent import PatientAgent
 from app.core.agents.nurse_agent import NurseAgent
 from app.core.agents.senior_agent import SeniorDoctorAgent
+from app.core.agents.knowledge_builder import knowledge_builder
 
 logger = logging.getLogger(__name__)
 
@@ -28,10 +35,33 @@ class AgentSession:
         self.nurse.configure(case_data)
         self.senior.configure(case_data)
 
+        # Build dynamic knowledge — each agent specializes for this case
+        self._build_agent_knowledge(case_data)
+
         # Track conversation state
         self.message_history: list[dict] = []
         self.stages_revealed: set[int] = set()
         self.diagnosis_submitted = False
+
+    def _build_agent_knowledge(self, case_data: dict):
+        """Use DynamicKnowledgeBuilder to specialize each agent for this case.
+
+        This is what makes agents intelligent:
+        - Patient learns how THIS condition feels, realistic Hinglish symptom descriptions
+        - Nurse learns clinical protocols, monitoring priorities for THIS condition
+        - Senior learns diagnostic algorithm, Indian guidelines, NEET-PG patterns for THIS case
+        """
+        for role, agent, label in [
+            ("patient", self.patient, "Patient"),
+            ("nurse", self.nurse, "Nurse"),
+            ("senior_doctor", self.senior, "Senior Doctor"),
+        ]:
+            try:
+                knowledge = knowledge_builder.build_knowledge(case_data, role)
+                agent.set_specialized_knowledge(knowledge)
+                logger.info(f"{label} agent specialized for case ({len(knowledge)} chars)")
+            except Exception as e:
+                logger.warning(f"{label} knowledge build failed (agent will use base prompt): {e}")
 
     def get_vitals(self) -> dict:
         """Return current vital signs with nurse's urgency assessment."""
