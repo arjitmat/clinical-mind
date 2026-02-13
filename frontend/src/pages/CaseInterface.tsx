@@ -1,8 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { Button, Card, Badge, Input } from '../components/ui';
-import type { Message } from '../types';
-import { fetchCase, generateCase, submitDiagnosis, sendTutorMessage, type GeneratedCase, type DiagnosisResult } from '../hooks/useApi';
+import { AgentMessage, type AgentMessageData } from '../components/case/AgentMessage';
+import {
+  fetchCase,
+  generateCase,
+  submitDiagnosis,
+  initializeAgents,
+  sendAgentAction,
+  type GeneratedCase,
+  type DiagnosisResult,
+} from '../hooks/useApi';
 
 const stageLabels: Record<string, string> = {
   history: 'History',
@@ -16,6 +24,8 @@ const stageIcons: Record<string, string> = {
   labs: '🔬',
 };
 
+type AgentTarget = 'talk_to_patient' | 'ask_nurse' | 'consult_senior';
+
 export const CaseInterface: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
@@ -23,20 +33,20 @@ export const CaseInterface: React.FC = () => {
   const [caseData, setCaseData] = useState<GeneratedCase | null>(null);
   const [loadingCase, setLoadingCase] = useState(true);
   const [revealedStages, setRevealedStages] = useState<Set<number>>(new Set());
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      role: 'ai',
-      content: "I see you've started a new case. Take a look at the patient presentation and vital signs. What's your initial assessment? What differential diagnoses come to mind?",
-      timestamp: new Date(),
-    },
-  ]);
+
+  // Multi-agent state
+  const [agentSessionId, setAgentSessionId] = useState<string | null>(null);
+  const [agentMessages, setAgentMessages] = useState<AgentMessageData[]>([]);
+  const [activeTarget, setActiveTarget] = useState<AgentTarget>('talk_to_patient');
   const [inputValue, setInputValue] = useState('');
   const [sendingMessage, setSendingMessage] = useState(false);
+
+  // Diagnosis state
   const [showDiagnosis, setShowDiagnosis] = useState(false);
   const [studentDiagnosis, setStudentDiagnosis] = useState('');
   const [showDiagnosisInput, setShowDiagnosisInput] = useState(false);
   const [diagnosisResult, setDiagnosisResult] = useState<DiagnosisResult | null>(null);
+
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   // Load existing case by ID, or generate new one
@@ -44,11 +54,9 @@ export const CaseInterface: React.FC = () => {
     setLoadingCase(true);
 
     if (id && id !== 'new') {
-      // Try to load an existing case from the backend
       fetchCase(id)
         .then((data) => setCaseData(data))
         .catch(() => {
-          // Case not found (expired from memory) — generate a fresh one
           const specialty = searchParams.get('specialty') || 'cardiology';
           const difficulty = searchParams.get('difficulty') || 'intermediate';
           return generateCase(specialty, difficulty).then((data) => setCaseData(data));
@@ -56,7 +64,6 @@ export const CaseInterface: React.FC = () => {
         .catch(() => setCaseData(null))
         .finally(() => setLoadingCase(false));
     } else {
-      // Explicitly generating a new case
       const specialty = searchParams.get('specialty') || 'cardiology';
       const difficulty = searchParams.get('difficulty') || 'intermediate';
       generateCase(specialty, difficulty)
@@ -66,44 +73,85 @@ export const CaseInterface: React.FC = () => {
     }
   }, [id, searchParams]);
 
+  // Initialize multi-agent session once case loads
+  useEffect(() => {
+    if (!caseData) return;
+
+    initializeAgents(caseData.id)
+      .then((res) => {
+        setAgentSessionId(res.session_id);
+        const initialMsgs: AgentMessageData[] = res.messages.map((m, i) => ({
+          id: `init-${i}`,
+          agent_type: m.agent_type,
+          display_name: m.display_name,
+          content: m.content,
+          distress_level: m.distress_level,
+          urgency_level: m.urgency_level,
+          timestamp: new Date(),
+        }));
+        setAgentMessages(initialMsgs);
+      })
+      .catch(() => {
+        // Fallback: show a default welcome message
+        setAgentMessages([
+          {
+            id: 'fallback-1',
+            agent_type: 'senior_doctor',
+            display_name: 'Dr. Sharma',
+            content:
+              "Let's work through this case together. Start by examining the patient's presentation and vitals. What catches your attention?",
+            timestamp: new Date(),
+          },
+        ]);
+      });
+  }, [caseData]);
+
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
+  }, [agentMessages]);
 
   const revealStage = (index: number) => {
     setRevealedStages((prev) => new Set(prev).add(index));
   };
 
   const sendMessage = async () => {
-    if (!inputValue.trim() || !caseData) return;
+    if (!inputValue.trim() || !agentSessionId) return;
 
-    const studentMsg: Message = {
+    const studentMsg: AgentMessageData = {
       id: Date.now().toString(),
-      role: 'student',
+      agent_type: 'student',
+      display_name: 'You',
       content: inputValue,
       timestamp: new Date(),
     };
-    setMessages((prev) => [...prev, studentMsg]);
+    setAgentMessages((prev) => [...prev, studentMsg]);
+    const currentInput = inputValue;
     setInputValue('');
     setSendingMessage(true);
 
     try {
-      const res = await sendTutorMessage(caseData.id, inputValue);
-      const aiResponse: Message = {
-        id: (Date.now() + 1).toString(),
-        role: 'ai',
-        content: res.response,
+      const res = await sendAgentAction(agentSessionId, activeTarget, currentInput);
+      const newMsgs: AgentMessageData[] = res.messages.map((m, i) => ({
+        id: `${Date.now()}-${i}`,
+        agent_type: m.agent_type,
+        display_name: m.display_name,
+        content: m.content,
+        distress_level: m.distress_level,
+        urgency_level: m.urgency_level,
         timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, aiResponse]);
+      }));
+      setAgentMessages((prev) => [...prev, ...newMsgs]);
     } catch {
-      const aiResponse: Message = {
-        id: (Date.now() + 1).toString(),
-        role: 'ai',
-        content: "Good thinking. Can you explain your reasoning further? What evidence supports your hypothesis?",
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, aiResponse]);
+      setAgentMessages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          agent_type: 'senior_doctor',
+          display_name: 'Dr. Sharma',
+          content: 'Good thinking. Can you explain your reasoning further? What evidence supports your hypothesis?',
+          timestamp: new Date(),
+        },
+      ]);
     } finally {
       setSendingMessage(false);
     }
@@ -117,21 +165,27 @@ export const CaseInterface: React.FC = () => {
       const result = await submitDiagnosis(caseData.id, studentDiagnosis, '');
       setDiagnosisResult(result);
 
-      const aiMsg: Message = {
-        id: Date.now().toString(),
-        role: 'ai',
-        content: result.feedback,
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, aiMsg]);
+      setAgentMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now().toString(),
+          agent_type: 'senior_doctor',
+          display_name: 'Dr. Sharma',
+          content: result.feedback,
+          timestamp: new Date(),
+        },
+      ]);
     } catch {
-      const aiMsg: Message = {
-        id: Date.now().toString(),
-        role: 'ai',
-        content: `You diagnosed: "${studentDiagnosis}". Review the case details and learning points for feedback.`,
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, aiMsg]);
+      setAgentMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now().toString(),
+          agent_type: 'senior_doctor',
+          display_name: 'Dr. Sharma',
+          content: `You diagnosed: "${studentDiagnosis}". Review the case details and learning points for feedback.`,
+          timestamp: new Date(),
+        },
+      ]);
     }
   };
 
@@ -345,10 +399,11 @@ export const CaseInterface: React.FC = () => {
           )}
         </div>
 
-        {/* AI Tutor Sidebar (1/3) */}
+        {/* Multi-Agent Hospital Chat Sidebar (1/3) */}
         <div className="lg:col-span-1">
           <div className="sticky top-24">
             <Card padding="md" className="h-[calc(100vh-8rem)] flex flex-col">
+              {/* Header */}
               <div className="flex items-center gap-3 mb-4 pb-4 border-b border-warm-gray-100">
                 <div className="w-10 h-10 bg-forest-green/10 rounded-xl flex items-center justify-center">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D5C3F" strokeWidth="2">
@@ -356,23 +411,40 @@ export const CaseInterface: React.FC = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-text-primary">AI Tutor</h3>
-                  <p className="text-xs text-text-tertiary">Socratic reasoning coach</p>
+                  <h3 className="text-base font-semibold text-text-primary">Hospital Ward</h3>
+                  <p className="text-xs text-text-tertiary">Patient, Nurse, Senior Doctor</p>
                 </div>
               </div>
 
-              <div className="flex-1 overflow-y-auto space-y-3 mb-4">
-                {messages.map((msg) => (
-                  <div
-                    key={msg.id}
-                    className={`p-3 rounded-xl text-sm leading-relaxed ${
-                      msg.role === 'ai'
-                        ? 'bg-forest-green/5 border border-forest-green/10 text-text-primary'
-                        : 'bg-warm-gray-50 border border-warm-gray-100 text-text-primary ml-4'
+              {/* Agent target selector */}
+              <div className="flex gap-1 mb-3 p-1 bg-warm-gray-50 rounded-lg">
+                {([
+                  { key: 'talk_to_patient' as AgentTarget, label: 'Patient', color: 'amber' },
+                  { key: 'ask_nurse' as AgentTarget, label: 'Nurse', color: 'blue' },
+                  { key: 'consult_senior' as AgentTarget, label: 'Dr. Sharma', color: 'emerald' },
+                ]).map((target) => (
+                  <button
+                    key={target.key}
+                    onClick={() => setActiveTarget(target.key)}
+                    className={`flex-1 text-xs font-medium py-1.5 px-2 rounded-md transition-colors ${
+                      activeTarget === target.key
+                        ? target.color === 'amber'
+                          ? 'bg-amber-100 text-amber-800'
+                          : target.color === 'blue'
+                            ? 'bg-blue-100 text-blue-800'
+                            : 'bg-emerald-100 text-emerald-800'
+                        : 'text-text-tertiary hover:text-text-secondary'
                     }`}
                   >
-                    {msg.content}
-                  </div>
+                    {target.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Messages */}
+              <div className="flex-1 overflow-y-auto space-y-3 mb-4">
+                {agentMessages.map((msg) => (
+                  <AgentMessage key={msg.id} message={msg} />
                 ))}
                 {sendingMessage && (
                   <div className="p-3 rounded-xl text-sm bg-forest-green/5 border border-forest-green/10 text-text-tertiary animate-pulse">
@@ -382,11 +454,18 @@ export const CaseInterface: React.FC = () => {
                 <div ref={chatEndRef} />
               </div>
 
+              {/* Input */}
               <div className="mt-auto">
                 <div className="flex gap-2">
                   <input
                     type="text"
-                    placeholder="Type your reasoning..."
+                    placeholder={
+                      activeTarget === 'talk_to_patient'
+                        ? 'Talk to the patient...'
+                        : activeTarget === 'ask_nurse'
+                          ? 'Ask Nurse Priya...'
+                          : 'Discuss with Dr. Sharma...'
+                    }
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && sendMessage()}

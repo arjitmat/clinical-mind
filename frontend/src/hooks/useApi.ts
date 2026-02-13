@@ -153,3 +153,50 @@ export function fetchPerformance(): Promise<PerformanceData> {
 export function fetchRecommendations(): Promise<RecommendationItem[]> {
   return request('/analytics/recommendations');
 }
+
+// --- Multi-Agent System ---
+
+export interface AgentMessageDTO {
+  agent_type: 'patient' | 'nurse' | 'senior_doctor' | 'student';
+  display_name: string;
+  content: string;
+  distress_level?: string;
+  urgency_level?: string;
+  thinking?: string;
+}
+
+export interface AgentSessionResponse {
+  session_id: string;
+  messages: AgentMessageDTO[];
+  vitals: {
+    vitals: { bp: string; hr: number; rr: number; temp: number; spo2: number };
+    urgency_level: string;
+    patient_distress: string;
+  };
+}
+
+export function initializeAgents(caseId: string): Promise<AgentSessionResponse> {
+  return request('/agents/initialize', {
+    method: 'POST',
+    body: JSON.stringify({ case_id: caseId }),
+  });
+}
+
+export function sendAgentAction(
+  sessionId: string,
+  actionType: string,
+  studentInput?: string,
+): Promise<AgentSessionResponse> {
+  return request('/agents/action', {
+    method: 'POST',
+    body: JSON.stringify({
+      session_id: sessionId,
+      action_type: actionType,
+      student_input: studentInput,
+    }),
+  });
+}
+
+export function fetchAgentVitals(sessionId: string): Promise<AgentSessionResponse['vitals']> {
+  return request(`/agents/vitals/${sessionId}`);
+}

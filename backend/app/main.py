@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 # Load .env from backend/ directory
 load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
-from app.api import cases, student, analytics
+from app.api import cases, student, analytics, agents
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(name)s] %(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
@@ -52,6 +52,7 @@ app.add_middleware(
 app.include_router(cases.router, prefix="/api/cases", tags=["cases"])
 app.include_router(student.router, prefix="/api/student", tags=["student"])
 app.include_router(analytics.router, prefix="/api/analytics", tags=["analytics"])
+app.include_router(agents.router, prefix="/api/agents", tags=["agents"])
 
 
 @app.get("/")
