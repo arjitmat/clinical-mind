@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { Button, Card, Badge, Input } from '../components/ui';
 import type { Message } from '../types';
-import { generateCase, submitDiagnosis, sendTutorMessage, type GeneratedCase, type DiagnosisResult } from '../hooks/useApi';
+import { fetchCase, generateCase, submitDiagnosis, sendTutorMessage, type GeneratedCase, type DiagnosisResult } from '../hooks/useApi';
 
 const stageLabels: Record<string, string> = {
   history: 'History',
@@ -19,6 +19,7 @@ const stageIcons: Record<string, string> = {
 export const CaseInterface: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
+  const [searchParams] = useSearchParams();
   const [caseData, setCaseData] = useState<GeneratedCase | null>(null);
   const [loadingCase, setLoadingCase] = useState(true);
   const [revealedStages, setRevealedStages] = useState<Set<number>>(new Set());
@@ -38,17 +39,32 @@ export const CaseInterface: React.FC = () => {
   const [diagnosisResult, setDiagnosisResult] = useState<DiagnosisResult | null>(null);
   const chatEndRef = useRef<HTMLDivElement>(null);
 
-  // Load or generate case
+  // Load existing case by ID, or generate new one
   useEffect(() => {
     setLoadingCase(true);
-    // Generate a new case from the backend (the id is just a route param)
-    const specialty = 'cardiology'; // default
-    const difficulty = 'intermediate';
-    generateCase(specialty, difficulty)
-      .then((data) => setCaseData(data))
-      .catch(() => setCaseData(null))
-      .finally(() => setLoadingCase(false));
-  }, [id]);
+
+    if (id && id !== 'new') {
+      // Try to load an existing case from the backend
+      fetchCase(id)
+        .then((data) => setCaseData(data))
+        .catch(() => {
+          // Case not found (expired from memory) — generate a fresh one
+          const specialty = searchParams.get('specialty') || 'cardiology';
+          const difficulty = searchParams.get('difficulty') || 'intermediate';
+          return generateCase(specialty, difficulty).then((data) => setCaseData(data));
+        })
+        .catch(() => setCaseData(null))
+        .finally(() => setLoadingCase(false));
+    } else {
+      // Explicitly generating a new case
+      const specialty = searchParams.get('specialty') || 'cardiology';
+      const difficulty = searchParams.get('difficulty') || 'intermediate';
+      generateCase(specialty, difficulty)
+        .then((data) => setCaseData(data))
+        .catch(() => setCaseData(null))
+        .finally(() => setLoadingCase(false));
+    }
+  }, [id, searchParams]);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });

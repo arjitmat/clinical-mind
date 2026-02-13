@@ -54,6 +54,10 @@ export function fetchSpecialties(): Promise<{ specialties: SpecialtyDTO[] }> {
   return request('/cases/specialties');
 }
 
+export function fetchCase(caseId: string): Promise<GeneratedCase> {
+  return request(`/cases/${caseId}`);
+}
+
 export function generateCase(specialty: string, difficulty: string): Promise<GeneratedCase> {
   return request('/cases/generate', {
     method: 'POST',

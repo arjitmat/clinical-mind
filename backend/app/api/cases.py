@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from typing import Optional
 from app.core.rag.generator import CaseGenerator
 from app.core.agents.tutor import SocraticTutor
+from app.core.session import session
 
 router = APIRouter()
 case_generator = CaseGenerator()
@@ -90,6 +91,20 @@ async def case_action(case_id: str, request: CaseActionRequest):
 @router.post("/{case_id}/diagnose")
 async def submit_diagnosis(case_id: str, request: DiagnosisRequest):
     result = case_generator.evaluate_diagnosis(case_id, request.diagnosis, request.reasoning)
+
+    # Record result in session tracker for dynamic analytics
+    case = case_generator.get_case(case_id)
+    if case and "error" not in result:
+        session.record_case_result(
+            case_id=case_id,
+            specialty=case.get("specialty", ""),
+            difficulty=case.get("difficulty", ""),
+            diagnosis=request.diagnosis,
+            correct_diagnosis=result.get("correct_diagnosis", case.get("diagnosis", "")),
+            is_correct=result.get("is_correct", False),
+            accuracy_score=result.get("accuracy_score", 0),
+        )
+
     return result
 
 
