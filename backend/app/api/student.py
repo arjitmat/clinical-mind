@@ -1,28 +1,9 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
 from typing import Optional
+from app.core.session import session
 
 router = APIRouter()
-
-# In-memory student data (demo purposes)
-DEMO_STUDENT = {
-    "id": "student-001",
-    "name": "Medical Student",
-    "year_level": "final_year",
-    "cases_completed": 48,
-    "accuracy": 75,
-    "avg_time": 10,
-    "percentile": 15,
-    "specialty_scores": {
-        "cardiology": 82,
-        "respiratory": 65,
-        "infectious": 78,
-        "neurology": 45,
-        "gastro": 70,
-        "emergency": 55,
-    },
-    "weak_areas": ["neurology", "emergency"],
-}
 
 
 class ProfileUpdate(BaseModel):
@@ -32,27 +13,24 @@ class ProfileUpdate(BaseModel):
 
 @router.get("/profile")
 async def get_profile():
-    return DEMO_STUDENT
+    return session.get_student_profile()
 
 
 @router.put("/profile")
 async def update_profile(update: ProfileUpdate):
+    profile = session.get_student_profile()
     if update.name:
-        DEMO_STUDENT["name"] = update.name
+        profile["name"] = update.name
     if update.year_level:
-        DEMO_STUDENT["year_level"] = update.year_level
-    return DEMO_STUDENT
+        profile["year_level"] = update.year_level
+    return profile
 
 
 @router.get("/biases")
 async def get_biases():
-    from app.core.analytics.bias_detector import BiasDetector
-    detector = BiasDetector()
-    return detector.generate_demo_report()
+    return session.detect_biases()
 
 
 @router.get("/knowledge-graph")
 async def get_knowledge_graph():
-    from app.core.analytics.knowledge_graph import KnowledgeGraphBuilder
-    builder = KnowledgeGraphBuilder()
-    return builder.build_demo_graph()
+    return session.build_knowledge_graph()

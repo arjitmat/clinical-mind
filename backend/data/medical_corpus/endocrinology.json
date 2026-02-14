@@ -248,34 +248,5 @@
       "Screen for associated autoimmune conditions: Thyroid (TSH annually), Celiac (tTG-IgA)"
     ],
     "india_context": "T1DM incidence in India is ~3-5 per 100,000/year (lower than West but rising). The honeymoon phase leads to diagnostic confusion — parents may stop insulin, leading to recurrent DKA. RSSDI recommends not stopping insulin during honeymoon. Continuous glucose monitoring (CGM) is becoming available but cost-prohibitive for most Indian families. Insulin is available free under NPCDCS."
-  },
-  {
-    "id": "ENDO-011",
-    "title": "Diabetic Ketoacidosis with 'Terrible Triad' and Seizures",
-    "specialty": "endocrinology",
-    "difficulty": "advanced",
-    "source": "PMC 10500620 - DKA Complications Case Report 2023",
-    "demographics": {"age": 17, "gender": "Male", "location": "Western India"},
-    "chief_complaint": "Abdominal pain, headaches, lethargy, and Kussmaul breathing",
-    "presentation": "A 17-year-old male from western India presents with severe abdominal pain, headaches for two days, progressive lethargy, and characteristic Kussmaul breathing (deep, rapid respiration). He was previously undiagnosed for diabetes and presents in severe diabetic ketoacidosis complicated by the 'terrible triad' of DKA, severe hypertriglyceridemia, and acute pancreatitis.",
-    "vital_signs": {"bp": "not specified", "hr": "elevated", "rr": "Kussmaul pattern", "temp": "not specified", "spo2": "not specified"},
-    "history": "Two days of progressively worsening abdominal pain and severe headaches. Increasing lethargy and decreased oral intake. No known prior diabetes diagnosis. Presenting in severe metabolic decompensation. No history of alcohol use. Family history not detailed. Rapid onset of symptoms suggesting first presentation of type 1 diabetes mellitus. Progressive neurological deterioration during initial management.",
-    "physical_exam": "Severely ill appearance with Glasgow Coma Scale of 4 (E1M2V1) indicating profound encephalopathy. Kussmaul breathing pattern (deep, labored respiration attempting to compensate for metabolic acidosis). Signs of severe dehydration. Abdominal tenderness consistent with pancreatitis. Evidence of developing generalized seizures. Neurological examination showed diffuse dysfunction. Clinical evidence of multi-organ involvement.",
-    "investigations": "Fingerstick glucose: >500 mg/dL. Arterial blood gas: pH 6.9 (severe metabolic acidosis), PaCO2 21 mmHg (compensatory respiratory alkalosis), Bicarbonate 4 mM/L (profound deficit). Serum triglycerides: 25,585 mg/dL (extremely elevated, >20 times normal). Serum amylase: 394 U/L (elevated, confirming pancreatitis). Serum acetone: 72 mmol/L (very high ketone levels). Creatinine: 1.8 mg/dL (acute kidney injury). Imaging: MRI brain showed small non-hemorrhagic midbrain infarct (likely embolic from severe hypertriglyceridemia). Lipid panel: Profoundly abnormal with milky serum appearance.",
-    "diagnosis": "Type 1 Diabetes Mellitus presenting as severe diabetic ketoacidosis complicated by 'Terrible Triad' (DKA + hypertriglyceridemia + acute pancreatitis), generalized seizures, acute kidney injury, encephalopathy, and midbrain infarct",
-    "differentials": ["DKA with pancreatitis", "Acute pancreatitis from other cause with secondary hyperglycemia", "Hyperosmolar hyperglycemic state", "Sepsis with metabolic acidosis", "Inborn errors of metabolism", "Toxic ingestion"],
-    "learning_points": [
-      "'Terrible Triad' = DKA + Severe Hypertriglyceridemia (>1000 mg/dL) + Acute Pancreatitis - rare but life-threatening",
-      "Severe hypertriglyceridemia (>1000 mg/dL) is a cause of acute pancreatitis independent of DKA",
-      "DKA can cause hypertriglyceridemia through insulin deficiency affecting lipoprotein lipase",
-      "pH <7.0 indicates life-threatening acidosis requiring aggressive resuscitation",
-      "Neurological complications in DKA: Cerebral edema (most common in children), seizures, stroke (from hyperviscosity)",
-      "Treatment priorities: Fluid resuscitation, insulin therapy (lowers glucose AND triglycerides), electrolyte correction",
-      "May require hemodialysis for refractory cases or triglyceride levels >5000 mg/dL with organ dysfunction",
-      "Plasmapheresis can rapidly reduce triglycerides in extreme cases",
-      "Close monitoring in ICU essential - high risk of cerebral edema, especially in young patients"
-    ],
-    "atypical_features": "Extremely elevated triglycerides (25,585 mg/dL), small midbrain infarct likely from hyperviscosity/thrombosis, severe encephalopathy (GCS 4), generalized seizures, 'terrible triad' is rare presentation",
-    "india_context": "First presentation of T1DM in India often occurs as DKA due to delayed diagnosis. Severe hypertriglyceridemia complicating DKA is increasingly recognized. Requires ICU care with insulin infusion and aggressive fluid management. Patient required ventilator support and 4 cycles of hemodialysis. Good outcome with normalization of triglycerides and successful discharge after 21 days. Emphasizes importance of diabetes education and early recognition of symptoms in Indian youth where T1DM incidence is rising."
   }
 ]

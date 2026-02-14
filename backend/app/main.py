@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 # Load .env from backend/ directory
 load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
-from app.api import cases, student, analytics, simulation, profile, reasoning, adversarial, bias_detection
+from app.api import cases, student, analytics, agents
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(name)s] %(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
@@ -52,11 +52,7 @@ app.add_middleware(
 app.include_router(cases.router, prefix="/api/cases", tags=["cases"])
 app.include_router(student.router, prefix="/api/student", tags=["student"])
 app.include_router(analytics.router, prefix="/api/analytics", tags=["analytics"])
-app.include_router(simulation.router, prefix="/api/simulation", tags=["simulation"])
-app.include_router(profile.router, prefix="/api/profile", tags=["profile"])
-app.include_router(reasoning.router, prefix="/api/reasoning", tags=["reasoning"])
-app.include_router(adversarial.router, prefix="/api/adversarial", tags=["adversarial"])
-app.include_router(bias_detection.router, prefix="/api/bias", tags=["bias-detection"])
+app.include_router(agents.router, prefix="/api/agents", tags=["agents"])
 
 
 @app.get("/")

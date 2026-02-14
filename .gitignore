@@ -1,70 +1,38 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-ENV/
-build/
-develop-eggs/
+# Dependencies
+node_modules/
+frontend/node_modules/
+backend/venv/
+backend/__pycache__/
+backend/app/__pycache__/
+**/__pycache__/
+*.pyc
+
+# Build
+frontend/build/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
 
-# Virtual environments
-.venv
-venv/
-ENV/
+# Environment
+.env
+.env.local
+backend/.env
 
-# IDEs
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
+
+# OS
 .DS_Store
+Thumbs.db
 
-# Environment variables
-.env
-.env.local
-.env.*.local
-
-# ChromaDB / Vector Store
+# Data
 backend/data/vector_db/
+*.db
 
-# Node modules
-node_modules/
-frontend/node_modules/
-
-# React build
-frontend/build/
-frontend/.pnp
-frontend/.pnp.js
-
-# Testing
-frontend/coverage/
-
-# Production
-/build
-
-# Misc
-.DS_Store
+# Logs
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
-# Jupyter
-.ipynb_checkpoints
+# Testing
+coverage/

@@ -65,8 +65,10 @@ export const Dashboard: React.FC = () => {
           Welcome back{profile ? `, ${profile.name}` : ''}
         </h1>
         <p className="text-lg opacity-90 mb-4">
-          {performance
+          {performance && performance.cases_completed > 0
             ? `You've completed ${performance.cases_completed} cases. Your diagnostic accuracy is ${performance.overall_accuracy}%.`
+            : performance
+            ? 'Start your first case to begin building your clinical skills.'
             : 'Loading your progress...'}
         </p>
         <Button
@@ -141,7 +143,9 @@ export const Dashboard: React.FC = () => {
               </AChart>
             </RContainer>
           ) : (
-            <div className="h-[280px] flex items-center justify-center text-text-tertiary">Loading...</div>
+            <div className="h-[280px] flex items-center justify-center text-text-tertiary text-center">
+              {performance?.message || 'Complete cases to see your performance trend.'}
+            </div>
           )}
         </Card>
 
@@ -164,7 +168,9 @@ export const Dashboard: React.FC = () => {
               </RChart>
             </RContainer>
           ) : (
-            <div className="h-[280px] flex items-center justify-center text-text-tertiary">Loading...</div>
+            <div className="h-[280px] flex items-center justify-center text-text-tertiary text-center">
+              {biases?.message || 'Complete at least 3 cases to see bias analysis.'}
+            </div>
           )}
           <p className="text-sm text-text-tertiary text-center mt-2">
             Lower scores are better. Score reflects bias frequency in recent cases.

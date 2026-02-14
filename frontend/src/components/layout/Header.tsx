@@ -1,7 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export const Header: React.FC = () => {
+  const location = useLocation();
+
+  const isActive = (path: string) => location.pathname === path;
+
   return (
     <header className="sticky top-0 z-50 bg-cream-white/80 backdrop-blur-md border-b border-warm-gray-100">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -13,16 +17,36 @@ export const Header: React.FC = () => {
               <path d="M2 12L12 17L22 12" stroke="#FFFCF7" strokeWidth="2" strokeLinejoin="round"/>
             </svg>
           </div>
-          <div>
-            <span className="text-xl font-bold text-text-primary">
-              Clinical<span className="text-forest-green">Mind</span>
-            </span>
-            <p className="text-xs text-text-secondary mt-0.5">AI Patient Simulation</p>
-          </div>
+          <span className="text-xl font-bold text-text-primary">
+            Clinical<span className="text-forest-green">Mind</span>
+          </span>
         </Link>
 
-        <div className="text-sm text-text-tertiary">
-          Powered by Claude Opus 4.6
+        <nav className="hidden md:flex items-center gap-8">
+          <Link
+            to="/cases"
+            className={`text-base font-medium no-underline transition-colors duration-300 ${isActive('/cases') ? 'text-forest-green' : 'text-text-secondary hover:text-forest-green'}`}
+          >
+            Cases
+          </Link>
+          <Link
+            to="/dashboard"
+            className={`text-base font-medium no-underline transition-colors duration-300 ${isActive('/dashboard') ? 'text-forest-green' : 'text-text-secondary hover:text-forest-green'}`}
+          >
+            Dashboard
+          </Link>
+          <Link
+            to="/knowledge-graph"
+            className={`text-base font-medium no-underline transition-colors duration-300 ${isActive('/knowledge-graph') ? 'text-forest-green' : 'text-text-secondary hover:text-forest-green'}`}
+          >
+            Knowledge Map
+          </Link>
+        </nav>
+
+        <div className="flex items-center gap-4">
+          <div className="w-9 h-9 bg-sage-green/20 rounded-full flex items-center justify-center">
+            <span className="text-sm font-semibold text-forest-green">SM</span>
+          </div>
         </div>
       </div>
     </header>

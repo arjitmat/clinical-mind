@@ -54,6 +54,10 @@ export function fetchSpecialties(): Promise<{ specialties: SpecialtyDTO[] }> {
   return request('/cases/specialties');
 }
 
+export function fetchCase(caseId: string): Promise<GeneratedCase> {
+  return request(`/cases/${caseId}`);
+}
+
 export function generateCase(specialty: string, difficulty: string): Promise<GeneratedCase> {
   return request('/cases/generate', {
     method: 'POST',
@@ -65,19 +69,6 @@ export function submitDiagnosis(caseId: string, diagnosis: string, reasoning: st
   return request(`/cases/${caseId}/diagnose`, {
     method: 'POST',
     body: JSON.stringify({ case_id: caseId, diagnosis, reasoning }),
-  });
-}
-
-// --- Tutor ---
-
-export interface TutorResponse {
-  response: string;
-}
-
-export function sendTutorMessage(caseId: string, message: string): Promise<TutorResponse> {
-  return request('/cases/tutor', {
-    method: 'POST',
-    body: JSON.stringify({ case_id: caseId, message }),
   });
 }
 
@@ -105,6 +96,7 @@ export interface BiasReport {
   }[];
   cases_analyzed: number;
   overall_accuracy: number;
+  message?: string;
 }
 
 export function fetchProfile(): Promise<StudentProfile> {
@@ -118,6 +110,7 @@ export function fetchBiases(): Promise<BiasReport> {
 export interface KnowledgeGraphDTO {
   nodes: { id: string; strength: number; size: number; category: string }[];
   links: { source: string; target: string; strength: number }[];
+  message?: string;
 }
 
 export function fetchKnowledgeGraph(): Promise<KnowledgeGraphDTO> {
@@ -131,7 +124,8 @@ export interface PerformanceData {
   cases_completed: number;
   avg_time_minutes: number;
   peer_percentile: number;
-  history: { week: string; accuracy: number; avg_time: number }[];
+  history: { week?: string; batch?: string; accuracy: number; avg_time?: number; count?: number }[];
+  message?: string;
 }
 
 export interface RecommendationItem {
@@ -148,4 +142,108 @@ export function fetchPerformance(): Promise<PerformanceData> {
 
 export function fetchRecommendations(): Promise<RecommendationItem[]> {
   return request('/analytics/recommendations');
+}
+
+// --- Multi-Agent Simulation System ---
+
+export interface AgentMessageDTO {
+  agent_type: 'patient' | 'nurse' | 'senior_doctor' | 'family' | 'lab_tech' | 'student' | 'system';
+  display_name: string;
+  content: string;
+  distress_level?: string;
+  urgency_level?: string;
+  is_intervention?: boolean;
+  is_event?: boolean;
+  is_teaching?: boolean;
+  event_type?: string;
+  examination_findings?: Record<string, unknown>;
+}
+
+export interface VitalsData {
+  vitals: { bp: string; hr: number; rr: number; temp: number; spo2: number };
+  trends: Record<string, 'rising' | 'falling' | 'stable'>;
+  trajectory: 'stable' | 'improving' | 'deteriorating' | 'critical';
+  elapsed_minutes: number;
+  urgency_level: string;
+  patient_distress: string;
+}
+
+export interface InvestigationItem {
+  id: string;
+  type: string;
+  label: string;
+  status: 'ordered' | 'sample_collected' | 'processing' | 'ready' | 'delivered';
+  ordered_at: number;
+  estimated_ready: number;
+  remaining_minutes: number;
+  is_urgent: boolean;
+  result: string | null;
+}
+
+export interface TimelineEvent {
+  time: number;
+  type: string;
+  title: string;
+  description: string;
+}
+
+export interface AgentSessionResponse {
+  session_id: string;
+  messages: AgentMessageDTO[];
+  vitals: VitalsData;
+  timeline: TimelineEvent[];
+  investigations: InvestigationItem[];
+  complications_fired?: string[];
+}
+
+export function initializeAgents(
+  caseId: string,
+  studentLevel: string = 'intern',
+  hospitalSetting: string = 'medical_college',
+): Promise<AgentSessionResponse> {
+  return request('/agents/initialize', {
+    method: 'POST',
+    body: JSON.stringify({
+      case_id: caseId,
+      student_level: studentLevel,
+      hospital_setting: hospitalSetting,
+    }),
+  });
+}
+
+export function sendAgentAction(
+  sessionId: string,
+  actionType: string,
+  studentInput?: string,
+): Promise<AgentSessionResponse> {
+  return request('/agents/action', {
+    method: 'POST',
+    body: JSON.stringify({
+      session_id: sessionId,
+      action_type: actionType,
+      student_input: studentInput,
+    }),
+  });
+}
+
+export function advanceSimulationTime(
+  sessionId: string,
+  minutes: number = 30,
+): Promise<AgentSessionResponse> {
+  return request('/agents/advance-time', {
+    method: 'POST',
+    body: JSON.stringify({ session_id: sessionId, minutes }),
+  });
+}
+
+export function fetchAgentVitals(sessionId: string): Promise<VitalsData> {
+  return request(`/agents/vitals/${sessionId}`);
+}
+
+export function fetchInvestigations(sessionId: string): Promise<{ investigations: InvestigationItem[] }> {
+  return request(`/agents/investigations/${sessionId}`);
+}
+
+export function fetchTimeline(sessionId: string): Promise<{ timeline: TimelineEvent[] }> {
+  return request(`/agents/timeline/${sessionId}`);
 }

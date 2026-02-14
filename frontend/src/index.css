@@ -1,17 +1,58 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* Primary Colors */
+  --color-cream-white: #FFFCF7;
+  --color-warm-gray-50: #F5F3F0;
+  --color-warm-gray-100: #E8E5E0;
+  --color-warm-gray-200: #D4D0CA;
+  --color-warm-gray-900: #2A2520;
+
+  /* Accent Colors */
+  --color-forest-green: #2D5C3F;
+  --color-forest-green-dark: #234730;
+  --color-sage-green: #6B8E6F;
+  --color-terracotta: #C85835;
+  --color-soft-blue: #4A7C8C;
+
+  /* Feedback Colors */
+  --color-success: #2D5C3F;
+  --color-warning: #D4803F;
+  --color-error: #C85835;
+
+  /* Text Colors */
+  --color-text-primary: #2A2520;
+  --color-text-secondary: #5A5147;
+  --color-text-tertiary: #8A8179;
+
+  /* Font sizes - Larger scale */
+  --font-size-xs: 0.875rem;
+  --font-size-sm: 1rem;
+  --font-size-base: 1.125rem;
+  --font-size-lg: 1.375rem;
+  --font-size-xl: 1.75rem;
+  --font-size-2xl: 2.25rem;
+  --font-size-3xl: 3rem;
+
+  /* Font family */
+  --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
+
+  /* Border radius */
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+}
 
 /* Base styles */
 body {
-  font-family: 'Inter', -apple-system, system-ui, sans-serif !important;
-  background-color: #FFFCF7 !important;
-  color: #2A2520 !important;
-  font-size: 1.125rem !important;
-  line-height: 1.6 !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  margin: 0 !important;
+  font-family: var(--font-sans);
+  background-color: var(--color-cream-white);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
 }
 
 /* Animations */
@@ -50,27 +91,67 @@ body {
 
 /* Staggered animations */
 .animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-150 { animation-delay: 150ms; }
 .animate-delay-200 { animation-delay: 200ms; }
 .animate-delay-300 { animation-delay: 300ms; }
 .animate-delay-400 { animation-delay: 400ms; }
 .animate-delay-500 { animation-delay: 500ms; }
 
+/* ── Chat component animations ── */
+
+/* Simple fade-in (no translate) for overlays */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+/* Typing indicator bouncing dots */
+@keyframes typingBounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+.animate-typing-bounce {
+  animation: typingBounce 1.4s ease-in-out infinite;
+}
+
+/* Urgent timer pulsing glow */
+@keyframes urgentPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.25);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px 4px rgba(220, 38, 38, 0.3);
+  }
+}
+.animate-urgent-pulse {
+  animation: urgentPulse 1.5s ease-in-out infinite;
+}
+
 /* Scrollbar styling */
-@layer utilities {
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
+::-webkit-scrollbar {
+  width: 8px;
+}
 
-  ::-webkit-scrollbar-track {
-    background: #F5F3F0;
-  }
+::-webkit-scrollbar-track {
+  background: var(--color-warm-gray-50);
+}
 
-  ::-webkit-scrollbar-thumb {
-    background: #D4D0CA;
-    border-radius: 4px;
-  }
+::-webkit-scrollbar-thumb {
+  background: var(--color-warm-gray-200);
+  border-radius: 4px;
+}
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: #8A8179;
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-tertiary);
 }

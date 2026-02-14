@@ -248,32 +248,5 @@
       "JE vaccine (SA 14-14-2, live attenuated) included in India's UIP since 2006 for endemic districts"
     ],
     "india_context": "Gorakhpur district (UP) was the epicenter of annual AES outbreaks killing hundreds of children. JE vaccination campaigns and improved sanitation have reduced mortality. NVBDCP classifies 171 endemic districts across 21 states. The 2017 BRD Medical College tragedy highlighted healthcare infrastructure gaps. Rice paddies + pig farming creates ideal JE transmission ecology."
-  },
-  {
-    "id": "INF-011",
-    "title": "Leptospirosis and Scrub Typhus Coinfection with Septic Shock",
-    "specialty": "infectious",
-    "difficulty": "advanced",
-    "source": "PMC 11187789 - Tropical Fever Coinfection Case Series 2024",
-    "demographics": {"age": 34, "gender": "Male", "location": "South India"},
-    "chief_complaint": "4-day history of high-grade fever, headache, and generalized body aches",
-    "presentation": "A 34-year-old ginger farm worker from South India presents with 4 days of high-grade continuous fever, severe headache, generalized myalgia, and fatigue. He works barefoot in flooded agricultural fields. On presentation, he is conscious but has developed hypotension, tachycardia, and cold clammy extremities suggesting septic shock.",
-    "vital_signs": {"bp": "70/60", "hr": 90, "rr": 20, "temp": 37.6, "spo2": 94},
-    "history": "High-grade fever for 4 days with rigors and chills. Severe headache (frontal and retro-orbital). Generalized body aches especially in calves and back. Fatigue and malaise. No rash, cough, or conjunctival injection mentioned. Works as ginger farm laborer, regular exposure to flooded fields and soil. Barefoot farming. No history of recent travel. No known contact with fever patients. Endemic tropical region with monsoon exposure.",
-    "physical_exam": "Patient conscious (GCS: E4V5M6). Cold, clammy extremities. Delayed capillary refill. Hypotensive shock. No specific rash or eschar documented. No hepatosplenomegaly mentioned. Respiratory distress developing. Clinical features consistent with septic shock and evolving multi-organ dysfunction.",
-    "investigations": "CBC: WBC 18,420/cumm (97% neutrophils - marked neutrophilia), Platelets 65,000/cumm (thrombocytopenia), Hb not specified. Renal function: Creatinine 3.2 mg/dL initially, rising to 6.8 mg/dL (acute kidney injury). Liver function: Abnormal (specific values not detailed). C-Reactive Protein: >300 mg/L (markedly elevated). Dengue NS1 and IgM: Negative. Malaria: Negative. Leptospira IgM ELISA: Positive. Scrub Typhus IgM ELISA: Positive (coinfection confirmed). CXR/imaging: ARDS pattern developed.",
-    "diagnosis": "Concurrent leptospirosis and scrub typhus coinfection complicated by septic shock, ARDS, and acute kidney injury requiring hemodialysis",
-    "differentials": ["Leptospirosis", "Scrub typhus", "Dengue hemorrhagic fever", "Severe malaria", "Hantavirus", "Rickettsial fever", "Bacterial sepsis"],
-    "learning_points": [
-      "Coinfections with multiple tropical fevers occur in endemic regions and should be considered",
-      "Leptospirosis + scrub typhus coinfection can present with severe MODS",
-      "High index of suspicion needed in agricultural workers with environmental exposure",
-      "Empiric broad-spectrum coverage essential: ceftriaxone + doxycycline covers both pathogens",
-      "Early recognition and aggressive supportive care improves outcomes",
-      "AKI may require hemodialysis in severe leptospirosis",
-      "Rapid diagnostic tests (IgM ELISA) essential for timely diagnosis in resource-limited settings"
-    ],
-    "atypical_features": "Presented with septic shock early in course, concurrent dual infection making clinical picture complex, rapid progression to multi-organ failure requiring ICU support including ventilation and dialysis",
-    "india_context": "South India has high prevalence of both leptospirosis and scrub typhus, particularly in agricultural communities during and post-monsoon. Barefoot farming in flooded fields increases leptospirosis risk. Scrub typhus endemic in rural and peri-urban areas with scrub vegetation. Coinfections increasingly recognized with improved diagnostic availability. Treatment with ceftriaxone + doxycycline provides coverage for both pathogens pending confirmatory serology."
   }
 ]
