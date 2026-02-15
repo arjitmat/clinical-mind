@@ -1,0 +1,52 @@
+{
+  "case_id": "790069df",
+  "case_data": {
+    "patient": {
+      "age": 28,
+      "gender": "Female",
+      "location": "Jaipur, Rajasthan"
+    },
+    "chief_complaint": "Persistent pain and swelling in the left wrist for 3 months with progressive difficulty gripping objects",
+    "initial_presentation": "A 28-year-old female schoolteacher from Jaipur presents with a 3-month history of progressive pain and swelling over the dorsal aspect of her left wrist. She reports increasing difficulty holding chalk, writing on the blackboard, and wringing wet clothes. She denies any history of trauma but mentions a vague episode of stumbling and catching herself on an outstretched hand approximately 4 months ago, which she considered trivial.",
+    "vital_signs": {
+      "bp": "118/74",
+      "hr": 78,
+      "rr": 16,
+      "temp": 37.0,
+      "spo2": 99
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient recalls stumbling on uneven steps at school approximately 4 months ago and landing on her outstretched left hand. She had mild wrist pain for 2-3 days which settled with ice and an over-the-counter diclofenac gel, so she did not seek medical attention. About one month later, she noticed recurrence of dull aching pain over the radial (thumb) side of the wrist, worsening with gripping and twisting motions (wringing clothes, opening jars, writing). Pain has been progressively increasing over 3 months. She reports localized swelling over the dorsoradial aspect of the wrist. No numbness or tingling in the fingers. No history of clicking, locking, or instability. She is right-hand dominant but uses her left hand extensively for blackboard work. No history of rheumatoid arthritis, gout, or other joint complaints. No family history of bone disorders. She is otherwise healthy with no chronic medical conditions. She takes no regular medications. She was treated by a local bonesetter one month ago with massage and turmeric paste application without improvement. She consulted a general practitioner 2 weeks ago who obtained an X-ray reported as 'normal' and prescribed NSAIDs and a wrist splint, but symptoms persisted."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Left wrist: Mild diffuse swelling over the dorsoradial aspect. Tenderness localized precisely to the anatomical snuffbox (between the tendons of extensor pollicis longus and extensor pollicis brevis/abductor pollicis longus). Tenderness also present over the scaphoid tubercle on the palmar aspect. Pain on axial loading of the thumb (scaphoid compression test / Watson's grind test positive). Watson's scaphoid shift test: Positive \u2014 palpable and painful 'clunk' as pressure is applied over the scaphoid tubercle while the wrist is moved from ulnar to radial deviation, indicating scapholunate instability secondary to scaphoid pathology. Grip strength reduced compared to the contralateral side (measured with hand dynamometer: left 14 kg vs right 28 kg). Range of motion: Wrist extension 50 degrees (reduced from normal 70), flexion 60 degrees, radial deviation 10 degrees (reduced, painful), ulnar deviation 25 degrees. No tenderness over the distal radius or ulna. Finkelstein test: Negative (ruling out De Quervain's tenosynovitis). No signs of carpal tunnel syndrome (Tinel's and Phalen's negative). No warmth or erythema. No wasting of thenar muscles. Distal neurovascular status intact."
+      },
+      {
+        "stage": "labs",
+        "info": "X-ray left wrist (PA, lateral, and scaphoid views): Initial PA view appears grossly normal with no obvious fracture line. However, scaphoid view (wrist in ulnar deviation with tube angled 20 degrees cephalad) reveals a faint lucent line across the scaphoid waist with surrounding sclerosis, suggestive of a non-union. Lateral view shows a slight increase in the scapholunate angle (60 degrees; normal <60 degrees, suggestive of early dorsal intercalated segment instability \u2014 DISI). MRI left wrist (1.5T with coronal T1, T2, STIR sequences): Fracture line through the scaphoid waist with surrounding sclerosis and cystic changes at the fracture margins. No bridging bone across the fracture \u2014 established non-union. Proximal pole shows heterogeneous signal on T1 with areas of low signal (concerning for early avascular necrosis of the proximal pole, though some areas of preserved signal suggest partial vascularity). Gadolinium-enhanced MRI: Partial enhancement of the proximal pole (approximately 40% enhancement compared to distal pole \u2014 suggesting partial but compromised vascularity). No significant scapholunate ligament tear. CT scan left wrist (thin-cut axial and coronal with sagittal reformats): Confirms scaphoid waist non-union with a 2 mm gap, sclerotic margins, and a small cyst at the non-union site. Herbert classification: Type D1 (fibrous non-union). No displacement. Humpback deformity angle (intrascaphoid angle): 40 degrees (normal <35 degrees \u2014 mild humpback deformity present). Blood investigations: Hb 12.8 g/dL, TLC 7200/mm3, ESR 12 mm/hr, CRP 3 mg/L (all normal, arguing against infection or inflammatory arthritis). Calcium, phosphorus, alkaline phosphatase, vitamin D: 25-OH Vitamin D 16 ng/mL (insufficient; normal >30), rest normal. RA factor: Negative. Serum uric acid: 4.2 mg/dL (normal)."
+      }
+    ],
+    "diagnosis": "Scaphoid waist fracture non-union with early avascular necrosis of the proximal pole, secondary to a missed scaphoid fracture (initially dismissed trivial fall on outstretched hand 4 months ago), with early DISI pattern and mild humpback deformity",
+    "differentials": [
+      "Scaphoid fracture non-union (confirmed)",
+      "De Quervain's tenosynovitis (negative Finkelstein test)",
+      "Scapholunate ligament injury (Watson test positive but secondary to scaphoid pathology, no primary ligament tear on MRI)",
+      "Kienbock's disease (avascular necrosis of the lunate \u2014 lunate appears normal on imaging)",
+      "Ganglion cyst of the wrist (no cystic lesion on MRI, bony pathology confirmed)"
+    ],
+    "learning_points": [
+      "The scaphoid is the most commonly fractured carpal bone (70% of carpal fractures), and the most commonly missed fracture in the emergency setting. Clinical suspicion based on anatomical snuffbox tenderness and scaphoid tubercle tenderness after a fall on an outstretched hand (FOOSH) should prompt scaphoid-view X-rays and, if negative but clinical suspicion remains, MRI or repeat X-ray at 2 weeks. An initial 'normal' X-ray does NOT rule out a scaphoid fracture.",
+      "The scaphoid's blood supply enters primarily through the dorsal ridge (dorsal branch of radial artery), supplying the bone in a retrograde fashion from distal to proximal. This makes the proximal pole vulnerable to avascular necrosis (AVN) in waist and proximal pole fractures, with AVN rates of 30-40% in waist fractures presenting as non-union and up to 100% in displaced proximal pole fractures.",
+      "Herbert classification of scaphoid non-union: D1 (fibrous non-union), D2 (sclerotic non-union/pseudarthrosis). Treatment of scaphoid non-union depends on vascularity of the proximal pole and presence of arthritis: if proximal pole is vascular \u2014 open reduction, bone grafting (Matti-Russe technique using corticocancellous iliac crest graft or 1,2-intercompartmental supraretinacular artery (1,2-ICSRA) vascularized bone graft), and Herbert screw fixation; if avascular \u2014 vascularized bone graft (from distal radius) is preferred.",
+      "DISI (Dorsal Intercalated Segment Instability) pattern on lateral X-ray \u2014 scapholunate angle >60 degrees and capitolunate angle >30 degrees \u2014 indicates carpal malalignment secondary to scaphoid non-union. This progresses to scaphoid non-union advanced collapse (SNAC) wrist arthritis if untreated, analogous to SLAC (scapholunate advanced collapse) wrist. SNAC staging guides surgical management: Stage I (radial styloid arthritis), Stage II (scaphocapitate arthritis), Stage III (lunocapitate arthritis)."
+    ],
+    "atypical_features": "This case is challenging because: (1) the initial injury was trivial and dismissed by the patient, leading to a delayed presentation as non-union \u2014 a common real-world scenario in India where minor wrist injuries are often treated by bonesetters or ignored; (2) the initial X-ray was reported as 'normal' mimicking the classic pitfall of missing a scaphoid fracture on standard PA views without dedicated scaphoid views; (3) the presence of early AVN of the proximal pole adds complexity to management decisions (vascularized vs. non-vascularized bone graft); (4) concomitant vitamin D insufficiency raises questions about bone healing capacity; (5) the positive Watson's shift test may mislead toward a primary scapholunate ligament injury rather than the underlying scaphoid non-union causing secondary carpal instability.",
+    "specialty": "orthopedics",
+    "difficulty": "intermediate",
+    "id": "790069df"
+  },
+  "timestamp": "2026-02-14T17:07:10.652541"
+}

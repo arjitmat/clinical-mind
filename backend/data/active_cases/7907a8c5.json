@@ -1,0 +1,53 @@
+{
+  "case_id": "7907a8c5",
+  "case_data": {
+    "patient": {
+      "age": 42,
+      "gender": "Male",
+      "location": "Lucknow, Uttar Pradesh"
+    },
+    "chief_complaint": "Recurrent kidney stones, bone pain, and generalized weakness for 8 months",
+    "initial_presentation": "A 42-year-old government clerk from Lucknow presents with recurrent bilateral kidney stones (3 episodes in 8 months), diffuse bone pain especially in the lower back and legs, and progressive generalized weakness. He was referred by his urologist after the third episode of renal colic for metabolic workup.",
+    "vital_signs": {
+      "bp": "150/92",
+      "hr": 78,
+      "rr": 16,
+      "temp": 37.0,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient reports progressive bone pain over 8 months, predominantly affecting the lower back, hips, and shins. He has had 3 episodes of renal colic \u2014 2 on the right side and 1 on the left \u2014 all calcium-containing stones on analysis. He reports increased thirst and polyuria for 4-5 months (drinks approximately 4-5 liters/day). He has constipation and vague abdominal discomfort. He mentions feeling mentally 'foggy' with difficulty concentrating at work and low mood. Appetite is decreased with nausea. He lost approximately 4 kg over the past 6 months. No history of fractures but he recalls a colleague commenting that he appeared shorter. No family history of kidney stones, endocrine disorders, or MEN syndromes. No history of lithium use, thiazide diuretics, or excessive calcium/vitamin D supplementation. He has been taking pantoprazole 40 mg daily for 2 years for acidity. No history of neck surgery or radiation."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "The patient appears fatigued with mild dehydration. BMI 24.5. No palpable neck mass or thyroid nodule. No neck scar. Mild tenderness over lumbar spine and bilateral tibiae on palpation. Proximal muscle weakness \u2014 difficulty rising from squatting position without hand support (Gower-like sign). No bony deformities. Abdomen: Mild diffuse tenderness, no organomegaly, bowel sounds sluggish. No band keratopathy on gross eye examination. Cardiovascular: Short QT interval suspected clinically (confirmed on ECG). Neurologically: Hyporeflexia noted. Mental status: Alert but slow in responses, mildly depressed affect."
+      },
+      {
+        "stage": "labs",
+        "info": "Serum calcium (total): 13.2 mg/dL (normal 8.5-10.5), repeated: 13.0 mg/dL. Ionized calcium: 1.72 mmol/L (elevated, normal 1.12-1.32). Serum phosphorus: 1.8 mg/dL (low, normal 2.5-4.5). Serum albumin: 3.9 g/dL (normal). Intact PTH (iPTH): 285 pg/mL (markedly elevated, normal 10-65). This confirms PTH-dependent hypercalcemia. 24-hour urine calcium: 420 mg/day (elevated, normal <250 \u2014 rules out familial hypocalciuric hypercalcemia). Serum 25-OH Vitamin D: 12 ng/mL (deficient). Serum alkaline phosphatase: 380 U/L (elevated, normal 44-147). Serum creatinine: 1.4 mg/dL (mildly elevated). eGFR: 58 mL/min (CKD stage 3a). ECG: Shortened QT interval. X-ray hands: Subperiosteal resorption along radial aspect of middle phalanges. X-ray skull: 'Salt and pepper' skull appearance. DEXA scan: T-score lumbar spine -3.1, femoral neck -2.8 (osteoporosis). Ultrasound neck: 1.8 cm hypoechoic nodule posterior to left inferior thyroid lobe, suggestive of parathyroid adenoma. Tc-99m Sestamibi scan: Focal increased uptake in left inferior parathyroid region on early and delayed images (concordant with ultrasound). CT KUB: Bilateral nephrolithiasis with 8 mm right lower calyceal stone and 5 mm left upper calyceal stone. Renal cortical nephrocalcinosis noted."
+      }
+    ],
+    "diagnosis": "Primary hyperparathyroidism due to left inferior parathyroid adenoma with skeletal (osteitis fibrosa cystica), renal (nephrolithiasis, nephrocalcinosis, CKD), and neuropsychiatric manifestations",
+    "differentials": [
+      "Primary hyperparathyroidism (parathyroid adenoma \u2014 most likely)",
+      "Malignancy-associated hypercalcemia (PTHrP-mediated or osteolytic metastases)",
+      "Familial hypocalciuric hypercalcemia (FHH)",
+      "Vitamin D granulomatous disease (sarcoidosis/tuberculosis \u2014 common in India)",
+      "Parathyroid carcinoma"
+    ],
+    "learning_points": [
+      "The classic mnemonic for hypercalcemia symptoms is 'Stones (renal calculi), Bones (osteitis fibrosa cystica, bone pain), Abdominal groans (constipation, pancreatitis, peptic ulcer), and Psychic moans (depression, confusion, fatigue)' \u2014 this patient demonstrates all four domains.",
+      "PTH-dependent hypercalcemia (elevated calcium WITH elevated PTH) is the hallmark of primary hyperparathyroidism, distinguishing it from malignancy-related hypercalcemia where PTH is suppressed and PTHrP may be elevated.",
+      "24-hour urine calcium >200 mg/day with calcium-creatinine clearance ratio >0.02 helps differentiate PHPT from familial hypocalciuric hypercalcemia (FHH), where urine calcium is paradoxically low \u2014 this distinction is critical before planning surgery.",
+      "Concurrent vitamin D deficiency in PHPT (common in India) can mask the severity of hypercalcemia. Vitamin D should be cautiously repleted pre-operatively to prevent post-surgical hungry bone syndrome, but with close monitoring of calcium levels.",
+      "Definitive treatment is parathyroidectomy. Surgical indications include: age <50, serum calcium >1 mg/dL above upper limit, T-score \u2264-2.5, eGFR <60 mL/min, nephrolithiasis/nephrocalcinosis, or 24-hour urine calcium >400 mg/day. This patient meets multiple surgical criteria."
+    ],
+    "atypical_features": "This case is challenging because: (1) The patient presents with advanced skeletal disease (subperiosteal resorption, salt-and-pepper skull) which is more commonly seen in the Indian subcontinent but rare in Western presentations where PHPT is usually detected incidentally on routine calcium testing \u2014 students must recognize this geographic variation. (2) Concurrent vitamin D deficiency (common in Indian population) coexists with PHPT, which can paradoxically lower the measured serum calcium, meaning the true degree of hyperparathyroidism is worse than the calcium level suggests. (3) The presence of CKD (eGFR 58) raises the question of whether the hyperparathyroidism is primary or secondary to renal disease \u2014 the markedly elevated calcium and imaging-confirmed adenoma confirm primary disease, but students must work through this diagnostic reasoning. (4) Long-term PPI use (pantoprazole) can also affect calcium metabolism and must be considered in the clinical picture.",
+    "specialty": "endocrinology",
+    "difficulty": "intermediate",
+    "id": "7907a8c5"
+  },
+  "timestamp": "2026-02-14T16:26:30.742513"
+}

@@ -1,0 +1,52 @@
+{
+  "case_id": "73f992fd",
+  "case_data": {
+    "patient": {
+      "age": 28,
+      "gender": "Female",
+      "location": "Jaipur, Rajasthan"
+    },
+    "chief_complaint": "Progressive pain and swelling in the right wrist for 3 months with recent onset of tingling in the fingers",
+    "initial_presentation": "A 28-year-old female schoolteacher from Jaipur presents with a 3-month history of progressive right wrist pain and diffuse swelling, along with tingling and numbness in the thumb, index, and middle fingers for the past 3 weeks. She reports difficulty writing on the blackboard and performing daily tasks like wringing clothes and opening jars.",
+    "vital_signs": {
+      "bp": "118/74",
+      "hr": 78,
+      "rr": 16,
+      "temp": 37.1,
+      "spo2": 99
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient reports insidious onset of right wrist pain 3 months ago without any history of trauma or fall. The pain is dull, aching, localized to the dorsum of the wrist, and worse with activities involving wrist extension and gripping. There is diffuse swelling over the dorsal aspect of the wrist which has gradually increased. She reports morning stiffness lasting approximately 20-30 minutes. Three weeks ago, she developed tingling and numbness in the thumb, index finger, and middle finger of the right hand, worse at night and while holding a book or phone. She occasionally wakes up at night shaking her hand to relieve the numbness (flick sign positive). No history of fever, weight loss, night sweats, or loss of appetite. No history of trauma, insect bite, or puncture wound. No history of rheumatoid arthritis, thyroid disease, diabetes, or tuberculosis in the family. She was treated for pulmonary tuberculosis 4 years ago (completed 6 months of ATT under DOTS). No history of oral contraceptive use or pregnancy. She is right-hand dominant. She has been taking over-the-counter diclofenac and using a wrist splint from a local pharmacy with minimal relief."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Right wrist: Diffuse, boggy, non-tender to mildly tender swelling over the dorsal aspect of the wrist, extending along the extensor tendon sheaths. The swelling has a doughy consistency, no warmth or erythema, and is not fluctuant. Cross-fluctuation is demonstrable between the volar and dorsal aspects of the wrist (compound palmar ganglion/tenosynovitis). Crepitus palpable on passive finger movements (rice body crepitus \u2014 melon seed bodies). Wrist range of motion: Flexion 50 degrees (reduced, normal 80), extension 40 degrees (reduced, normal 70), radial deviation 10 degrees, ulnar deviation 20 degrees. Grip strength reduced compared to the left hand. Tinel's sign at the carpal tunnel: Positive \u2014 tingling in the median nerve distribution on percussion over the volar wrist crease. Phalen's test: Positive \u2014 numbness and tingling reproduced within 20 seconds of sustained wrist flexion. Durkan's carpal compression test: Positive. Thenar eminence: No visible wasting, but abductor pollicis brevis power is 4/5 (early weakness). Sensation: Mildly diminished to light touch over the palmar aspect of the thumb, index, and middle finger. Finkelstein test: Negative (de Quervain's excluded). No axillary or epitrochlear lymphadenopathy. Chest examination: Normal breath sounds bilaterally. Left wrist: Normal. Other joints: No synovitis or swelling."
+      },
+      {
+        "stage": "labs",
+        "info": "X-ray right wrist AP and lateral: Soft tissue swelling over the dorsal aspect of the wrist. No bony erosions, no calcification, no periosteal reaction. Joint spaces maintained. Juxta-articular osteopenia noted around the carpal bones. Chest X-ray: Old fibrotic changes in the right upper zone consistent with healed pulmonary TB, no active infiltrates. Blood investigations: Hb 11.2 g/dL, TLC 7,800/mm3 (normal differential), ESR 42 mm/hr (elevated), CRP 18 mg/L (mildly elevated). Rheumatoid factor: Negative. Anti-CCP antibodies: Negative. Serum uric acid: 4.8 mg/dL (normal). HbA1c: 5.2% (normal). TSH: 3.1 mIU/L (normal). HIV: Non-reactive. Mantoux test: 22 mm induration (strongly positive). MRI right wrist (with contrast): Extensive tenosynovitis of the extensor tendons (especially extensor digitorum communis and extensor carpi ulnaris) with thickened synovium showing peripheral enhancement and central non-enhancing areas (rice bodies). Marked synovial thickening within the carpal tunnel compressing the median nerve. No bony erosions. No abscess. Multiple tiny hypointense foci on all sequences within the synovial sheath \u2014 consistent with rice bodies. Ultrasound-guided biopsy of the synovial tissue: Histopathology shows granulomatous inflammation with epithelioid cell granulomas, Langhans giant cells, and central caseous necrosis. ZN stain: Acid-fast bacilli seen (scanty). GeneXpert MTB/RIF of synovial tissue: Mycobacterium tuberculosis DETECTED, Rifampicin resistance NOT detected. Nerve conduction study (right median nerve): Prolonged distal motor latency (5.8 ms, normal <4.2 ms), reduced sensory nerve conduction velocity across the carpal tunnel \u2014 findings consistent with moderate carpal tunnel syndrome."
+      }
+    ],
+    "diagnosis": "Tuberculous tenosynovitis (compound palmar ganglion) of the right wrist causing secondary carpal tunnel syndrome",
+    "differentials": [
+      "Tuberculous tenosynovitis (compound palmar ganglion)",
+      "Rheumatoid arthritis with tenosynovitis and secondary carpal tunnel syndrome",
+      "Non-specific chronic tenosynovitis / de Quervain's tenosynovitis",
+      "Giant cell tumor of the tendon sheath (PVNS - pigmented villonodular synovitis)",
+      "Fungal tenosynovitis (sporotrichosis or atypical mycobacterial infection)"
+    ],
+    "learning_points": [
+      "Compound palmar ganglion (tuberculous tenosynovitis of the wrist) classically presents as a dumbbell-shaped or hourglass swelling with cross-fluctuation between the volar and dorsal aspects of the wrist; 'rice bodies' (melon seed bodies) within the tendon sheath are characteristic of TB tenosynovitis and can be palpated as crepitus on finger movement \u2014 this is a classic exam finding for NEET-PG",
+      "Carpal tunnel syndrome (CTS) can be secondary to space-occupying lesions within the carpal tunnel, including tuberculous tenosynovitis, rheumatoid synovitis, ganglion cysts, gout tophi, and amyloid deposits; in a young patient with CTS without typical risk factors (pregnancy, hypothyroidism, diabetes, repetitive strain), always investigate for an underlying cause",
+      "The diagnosis of musculoskeletal TB is confirmed by histopathology showing caseating granulomas with Langhans giant cells and by microbiological confirmation (ZN stain, culture, GeneXpert); GeneXpert MTB/RIF from tissue samples has a sensitivity of 70-80% for extrapulmonary TB and also detects rifampicin resistance, making it invaluable in Indian settings with high MDR-TB prevalence",
+      "Treatment of tuberculous tenosynovitis involves a combination of ATT (standard RNTCP Cat-I regimen: 2HRZE + 4HRE for extrapulmonary TB, extended to 9-12 months for osteoarticular TB in many guidelines) and surgical synovectomy/debridement with carpal tunnel release if there is median nerve compression; early decompression of the median nerve improves prognosis for neurological recovery"
+    ],
+    "atypical_features": "The case is challenging because it presents as chronic wrist tenosynovitis with secondary carpal tunnel syndrome in a young woman \u2014 the CTS symptoms may mislead the student toward idiopathic CTS or rheumatoid arthritis. The absence of typical TB symptoms (fever, weight loss, night sweats), negative RA factor and anti-CCP, and the history of prior pulmonary TB (4 years ago, treated) require the student to connect the dots for extrapulmonary TB reactivation. The presence of rice bodies on MRI and the strongly positive Mantoux test are key clues. The intermediate difficulty lies in recognizing that CTS in a young patient without typical risk factors warrants further investigation and that TB can present as isolated tenosynovitis without systemic symptoms.",
+    "specialty": "orthopedics",
+    "difficulty": "intermediate",
+    "id": "73f992fd"
+  },
+  "timestamp": "2026-02-14T17:06:17.656624"
+}

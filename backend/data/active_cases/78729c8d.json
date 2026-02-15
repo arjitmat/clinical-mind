@@ -1,0 +1,52 @@
+{
+  "case_id": "78729c8d",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Male",
+      "location": "Siliguri, West Bengal"
+    },
+    "chief_complaint": "Sudden severe headache, vomiting, and agitation after consuming alcohol at a local gathering",
+    "initial_presentation": "A 34-year-old tea garden worker from Siliguri is brought to the district hospital emergency at 11 PM by coworkers after developing sudden severe headache, repeated vomiting, visual disturbances, and progressively agitated behavior approximately 3 hours after consuming locally brewed alcohol ('hooch') at a community gathering. Multiple other attendees are reportedly symptomatic with similar complaints.",
+    "vital_signs": {
+      "bp": "100/60",
+      "hr": 120,
+      "rr": 34,
+      "temp": 36.2,
+      "spo2": 97
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Patient consumed approximately 300-400 mL of locally distilled country liquor ('hooch') at a community gathering starting around 6 PM. Approximately 15-20 others also consumed the same batch. Around 9 PM, he developed severe throbbing headache, blurred vision ('everything looks hazy and snowy'), nausea with 6-7 episodes of non-bilious vomiting, and epigastric pain. Progressive confusion and agitation over the next 2 hours. Coworkers report that at least 5 others from the same gathering are symptomatic \u2014 2 reportedly 'unable to see' and 1 is unconscious and being brought in a separate vehicle. No history of head trauma. No seizures witnessed. Patient is a regular consumer of country liquor (3-4 times/week). No known chronic illnesses. No regular medications. No prior visual problems. Non-smoker. No history of psychiatric illness. Family: Wife and 2 children live in the same quarters. They did not consume the alcohol."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Agitated, restless, intermittently drowsy (GCS 12: E3V4M5). Pupils: Bilaterally dilated (6 mm), sluggishly reactive to light. Fundoscopy: Bilateral disc hyperemia with blurred disc margins (early papilledema). Visual acuity grossly impaired \u2014 cannot count fingers at 1 meter in either eye. Kussmaul's breathing pattern (deep, rapid respirations). No meningeal signs \u2014 neck supple, Kernig and Brudzinski negative. No focal neurological deficits. No nystagmus. Cardiovascular: Tachycardic, regular rhythm, no murmurs. S1S2 normal. Peripheral pulses feeble but symmetric. Abdomen: Epigastric tenderness, no guarding or rigidity, bowel sounds present. Skin: Cool extremities, mottled patches over both knees. No jaundice. No cyanosis. Breath: No typical ethanol odor (notably absent), faint fruity/sweet smell."
+      },
+      {
+        "stage": "labs",
+        "info": "ABG: pH 7.08, PaCO2 18 mmHg, PaO2 95 mmHg, HCO3 5.2 mEq/L, lactate 8.5 mmol/L \u2014 severe high anion gap metabolic acidosis (HAGMA) with respiratory compensation. Serum electrolytes: Na+ 138, K+ 5.1, Cl- 102. Calculated anion gap: 30.8 (markedly elevated). Osmolal gap: Serum osmolality (measured by freezing point depression) 340 mOsm/kg, calculated osmolality 290 mOsm/kg \u2014 osmolal gap = 50 (markedly elevated, normal <10). Blood glucose: 65 mg/dL (low-normal). Serum ethanol level: 15 mg/dL (negligible \u2014 metabolized). Serum methanol level (sent to referral lab, result available next morning): 85 mg/dL (toxic range >20 mg/dL). Blood urea: 35, Creatinine: 1.6 (early AKI). Amylase: 280 U/L (mildly elevated, suggesting pancreatic injury). LDH: 520 U/L (elevated). CBC: Hb 13.5, WBC 14,500, Platelets 1,80,000. LFT: AST 95, ALT 55, Bilirubin 1.0. Urine: No ketones, no glucose. CT brain (plain): No hemorrhage, no infarct, no mass lesion. Mild cerebral edema. ECG: Sinus tachycardia, no ST-T changes, normal QTc."
+      }
+    ],
+    "diagnosis": "Acute methanol poisoning from adulterated country liquor ('hooch') with severe metabolic acidosis, bilateral toxic optic neuropathy, and early multi-organ involvement",
+    "differentials": [
+      "Methanol poisoning (mass poisoning from adulterated liquor)",
+      "Ethylene glycol poisoning",
+      "Diabetic ketoacidosis (but no diabetes history, no ketonuria, low-normal glucose)",
+      "Acute ethanol intoxication with Wernicke encephalopathy",
+      "Organophosphate poisoning (mass poisoning at gathering)"
+    ],
+    "learning_points": [
+      "Methanol poisoning classically presents with a latent period of 12-24 hours after ingestion (while methanol is metabolized to formaldehyde and formic acid by alcohol dehydrogenase). The triad of visual disturbance + severe HAGMA + elevated osmolal gap in the context of country liquor consumption is virtually diagnostic.",
+      "The toxic metabolite is FORMIC ACID (not methanol itself), which inhibits cytochrome c oxidase in the retina and optic nerve causing toxic optic neuropathy, and causes severe metabolic acidosis by accumulating organic acid. Formic acid also inhibits mitochondrial respiration causing lactic acidosis.",
+      "Emergency management: (1) Secure airway if GCS declining. (2) IV sodium bicarbonate aggressively to correct pH >7.2 (protects optic nerve, enhances formic acid renal excretion). (3) FOMEPIZOLE (4-methylpyrazole, 15 mg/kg IV loading) is the ideal antidote \u2014 it competitively inhibits alcohol dehydrogenase, preventing methanol \u2192 formaldehyde conversion. If fomepizole unavailable (as in most Indian settings), use IV ETHANOL infusion (10% ethanol in D5W, loading 0.8 g/kg then 80-130 mg/kg/hr to maintain blood ethanol 100-150 mg/dL). Ethanol has 10-20x higher affinity for alcohol dehydrogenase than methanol. (4) HEMODIALYSIS is indicated for: methanol >50 mg/dL, severe acidosis (pH <7.15), visual impairment, renal failure, or clinical deterioration despite antidote. Dialysis removes both methanol and formic acid. (5) Folinic acid (leucovorin) 1 mg/kg IV q4h enhances formic acid metabolism to CO2 and water.",
+      "In mass poisoning events (common in India with hooch tragedies), the emergency department must activate a MASS CASUALTY protocol: triage all patients from the same batch, alert district administration and police (methanol poisoning is a medicolegal case requiring FIR), arrange bulk hemodialysis capacity (contact nephrology and nearby dialysis centers), and arrange ethanol or fomepizole supply. Every patient who consumed the same batch needs assessment even if asymptomatic due to the latent period."
+    ],
+    "atypical_features": "This case is challenging because: (1) The presentation mimics several conditions \u2014 the agitation and headache may suggest intracranial pathology, the Kussmaul breathing and acidosis may suggest DKA, and the mass gathering context may suggest food poisoning or organophosphate exposure. (2) The absence of ethanol odor on breath is a critical negative finding \u2014 methanol itself is nearly odorless and the ethanol has been fully metabolized, so the classic 'alcohol smell' is absent despite recent alcohol consumption, which should raise suspicion for a non-ethanol toxic alcohol. (3) Visual symptoms in an agitated, altered patient may be overlooked or attributed to intoxication. (4) The negligible serum ethanol level with profoundly elevated osmolal gap creates a diagnostic window \u2014 if ethanol were still present, it would have been protective (acting as competitive inhibitor of alcohol dehydrogenase). The late presentation (3 hours with all ethanol metabolized) means the toxic cascade is already advanced. (5) The mass casualty dimension requires simultaneous clinical management and public health response, testing the student's ability to think beyond the individual patient.",
+    "specialty": "emergency",
+    "difficulty": "advanced",
+    "id": "78729c8d"
+  },
+  "timestamp": "2026-02-15T08:54:42.094688"
+}

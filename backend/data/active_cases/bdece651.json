@@ -1,0 +1,52 @@
+{
+  "case_id": "bdece651",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Male",
+      "location": "Lucknow, Uttar Pradesh"
+    },
+    "chief_complaint": "Progressive difficulty walking and double vision for 6 weeks with recent onset urinary incontinence",
+    "initial_presentation": "A 34-year-old government clerk from Lucknow presents with progressive unsteadiness of gait and binocular diplopia for 6 weeks, with urinary urgency and two episodes of incontinence in the past week. He also reports a 3-week history of numbness ascending from both feet to mid-thighs. His wife notes he has become unusually irritable and forgetful over the past month.",
+    "vital_signs": {
+      "bp": "126/78",
+      "hr": 80,
+      "rr": 16,
+      "temp": 37.1,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient was in his usual state of health until 6 weeks ago when he noticed progressive unsteadiness while walking, initially bumping into doorframes, now requiring support. Binocular horizontal diplopia appeared 5 weeks ago, worse on looking to the left. Numbness and paresthesias began in both feet 3 weeks ago and have ascended to mid-thigh, described as 'ants crawling.' Urinary urgency progressed to two episodes of frank incontinence last week. His wife reports significant personality change \u2014 irritability, emotional lability (episodes of unprovoked crying), and poor short-term memory. He also describes a tight 'band-like' sensation around his trunk at the level of the umbilicus for 2 weeks. Past medical history: No prior neurological episodes (specifically asked \u2014 denies any transient visual, motor, or sensory symptoms). However, on detailed probing, he recalls a 2-week episode of 'blurry vision' in his left eye 2 years ago which he attributed to eye strain and never sought medical attention for \u2014 it resolved on its own. No history of TB, diabetes, hypertension, or autoimmune disease. He is a strict vegetarian. No alcohol or tobacco use. No recent travel. Family history: Elder sister diagnosed with hypothyroidism. No family history of neurological disease. He has been taking vitamin B12 supplements from a local chemist for 1 month without improvement."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Mental status: Alert, oriented to person and place, but not to date. MMSE 24/30 (lost points on recall 0/3, orientation to time 2/5, serial 7s 3/5). Affect is labile \u2014 breaks into tears during examination. Cranial nerves: Visual acuity right eye 6/6, left eye 6/9. RAPD positive left eye. Color vision mildly impaired left eye (Ishihara 10/17 left, 16/17 right). Fundoscopy: Left optic disc appears mildly pale (temporal pallor), right disc normal. Internuclear ophthalmoplegia (INO) on left lateral gaze \u2014 impaired adduction of right eye with nystagmus of abducting left eye. Convergence preserved. Motor: Tone \u2014 spasticity in both lower limbs (more left than right), upper limbs normal. Power \u2014 upper limbs 5/5 bilaterally; lower limbs: hip flexion 4/5 bilateral, knee extension 4+/5 bilateral, ankle dorsiflexion 4/5 bilateral. Reflexes: Upper limbs 2+ symmetric; lower limbs 3+ bilateral with sustained ankle clonus bilaterally. Plantars: Bilateral extensor (Babinski positive). Sensory: Diminished vibration and joint position sense in both feet up to ankles. Pinprick reduced below T10 dermatomal level bilaterally. Positive Romberg sign. Cerebellar: Bilateral heel-shin ataxia (worse on left), mild dysmetria left finger-nose-finger, no truncal ataxia. Gait: Spastic-ataxic gait, wide-based, requires support. Lhermitte sign positive \u2014 electric shock sensation radiating down spine into legs on neck flexion. Bladder: Suprapubic fullness on palpation \u2014 post-void residual on bedside ultrasound 180 mL."
+      },
+      {
+        "stage": "labs",
+        "info": "MRI Brain with gadolinium: Multiple (>9) T2/FLAIR hyperintense ovoid lesions in periventricular white matter oriented perpendicular to lateral ventricles (Dawson fingers pattern), 3 juxtacortical lesions, 2 infratentorial lesions (one in left middle cerebellar peduncle, one in dorsal pons involving MLF). Two periventricular lesions show gadolinium enhancement; remaining lesions are non-enhancing. Left optic nerve shows subtle T2 hyperintensity without active enhancement (old lesion). MRI Spine: Two T2 hyperintense lesions in cervical cord (C2-C3 and C5-C6), each spanning less than 2 vertebral segments, peripherally located. One lesion at T8-T9 with subtle enhancement. CSF analysis: Opening pressure 140 mmH2O. WBC 12 cells/\u03bcL (95% lymphocytes). Protein 52 mg/dL. Glucose 62 mg/dL (blood glucose 95). Oligoclonal bands: Positive in CSF, absent in matched serum sample (Type 2 pattern). IgG index: 0.82 (elevated, normal <0.7). CSF cytology: No malignant cells. VEP (Visual Evoked Potentials): Prolonged P100 latency left eye (118 ms; right eye 102 ms normal). Anti-AQP4 antibodies (serum): Negative. Anti-MOG antibodies (serum): Negative. Blood investigations: CBC normal, no eosinophilia. ESR 12. CRP 2.1. Serum B12: 385 pg/mL (normal). Serum ACE level: Normal. ANA: Negative. HIV 1&2 ELISA: Negative. Serum VDRL: Non-reactive. NMO-IgG cell-based assay: Negative. HbA1c: 5.1%. TSH: 4.8 mIU/L (high normal). Vitamin D: 14 ng/mL (deficient)."
+      }
+    ],
+    "diagnosis": "Relapsing-remitting multiple sclerosis (RRMS) presenting as a clinically progressive multifocal syndrome with internuclear ophthalmoplegia, myelopathy, and cognitive-behavioral changes \u2014 fulfilling 2017 McDonald criteria for dissemination in space (periventricular, juxtacortical, infratentorial, and spinal cord lesions) and dissemination in time (simultaneous enhancing and non-enhancing lesions plus CSF oligoclonal bands)",
+    "differentials": [
+      "Neuromyelitis optica spectrum disorder (NMOSD)",
+      "MOG antibody-associated disease",
+      "Neurosarcoidosis",
+      "CNS vasculitis (primary angiitis of CNS)",
+      "Subacute combined degeneration of the cord (Vitamin B12 deficiency)"
+    ],
+    "learning_points": [
+      "Internuclear ophthalmoplegia (INO) in a young adult is highly suggestive of multiple sclerosis \u2014 it results from a lesion in the medial longitudinal fasciculus (MLF) and presents as impaired adduction of the ipsilateral eye with nystagmus of the contralateral abducting eye, with preserved convergence.",
+      "The 2017 McDonald criteria allow diagnosis of MS at first clinical presentation if MRI shows dissemination in space (\u22652 of 4 regions: periventricular, cortical/juxtacortical, infratentorial, spinal) AND dissemination in time (simultaneous enhancing and non-enhancing lesions, OR CSF-specific oligoclonal bands can substitute for DIT).",
+      "Cognitive and neuropsychiatric symptoms (memory impairment, emotional lability, personality change) occur in 40-70% of MS patients and can be an early feature \u2014 they are often underrecognized and should be actively screened using bedside tools like MMSE, MoCA, or the Symbol Digit Modalities Test.",
+      "In the Indian context, NMOSD is relatively more common than in Western populations and must be excluded by anti-AQP4 and anti-MOG antibody testing, as its treatment (rituximab, azathioprine) differs significantly from MS \u2014 using MS disease-modifying therapies like interferon-beta or fingolimod in NMOSD can worsen disease."
+    ],
+    "atypical_features": "This case is challenging because: (1) The patient presents with a subacute progressive multifocal syndrome mimicking a single progressive episode rather than classic discrete relapses, requiring careful history-taking to uncover the prior episode of left eye blurring 2 years ago which reframes the diagnosis as relapsing-remitting rather than primary progressive MS. (2) The prominent cognitive and behavioral changes at age 34 with spinal cord involvement may initially raise suspicion for NMOSD, neurosarcoidosis, or CNS vasculitis. (3) The combination of INO, myelopathy, and cognitive symptoms simultaneously creates a diagnostic challenge \u2014 the INO specifically localizes to the brainstem (MLF) and is a critical clinical clue pointing toward MS. (4) The patient's self-treatment with B12 and the vegetarian diet may initially mislead toward subacute combined degeneration, but the normal B12 level, upper motor neuron signs, and MRI findings redirect to demyelination. (5) Indian students must recognize the importance of testing anti-AQP4 and anti-MOG antibodies before committing to an MS diagnosis given the different epidemiological profile in South Asia.",
+    "specialty": "neurology",
+    "difficulty": "advanced",
+    "id": "bdece651"
+  },
+  "timestamp": "2026-02-15T08:48:49.110614"
+}

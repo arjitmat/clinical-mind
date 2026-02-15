@@ -1,0 +1,52 @@
+{
+  "case_id": "abf8f28a",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Male",
+      "location": "Dibrugarh, Assam"
+    },
+    "chief_complaint": "Sudden severe headache, vomiting, and progressive drowsiness after a snake bite 6 hours ago",
+    "initial_presentation": "A 34-year-old tea garden worker from Dibrugarh, Assam is brought to the district hospital emergency at 11 PM by co-workers after being bitten by a snake on his left foot while working in the garden 6 hours ago. He initially appeared well with only local pain, but over the past 2 hours has developed severe headache, repeated vomiting, and is now increasingly drowsy. His co-workers report he received no first aid and visited a local ojha (traditional healer) who applied herbal paste and tied a tourniquet above the ankle.",
+    "vital_signs": {
+      "bp": "190/110",
+      "hr": 58,
+      "rr": 10,
+      "temp": 36.4,
+      "spo2": 96
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Bitten on the dorsum of left foot at approximately 5 PM while walking through tea bushes. Saw a green snake, approximately 3 feet long (likely green pit viper \u2014 Trimeresurus species, common in Assam tea gardens). Initial symptoms: moderate local pain, mild swelling at bite site. Did NOT go to hospital; instead visited village ojha who applied herbal paste and tied a tight cloth tourniquet above the left ankle (still in place for ~5 hours). At around 9 PM (4 hours post-bite): developed bleeding from gums while chewing paan. Then severe bifrontal headache \u2014 worst of his life, came on suddenly. Repeated projectile vomiting (4 episodes). Became progressively drowsy. No seizures witnessed. Left leg swelling has worsened. No passage of dark/red urine reported. Past history: No known medical illnesses, no prior snake bites. Occasional alcohol use (rice beer). No medications. No known allergies. Works as daily wage tea plucker."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "General: Drowsy but arousable, GCS 10 (E3V2M5), intermittently agitated. Pupils: Left pupil 5mm, sluggishly reactive; right pupil 3mm, briskly reactive (anisocoria \u2014 concerning for uncal herniation). Head/Neck: No external trauma. Neck stiffness present. Positive Kernig's sign. Mouth: Active oozing from gums. Blood-stained saliva. No fang marks in oral cavity. CVS: Bradycardic (HR 58), S1S2 normal, no murmurs. Respiratory: RR 10, shallow but bilateral equal air entry, no crepitations. Abdomen: Soft, mildly tender in right hypochondrium, no guarding. Left lower limb: Tight cloth tourniquet in situ above left ankle \u2014 foot dusky and cool distal to tourniquet. Two fang marks on dorsum of left foot with surrounding ecchymotic swelling extending up to mid-calf. Tense compartment feel in the left leg. Dorsalis pedis pulse feeble on left. Injection sites (where ojha gave herbal injections): persistent oozing from 2 needle-prick marks on left thigh. Skin: Multiple ecchymoses over trunk, petechiae over upper limbs. No hematuria on visual inspection of catheterized urine (but urine is concentrated, dark amber)."
+      },
+      {
+        "stage": "labs",
+        "info": "20-minute Whole Blood Clotting Test (20WBCT): Blood completely incoagulable \u2014 no clot formed at 20 minutes (confirmed venom-induced consumption coagulopathy \u2014 VICC). CBC: Hb 9.2 g/dL (drop from likely normal baseline \u2014 suspect occult hemorrhage), WBC 18,500, Platelets 42,000. Peripheral smear: Schistocytes and fragmented RBCs present (microangiopathic hemolytic anemia \u2014 DIC picture). PT/INR: INR >6 (unrecordable), aPTT >120 seconds. Fibrinogen: 45 mg/dL (critically low; normal 200-400). D-dimer: >10,000 ng/mL. LDH: 850 U/L. Haptoglobin: undetectable. Reticulocyte count: 4.5%. Renal: Creatinine 2.8 mg/dL, BUN 55, K+ 5.5 (AKI developing \u2014 likely pigment nephropathy and hypovolemia). Urine: Dipstick 3+ blood but no RBCs on microscopy (hemoglobinuria/myoglobinuria). Blood glucose: 65 mg/dL (mild hypoglycemia). ABG: pH 7.28, PaCO2 48, PaO2 88, HCO3 18, Lactate 5.2 mmol/L. CT Brain (non-contrast, urgent): Acute intracerebral hemorrhage \u2014 35 mL hematoma in right basal ganglia with surrounding edema, intraventricular extension into right lateral ventricle and third ventricle, early hydrocephalus, 6mm midline shift to left. Subarachnoid hemorrhage also noted in bilateral Sylvian fissures. Left leg X-ray: No fracture, significant soft tissue swelling. Compartment pressure (measured with available needle manometer): 45 mmHg in anterior compartment of left leg (elevated \u2014 compartment syndrome from tourniquet + envenomation)."
+      }
+    ],
+    "diagnosis": "Hemorrhagic stroke (intracerebral hemorrhage with intraventricular extension) secondary to venom-induced consumption coagulopathy (VICC) from green pit viper envenomation, complicated by DIC, acute kidney injury, and left leg compartment syndrome from prolonged tourniquet application",
+    "differentials": [
+      "Hemorrhagic stroke secondary to snake venom coagulopathy (VICC) \u2014 most likely",
+      "Ruptured cerebral aneurysm (subarachnoid hemorrhage) coincidentally timed with snake bite",
+      "Thrombotic thrombocytopenic purpura (TTP) triggered by envenomation",
+      "Hypertensive intracerebral hemorrhage (Cushing response may be secondary, not primary)",
+      "Snake venom-induced capillary leak syndrome with secondary intracranial bleed"
+    ],
+    "learning_points": [
+      "Venom-Induced Consumption Coagulopathy (VICC) is the most dangerous systemic effect of pit viper envenomation in India. The 20-minute Whole Blood Clotting Test (20WBCT) is the bedside gold standard for detecting coagulopathy in resource-limited settings \u2014 if blood does not clot in a clean glass vessel at 20 minutes, it confirms VICC and mandates anti-snake venom (ASV) administration.",
+      "Intracranial hemorrhage is a devastating but under-recognized complication of VICC, occurring in 2-8% of hemotoxic envenomation cases. It carries >50% mortality. Sudden severe headache, vomiting, and altered consciousness in a snake bite patient must trigger urgent CT brain. Anisocoria and bradycardia (Cushing reflex) indicate raised ICP and impending herniation.",
+      "ASV (polyvalent) remains the definitive treatment: Indian national protocol recommends 10 vials (100 mL) of polyvalent ASV by slow IV infusion, repeated every 6 hours if 20WBCT remains incoagulable. Coagulopathy correction is essential BEFORE any neurosurgical intervention. Fresh frozen plasma and cryoprecipitate are adjuncts but NOT substitutes for ASV. Platelets alone will be consumed rapidly without ASV.",
+      "Tourniquets are harmful in viperine bites \u2014 they do NOT prevent systemic absorption of large hemotoxic venom molecules, worsen local tissue necrosis, and can cause compartment syndrome and limb ischemia. The WHO and Indian National Snakebite Protocol explicitly advise against tourniquets. Community education targeting tea garden workers and traditional healers is a critical public health intervention in Assam and Northeast India."
+    ],
+    "atypical_features": "This case is challenging because: (1) The patient initially appeared deceptively well ('walk and talk' phase) after a hemotoxic bite, leading to delayed hospital presentation \u2014 a common and lethal pattern in rural India; (2) The dominant presentation is neurological (hemorrhagic stroke) rather than the typical bleeding from mucosal sites, making it easy to miss the underlying coagulopathy if snake bite history is not elicited or taken seriously; (3) The Cushing reflex (hypertension + bradycardia) from raised ICP can mislead clinicians into treating a primary hypertensive emergency; (4) Co-existing compartment syndrome from the prolonged tourniquet creates a surgical dilemma \u2014 fasciotomy is urgently needed but cannot be safely performed until coagulopathy is corrected; (5) Multiple simultaneous life-threatening emergencies (ICH with herniation, DIC, AKI, compartment syndrome) require prioritized parallel management in a resource-limited district hospital setting; (6) The green pit viper envenomation pattern in Northeast India is less familiar to students than Russell's viper or cobra bites from peninsular India.",
+    "specialty": "emergency",
+    "difficulty": "advanced",
+    "id": "abf8f28a"
+  },
+  "timestamp": "2026-02-15T08:50:10.349762"
+}

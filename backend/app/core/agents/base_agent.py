@@ -78,11 +78,10 @@ class BaseAgent(ABC):
         try:
             response = self.client.messages.create(
                 model="claude-opus-4-6",
-                max_tokens=16000,
-                temperature=1,  # required for extended thinking
+                max_tokens=4000,
+                temperature=1,  # Required to be 1 for adaptive thinking
                 thinking={
-                    "type": "enabled",
-                    "budget_tokens": 10000,
+                    "type": "adaptive",  # Use adaptive thinking for better performance
                 },
                 system=system,
                 messages=messages,

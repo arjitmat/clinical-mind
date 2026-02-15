@@ -1,0 +1,52 @@
+{
+  "case_id": "0ee40bc3",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Female",
+      "location": "Bhopal, Madhya Pradesh"
+    },
+    "chief_complaint": "Persistent watery diarrhea, weight loss, and recurrent oral ulcers for 4 months",
+    "initial_presentation": "A 34-year-old schoolteacher from Bhopal presents with chronic watery diarrhea (6-8 episodes/day), unintentional weight loss of 8 kg over 4 months, and painful recurrent oral ulcers. She was initially treated for irritable bowel syndrome and tropical sprue at a local clinic without improvement. She now reports intermittent low-grade fever and increasing fatigue.",
+    "vital_signs": {
+      "bp": "100/64",
+      "hr": 98,
+      "rr": 18,
+      "temp": 37.8,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Chronic watery diarrhea for 4 months, 6-8 episodes/day, non-bloody, large volume, occasionally nocturnal (wakes her from sleep). Unintentional weight loss of 8 kg (from 58 kg to 50 kg). Recurrent painful oral aphthous ulcers - 3 episodes in 4 months. Intermittent low-grade fever (evening rise). Progressive fatigue and generalized weakness. Diffuse intermittent abdominal pain, predominantly right lower quadrant, non-colicky. No frank blood in stools but occasional mucus. Decreased appetite. Joint pain involving both knees and ankles for 2 months (migratory, non-deforming). Treated with metronidazole, albendazole, doxycycline + folic acid (empirical tropical sprue regimen) for 6 weeks - no improvement. No history of tuberculosis or contact. No travel outside MP. Vegetarian diet. No NSAID use. No family history of IBD or autoimmune disease. Menstrual cycles regular but flow has reduced. No perianal symptoms (no fistula, abscess, or skin tags reported). Non-smoker. No alcohol use."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Thin, pale, tired-appearing woman. BMI 18.2 (underweight). Multiple aphthous ulcers on buccal mucosa and lower lip (3 ulcers, 5-8 mm, with erythematous halo). Pallor present. No icterus. No lymphadenopathy. Mild angular cheilitis. Glossitis. Abdomen: Soft, mild tenderness in right iliac fossa, no guarding or rigidity. A vague fullness/mass palpable in right iliac fossa (non-tender, ill-defined). No hepatosplenomegaly. No ascites. Bowel sounds present, slightly hyperactive. Perianal examination: A small non-tender skin tag noted at 6 o'clock position (patient was unaware of it). No fissure, fistula, or abscess. PR: Stool on glove is soft, no gross blood, occult blood test positive. Joints: Mild swelling of right ankle, no erythema or warmth. Skin: No erythema nodosum or pyoderma gangrenosum. Eyes: No episcleritis or uveitis on gross examination."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hb 8.5 g/dL, MCV 74 fL (microcytic), WBC 12,400, Platelets 4,80,000 (reactive thrombocytosis). ESR: 68 mm/hr. CRP: 45 mg/L (elevated). Iron studies: Ferritin 8 ng/mL (low), serum iron low, TIBC elevated. Vitamin B12: 180 pg/mL (low-normal, suggesting ileal involvement). Folate: Normal. Albumin: 2.6 g/dL. LFT: Otherwise normal. Renal function: Normal. Stool examination: No ova, cysts, or parasites. Stool culture: No Salmonella, Shigella, or Campylobacter. Stool for C. difficile toxin: Negative. Fecal calprotectin: 620 \u00b5g/g (markedly elevated, normal <50 - indicates intestinal inflammation). Anti-Saccharomyces cerevisiae antibodies (ASCA): Positive. pANCA: Negative. Mantoux test: 8 mm (equivocal in endemic area). QuantiFERON-TB Gold: Negative. Ileocolonoscopy: Terminal ileum shows patchy erythema, aphthous ulcers, cobblestoning appearance, and skip lesions. A segment of narrowing (stricture) noted in terminal ileum - scope could not be negotiated beyond. Cecum and ascending colon show patchy aphthous ulcers with intervening normal mucosa (skip lesions). Rectum and sigmoid: Normal (rectal sparing). Biopsies from terminal ileum and cecum: Non-caseating granulomas with multinucleated giant cells, focal cryptitis, preserved goblet cells. No caseating necrosis. No AFB on Ziehl-Neelsen stain. GeneXpert on biopsy tissue: MTB not detected. CT enterography: Mural thickening of terminal ileum (wall thickness 8 mm) with 'comb sign' (mesenteric vascular engorgement), creeping fat, and a short-segment stricture in distal ileum. No abscess or free perforation. Mesenteric lymph nodes enlarged (reactive, largest 1.5 cm, non-necrotic). No proximal small bowel involvement."
+      }
+    ],
+    "diagnosis": "Crohn's disease involving the terminal ileum and cecum (ileocecal Crohn's) with stricturing behavior (Montreal classification: A2, L1+L3, B2), complicated by iron deficiency anemia, malnutrition, and extraintestinal manifestations (oral aphthous ulcers, peripheral arthropathy)",
+    "differentials": [
+      "Intestinal tuberculosis",
+      "Tropical sprue",
+      "Celiac disease with refractory features",
+      "Ileocecal lymphoma",
+      "Beh\u00e7et's disease"
+    ],
+    "learning_points": [
+      "Differentiating Crohn's disease from intestinal TB is the most critical diagnostic challenge in India. Key features favoring Crohn's: skip lesions, cobblestoning, non-caseating granulomas, negative AFB/GeneXpert, longitudinal ulcers, and rectal sparing. TB favors transverse ulcers, caseating granulomas, AFB positivity, and positive QuantiFERON/Mantoux.",
+      "Fecal calprotectin is an excellent non-invasive biomarker to differentiate inflammatory bowel disease (IBD) from functional bowel disorders like IBS. Values >250 \u00b5g/g strongly suggest mucosal inflammation and warrant colonoscopy.",
+      "Extraintestinal manifestations of Crohn's disease (aphthous ulcers, peripheral arthropathy, erythema nodosum, uveitis) may precede or accompany intestinal symptoms and provide important diagnostic clues. Peripheral arthropathy correlates with disease activity.",
+      "The Indian Society of Gastroenterology (ISG) recommends that when intestinal TB cannot be excluded, a therapeutic trial of anti-tubercular therapy (ATT) for 8-12 weeks should be considered before starting immunosuppression for presumed Crohn's. If no response to ATT, Crohn's disease is confirmed and treatment with steroids for induction followed by azathioprine/biologics for maintenance is initiated."
+    ],
+    "atypical_features": "This case is challenging because: (1) In India, ileocecal Crohn's disease closely mimics intestinal tuberculosis - the most important differential in the Indian context. The equivocal Mantoux (common in TB-endemic areas) adds to diagnostic confusion. (2) The patient had been empirically treated for tropical sprue without improvement, representing a common misdiagnosis pathway. (3) Nocturnal diarrhea (an organic red flag) distinguishes this from IBS but can also be seen in TB. (4) The perianal skin tag - a subtle finding the patient was unaware of - is an important Crohn's-specific clue that may be missed on cursory examination. (5) The negative QuantiFERON-TB Gold and absence of caseating granulomas/AFB on biopsy, along with positive ASCA and negative pANCA, help tilt the diagnosis toward Crohn's over TB.",
+    "specialty": "gastro",
+    "difficulty": "intermediate",
+    "id": "0ee40bc3"
+  },
+  "timestamp": "2026-02-15T08:50:52.680775"
+}

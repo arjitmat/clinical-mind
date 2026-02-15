@@ -1,0 +1,52 @@
+{
+  "case_id": "a785d463",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Female",
+      "location": "Bhopal, Madhya Pradesh"
+    },
+    "chief_complaint": "Progressive yellowish discoloration of eyes and skin with intermittent right upper abdominal pain for 6 weeks",
+    "initial_presentation": "A 34-year-old homemaker from Bhopal presents with progressive jaundice for 6 weeks, intermittent dull aching pain in the right upper abdomen, and clay-colored stools for 3 weeks. She reports generalized itching that is worse at night and has lost approximately 4 kg over the past 2 months. She denies fever, hematemesis, or melena.",
+    "vital_signs": {
+      "bp": "118/74",
+      "hr": 82,
+      "rr": 18,
+      "temp": 37.1,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Progressive painless jaundice for 6 weeks, initially noticed by husband as yellowing of eyes. Intermittent dull right upper quadrant pain, non-colicky, not related to meals. Clay-colored (acholic) stools for 3 weeks. Dark tea-colored urine for 4 weeks. Generalized pruritus, worse at night, with excoriation marks from scratching. Unintentional weight loss of 4 kg over 2 months. Decreased appetite. No fever, no rigors, no hematemesis or melena. No history of gallstone disease previously. No prior abdominal surgery. No alcohol consumption. No oral contraceptive use. No herbal/ayurvedic medication use. No history of blood transfusion. No family history of malignancy or inflammatory bowel disease. Diagnosed with ulcerative colitis (left-sided) 5 years ago, currently on mesalamine 2.4 g/day, in clinical remission for 2 years. No history of hepatitis B/C. Last colonoscopy 1 year ago showed mucosal healing. No recent travel to endemic areas."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Icteric sclera and skin (deep yellow). Multiple excoriation marks on arms and trunk from scratching. No spider naevi, no palmar erythema, no gynecomastia. No peripheral lymphadenopathy. Abdomen: Soft, non-distended. Mild tenderness in right hypochondrium. Liver palpable 3 cm below right costal margin, firm, smooth surface, non-tender edge. Gallbladder NOT palpable (Courvoisier's law consideration). Murphy's sign negative. No splenomegaly. No ascites. No abdominal mass. PR examination: Normal, stool clay-colored. No pedal edema. Skin: Xanthomata on eyelids (early xanthelasma). Hyperpigmentation over shin and knuckles."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hb 11.2 g/dL, WBC 7,800, Platelets 2,85,000. LFT: Total bilirubin 12.4 mg/dL (direct 9.8 mg/dL), AST 128 U/L, ALT 105 U/L, ALP 680 U/L (markedly elevated, normal <130), GGT 520 U/L (markedly elevated). Albumin 3.4 g/dL. INR: 1.3 (mildly prolonged, corrects with vitamin K \u2014 suggests cholestasis, not hepatocellular failure). Renal function: Normal. Hepatitis B surface antigen: Negative. Anti-HCV: Negative. ANA: Negative. Anti-smooth muscle antibody (ASMA): Negative. IgG levels: Normal. Serum IgG4: 45 mg/dL (normal, rules out IgG4-related cholangiopathy). Anti-mitochondrial antibody (AMA): Negative. p-ANCA (perinuclear): Positive. USG abdomen: Intrahepatic biliary radical dilatation (IHBRD) \u2014 both lobes, beaded appearance. Common bile duct (CBD) normal caliber (6 mm). No CBD calculi. No gallbladder stones. Hepatomegaly with coarsened echotexture. No ascites. MRCP (Magnetic Resonance Cholangiopancreatography): Multifocal strictures and dilatations of intrahepatic bile ducts giving classic 'beaded' appearance. Short annular strictures alternating with normal or mildly dilated segments. Mild irregularity of common hepatic duct. CBD relatively spared. No dominant stricture. No mass lesion. Gallbladder normal. Pancreatic duct normal. CA 19-9: 55 U/mL (mildly elevated, non-specific \u2014 can be raised in cholestasis without malignancy). Fibroscan/Transient elastography: 11.2 kPa (suggestive of significant fibrosis, F2-F3)."
+      }
+    ],
+    "diagnosis": "Primary Sclerosing Cholangitis (PSC) associated with ulcerative colitis",
+    "differentials": [
+      "Primary sclerosing cholangitis",
+      "IgG4-related sclerosing cholangitis",
+      "Secondary sclerosing cholangitis (choledocholithiasis/recurrent cholangitis)",
+      "Cholangiocarcinoma (Klatskin tumor)",
+      "Primary biliary cholangitis"
+    ],
+    "learning_points": [
+      "Primary sclerosing cholangitis (PSC) is strongly associated with inflammatory bowel disease (IBD), particularly ulcerative colitis \u2014 up to 70-80% of PSC patients have UC, and 5-10% of UC patients develop PSC. PSC can present even when UC is in clinical remission.",
+      "MRCP is the gold standard non-invasive investigation for PSC showing classic 'beaded appearance' (multifocal strictures alternating with dilatation) of intrahepatic and/or extrahepatic bile ducts. ERCP is reserved for therapeutic intervention (dominant stricture dilation/stenting).",
+      "AMA-negative cholestasis with elevated ALP/GGT and p-ANCA positivity in a patient with UC is strongly suggestive of PSC. AMA positivity would instead suggest primary biliary cholangitis (PBC). IgG4 levels help exclude IgG4-related cholangiopathy which is a steroid-responsive mimic.",
+      "PSC patients require annual surveillance colonoscopy (increased risk of colorectal carcinoma even in quiescent UC) and monitoring for cholangiocarcinoma (lifetime risk 10-15%). CA 19-9 can be mildly elevated due to cholestasis alone and is not diagnostic of malignancy. Ursodeoxycholic acid (UDCA) may improve liver biochemistry but has no proven survival benefit. Liver transplantation is the only definitive treatment for end-stage PSC."
+    ],
+    "atypical_features": "This case is challenging because: (1) The patient is a young female \u2014 PSC classically has a male predominance (2:1), making the diagnosis less immediately obvious. (2) The UC has been in clinical remission for 2 years, so the association with PSC may not be readily considered. (3) Gallbladder is non-palpable despite obstructive jaundice, which might mislead students into ruling out extrahepatic obstruction per Courvoisier's law \u2014 but PSC causes intrahepatic cholestasis. (4) AMA is negative, which is expected in PSC but may confuse students who conflate PSC with PBC. (5) Mildly elevated CA 19-9 may raise concern for cholangiocarcinoma but is a non-specific finding in cholestasis.",
+    "specialty": "gastro",
+    "difficulty": "intermediate",
+    "id": "a785d463"
+  },
+  "timestamp": "2026-02-15T09:02:18.012063"
+}

@@ -5,6 +5,7 @@ interface InputProps {
   value: string;
   onChange: (value: string) => void;
   onKeyPress?: (e: React.KeyboardEvent) => void;
+  onKeyDown?: (e: React.KeyboardEvent) => void;
   label?: string;
   className?: string;
   multiline?: boolean;
@@ -16,6 +17,7 @@ export const Input: React.FC<InputProps> = ({
   value,
   onChange,
   onKeyPress,
+  onKeyDown,
   label,
   className = '',
   multiline = false,
@@ -36,6 +38,7 @@ export const Input: React.FC<InputProps> = ({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onKeyPress={onKeyPress}
+          onKeyDown={onKeyDown}
           rows={rows}
           className={`${baseStyles} resize-none`}
         />
@@ -46,6 +49,7 @@ export const Input: React.FC<InputProps> = ({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onKeyPress={onKeyPress}
+          onKeyDown={onKeyDown}
           className={baseStyles}
         />
       )}

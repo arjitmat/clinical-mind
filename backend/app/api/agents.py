@@ -5,10 +5,9 @@ from pydantic import BaseModel
 from typing import Optional
 
 from app.core.agents.orchestrator import orchestrator
-from app.core.rag.generator import CaseGenerator
+from app.core.rag.shared import case_generator
 
 router = APIRouter()
-case_generator = CaseGenerator()
 
 
 # --- Request Models ---

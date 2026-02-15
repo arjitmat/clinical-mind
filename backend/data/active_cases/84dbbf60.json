@@ -1,0 +1,52 @@
+{
+  "case_id": "84dbbf60",
+  "case_data": {
+    "patient": {
+      "age": 22,
+      "gender": "Male",
+      "location": "Varanasi, Uttar Pradesh"
+    },
+    "chief_complaint": "High-grade fever with chills and body aches for 5 days",
+    "initial_presentation": "A 22-year-old college student from Varanasi presents to the medicine OPD with high-grade intermittent fever associated with chills, rigors, and generalized body aches for 5 days. He also complains of headache and nausea. He took paracetamol from a local pharmacy with only temporary relief.",
+    "vital_signs": {
+      "bp": "110/70",
+      "hr": 102,
+      "rr": 20,
+      "temp": 39.4,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Fever is high-grade (39-40\u00b0C), intermittent in pattern, occurring every alternate day with severe shaking chills followed by profuse sweating. He has generalized body aches, headache, nausea, and 2 episodes of non-bilious vomiting. No cough, sore throat, rash, burning micturition, or diarrhea. No altered sensorium or seizures. He went on an educational trip to Chhattisgarh (Bastar district, a forested malaria-endemic region) 2 weeks ago where he stayed for 5 days in a rural camp without bed nets or mosquito repellent. No significant past medical history. No known drug allergies. No recent antibiotic use. No family members are ill."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Patient is febrile, appears fatigued but alert and oriented (GCS 15/15). Mild pallor present. No icterus, cyanosis, clubbing, or lymphadenopathy. No rash or eschar. Abdomen: Soft, spleen palpable 3 cm below the left costal margin (mildly enlarged), non-tender. Liver palpable 2 cm below the right costal margin. No ascites. Chest: Bilateral clear breath sounds. Cardiovascular: Tachycardic, no murmurs. Neurological: No neck stiffness, no focal deficits, bilateral plantar flexors."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hb 11.8 g/dL, WBC 5,200/cumm (normal differential), Platelets 92,000/cumm (mild thrombocytopenia). Peripheral blood smear: Ring-form trophozoites of Plasmodium vivax identified within enlarged red blood cells with Sch\u00fcffner's stippling; parasitemia approximately 1.5%. Rapid Diagnostic Test (RDT): Pv-specific (pLDH) positive, Pf-specific (HRP2) negative. Blood glucose: 96 mg/dL. Serum creatinine: 0.9 mg/dL. Total bilirubin: 1.6 mg/dL (mildly elevated, predominantly indirect). AST: 52 U/L, ALT: 48 U/L (mildly elevated). Dengue NS1 antigen: Negative. Dengue IgM: Negative. Widal test: Non-significant titers (TO 1:80, TH 1:80). Urine routine: Normal."
+      }
+    ],
+    "diagnosis": "Plasmodium vivax malaria (uncomplicated)",
+    "differentials": [
+      "Plasmodium vivax malaria",
+      "Dengue fever",
+      "Enteric (typhoid) fever",
+      "Scrub typhus",
+      "Viral fever (influenza or other)"
+    ],
+    "learning_points": [
+      "P. vivax malaria classically presents with alternate-day (tertian) fever with chills, rigors, and sweating; travel history to an endemic area is a critical diagnostic clue",
+      "Peripheral smear remains the gold standard for malaria diagnosis \u2014 P. vivax shows enlarged RBCs with Sch\u00fcffner's stippling and ring trophozoites, while RDTs (bivalent) help in rapid field-level diagnosis",
+      "Uncomplicated P. vivax malaria is treated with chloroquine (25 mg/kg over 3 days) PLUS primaquine (0.25 mg/kg daily for 14 days) for radical cure to eliminate hepatic hypnozoites and prevent relapse \u2014 G6PD testing should be done before prescribing primaquine",
+      "As per India's NVBDCP (now NCVBDC) guidelines, ACT is reserved for P. falciparum; chloroquine remains effective for P. vivax in most parts of India"
+    ],
+    "atypical_features": "This is a straightforward beginner case with classic features of uncomplicated vivax malaria. The main clinical reasoning challenge lies in eliciting a relevant travel history to a malaria-endemic forested region, correlating the tertian fever pattern with the diagnosis, and distinguishing it from other common causes of acute undifferentiated fever in India such as dengue and typhoid.",
+    "specialty": "infectious",
+    "difficulty": "beginner",
+    "id": "84dbbf60"
+  },
+  "timestamp": "2026-02-15T08:55:48.439689"
+}

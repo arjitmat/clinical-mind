@@ -1,0 +1,52 @@
+{
+  "case_id": "f6ee8ae8",
+  "case_data": {
+    "patient": {
+      "age": 28,
+      "gender": "Female",
+      "location": "Bhopal, Madhya Pradesh"
+    },
+    "chief_complaint": "Recurrent episodes of palpitations and breathlessness for 3 months",
+    "initial_presentation": "A 28-year-old married woman, a school teacher from Bhopal, presents to the cardiology OPD with recurrent episodes of rapid palpitations lasting 20-40 minutes associated with breathlessness and lightheadedness for the past 3 months. She reports that the most recent episode occurred yesterday while climbing stairs at school and was more prolonged than previous episodes, lasting nearly an hour before spontaneously terminating. She denies any chest pain or syncope.",
+    "vital_signs": {
+      "bp": "118/74",
+      "hr": 82,
+      "rr": 18,
+      "temp": 36.7,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Patient reports 5-6 episodes of sudden-onset rapid palpitations over the past 3 months. Episodes are paroxysmal with abrupt onset and offset, lasting 20-60 minutes. Associated with breathlessness (dyspnea on exertion during episodes), lightheadedness, and mild neck pulsations ('frog sign'). No chest pain, no syncope, no presyncope. She discovered that bearing down (straining) once terminated an episode early. No preceding triggers identified consistently; some episodes occurred at rest. She had one similar episode 2 years ago during her pregnancy (28 weeks) which was managed at a local hospital with an injection (likely adenosine) and never recurred until 3 months ago. She was told she had a 'fast heart rhythm' at that time but no further workup was done. No history of rheumatic fever, thyroid disease, or congenital heart disease. No family history of sudden cardiac death or arrhythmias. No caffeine excess, no tobacco or alcohol use. Currently not on any medications. No oral contraceptive use. BMI 23."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "General: Alert, comfortable, no pallor, no thyromegaly. JVP: Normal (no cannon 'a' waves at present as patient is in sinus rhythm). CVS: Apex beat in 5th ICS, MCL, normal in character. S1 normal, S2 normally split, no murmurs, no added sounds. A mid-systolic click is heard at the apex in the left lateral decubitus position, with a late systolic murmur on Valsalva maneuver. Lungs: Clear bilaterally. Abdomen: Soft, non-tender, no organomegaly. Peripheral pulses: Normal and equal in all limbs. No pedal edema. CNS: No focal deficits."
+      },
+      {
+        "stage": "labs",
+        "info": "Baseline ECG (in sinus rhythm): Heart rate 80 bpm, PR interval 110 ms (short), no delta wave visible, QRS duration 90 ms, QTc 410 ms, no ST-T changes. However, closer inspection reveals subtle slurring of the QRS upstroke in leads V1-V2. TSH: 3.2 mIU/L (normal). CBC: Hb 12.8 g/dL, TLC 7,200, Platelets 2.4 lakh. Electrolytes: Na+ 140, K+ 4.2, Ca2+ 9.4 mg/dL. Echo: Mild mitral valve prolapse (posterior leaflet, 3 mm displacement) with trivial MR, normal LV size and function (LVEF 62%), no structural abnormalities, normal LA size. Holter (24-hour): Sinus rhythm throughout, 2 brief runs of narrow complex tachycardia at 190 bpm lasting 8-12 beats each, no wide complex tachycardia. Electrophysiology study (performed after cardiology referral): Inducible orthodromic AVRT with a concealed left lateral accessory pathway. Shortest pre-excited RR interval during induced atrial fibrillation >250 ms."
+      }
+    ],
+    "diagnosis": "Paroxysmal supraventricular tachycardia (orthodromic AVRT) due to a concealed left lateral accessory pathway (Wolff-Parkinson-White spectrum) with incidental mitral valve prolapse",
+    "differentials": [
+      "AVNRT (AV nodal re-entrant tachycardia)",
+      "AVRT due to accessory pathway (WPW syndrome)",
+      "Atrial tachycardia",
+      "Inappropriate sinus tachycardia",
+      "Anxiety/panic disorder with palpitations"
+    ],
+    "learning_points": [
+      "A short PR interval without a clear delta wave may indicate a concealed or minimally pre-exciting accessory pathway; an EP study is the gold standard for definitive diagnosis and pathway localization",
+      "Orthodromic AVRT produces narrow complex tachycardia (anterograde conduction via AV node, retrograde via accessory pathway) and can mimic AVNRT on surface ECG \u2014 pseudo r' in V1 and retrograde P waves help differentiate",
+      "Vagal maneuvers (Valsalva, carotid sinus massage) and IV adenosine (6-12 mg rapid bolus) are first-line for acute termination of hemodynamically stable SVT; adenosine response also aids diagnosis",
+      "Radiofrequency catheter ablation is the definitive curative treatment for accessory pathway-mediated tachycardias with success rates >95% and is preferred in symptomatic young patients over long-term antiarrhythmic drugs"
+    ],
+    "atypical_features": "The borderline short PR interval without a definite delta wave makes WPW/accessory pathway easy to miss on the resting ECG, pointing toward a concealed pathway rather than classic manifest pre-excitation. The coexistence of mitral valve prolapse (which itself can cause palpitations and arrhythmias) may mislead the student into attributing symptoms to MVP alone. The initial presentation during pregnancy 2 years ago adds complexity, as pregnancy can unmask latent arrhythmias due to hemodynamic changes. The mid-systolic click on exam is a realistic red herring that tests the student's ability to prioritize the arrhythmic diagnosis.",
+    "specialty": "cardiology",
+    "difficulty": "intermediate",
+    "id": "f6ee8ae8"
+  },
+  "timestamp": "2026-02-15T08:59:24.377420"
+}

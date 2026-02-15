@@ -1,0 +1,52 @@
+{
+  "case_id": "d7dffe2b",
+  "case_data": {
+    "patient": {
+      "age": 42,
+      "gender": "Male",
+      "location": "Lucknow, Uttar Pradesh"
+    },
+    "chief_complaint": "Recurrent kidney stones, bone pain, and generalized fatigue for 8 months",
+    "initial_presentation": "A 42-year-old government school teacher from Lucknow presents with recurrent bilateral renal calculi (3 episodes in 8 months), diffuse bone pains predominantly in the lower limbs and back, and progressive fatigue. He was referred from the urology department after his second lithotripsy when serum calcium was incidentally found to be elevated at 13.2 mg/dL.",
+    "vital_signs": {
+      "bp": "148/92",
+      "hr": 78,
+      "rr": 16,
+      "temp": 37.0,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Patient reports progressive bone pain for 8 months, initially in knees and lower back, now generalized. Has had 3 episodes of renal colic \u2014 bilateral, calcium oxalate stones on previous analysis. Reports increased thirst and polyuria for 4-5 months (drinking ~4-5 liters/day). Constipation worsening over 3 months (passes stool once in 3-4 days). Appetite decreased with 6 kg unintentional weight loss. Occasional nausea but no vomiting. Complains of difficulty concentrating and low mood \u2014 wife notes personality changes (irritability, forgetfulness). No history of peptic ulcer disease. No neck swelling noticed. No history of lithium use, thiazide diuretics, or calcium/vitamin D supplementation. No prior neck radiation. No family history of kidney stones, endocrine tumors, or hypercalcemia. No symptoms suggestive of MEN syndromes (no headaches, visual changes, skin lesions, diarrhea). Non-smoker, occasional alcohol."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Appears fatigued, mildly dehydrated. BMI 22.5. No neck swelling or palpable thyroid nodule. No palpable cervical lymphadenopathy. Cardiovascular: Short QT interval noted on bedside ECG rhythm strip. Abdomen: Mild bilateral renal angle tenderness, no organomegaly. Musculoskeletal: Diffuse bony tenderness on palpation of tibiae, wrists, and lumbar spine. Proximal muscle weakness (grade 4/5 in hip flexors and shoulder abductors) \u2014 struggles to get up from squatting position without hand support (positive Gower-like sign). No band keratopathy on slit lamp examination. Neuropsychiatric: Mildly depressed affect, slow mentation. No focal neurological deficits. Skin: No subcutaneous nodules, no caf\u00e9-au-lait spots."
+      },
+      {
+        "stage": "labs",
+        "info": "Serum calcium (total): 13.2 mg/dL (normal 8.5-10.5), repeated: 13.4 mg/dL. Ionized calcium: 1.72 mmol/L (elevated, normal 1.12-1.32). Serum albumin: 3.8 g/dL (corrected calcium still elevated). Serum phosphorus: 1.8 mg/dL (LOW, normal 2.5-4.5). Intact PTH: 285 pg/mL (markedly elevated, normal 15-65 \u2014 INAPPROPRIATELY elevated for the hypercalcemia). Alkaline phosphatase: 520 U/L (markedly elevated, normal 44-147). 24-hour urine calcium: 480 mg/day (elevated, >250 = hypercalciuria, rules out FHH). Calcium-creatinine clearance ratio: 0.025 (>0.02, consistent with primary hyperparathyroidism, NOT FHH). Serum 25(OH) vitamin D: 12 ng/mL (deficient \u2014 common confounder in India, may be masking even higher calcium). Serum creatinine: 1.4 mg/dL (mildly elevated). eGFR: 58 mL/min (Stage 3a CKD). Serum magnesium: Normal. HbA1c: 5.6%. CBC: Hb 11.2 (mild normocytic anemia). X-ray hands: Subperiosteal bone resorption along radial aspect of middle phalanges. X-ray skull: 'Salt and pepper' skull appearance. DEXA scan: Osteoporosis at distal 1/3 radius (T-score -3.1), lumbar spine T-score -2.0. Ultrasound neck: 1.8 cm hypoechoic nodule posterior to the right inferior thyroid lobe, suggestive of parathyroid adenoma. Tc-99m Sestamibi scan: Single focus of increased uptake corresponding to right inferior parathyroid gland with delayed washout \u2014 concordant with ultrasound. CT abdomen (KUB): Bilateral nephrocalcinosis with a 9 mm calculus in right lower pole calyx."
+      }
+    ],
+    "diagnosis": "Primary hyperparathyroidism due to a right inferior parathyroid adenoma with osteitis fibrosa cystica, recurrent nephrolithiasis, nephrocalcinosis, and concurrent vitamin D deficiency",
+    "differentials": [
+      "Primary hyperparathyroidism (parathyroid adenoma \u2014 most likely)",
+      "Familial hypocalciuric hypercalcemia (FHH)",
+      "Malignancy-associated hypercalcemia (PTHrP-mediated or osteolytic)",
+      "Vitamin D toxicity / granulomatous disease (sarcoidosis, tuberculosis)",
+      "Multiple endocrine neoplasia type 1 (MEN1) \u2014 hyperparathyroidism component"
+    ],
+    "learning_points": [
+      "Primary hyperparathyroidism classically presents with 'stones (nephrolithiasis), bones (osteitis fibrosa cystica), groans (abdominal symptoms like constipation, peptic ulcer), and psychic moans (depression, cognitive changes)' \u2014 this full-blown presentation, though classic in textbooks, is now less common in the West but still frequently encountered in India due to late presentation.",
+      "The hallmark biochemical signature is hypercalcemia + hypophosphatemia + INAPPROPRIATELY elevated PTH. A suppressed PTH in hypercalcemia points to non-PTH-mediated causes (malignancy, vitamin D excess, granulomatous disease).",
+      "Calcium-creatinine clearance ratio (CCCR) >0.02 differentiates primary hyperparathyroidism from familial hypocalciuric hypercalcemia (CCCR <0.01 in FHH) \u2014 this distinction is critical as FHH does NOT require surgery.",
+      "Concurrent vitamin D deficiency (extremely prevalent in India) in primary hyperparathyroidism can mask the severity of hypercalcemia and worsen bone disease. Vitamin D should be cautiously repleted pre-operatively while monitoring calcium closely, as correction may transiently worsen hypercalcemia. Surgical indications include symptomatic disease, calcium >1 mg/dL above normal, T-score < -2.5, eGFR <60, nephrolithiasis/nephrocalcinosis, or age <50."
+    ],
+    "atypical_features": "This case is challenging because: (1) The patient presents with the full-blown 'classical' syndrome (stones, bones, groans, moans) which is now relatively uncommon even in India, requiring the student to synthesize multi-system involvement into a single unifying diagnosis; (2) Concurrent vitamin D deficiency \u2014 extremely common in Indian patients \u2014 complicates interpretation, as it can worsen skeletal manifestations (elevated ALP, severe bone disease) while paradoxically keeping serum calcium from rising to its 'true' level, and its correction must be carefully managed peri-operatively; (3) The mild CKD (Stage 3a) raises the question of secondary/tertiary hyperparathyroidism, but the markedly elevated calcium and imaging-concordant parathyroid adenoma confirm primary disease; (4) The presentation mimics malignancy-related hypercalcemia given the weight loss, fatigue, and markedly elevated calcium, requiring careful biochemical differentiation.",
+    "specialty": "endocrinology",
+    "difficulty": "intermediate",
+    "id": "d7dffe2b"
+  },
+  "timestamp": "2026-02-14T16:25:51.033119"
+}

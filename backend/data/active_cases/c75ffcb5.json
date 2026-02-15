@@ -1,0 +1,52 @@
+{
+  "case_id": "c75ffcb5",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Female",
+      "location": "Bhopal, Madhya Pradesh"
+    },
+    "chief_complaint": "Recurrent episodes of painless bloody diarrhea with weight loss for 3 months",
+    "initial_presentation": "A 34-year-old schoolteacher from Bhopal presents with bloody diarrhea (6-10 episodes/day) with mucus for 3 months, progressive weight loss of 8 kg, and intermittent low-grade fever. She also reports painful red swellings on both shins for the past 2 weeks and a painful right eye with redness for 5 days.",
+    "vital_signs": {
+      "bp": "104/68",
+      "hr": 102,
+      "rr": 20,
+      "temp": 37.8,
+      "spo2": 97
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Bloody diarrhea started insidiously 3 months ago with 3-4 stools/day, now progressed to 6-10 stools/day with frank blood and mucus. Stools are small volume with urgency and tenesmus, often waking her at night (nocturnal diarrhea). No formed stools for 6 weeks. Progressive weight loss of 8 kg (from 58 kg to 50 kg). Intermittent low-grade fever (evening rise). Painful, tender, raised red nodules on both shins for 2 weeks (suggestive of erythema nodosum). Right eye redness with pain and photophobia for 5 days (suggestive of anterior uveitis). Mild bilateral knee joint pain without swelling. Appetite significantly reduced. No history of recent travel, no antibiotic use, no NSAID use. No family history of IBD. No history of tuberculosis or contact. Was treated empirically with metronidazole and ciprofloxacin by a local practitioner for 'amoebiasis' with no improvement. Stool examination at a local lab reportedly showed no ova/cysts/parasites. Non-smoker, non-alcoholic, vegetarian."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Thin, pale, dehydrated woman. BMI 19.2. Pallor present. No icterus. No lymphadenopathy. Oral examination: Two aphthous ulcers on buccal mucosa. Eyes: Right eye - circumcorneal congestion, miotic pupil, photophobia (anterior uveitis). Skin: Bilateral pretibial tender, erythematous, raised nodules (3-4 on each shin) consistent with erythema nodosum. Abdomen: Mildly distended, diffuse tenderness more in the left lower quadrant and suprapubic region. No guarding or rigidity. No palpable mass. No hepatosplenomegaly. Bowel sounds present, hyperactive. Per rectal examination: Tender, blood and mucus on glove. No perianal fissures, fistulae, or skin tags. No rectal mass palpable. Musculoskeletal: Mild tenderness of bilateral knee joints without effusion."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hb 8.2 g/dL, MCV 72 fL (microcytic), WBC 13,500, Platelets 5,20,000 (reactive thrombocytosis), ESR 68 mm/hr. CRP: 85 mg/L (markedly elevated). Iron studies: Serum ferritin 8 ng/mL, serum iron low, TIBC elevated (iron deficiency anemia). Albumin: 2.6 g/dL. LFT: Otherwise normal. Renal function: Normal. Stool routine: RBCs +++, WBCs +++, no ova/cysts/parasites. Stool culture: No Salmonella, Shigella, or Campylobacter. Stool for C. difficile toxin: Negative. Stool for amoebic antigen (E. histolytica): Negative. Fecal calprotectin: 850 \u00b5g/g (markedly elevated, normal <50). Sigmoidoscopy: Diffuse, continuous mucosal inflammation starting from the rectum extending up to the splenic flexure \u2014 erythematous, edematous, friable mucosa with loss of vascular pattern, contact bleeding, superficial ulcerations, and pseudopolyps. No skip lesions. Terminal ileum (on limited ileoscopy): Normal. Biopsy: Chronic active colitis with crypt architectural distortion, crypt abscesses, goblet cell depletion, and basal plasmacytosis. No granulomas identified. No features of dysplasia. Negative for CMV inclusion bodies on immunohistochemistry. TB PCR on biopsy: Negative. Mantoux test: 8 mm (non-significant). Chest X-ray: Normal. Ophthalmology review: Confirmed non-granulomatous anterior uveitis of the right eye. pANCA: Positive. ASCA: Negative."
+      }
+    ],
+    "diagnosis": "Ulcerative colitis (left-sided colitis \u2014 E2 Montreal classification) with extraintestinal manifestations (erythema nodosum, anterior uveitis, aphthous ulcers, arthralgia), moderate-to-severe disease activity",
+    "differentials": [
+      "Ulcerative colitis",
+      "Crohn's disease (colonic involvement)",
+      "Intestinal tuberculosis",
+      "Amoebic colitis",
+      "Infective colitis (Shigella/Campylobacter)"
+    ],
+    "learning_points": [
+      "Ulcerative colitis characteristically shows continuous, diffuse mucosal inflammation starting from the rectum and extending proximally without skip lesions; histology shows crypt abscesses, architectural distortion, and basal plasmacytosis without granulomas \u2014 distinguishing it from Crohn's disease and intestinal TB.",
+      "Extraintestinal manifestations (EIMs) of IBD include erythema nodosum and peripheral arthropathy (correlate with disease activity) and anterior uveitis and primary sclerosing cholangitis (may follow an independent course). Recognition of EIMs is critical as they may precede or dominate the clinical picture.",
+      "In the Indian context, intestinal tuberculosis is the most important differential for IBD. Key differentiating features: TB typically involves the ileocecal region, shows transverse ulcers, skip lesions, caseating granulomas, and positive TB PCR. UC shows continuous rectal involvement, superficial longitudinal ulcers, and crypt-centric pathology. pANCA positivity supports UC.",
+      "Fecal calprotectin is an excellent non-invasive marker for intestinal inflammation (sensitivity >95% for active IBD), useful for diagnosis, monitoring treatment response, and detecting relapse. Values >250 \u00b5g/g strongly suggest active mucosal inflammation and warrant endoscopic evaluation."
+    ],
+    "atypical_features": "This case is challenging because the young woman presents with prominent extraintestinal manifestations (erythema nodosum, anterior uveitis, aphthous ulcers) alongside bloody diarrhea, which may initially distract from the primary GI diagnosis. Additionally, in the Indian context, the major diagnostic dilemma lies in distinguishing ulcerative colitis from intestinal tuberculosis and amoebic colitis \u2014 both highly prevalent in Central India. The failure of empirical anti-amoebic treatment, negative amoebic antigen, continuous rectal involvement without skip lesions, absence of granulomas, negative TB PCR, and positive pANCA collectively guide toward UC. The combination of EIMs at initial presentation in a young Indian female adds to the diagnostic complexity appropriate for an intermediate-level case.",
+    "specialty": "gastro",
+    "difficulty": "intermediate",
+    "id": "c75ffcb5"
+  },
+  "timestamp": "2026-02-15T09:08:53.927122"
+}

@@ -1,0 +1,52 @@
+{
+  "case_id": "6da8d349",
+  "case_data": {
+    "patient": {
+      "age": 42,
+      "gender": "Male",
+      "location": "Lucknow, Uttar Pradesh"
+    },
+    "chief_complaint": "Recurrent kidney stones, bone pain, and generalized fatigue for 8 months",
+    "initial_presentation": "A 42-year-old government clerk from Lucknow presents with passage of 3 kidney stones over the past 8 months, progressive bone and joint pain, and severe fatigue. He also reports increased thirst, frequent urination, and constipation. He was recently found to have a serum calcium of 13.2 mg/dL during a routine workup at a local hospital.",
+    "vital_signs": {
+      "bp": "150/92",
+      "hr": 78,
+      "rr": 16,
+      "temp": 37.0,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient reports 3 episodes of renal colic over 8 months, with 2 episodes requiring emergency visits and one requiring ureteroscopic lithotripsy. He has diffuse bone pain, especially in the lower back and hips, and has noticed a decrease in height (~2 cm as measured at home). He complains of polyuria (3-4 L/day), polydipsia, constipation (passes stools every 3-4 days), poor appetite, nausea, and a 6 kg unintentional weight loss. He also reports depressed mood, difficulty concentrating at work, and poor sleep. No history of neck swelling, radiation exposure, or lithium/thiazide use. No family history of kidney stones, endocrine tumors, or MEN syndrome. No history of sarcoidosis, tuberculosis, or malignancy symptoms (no hemoptysis, lymphadenopathy, night sweats). He takes pantoprazole occasionally for dyspepsia but no calcium or vitamin D supplements. He has been a non-smoker and occasional social drinker."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Moderately built, appears fatigued and mildly dehydrated. No pallor, icterus, or lymphadenopathy. Neck examination: A small (~1.5 cm), firm, non-tender nodule palpable inferior to the right lobe of the thyroid \u2014 moves with swallowing. Thyroid itself is normal in size and consistency. Musculoskeletal: Tenderness over lumbar spine and bilateral iliac crests. Proximal muscle weakness grade 4/5 (difficulty rising from squatting without support). Abdomen: Mild right renal angle tenderness, no organomegaly. No band keratopathy on gross inspection (needs slit lamp). Cardiovascular: Short QT interval suspected on bedside monitor. Neurological: Hyporeflexia noted, no focal deficits. Mental status: Mildly apathetic, oriented but slow to respond."
+      },
+      {
+        "stage": "labs",
+        "info": "Serum calcium (total): 13.2 mg/dL (normal 8.5-10.5); Ionized calcium: 1.72 mmol/L (elevated). Serum phosphorus: 2.0 mg/dL (low; normal 2.5-4.5). Intact PTH: 285 pg/mL (markedly elevated; normal 10-65 \u2014 inappropriately high for the calcium level). Alkaline phosphatase: 420 U/L (elevated; normal <120). 25-hydroxy Vitamin D: 12 ng/mL (deficient; <20 deficient). 24-hour urine calcium: 480 mg/day (elevated; normal <300). Serum creatinine: 1.6 mg/dL (mildly elevated). eGFR: 52 mL/min (CKD stage 3a). Serum albumin: 3.8 g/dL (corrected calcium still elevated). ECG: Shortened QT interval. X-ray hands: Subperiosteal bone resorption along radial aspect of middle phalanges. X-ray pelvis: Moth-eaten lytic lesions in pelvis \u2014 brown tumors (osteitis fibrosa cystica). DEXA scan: T-score -3.5 at lumbar spine, -2.8 at femoral neck (osteoporosis). Ultrasound neck: 1.8 cm hypoechoic nodule posterior to the right inferior pole of thyroid, suggestive of a parathyroid adenoma. Sestamibi (Tc-99m) parathyroid scan: Focal increased uptake in the right inferior parathyroid region with delayed washout \u2014 concordant with USG. CT KUB: 6 mm calculus in left lower pole calyx, bilateral medullary nephrocalcinosis. Serum PTHrP: Undetectable (rules out humoral hypercalcemia of malignancy). Serum ACE level: Normal (argues against sarcoidosis)."
+      }
+    ],
+    "diagnosis": "Primary hyperparathyroidism due to right inferior parathyroid adenoma with osteitis fibrosa cystica, nephrolithiasis, and coexistent vitamin D deficiency",
+    "differentials": [
+      "Primary hyperparathyroidism (parathyroid adenoma)",
+      "Parathyroid carcinoma",
+      "Familial hypocalciuric hypercalcemia (FHH)",
+      "Hypercalcemia of malignancy (bone metastases or PTHrP-mediated)",
+      "Vitamin D-mediated hypercalcemia (granulomatous disease \u2014 sarcoidosis, TB)"
+    ],
+    "learning_points": [
+      "In primary hyperparathyroidism, PTH is inappropriately elevated (or non-suppressed) in the setting of hypercalcemia \u2014 this is the hallmark biochemical finding. A PTH level that is even 'high-normal' with elevated calcium is abnormal.",
+      "The classic mnemonic 'Bones, Stones, Abdominal Groans, and Psychic Moans' describes the multisystem manifestations: osteitis fibrosa cystica, nephrolithiasis/nephrocalcinosis, constipation/pancreatitis/PUD, and depression/confusion respectively.",
+      "Concomitant vitamin D deficiency in primary hyperparathyroidism (common in India due to high prevalence of vitamin D deficiency) can mask hypercalcemia and lead to more severe skeletal disease (osteitis fibrosa cystica and brown tumors) \u2014 this 'normocalcemic' or symptomatic bone disease pattern is more common in Indian patients than in Western populations.",
+      "Localization studies (Sestamibi scan + neck USG) are done for surgical planning, NOT for diagnosis \u2014 the diagnosis is biochemical. Parathyroidectomy is the definitive treatment. Vitamin D deficiency must be corrected perioperatively to prevent 'hungry bone syndrome' (severe hypocalcemia post-surgery)."
+    ],
+    "atypical_features": "This case is challenging because: (1) The patient presents with severe skeletal manifestations (osteitis fibrosa cystica with brown tumors), which is uncommon in Western settings but relatively more common in India, often due to coexistent vitamin D deficiency that amplifies PTH-driven bone resorption. (2) The concurrent vitamin D deficiency (12 ng/mL) complicates management \u2014 it must be recognized and corrected before surgery. (3) The lytic bone lesions on imaging can mimic metastatic malignancy, creating a diagnostic dilemma. (4) The mild renal impairment (eGFR 52) raises the question of whether this is a consequence of chronic hypercalcemia/nephrocalcinosis or a separate etiology, and it affects surgical decision-making.",
+    "specialty": "endocrinology",
+    "difficulty": "intermediate",
+    "id": "6da8d349"
+  },
+  "timestamp": "2026-02-14T16:35:36.491502"
+}

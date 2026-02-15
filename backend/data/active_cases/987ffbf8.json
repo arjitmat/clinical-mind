@@ -1,0 +1,52 @@
+{
+  "case_id": "987ffbf8",
+  "case_data": {
+    "patient": {
+      "age": 28,
+      "gender": "Female",
+      "location": "Bhopal, Madhya Pradesh"
+    },
+    "chief_complaint": "Recurrent episodes of palpitations and one episode of syncope",
+    "initial_presentation": "A 28-year-old married woman, working as a schoolteacher, presents to the cardiology OPD with a 6-month history of episodic palpitations and one episode of syncope that occurred while climbing stairs 3 days ago. She recovered spontaneously within a minute but was brought to the hospital by her husband due to concern. She denies any chest pain or breathlessness at rest.",
+    "vital_signs": {
+      "bp": "118/74",
+      "hr": 62,
+      "rr": 16,
+      "temp": 36.7,
+      "spo2": 99
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Palpitations are episodic, occurring once or twice a week for the past 6 months. Each episode lasts 5-15 minutes and is described as a sudden 'racing of the heart' with abrupt onset and offset. Episodes occasionally occur at rest but are more frequent during physical activity or emotional stress. She describes mild lightheadedness during episodes. The syncopal episode 3 days ago occurred while climbing stairs at school \u2014 she felt sudden rapid palpitations followed by near-blackout and brief loss of consciousness (< 1 minute), no tonic-clonic movements, no tongue bite, no incontinence, no post-ictal confusion. She recovered fully and felt normal within 5 minutes. No prior cardiac history. No prior syncope. No chest pain, no exertional dyspnea, no orthopnea. She has been hypothyroid on levothyroxine 50 mcg daily for 2 years. No family history of sudden cardiac death or arrhythmias. No caffeine or substance abuse. She delivered a healthy baby 18 months ago (uncomplicated pregnancy). She reports occasional self-termination of episodes by bearing down or splashing cold water on her face."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Well-nourished woman, not in distress. No pallor, no cyanosis, no clubbing, no pedal edema. JVP normal; however, during a brief observed episode of palpitations in the OPD, rapid regular 'cannon a waves' (frog sign) are noticed in the JVP. Cardiovascular examination at rest: Regular rhythm, normal S1 and S2, no murmurs, no S3 or S4. Lungs: Clear bilaterally. Abdomen: Soft, non-tender, no organomegaly. Neurological examination: Normal. Thyroid gland: Not palpable. No features of hyperthyroidism."
+      },
+      {
+        "stage": "labs",
+        "info": "Resting 12-lead ECG: Sinus rhythm, HR 60 bpm, normal axis, PR interval 0.10 seconds (short), a delta wave is seen in leads V1-V3 and lead II, QRS duration 0.13 seconds \u2014 pattern consistent with ventricular pre-excitation (WPW pattern, left posterior accessory pathway). No ST-T changes. CBC: Normal. Thyroid profile: TSH 4.2 mIU/L (mildly elevated, suboptimal replacement), free T4 1.0 ng/dL. Electrolytes: Na+ 140, K+ 4.2, Ca2+ 9.1, Mg2+ 2.0. Echocardiography: Structurally normal heart, no valvular abnormalities, LVEF 60%, no LVH, normal chamber dimensions, no Ebstein anomaly. 24-hour Holter monitor: Predominantly sinus rhythm with intermittent delta waves. One recorded episode of narrow-complex regular tachycardia at 210 bpm lasting 8 minutes (consistent with orthodromic AVRT), terminating spontaneously. No atrial fibrillation. Electrophysiology study (EPS): A left posterior accessory pathway is identified with both anterograde and retrograde conduction capabilities. The effective refractory period of the accessory pathway is 250 ms (short, indicating potential for rapid ventricular response if AF occurs). Orthodromic AVRT is inducible and terminated by programmed stimulation."
+      }
+    ],
+    "diagnosis": "Wolff-Parkinson-White (WPW) syndrome with symptomatic orthodromic atrioventricular re-entrant tachycardia (AVRT) and syncope \u2014 indication for catheter ablation",
+    "differentials": [
+      "WPW syndrome with AVRT",
+      "AV nodal re-entrant tachycardia (AVNRT)",
+      "Atrial flutter with 1:1 conduction",
+      "Idiopathic ventricular tachycardia",
+      "Neurocardiogenic (vasovagal) syncope"
+    ],
+    "learning_points": [
+      "WPW pattern on ECG shows the triad of short PR interval (<120 ms), delta wave, and widened QRS (>120 ms); WPW syndrome is diagnosed when the ECG pattern is accompanied by symptomatic tachyarrhythmias",
+      "Orthodromic AVRT (the commonest arrhythmia in WPW) produces a narrow-complex regular tachycardia because anterograde conduction occurs through the AV node and retrograde conduction via the accessory pathway",
+      "WPW patients with short accessory pathway refractory period (<250 ms) are at risk of rapid ventricular rates during atrial fibrillation, which can degenerate into ventricular fibrillation \u2014 AV nodal blocking agents (verapamil, digoxin, adenosine in AF) are CONTRAINDICATED as they may enhance conduction through the accessory pathway",
+      "Catheter ablation of the accessory pathway is the definitive treatment with >95% success rate and is Class I recommended in symptomatic WPW, especially with syncope or high-risk features on EPS"
+    ],
+    "atypical_features": "The patient is a young woman with syncope during exertion raising concern for a potentially dangerous arrhythmia substrate rather than benign SVT. The intermittent nature of the delta wave and the occurrence of syncope (suggesting hemodynamic compromise from rapid AVRT at 210 bpm) necessitates risk stratification. Additionally, the suboptimal hypothyroid replacement may be contributing to subtle conduction changes, and the case requires the student to differentiate WPW-related AVRT from the more common AVNRT and to recognize high-risk features warranting urgent EPS and ablation rather than conservative management.",
+    "specialty": "cardiology",
+    "difficulty": "intermediate",
+    "id": "987ffbf8"
+  },
+  "timestamp": "2026-02-15T08:55:16.109449"
+}

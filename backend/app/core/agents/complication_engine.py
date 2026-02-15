@@ -267,8 +267,8 @@ SPECIALTY_COMPLICATIONS: dict[str, list[dict]] = {
         {
             "name": "Massive Upper GI Bleed",
             "description": "Torrential hematemesis or melena with hemodynamic instability",
-            "probability_base": 0.15,
-            "time_window": (15, 180),
+            "probability_base": 0.12,
+            "time_window": (45, 240),  # Increased minimum time from 15 to 45 minutes
             "vitals_criteria": {"hr_above": 110, "bp_systolic_below": 90},
             "treatment_prevents": ["iv_fluids", "blood_transfusion", "ppi", "pantoprazole", "octreotide", "endoscopy", "sengstaken_tube"],
             "urgency": "critical",
@@ -1043,15 +1043,22 @@ class ComplicationEngine:
         Returns:
             Probability as a float in [0.0, 0.6].
         """
+        # Global minimum time before critical complications (30 minutes)
+        # This gives students time to assess and begin treatment
+        if complication.get("urgency") == "critical" and elapsed < 30:
+            return 0.0
+
         base = complication["probability_base"]
         min_t, max_t = complication["time_window"]
         window_duration = max(max_t - min_t, 1)
 
-        # Time curve: ramps up linearly to peak at 75% of window
+        # Time curve: ramps up more slowly, with a gentler start
         time_into_window = elapsed - min_t
         peak_point = window_duration * 0.75
         if time_into_window <= peak_point:
-            time_factor = time_into_window / peak_point  # 0.0 -> 1.0
+            # Use a quadratic curve for smoother ramp-up (slower at start)
+            normalized_time = time_into_window / peak_point
+            time_factor = normalized_time * normalized_time  # Quadratic: 0.0 -> 1.0
         else:
             time_factor = 1.0  # plateau after peak
 

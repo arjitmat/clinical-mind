@@ -1,0 +1,52 @@
+{
+  "case_id": "1ec210bd",
+  "case_data": {
+    "patient": {
+      "age": 28,
+      "gender": "Male",
+      "location": "Lucknow, Uttar Pradesh"
+    },
+    "chief_complaint": "Cough with expectoration, evening fever, and weight loss for 6 weeks",
+    "initial_presentation": "A 28-year-old male tailor from a congested locality in Lucknow presents to the OPD with a persistent productive cough for 6 weeks, low-grade evening fever with night sweats, and unintentional weight loss of approximately 5 kg. He reports occasional blood streaks in the sputum for the past 5 days.",
+    "vital_signs": {
+      "bp": "110/70",
+      "hr": 96,
+      "rr": 22,
+      "temp": 37.9,
+      "spo2": 96
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient developed a dry cough 6 weeks ago that gradually became productive with yellowish-white mucopurulent sputum, approximately one tablespoon per day. He noticed blood streaks in the sputum 5 days ago (not frank hemoptysis). He has had low-grade fever (documented up to 100.5\u00b0F) mostly in the evenings, associated with drenching night sweats requiring change of clothes. He reports loss of appetite and unintentional weight loss of about 5 kg over the past 6 weeks. There is no chest pain, breathlessness at rest, or leg swelling. He has no history of asthma, diabetes, or hypertension. He is a non-smoker and occasional alcohol consumer. He works as a tailor in a small poorly ventilated workshop with 8 other workers. His elder brother was treated for pulmonary tuberculosis 2 years ago (completed 6 months of ATT successfully). The patient did not undergo screening at that time. He is not on any medications. No history of recent travel. No HIV risk factors identified."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "The patient appears thin and mildly pale. BMI is 18.2 kg/m\u00b2. There is no peripheral lymphadenopathy, clubbing, cyanosis, or pedal edema. Oral cavity is normal. Respiratory examination: Chest is bilaterally symmetrical but chest expansion is slightly reduced on the right upper zone. Percussion note is impaired over the right suprascapular and infraclavicular areas. Auscultation reveals bronchial breath sounds and post-tussive coarse crepitations over the right upper zone (infraclavicular and suprascapular regions). Vocal resonance is increased over the same area. The left lung is clear. Cardiovascular, abdominal, and neurological examination is unremarkable."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hb 11.2 g/dL, WBC 9,800/mm\u00b3 (Neutrophils 65%, Lymphocytes 28%, Eosinophils 3%), Platelets 3,20,000, ESR 55 mm/hr. RBS: 102 mg/dL. Renal and liver function tests: Normal. HIV ELISA: Non-reactive. Sputum for AFB (two early morning samples): Smear positive (1+ on ZN staining in both samples). Sputum GeneXpert MTB/RIF: Mycobacterium tuberculosis DETECTED, Rifampicin resistance NOT detected. Chest X-ray (PA view): Inhomogeneous opacity with a small cavity (approximately 2 cm) in the right upper zone, no pleural effusion, no mediastinal widening. Left lung field is clear. Cardiothoracic ratio is normal."
+      }
+    ],
+    "diagnosis": "Sputum smear-positive pulmonary tuberculosis (drug-sensitive), new case",
+    "differentials": [
+      "Pulmonary tuberculosis",
+      "Community-acquired pneumonia (bacterial)",
+      "Lung malignancy (unlikely at this age but to be considered with hemoptysis)",
+      "Lung abscess",
+      "Chronic pulmonary aspergillosis"
+    ],
+    "learning_points": [
+      "The classic triad of pulmonary TB includes chronic cough (>2 weeks), evening fever with night sweats, and significant weight loss. Any cough >2 weeks in India should prompt sputum examination for TB.",
+      "GeneXpert MTB/RIF (CBNAAT) is the initial diagnostic test recommended by NTEP (National Tuberculosis Elimination Programme) for all presumptive TB cases. It detects MTB and rifampicin resistance simultaneously within 2 hours.",
+      "Drug-sensitive pulmonary TB is treated with the standard regimen under NTEP: Intensive phase (2 months) \u2014 HRZE (Isoniazid, Rifampicin, Pyrazinamide, Ethambutol) followed by Continuation phase (4 months) \u2014 HRE, given daily (daily fixed-dose combination).",
+      "Close household contacts of TB patients (especially children <6 years and immunocompromised individuals) must be screened for active TB and offered TB preventive therapy (TPT) if no active disease is found. This patient himself was an unscreened household contact."
+    ],
+    "atypical_features": "This is a relatively straightforward presentation of pulmonary TB in a young adult, making it a classic beginner-level case. The key diagnostic clue is the close household contact (brother treated for TB 2 years ago) combined with constitutional symptoms. The case reinforces the importance of contact screening \u2014 the patient himself was a missed contact who could have benefited from TB preventive therapy earlier.",
+    "specialty": "respiratory",
+    "difficulty": "beginner",
+    "id": "1ec210bd"
+  },
+  "timestamp": "2026-02-15T08:49:17.874201"
+}

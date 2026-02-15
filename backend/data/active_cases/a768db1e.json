@@ -1,0 +1,52 @@
+{
+  "case_id": "a768db1e",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Male",
+      "location": "Lucknow, Uttar Pradesh"
+    },
+    "chief_complaint": "Progressive difficulty walking and recurrent falls for 6 weeks with new-onset urinary incontinence",
+    "initial_presentation": "A 34-year-old government clerk from Lucknow presents with progressive difficulty walking and multiple falls over the past 6 weeks. For the last 10 days, he has developed urinary urgency and two episodes of incontinence. His wife reports that he has become increasingly irritable and forgetful over the past month.",
+    "vital_signs": {
+      "bp": "126/78",
+      "hr": 82,
+      "rr": 16,
+      "temp": 37.2,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient first noticed stiffness and clumsiness in his left leg 6 weeks ago, which progressed to involve the right leg over 3 weeks. He now requires support to walk and has fallen 5-6 times. Urinary urgency started 10 days ago with 2 episodes of urge incontinence. His wife notes personality changes \u2014 he has become apathetic, occasionally inappropriately laughing, and forgetful (missed bill payments, forgot his daughter's school event). He reports intermittent electric shock-like sensations down both arms when bending his neck (Lhermitte sign) for the past 3 weeks. He had an episode of transient blurring of vision in the left eye about 2 years ago lasting 10 days, which he attributed to 'eye strain' and never investigated. No headache, no seizures, no fever. He also recalls a 3-week episode of numbness and band-like tightness around his trunk at the level of the umbilicus approximately 14 months ago that resolved without treatment. He is a non-smoker, occasional alcohol use. No family history of neurological illness. No recent travel. No history of tuberculosis or contact. He was treated empirically for 'cervical spondylosis' by a local practitioner 4 weeks ago with analgesics and physiotherapy without improvement. No history of recurrent oral ulcers, joint pains, rashes, or dryness of eyes/mouth."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Higher mental functions: MMSE 24/30 \u2014 impaired delayed recall (1/3), poor serial 7s, impaired visuospatial copy. Frontal assessment battery: 11/18 \u2014 impaired verbal fluency, motor programming, and environmental autonomy. Subtle grasp reflex bilateral. Cranial nerves: Visual acuity \u2014 right eye 6/6, left eye 6/9. RAPD positive left eye. Colour desaturation in left eye on red desaturation testing. Fundoscopy: Left optic disc pallor (temporal pallor), right disc normal. Ocular movements: Bilateral internuclear ophthalmoplegia (INO) \u2014 impaired adduction bilaterally with abducting nystagmus on lateral gaze (wall-eyed bilateral INO pattern). Motor: Upper limbs \u2014 tone mildly increased bilateral, power 4+/5 bilateral grip and finger abduction. Lower limbs \u2014 marked spasticity bilateral (Modified Ashworth 3), power 3/5 bilateral hip flexors, 3/5 knee flexors, 4/5 knee extensors, 3/5 ankle dorsiflexors. Sensory: Reduced vibration sense bilateral lower limbs up to iliac crests, reduced joint position sense at toes. Light touch and pinprick reduced below T10 bilaterally. Lhermitte sign positive. Reflexes: Upper limbs 3+, lower limbs 4+ with sustained clonus bilateral ankles. Hoffman sign positive bilateral. Plantars: Bilateral extensor. Cerebellar: Mild intention tremor left hand on finger-nose testing. Gait: Spastic paraparetic gait, unable to tandem walk. Bladder: Palpable bladder on suprapubic region (post-void residual likely elevated)."
+      },
+      {
+        "stage": "labs",
+        "info": "MRI Brain with gadolinium: Multiple (>15) T2/FLAIR hyperintense lesions \u2014 predominantly periventricular (ovoid, perpendicular to ventricles \u2014 Dawson fingers pattern), several juxtacortical lesions, 3 infratentorial lesions (one in the left middle cerebellar peduncle, two in the dorsal pons involving bilateral medial longitudinal fasciculi), and corpus callosum lesions (snowball lesions on sagittal FLAIR). 2 lesions show gadolinium enhancement (one periventricular, one juxtacortical). Multiple lesions show central hypointensity on T2 (central vein sign on 3T MRI). Left optic nerve shows T2 hyperintensity and mild atrophy without active enhancement. MRI Spine: Cervical cord \u2014 2 short-segment (<2 vertebral segments) laterally placed demyelinating lesions at C2-C3 and C5 levels. Thoracic cord \u2014 1 lesion at T8 level, short segment, lateral. No longitudinally extensive transverse myelitis (LETM). CSF analysis: Opening pressure 150 mmH2O. WBC 12 (100% lymphocytes). Protein 0.52 g/L (mildly elevated). Glucose 62 mg/dL (blood glucose 96 mg/dL, ratio 0.64 \u2014 normal). Oligoclonal bands: Positive in CSF, absent in paired serum sample (Type 2 pattern). IgG index: 0.82 (elevated, normal <0.7). CSF cytology: No malignant cells. Serum anti-AQP4 (aquaporin-4) antibody: Negative. Serum anti-MOG antibody (cell-based assay): Negative. VEP: Prolonged P100 latency left eye (128 ms), right eye normal (102 ms). BAEP: Normal. SSEP: Delayed cortical responses from bilateral tibial nerve stimulation. Blood: CBC normal, ESR 18, CRP 3.2, ANA negative, Anti-dsDNA negative, ACE levels normal, serum B12 328 pg/mL (normal), HIV ELISA negative, VDRL non-reactive, NMO-IgG negative. Urodynamic studies: Detrusor overactivity with incomplete emptying \u2014 post-void residual 180 mL. OCT (optical coherence tomography): Reduced retinal nerve fiber layer (RNFL) thickness in left eye (temporal quadrant \u2014 48 \u03bcm), consistent with prior optic neuritis with axonal loss."
+      }
+    ],
+    "diagnosis": "Secondary Progressive Multiple Sclerosis (SPMS) evolving from undiagnosed Relapsing-Remitting MS \u2014 presenting with progressive spastic paraparesis, cognitive impairment, bilateral INO, and bladder dysfunction, with history of undiagnosed prior relapses (optic neuritis, transverse myelitis)",
+    "differentials": [
+      "Neuromyelitis optica spectrum disorder (NMOSD)",
+      "MOG antibody-associated disease (MOGAD)",
+      "CNS vasculitis (primary angiitis of CNS)",
+      "Neurosarcoidosis",
+      "Neuro-Beh\u00e7et disease"
+    ],
+    "learning_points": [
+      "Bilateral internuclear ophthalmoplegia (INO) in a young patient is highly suggestive of multiple sclerosis \u2014 it localizes to the medial longitudinal fasciculus in the dorsal pons/midbrain and is uncommon in vascular disease at this age.",
+      "Transition from RRMS to SPMS is characterized by progressive neurological decline (especially myelopathy) independent of relapses \u2014 early recognition and treatment of RRMS prevents this transition. Many Indian patients present late due to spontaneous resolution of initial relapses without investigation.",
+      "McDonald 2017 criteria allow diagnosis at the first clinical event if MRI shows dissemination in space (periventricular + juxtacortical + infratentorial + spinal cord) and time (simultaneous enhancing and non-enhancing lesions). CSF oligoclonal bands can substitute for dissemination in time.",
+      "Anti-AQP4 and anti-MOG antibody testing is critical in the Indian context where NMOSD is relatively more prevalent than in Western populations \u2014 treatment strategies differ significantly (rituximab for NMOSD vs. interferon-beta/natalizumab/ocrelizumab for MS). Short-segment lateral cord lesions favor MS, while LETM (\u22653 segments) and central cord involvement favor NMOSD."
+    ],
+    "atypical_features": "This case is challenging because the patient presents with progressive myelopathy mimicking cervical spondylotic myelopathy (a common misdiagnosis in India), with cognitive-behavioral changes suggesting frontal lobe involvement. The bilateral INO \u2014 a critical clinical clue \u2014 could be missed if ocular motility examination is not performed carefully. The history of prior unrecognized relapses (optic neuritis attributed to eye strain, transverse myelitis episode that self-resolved) requires careful retrospective elicitation. The transition to secondary progressive phase without prior MS diagnosis reflects real-world diagnostic delays in the Indian healthcare system. Additionally, the frontal cognitive impairment and personality changes at age 34 raise concern for neurodegenerative or psychiatric conditions, adding diagnostic complexity.",
+    "specialty": "neurology",
+    "difficulty": "advanced",
+    "id": "a768db1e"
+  },
+  "timestamp": "2026-02-15T09:14:40.581975"
+}

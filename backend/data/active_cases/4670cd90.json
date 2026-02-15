@@ -1,0 +1,53 @@
+{
+  "case_id": "4670cd90",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Male",
+      "location": "Lucknow, Uttar Pradesh"
+    },
+    "chief_complaint": "Progressive difficulty walking and recurrent episodes of limb stiffness with painful spasms for 6 weeks",
+    "initial_presentation": "A 34-year-old government clerk from Lucknow presents to the neurology OPD with progressive stiffness and difficulty walking for 6 weeks. He describes episodes of sudden, painful whole-body spasms triggered by loud noises or being startled. He was initially evaluated at a district hospital where he was treated for 'tetanus' without improvement.",
+    "vital_signs": {
+      "bp": "138/86",
+      "hr": 92,
+      "rr": 20,
+      "temp": 37.2,
+      "spo2": 97
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient noticed progressive stiffness in his lower back and both legs starting 6 weeks ago. Over the next 2 weeks, stiffness spread to involve the abdomen and trunk, giving him a 'board-like' rigid abdomen. He has developed an exaggerated lumbar lordosis making it difficult to lie flat. He describes frequent, intensely painful paroxysmal spasms lasting 30-60 seconds, triggered by unexpected sounds (doorbell, car horn), sudden touch, or emotional stress. Between spasms, the stiffness persists but is less severe. He was treated at a district hospital with tetanus immunoglobulin and metronidazole for 10 days without any improvement, and was referred here. He denies any preceding wound, animal bite, or trauma. He has a history of Type 1 diabetes mellitus diagnosed at age 28 (on insulin). He also reports intermittent diarrhea with bloating for 1 year and vitiligo patches on both hands noticed 2 years ago. He was treated for autoimmune thyroiditis (Hashimoto's) 3 years ago and is on levothyroxine 75 mcg daily. No history of seizures, altered consciousness, fever, weight loss, or night sweats. No family history of neurological disease. No alcohol or substance use. He has had increasing anxiety and difficulty sleeping due to fear of triggering spasms."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "GCS 15/15, fully alert and oriented. Marked anxiety noted. Continuous axial rigidity: paraspinal muscles are rock-hard bilaterally, prominent lumbar hyperlordosis persists even when supine. Board-like rigidity of abdominal muscles (rectus abdominis). Proximal lower limb muscles are hypertonic with co-contraction of agonists and antagonists simultaneously. During examination, a sudden clap triggers a violent generalized spasm \u2014 opisthotonic posturing with jaw clenching, limb extension, and severe pain lasting approximately 45 seconds, patient remains fully conscious throughout. No trismus at rest (unlike tetanus). Cranial nerves: Normal, no facial involvement, jaw opening is full between spasms. Upper limbs: Mild stiffness but preserved power 5/5. Lower limbs: Power difficult to assess due to rigidity, but voluntary movements preserved \u2014 estimated 4+/5 bilaterally. DTRs: Brisk throughout (3+), no clonus. Plantars: Flexor bilaterally. Sensory examination: Normal. Cerebellar signs: Absent. Gait: Slow, stiff, wide-based \u2014 'tin soldier' gait with hyperlordosis. Vitiligo patches on dorsum of both hands. No subcutaneous nodules. Thyroid: Small, firm, non-tender goiter."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hb 12.8, WBC 7200 (normal differential), platelets 2.1 lakh. ESR 18. Serum electrolytes: Normal. Blood glucose: Fasting 186 mg/dL (on insulin). HbA1c: 8.2%. TSH: 4.8 mIU/L (on levothyroxine). Anti-TPO antibodies: Strongly positive (>600 IU/mL). Anti-GAD65 antibodies (serum): Markedly elevated at 4500 IU/mL (normal <5 IU/mL) \u2014 strongly positive. Anti-amphiphysin antibodies: Negative. Anti-glycine receptor antibodies: Negative. EMG of paraspinal and rectus abdominis muscles: Continuous motor unit activity at rest that does not silence with attempted relaxation, abolished by IV diazepam (diagnostic). MRI brain: Normal. MRI spine: No structural lesion, mild lumbar lordosis accentuation. CSF analysis: Protein 52 mg/dL, glucose 68 (blood 175, ratio 0.39), cells 3 lymphocytes, oligoclonal bands positive (present in CSF, absent in serum), intrathecal anti-GAD synthesis confirmed. CT chest/abdomen/pelvis: No thymoma, no occult malignancy. Anti-nuclear antibody: Weakly positive (1:80, speckled). Tissue transglutaminase IgA antibodies: Positive (correlating with diarrhea/bloating \u2014 likely concurrent celiac disease)."
+      }
+    ],
+    "diagnosis": "Stiff Person Syndrome (SPS) \u2014 classic variant, autoimmune (anti-GAD65 antibody positive), with polyautoimmune syndrome (Type 1 DM, Hashimoto's thyroiditis, celiac disease, vitiligo)",
+    "differentials": [
+      "Tetanus",
+      "Stiff Person Syndrome (classic variant)",
+      "Progressive encephalomyelitis with rigidity and myoclonus (PERM)",
+      "Paraneoplastic stiff person spectrum (anti-amphiphysin associated)",
+      "Hereditary hyperekplexia (startle disease)"
+    ],
+    "learning_points": [
+      "Stiff Person Syndrome (SPS) is characterized by progressive axial and proximal limb rigidity with superimposed painful spasms triggered by startle, emotional stress, or tactile stimuli \u2014 consciousness is preserved throughout, unlike seizures",
+      "Anti-GAD65 antibodies are the hallmark serological marker (positive in ~80% of SPS cases, typically at very high titers >1000 IU/mL); low titers are seen in T1DM alone, so quantitative levels matter for diagnosis",
+      "Key differentiation from tetanus: SPS has NO trismus, no wound history, no preceding infection, is chronic/progressive, and does NOT respond to tetanus immunoglobulin; EMG showing continuous motor unit activity abolished by benzodiazepines is diagnostic",
+      "SPS shows strong association with other autoimmune conditions (Type 1 DM in 30-40%, autoimmune thyroiditis, vitiligo, pernicious anemia, celiac disease) \u2014 always screen for polyautoimmunity; paraneoplastic SPS (anti-amphiphysin) requires malignancy screening especially breast and lung cancer",
+      "Treatment of SPS: First-line symptomatic \u2014 diazepam/baclofen for rigidity and spasms; immunotherapy \u2014 IVIG (best evidence), plasma exchange, rituximab, or corticosteroids for disease modification; long-term follow-up is essential as it is a chronic relapsing condition"
+    ],
+    "atypical_features": "This case is challenging because: (1) The patient was initially misdiagnosed as tetanus \u2014 a common diagnostic pitfall in India where tetanus is endemic, leading to delayed recognition of SPS; (2) The absence of trismus, lack of wound/preceding infection, and chronicity over weeks (not days) should have raised suspicion against tetanus; (3) The polyautoimmune background (T1DM, Hashimoto's, vitiligo, and concurrent celiac disease) provides critical diagnostic clues but requires the student to connect seemingly unrelated autoimmune conditions; (4) Anti-GAD65 antibodies overlap between T1DM and SPS \u2014 students must recognize that very high titers (>1000 IU/mL) and intrathecal synthesis distinguish SPS from isolated T1DM; (5) The negative anti-amphiphysin antibodies and normal CT scan help exclude paraneoplastic SPS, an important distinction for management",
+    "specialty": "neurology",
+    "difficulty": "advanced",
+    "id": "4670cd90"
+  },
+  "timestamp": "2026-02-15T08:57:41.972042"
+}

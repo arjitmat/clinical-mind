@@ -1,0 +1,52 @@
+{
+  "case_id": "c9c3d34d",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Male",
+      "location": "Siliguri, West Bengal"
+    },
+    "chief_complaint": "Severe headache, vomiting, and rapidly progressive altered sensorium for 6 hours",
+    "initial_presentation": "A 34-year-old tea garden supervisor from Siliguri is brought to the district hospital emergency department by coworkers with sudden-onset severe headache, repeated vomiting, and progressive drowsiness over 6 hours. He was found collapsed near the tea processing unit. His coworkers mention he appeared well in the morning but complained of a 'thunderclap headache' around noon, and has since become increasingly confused and combative.",
+    "vital_signs": {
+      "bp": "210/120",
+      "hr": 58,
+      "rr": 10,
+      "temp": 38.3,
+      "spo2": 93
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Coworkers report the patient suddenly clutched his head around 12 PM while supervising workers, said 'worst headache of my life,' and vomited three times within 30 minutes. He became confused and agitated within an hour, then progressively drowsy. No witnessed seizure. No trauma or fall reported. He has no known medical conditions, takes no medications, and has never been told he has high blood pressure (never checked). He consumes locally brewed rice beer (handia) regularly, approximately 4-5 times per week. He chews betel nut (supari) daily. No family history of stroke or aneurysm that coworkers are aware of. A coworker mentions the patient had complained of intermittent severe headaches over the past 2 weeks, which he attributed to 'sinusitis' and treated with OTC paracetamol. He was also seen at a local pharmacy 3 days ago for a brief episode of double vision which resolved spontaneously. No recent fever, cough, weight loss, or joint pains. No history of bleeding disorders, easy bruising, or prolonged bleeding from cuts. No recreational drug use other than alcohol and betel nut."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "GCS 8 (E2V2M4). Cushing's response evident: hypertension (210/120 mmHg), bradycardia (58 bpm), irregular respirations (Cheyne-Stokes pattern). Bilateral papilledema on fundoscopy. Left pupil 6 mm, sluggishly reactive; right pupil 3 mm, briskly reactive (anisocoria suggesting left CN III compression/transtentorial herniation). Neck rigidity present - positive Kernig's and Brudzinski's signs. Left partial ptosis with the eye deviated 'down and out' (left CN III palsy). No other focal cranial nerve deficits initially appreciable. Motor examination: Right-sided hemiparesis - right upper limb withdraws to pain (M4), right lower limb localizes (M5), left side localizes normally. Right plantar extensor, left plantar flexor. Deep tendon reflexes brisk on right, normal on left. No skin rashes, petechiae, or purpura. No track marks. No signs of liver disease. Oral mucosa shows betel nut staining. No mastoid bruising (Battle's sign) or periorbital bruising (raccoon eyes). Ear canals clear, no hemotympanum. Cardiac auscultation: No murmurs, no S3/S4. Lungs: Occasional bilateral basal crepitations (likely aspiration). Abdomen: Soft, non-tender, no organomegaly."
+      },
+      {
+        "stage": "labs",
+        "info": "NCCT Head (available at district hospital): Diffuse subarachnoid hemorrhage (SAH) in basal cisterns, Sylvian fissures bilaterally, and interhemispheric fissure. A 3 cm intraparenchymal hematoma in the left temporal lobe with surrounding edema and 8 mm midline shift to the right. Early hydrocephalus with dilated temporal horns of lateral ventricles. Modified Fisher Grade 4 SAH. WFNS Grade IV (GCS 8 with focal deficit). CBC: Hb 16.2 (hemoconcentration), WBC 15,800 (stress leukocytosis), Platelets 1,85,000. Coagulation: INR 1.0, aPTT 28 sec (normal - rules out coagulopathy). Serum electrolytes: Na+ 132, K+ 3.8, Cl- 98. Blood glucose: 195 mg/dL (stress hyperglycemia). Renal: Creatinine 1.0, BUN 18. LFT: AST 45, ALT 40, Bilirubin 0.8 (mildly deranged, likely chronic alcohol). ABG: pH 7.32, PaCO2 52, PaO2 68, HCO3 24, Lactate 3.2 (respiratory acidosis from depressed consciousness). ECG: Sinus bradycardia, diffuse deep T-wave inversions in precordial leads and prolonged QTc (480 ms) - consistent with neurogenic cardiac changes from SAH ('cerebral T waves'). Troponin I: 0.8 ng/mL (mildly elevated - neurogenic stunned myocardium). Urine toxicology screen: Negative. Blood alcohol level: Undetectable."
+      }
+    ],
+    "diagnosis": "Aneurysmal subarachnoid hemorrhage (Hunt and Hess Grade IV, Modified Fisher Grade 4) with left temporal intraparenchymal extension, early transtentorial herniation, and neurogenic cardiac dysfunction, likely from a left posterior communicating artery aneurysm",
+    "differentials": [
+      "Aneurysmal subarachnoid hemorrhage with intraparenchymal extension (most likely)",
+      "Hypertensive intracerebral hemorrhage with secondary intraventricular extension",
+      "Ruptured arteriovenous malformation",
+      "Cerebral venous sinus thrombosis with hemorrhagic infarction",
+      "Hemorrhagic transformation of ischemic stroke (e.g., from infective endocarditis)"
+    ],
+    "learning_points": [
+      "Sentinel headache (warning leak): Up to 30-50% of SAH patients report a severe sudden headache days to weeks before the major rupture. The episode of 'thunderclap headache' and transient diplopia (CN III compression from expanding posterior communicating artery aneurysm) 3 days prior was a critical missed warning sign.",
+      "Cushing's triad (hypertension, bradycardia, irregular respirations) indicates raised intracranial pressure and impending herniation - this is a neurosurgical emergency requiring immediate ICP-lowering measures (head elevation 30\u00b0, IV mannitol 1 g/kg or hypertonic saline 3% 250 mL, intubation with controlled ventilation targeting PaCO2 30-35 mmHg as temporary bridge).",
+      "SAH grading systems guide management: Hunt-Hess Grade IV (stupor, moderate-severe hemiparesis) and WFNS Grade IV (GCS 7-12 with focal deficit) indicate severe SAH with poor prognosis without intervention. Modified Fisher Grade 4 (thick SAH + intraventricular hemorrhage/ICH) predicts high risk of vasospasm.",
+      "Neurogenic cardiac complications in SAH: ECG changes (deep T inversions, QTc prolongation, ST changes) and troponin elevation occur in 20-40% of SAH patients due to catecholamine surge causing myocardial stunning (Takotsubo-like). This does NOT indicate primary ACS and should not delay neurosurgical management. However, it can cause cardiogenic shock and must be monitored."
+    ],
+    "atypical_features": "This case is challenging because: (1) The young age (34 years) without known hypertension or risk factors may mislead toward trauma or infection rather than aneurysmal SAH; (2) The preceding sentinel headache and transient CN III palsy 3 days prior represent a missed 'warning leak' - a critical diagnostic opportunity that was attributed to sinusitis; (3) The ECG showing deep T-wave inversions, prolonged QTc, and elevated troponin may create a diagnostic red herring suggesting acute coronary syndrome or takotsubo cardiomyopathy as the primary event causing secondary brain injury; (4) The Cushing's response and herniation signs require immediate stabilization decisions at a district hospital before neurosurgical transfer is feasible, testing the student's ability to prioritize airway management, ICP reduction, and blood pressure targets (avoiding both hypertension and hypotension) in a resource-limited setting; (5) The district hospital setting demands critical transfer decisions - arranging emergency neurosurgical care in Siliguri/Kolkata while stabilizing a herniating patient with limited ICU capability.",
+    "specialty": "emergency",
+    "difficulty": "advanced",
+    "id": "c9c3d34d"
+  },
+  "timestamp": "2026-02-15T09:06:21.011382"
+}

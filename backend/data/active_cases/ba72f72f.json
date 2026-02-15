@@ -1,0 +1,52 @@
+{
+  "case_id": "ba72f72f",
+  "case_data": {
+    "patient": {
+      "age": 28,
+      "gender": "Female",
+      "location": "Bhopal, Madhya Pradesh"
+    },
+    "chief_complaint": "Recurrent episodes of palpitations and one episode of syncope over the past 3 months",
+    "initial_presentation": "A 28-year-old schoolteacher from Bhopal presents to the cardiology OPD with a 3-month history of recurrent palpitations that are sudden in onset, last 10-30 minutes, and resolve abruptly. Yesterday, she had a syncopal episode while climbing stairs at school and was briefly unresponsive for about 30 seconds before spontaneously recovering. She appears anxious but is currently asymptomatic.",
+    "vital_signs": {
+      "bp": "108/70",
+      "hr": 76,
+      "rr": 16,
+      "temp": 36.7,
+      "spo2": 99
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Palpitations started 3 months ago \u2014 rapid, regular, sudden onset and offset, occurring 2-3 times per month. Each episode lasts 10-30 minutes. Vagal maneuvers (splashing cold water on face) terminated one episode. Yesterday's syncopal episode: she felt rapid pounding in her chest while climbing stairs, then felt lightheaded and blacked out. Witnessed by a colleague \u2014 unresponsive for ~30 seconds, no seizure-like activity, recovered spontaneously and was lucid immediately. No chest pain, no dyspnea at rest. No history of rheumatic fever, no known heart disease. She was previously prescribed propranolol 20 mg by a local physician for 'anxiety attacks' which she has been taking irregularly. No thyroid disease. No caffeine excess. No recreational drug use. Family history: elder sister diagnosed with 'extra pathway in the heart' at age 25 and underwent an ablation procedure. Menstrual history: regular. No pregnancy currently. No medications other than occasional propranolol."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "General: Alert, comfortable, no pallor, no thyromegaly. JVP: Normal. Cardiovascular: Apex beat in 5th ICS MCL, normal in character. S1 normal, S2 normally split, no murmurs, no added sounds. No signs of heart failure. Lungs: Clear bilaterally. Abdomen: Soft, non-tender, no organomegaly. Extremities: No edema, peripheral pulses equal and normal in all limbs. Neurological: Fully oriented, no focal deficits."
+      },
+      {
+        "stage": "labs",
+        "info": "12-lead ECG (resting): Sinus rhythm, 76 bpm. PR interval shortened at 100 ms. Delta wave present \u2014 most prominent in leads V1-V3 (positive delta wave) and leads II, III, aVF (positive). QRS duration 130 ms. No ST-T changes. Axis normal. Interpretation: Wolff-Parkinson-White pattern, likely left lateral accessory pathway. CBC: Hb 12.8, WBC 7,200, Platelets 2.4 lakh \u2014 all normal. TFTs: TSH 3.2 mIU/L (normal), Free T4 normal. Electrolytes: Na+ 140, K+ 4.2, Ca2+ 9.4 \u2014 all normal. 2D Echocardiography: Structurally normal heart, LVEF 62%, no valvular abnormalities, no septal defects, normal chamber dimensions. Holter monitor (24-hour): Baseline WPW pattern. Two short runs of narrow-complex tachycardia (rate 190 bpm, duration 8 and 14 seconds respectively) \u2014 consistent with orthodromic AVRT. No wide-complex tachycardia or pre-excited atrial fibrillation noted. Electrophysiology study (performed as part of risk stratification): Accessory pathway identified at left lateral position. APERP (Accessory Pathway Effective Refractory Period) measured at 250 ms (considered potentially high-risk if <250 ms). Orthodromic AVRT easily inducible. No antidromic AVRT or pre-excited AF induced."
+      }
+    ],
+    "diagnosis": "Wolff-Parkinson-White (WPW) syndrome with orthodromic AVRT and syncope \u2014 indication for catheter ablation",
+    "differentials": [
+      "WPW syndrome with AVRT",
+      "AVNRT (AV nodal reentrant tachycardia)",
+      "Atrial flutter with rapid conduction",
+      "Idiopathic ventricular tachycardia",
+      "Vasovagal syncope with coincidental SVT"
+    ],
+    "learning_points": [
+      "WPW pattern on ECG (short PR <120 ms + delta wave + wide QRS) becomes WPW syndrome when associated with symptomatic tachyarrhythmias such as AVRT",
+      "Orthodromic AVRT (narrow-complex, ~95% of WPW-related tachycardias) conducts antegrade via AV node and retrograde via the accessory pathway; antidromic AVRT is wide-complex and less common",
+      "Syncope in WPW is a red-flag feature \u2014 it may indicate rapid conduction through the accessory pathway and raises concern for sudden cardiac death risk, especially if pre-excited atrial fibrillation occurs",
+      "Catheter ablation of the accessory pathway is the definitive treatment for symptomatic WPW with a success rate >95%; AV nodal blocking agents (verapamil, digoxin) are contraindicated in pre-excited AF as they may enhance accessory pathway conduction and cause ventricular fibrillation"
+    ],
+    "atypical_features": "The patient is a young female presenting with syncope during exertion, which raises the concern for a potentially life-threatening arrhythmia rather than simple SVT. The family history of an accessory pathway in a sibling is unusual and may suggest a familial predisposition. The borderline APERP of 250 ms places her in a gray zone for sudden death risk stratification, requiring careful clinical judgment about urgency of ablation versus medical management.",
+    "specialty": "cardiology",
+    "difficulty": "intermediate",
+    "id": "ba72f72f"
+  },
+  "timestamp": "2026-02-15T09:06:53.076336"
+}

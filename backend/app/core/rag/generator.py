@@ -5,6 +5,8 @@ import logging
 import os
 import uuid
 from typing import Optional
+from pathlib import Path
+from datetime import datetime
 
 import anthropic
 
@@ -87,7 +89,13 @@ class CaseGenerator:
     """RAG-powered clinical case generator using ChromaDB + Claude API."""
 
     def __init__(self, vector_store: Optional[MedicalVectorStore] = None):
-        self.active_cases: dict = {}
+        # Create persistent storage directory
+        self.storage_dir = Path("./data/active_cases")
+        self.storage_dir.mkdir(parents=True, exist_ok=True)
+
+        # Load persisted cases on startup
+        self.active_cases: dict = self._load_persisted_cases()
+        logger.info(f"Loaded {len(self.active_cases)} persisted cases from disk")
 
         # Initialize vector store and retriever
         if vector_store:
@@ -144,6 +152,14 @@ class CaseGenerator:
 
         case_data["id"] = case_id
         self.active_cases[case_id] = case_data
+
+        # Save to persistent storage
+        self._save_case_to_disk(case_id, case_data)
+
+        # Clean up old cases periodically
+        if len(self.active_cases) > 20:  # Cleanup when we have many cases
+            self._cleanup_old_cases()
+
         return case_data
 
     def _generate_with_claude(
@@ -279,7 +295,27 @@ class CaseGenerator:
         }
 
     def get_case(self, case_id: str) -> Optional[dict]:
-        return self.active_cases.get(case_id)
+        # First check in-memory cache
+        case = self.active_cases.get(case_id)
+        if case:
+            return case
+
+        # If not in memory, try loading from disk
+        case_file = self.storage_dir / f"{case_id}.json"
+        if case_file.exists():
+            try:
+                with open(case_file, 'r') as f:
+                    data = json.load(f)
+                    case_data = data.get("case_data")
+                    if case_data:
+                        # Cache it in memory for future use
+                        self.active_cases[case_id] = case_data
+                        logger.info(f"Loaded case {case_id} from disk cache")
+                        return case_data
+            except Exception as e:
+                logger.error(f"Failed to load case {case_id} from disk: {e}")
+
+        return None
 
     def process_action(self, case_id: str, action_type: str, student_input: Optional[str] = None) -> dict:
         case = self.active_cases.get(case_id)
@@ -386,3 +422,44 @@ class CaseGenerator:
     def get_corpus_stats(self) -> dict:
         """Get statistics about the loaded RAG corpus."""
         return self.retriever.get_corpus_stats()
+
+    def _save_case_to_disk(self, case_id: str, case_data: dict):
+        """Save a case to persistent storage."""
+        try:
+            case_file = self.storage_dir / f"{case_id}.json"
+            with open(case_file, 'w') as f:
+                json.dump({
+                    "case_id": case_id,
+                    "case_data": case_data,
+                    "timestamp": datetime.now().isoformat()
+                }, f, indent=2)
+            logger.info(f"Saved case {case_id} to disk")
+        except Exception as e:
+            logger.error(f"Failed to save case {case_id} to disk: {e}")
+
+    def _load_persisted_cases(self) -> dict:
+        """Load all persisted cases from disk."""
+        cases = {}
+        try:
+            for case_file in self.storage_dir.glob("*.json"):
+                with open(case_file, 'r') as f:
+                    data = json.load(f)
+                    case_id = data.get("case_id")
+                    case_data = data.get("case_data")
+                    if case_id and case_data:
+                        cases[case_id] = case_data
+                        logger.debug(f"Loaded case {case_id} from disk")
+        except Exception as e:
+            logger.error(f"Failed to load persisted cases: {e}")
+        return cases
+
+    def _cleanup_old_cases(self):
+        """Clean up cases older than 24 hours."""
+        try:
+            cutoff_time = datetime.now().timestamp() - (24 * 60 * 60)  # 24 hours ago
+            for case_file in self.storage_dir.glob("*.json"):
+                if case_file.stat().st_mtime < cutoff_time:
+                    case_file.unlink()
+                    logger.debug(f"Cleaned up old case file: {case_file.name}")
+        except Exception as e:
+            logger.error(f"Failed to cleanup old cases: {e}")

@@ -1,0 +1,52 @@
+{
+  "case_id": "25161b6b",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Male",
+      "location": "Lucknow, Uttar Pradesh"
+    },
+    "chief_complaint": "Progressive difficulty walking and double vision for 6 weeks with recent onset urinary retention",
+    "initial_presentation": "A 34-year-old government clerk from Lucknow presents with progressive unsteadiness of gait and binocular diplopia worsening over 6 weeks. For the past 5 days, he has developed difficulty initiating urination requiring catheterization once in the local PHC. He also reports a 3-week history of persistent hiccups that have not responded to home remedies.",
+    "vital_signs": {
+      "bp": "118/74",
+      "hr": 68,
+      "rr": 16,
+      "temp": 36.8,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient reports progressive gait unsteadiness beginning 6 weeks ago with frequent tripping, initially attributed to 'weakness.' Binocular vertical diplopia began 4 weeks ago, worse on looking to the right. Intractable hiccups for 3 weeks \u2014 persistent, occurring throughout the day and disrupting sleep, not responsive to metoclopramide. Nausea and episodic vomiting for 2 weeks, not related to food intake, projectile at times. Urinary retention for 5 days, required catheterization once. Excessive daytime sleepiness (hypersomnia) for 2 weeks \u2014 sleeping 14-16 hours/day. No headache, no seizures, no limb weakness, no sensory symptoms in limbs. One year ago, he had a 2-week episode of numbness and band-like tightness around his trunk at the level of the umbilicus that resolved spontaneously \u2014 he did not seek medical attention. No fever, no weight loss, no joint pains, no oral/genital ulcers, no skin rashes. No history of optic neuritis or limb weakness previously. Non-smoker, occasional alcohol use. No family history of neurological disease. Vegetarian. No recent travel. No tuberculosis contact."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Alert but appears drowsy (hypersomnia). Higher mental functions: Intact, MMSE 29/30. Cranial nerves: Bilateral internuclear ophthalmoplegia (INO) \u2014 adduction lag bilaterally with dissociated nystagmus of the abducting eye on lateral gaze (wall-eyed bilateral INO \u2014 WEBINO pattern). Upbeat nystagmus on upgaze. Skew deviation with right hypertropia. No RAPD, visual acuity 6/6 both eyes, fundoscopy normal, no optic disc pallor or edema. Persistent rhythmic diaphragmatic contractions (hiccups) observed during examination. Motor: Power 5/5 in all limbs. Tone mildly increased in both lower limbs. Deep tendon reflexes brisk in all four limbs, more so in lower limbs. Bilateral Babinski sign positive. No muscle wasting or fasciculations. Sensory: Hyperesthesia in a band-like distribution at T10 dermatome bilaterally. Joint position sense mildly impaired at great toes. Cerebellar: Bilateral heel-shin ataxia (lower limbs > upper limbs), wide-based gait, unable to perform tandem walk. Mild truncal ataxia. Finger-nose-finger \u2014 mild terminal intention tremor bilaterally. No meningism. Bladder: Palpable bladder, post-void residual volume 350 mL on ultrasound."
+      },
+      {
+        "stage": "labs",
+        "info": "MRI Brain with gadolinium: Large T2/FLAIR hyperintense lesion involving the dorsal medulla and area postrema bilaterally extending into the lower pons (area postrema lesion \u2014 'V' shaped on axial sections). Additional T2 lesions in periaqueductal grey matter and bilateral medial longitudinal fasciculus. A periependymal lesion abutting the floor of the fourth ventricle. One small non-enhancing periventricular white matter lesion. The medullary lesion shows patchy gadolinium enhancement. MRI Spine: Longitudinally extensive transverse myelitis (LETM) spanning T8-T12 (>3 vertebral segments), central cord predominance, with mild patchy enhancement. Mild cord swelling at T9-T10. CSF analysis: Opening pressure 160 mmH2O, WBC 35/\u03bcL (70% lymphocytes, 15% neutrophils, 15% monocytes), Protein 0.82 g/L, Glucose 52 mg/dL (blood glucose 95 \u2014 ratio 0.55), no oligoclonal bands, IgG index normal. CSF cytology: No malignant cells. Serum AQP4-IgG (aquaporin-4 antibody) by cell-based assay: POSITIVE. Serum MOG-IgG: Negative. ANA, dsDNA, Anti-Ro/La: Negative. ACE levels: Normal. Serum B12: Normal. HIV, VDRL: Negative. CBC: Normal, no eosinophilia. ESR: 28 mm/hr. CRP: 8 mg/L. VEP: Normal bilateral P100 latencies. NMO-IgG confirmation: Positive on repeat testing."
+      }
+    ],
+    "diagnosis": "Neuromyelitis Optica Spectrum Disorder (NMOSD) \u2014 AQP4-IgG seropositive \u2014 presenting with area postrema syndrome (intractable hiccups and vomiting), bilateral INO, LETM, and hypothalamic involvement (hypersomnia)",
+    "differentials": [
+      "Multiple sclerosis (relapsing-remitting)",
+      "MOG antibody-associated disease (MOGAD)",
+      "CNS sarcoidosis with brainstem and spinal cord involvement",
+      "Neuro-Beh\u00e7et disease",
+      "Primary CNS lymphoma or brainstem glioma"
+    ],
+    "learning_points": [
+      "Area postrema syndrome (intractable hiccups, nausea, vomiting) is a core clinical characteristic of NMOSD and may be the presenting or sole feature \u2014 this is NOT a typical MS presentation and should raise immediate suspicion for NMOSD.",
+      "NMOSD 2015 diagnostic criteria require at least one core clinical characteristic (optic neuritis, acute myelitis, area postrema syndrome, brainstem syndrome, diencephalic syndrome, or cerebral syndrome) with AQP4-IgG positivity. Seronegative NMOSD requires additional stringent criteria.",
+      "Longitudinally extensive transverse myelitis (LETM \u22653 vertebral segments) with central cord involvement is characteristic of NMOSD, whereas MS typically produces short-segment, peripheral/dorsal cord lesions. Bilateral INO can occur in both MS and NMOSD but the WEBINO pattern with area postrema involvement strongly favors NMOSD.",
+      "Treatment of NMOSD differs critically from MS: Acute attacks require high-dose IV methylprednisolone (1g x 5 days) followed by plasma exchange if poor response. Long-term immunosuppression with rituximab, azathioprine, or mycophenolate is the mainstay \u2014 interferon-beta and fingolimod (MS drugs) can WORSEN NMOSD."
+    ],
+    "atypical_features": "This case is challenging because (1) the presenting symptom of intractable hiccups is easily dismissed as a non-neurological complaint, delaying diagnosis; (2) there is no optic neuritis \u2014 the most commonly recognized NMOSD feature \u2014 forcing clinicians to recognize area postrema syndrome and brainstem syndromes as core NMOSD presentations; (3) bilateral INO (WEBINO) overlaps with MS but the combination with area postrema lesion, LETM, hypersomnia (diencephalic involvement), and absence of oligoclonal bands should redirect toward NMOSD; (4) the prior episode of band-like truncal sensory symptoms likely represents an undiagnosed myelitis episode, establishing relapsing disease; (5) distinction from MS is critical as MS-specific therapies can exacerbate NMOSD.",
+    "specialty": "neurology",
+    "difficulty": "advanced",
+    "id": "25161b6b"
+  },
+  "timestamp": "2026-02-15T09:00:08.260501"
+}

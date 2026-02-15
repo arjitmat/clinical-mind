@@ -1,0 +1,52 @@
+{
+  "case_id": "9d962f2f",
+  "case_data": {
+    "patient": {
+      "age": 42,
+      "gender": "Male",
+      "location": "Lucknow, Uttar Pradesh"
+    },
+    "chief_complaint": "Recurrent kidney stones, bone pain, and generalized fatigue for 8 months",
+    "initial_presentation": "A 42-year-old male government school teacher from Lucknow presents with recurrent episodes of renal colic (3 episodes in 8 months), diffuse bone pain especially in the shins and lower back, and persistent fatigue. He was referred from a urology OPD after his second calcium-containing kidney stone was retrieved, and his serum calcium was found to be elevated at 12.8 mg/dL.",
+    "vital_signs": {
+      "bp": "150/92",
+      "hr": 78,
+      "rr": 16,
+      "temp": 37.0,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient reports progressive bone pain over 8 months, initially in the lower back, now involving the shins and hips. He has difficulty climbing stairs and recently noticed a decrease in height by approximately 2 cm (measured at a health camp). He has had 3 episodes of severe left flank pain with hematuria \u2014 calcium oxalate stones confirmed on 2 occasions. He reports constipation, increased thirst, and polyuria for the past 4-5 months. He also complains of difficulty concentrating at work and low mood. He had an episode of acute pancreatitis 5 months ago, managed conservatively at a district hospital. No history of lithium use, thiazide diuretics, or excessive calcium/vitamin D supplementation. No family history of kidney stones or endocrine disorders. He is a vegetarian with limited dairy intake. No history of neck surgery or radiation. He takes occasional antacids for dyspepsia."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Mildly dehydrated. No visible neck swelling or palpable thyroid nodule. However, careful palpation reveals a small (approximately 1.5 cm) firm, non-tender nodule posterior to the lower pole of the right thyroid lobe \u2014 subtle and easily missed. Tenderness over lumbar spine and bilateral tibiae on palpation. Proximal muscle weakness \u2014 difficulty rising from squatting position (positive Gower-like sign). Mild abdominal tenderness in the epigastric region. No band keratopathy on gross inspection (needs slit lamp). No neuromuscular hyperexcitability. Cardiovascular exam: Normal S1S2, no murmurs. Short QT interval suspected clinically (confirmed on ECG)."
+      },
+      {
+        "stage": "labs",
+        "info": "Serum calcium (corrected): 13.2 mg/dL (normal: 8.5-10.5). Serum phosphorus: 1.8 mg/dL (low; normal: 2.5-4.5). Serum alkaline phosphatase (ALP): 480 U/L (markedly elevated; normal: 44-147). Intact PTH: 385 pg/mL (markedly elevated; normal: 15-65). 25-hydroxy Vitamin D: 12 ng/mL (deficient). 24-hour urine calcium: 420 mg/day (elevated; normal <300). Serum creatinine: 1.6 mg/dL (mildly elevated). BUN: 32 mg/dL. Serum chloride: 112 mEq/L (elevated \u2014 chloride:phosphate ratio >33 suggests primary hyperparathyroidism). ECG: Shortened QT interval. X-ray hand: Subperiosteal bone resorption along radial aspect of middle phalanges. X-ray skull: Salt-and-pepper appearance (granular decalcification). DEXA scan: Osteoporosis \u2014 distal 1/3 radius T-score: -3.8 (cortical bone preferentially lost in hyperparathyroidism). USG neck: 1.4 x 1.0 cm hypoechoic lesion posterior to right inferior thyroid pole, consistent with parathyroid adenoma. Tc-99m Sestamibi scan: Focal increased uptake in right inferior parathyroid region with delayed washout \u2014 concordant with USG. USG abdomen: Bilateral medullary nephrocalcinosis, left renal calculus (8 mm). Lipase: Normal (no active pancreatitis currently)."
+      }
+    ],
+    "diagnosis": "Primary hyperparathyroidism due to right inferior parathyroid adenoma with osteitis fibrosa cystica, recurrent nephrolithiasis, and concurrent vitamin D deficiency",
+    "differentials": [
+      "Primary hyperparathyroidism (parathyroid adenoma)",
+      "Familial hypocalciuric hypercalcemia (FHH)",
+      "Malignancy-associated hypercalcemia (PTHrP-mediated or osteolytic)",
+      "Vitamin D toxicity / Granulomatous disease (sarcoidosis, tuberculosis)",
+      "Multiple myeloma with hypercalcemia"
+    ],
+    "learning_points": [
+      "Primary hyperparathyroidism presents with the classic mnemonic 'bones, stones, abdominal groans, and psychic moans' \u2014 this patient demonstrates all four: osteitis fibrosa cystica, nephrolithiasis, pancreatitis/constipation, and depression/cognitive symptoms.",
+      "The biochemical hallmark is elevated calcium with elevated PTH (inappropriately normal or elevated PTH in the setting of hypercalcemia confirms primary hyperparathyroidism). Low phosphorus, elevated ALP, and elevated urinary calcium further support the diagnosis.",
+      "Concurrent vitamin D deficiency is common in Indian patients with primary hyperparathyroidism and may mask the severity of hypercalcemia. Vitamin D should be cautiously repleted preoperatively to prevent postoperative hungry bone syndrome, but with close calcium monitoring.",
+      "Localization is done with both USG neck and Tc-99m Sestamibi scan. Concordant results improve surgical success. Treatment is parathyroidectomy \u2014 the only curative option. Postoperatively, monitor for hungry bone syndrome (severe hypocalcemia due to rapid bone remineralization)."
+    ],
+    "atypical_features": "This case is challenging because the patient presents via the urology route (recurrent stones) rather than through an endocrinology referral, which is common in Indian practice where hyperparathyroidism is often diagnosed late. The concurrent vitamin D deficiency (very common in India) partially masks the degree of hypercalcemia and can confuse the biochemical picture \u2014 students must recognize that PTH elevation with low vitamin D could be secondary hyperparathyroidism, but the presence of hypercalcemia (not hypocalcemia) clinches the primary diagnosis. Additionally, the markedly elevated ALP and classical skeletal findings (subperiosteal resorption, salt-and-pepper skull) suggest advanced 'symptomatic' primary hyperparathyroidism, which is more commonly seen in India compared to Western countries where asymptomatic disease predominates. The history of pancreatitis adds another layer requiring students to connect the dots across organ systems.",
+    "specialty": "endocrinology",
+    "difficulty": "intermediate",
+    "id": "9d962f2f"
+  },
+  "timestamp": "2026-02-14T16:25:08.346500"
+}

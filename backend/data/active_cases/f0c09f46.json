@@ -1,0 +1,52 @@
+{
+  "case_id": "f0c09f46",
+  "case_data": {
+    "patient": {
+      "age": 28,
+      "gender": "Male",
+      "location": "Lucknow, Uttar Pradesh"
+    },
+    "chief_complaint": "Cough with blood-streaked sputum and evening fever for 6 weeks",
+    "initial_presentation": "A 28-year-old male teacher from Lucknow presents to the medicine OPD with a persistent productive cough for 6 weeks, blood-streaked sputum for 2 weeks, and low-grade evening fever with drenching night sweats. He reports significant unintentional weight loss and decreased appetite over the same period.",
+    "vital_signs": {
+      "bp": "110/70",
+      "hr": 98,
+      "rr": 22,
+      "temp": 38.2,
+      "spo2": 96
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient has had a persistent productive cough for 6 weeks, initially mucoid but now mucopurulent with occasional blood streaking. He reports evening-rise fever (documented up to 101\u00b0F at home), drenching night sweats requiring him to change clothes, and progressive loss of appetite. He has lost approximately 6 kg over the past 2 months. No breathlessness at rest but mild exertional dyspnea (climbing stairs). No chest pain. He is a non-smoker, non-alcoholic, and vegetarian. He lives in a rented two-room house with his wife and parents. His father was treated for pulmonary tuberculosis 2 years ago and completed 6 months of DOTS treatment successfully. The patient did not undergo any screening at that time. No history of diabetes, HIV risk factors, or immunosuppressive medication use. He has not taken any antibiotics or cough syrups for the current illness."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "The patient appears thin and pale. BMI 18.2 kg/m\u00b2. Mild pallor present, no icterus, no cyanosis, no clubbing, no peripheral lymphadenopathy. Chest examination: Inspection shows reduced movement on the right upper chest. Palpation confirms reduced expansion on the right side superiorly. Percussion reveals dullness over the right suprascapular and infraclavicular areas. Auscultation: Bronchial breath sounds with post-tussive coarse crepitations over the right upper zone (mammary area and axillary area). Increased vocal resonance in the same region. Left lung is clear. Cardiovascular, abdominal, and neurological examinations are unremarkable."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hb 10.8 g/dL (mild anemia), WBC 9,200/\u03bcL (lymphocyte predominant differential: L 48%, N 44%), ESR 58 mm/hr (elevated), Platelets 3.2 lakhs. RBS: 102 mg/dL. LFT and RFT: Within normal limits. Sputum for AFB (Ziehl-Neelsen stain): Two early-morning samples sent \u2014 both POSITIVE for acid-fast bacilli (2+ grading). Sputum GeneXpert MTB/RIF: Mycobacterium tuberculosis DETECTED, Rifampicin resistance NOT detected. Chest X-ray PA view: Heterogeneous opacity with a 2.5 cm cavity in the right upper zone, with surrounding patchy infiltrates. No pleural effusion. No mediastinal widening. Rest of the lung fields appear clear. HIV rapid test: Non-reactive."
+      }
+    ],
+    "diagnosis": "Drug-sensitive pulmonary tuberculosis (sputum smear-positive, GeneXpert confirmed) with right upper lobe cavitary disease",
+    "differentials": [
+      "Pulmonary tuberculosis",
+      "Community-acquired pneumonia (bacterial)",
+      "Lung abscess",
+      "Pulmonary fungal infection (aspergillosis/histoplasmosis)",
+      "Bronchogenic carcinoma"
+    ],
+    "learning_points": [
+      "Classic presentation of pulmonary TB includes chronic cough >2 weeks, hemoptysis, evening fever, night sweats, weight loss, and anorexia \u2014 a history of household contact with a TB patient significantly increases pre-test probability",
+      "Right upper lobe involvement with cavitation on CXR is the hallmark of post-primary (reactivation) pulmonary TB; cavities indicate high bacillary load and increased infectiousness",
+      "GeneXpert MTB/RIF (CBNAAT) is the initial recommended diagnostic test under India's NTEP (National TB Elimination Programme) \u2014 it detects MTB and rifampicin resistance within 2 hours from sputum",
+      "Under NTEP, drug-sensitive TB is treated with a fixed-dose combination (FDC) regimen: 2 months intensive phase (HRZE \u2014 Isoniazid, Rifampicin, Pyrazinamide, Ethambutol) followed by 4 months continuation phase (HRE), along with daily pyridoxine supplementation and Nikshay Poshan Yojana nutritional support (\u20b9500/month)"
+    ],
+    "atypical_features": "This is a straightforward beginner-level case with a classic presentation. The key educational aspect is recognizing the importance of household contact history (father treated for TB 2 years ago) and the systematic approach to diagnosis using sputum AFB and GeneXpert as per NTEP guidelines. The mild anemia and elevated ESR are supportive but non-specific findings that students should interpret in context.",
+    "specialty": "respiratory",
+    "difficulty": "beginner",
+    "id": "f0c09f46"
+  },
+  "timestamp": "2026-02-15T08:53:10.217891"
+}

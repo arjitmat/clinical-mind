@@ -1,0 +1,52 @@
+{
+  "case_id": "2bad4bc0",
+  "case_data": {
+    "patient": {
+      "age": 22,
+      "gender": "Male",
+      "location": "Varanasi, Uttar Pradesh"
+    },
+    "chief_complaint": "High-grade fever with chills and body aches for 5 days",
+    "initial_presentation": "A 22-year-old college student from Varanasi presents to the medicine OPD with high-grade fever associated with chills and rigors for 5 days, along with diffuse body aches and headache. He reports that the fever comes every alternate day with drenching sweats, and he feels relatively well in between episodes.",
+    "vital_signs": {
+      "bp": "110/70",
+      "hr": 102,
+      "rr": 20,
+      "temp": 39.4,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient describes episodic high-grade fever (up to 103-104\u00b0F) occurring every 48 hours, preceded by intense chills and shaking lasting 30-45 minutes, followed by profuse sweating and defervescence. He has associated frontal headache, generalized myalgia, nausea, and two episodes of non-bilious vomiting. He denies cough, sore throat, rash, bleeding manifestations, altered sensorium, or seizures. He reports decreased appetite and mild loose stools (2-3 episodes/day, non-bloody). He recently returned 10 days ago from a college trekking trip to Chhattisgarh (Bastar district) where they camped near forested areas for 5 days. He did not use any mosquito repellent or prophylaxis. No significant past medical history. No similar illness in the past. No recent antibiotic use. His roommate who accompanied him on the trip is well. No known drug allergies."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "The patient appears flushed and mildly dehydrated. Mild pallor is present. No icterus. No rash, petechiae, or eschar. No lymphadenopathy. Oral cavity is clean with no thrush. Abdomen: Soft, non-tender. Spleen is palpable 3 cm below the left costal margin (firm, non-tender). Liver is palpable 2 cm below the right costal margin. No ascites. Chest: Bilateral clear breath sounds, no added sounds. CVS: S1S2 normal, tachycardic, no murmurs. CNS: GCS 15/15, no neck stiffness, no focal neurological deficits, pupils equal and reactive."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hb 11.8 g/dL, WBC 5,200/cumm (differential: neutrophils 60%, lymphocytes 34%, monocytes 4%, eosinophils 2%), Platelets 1,05,000/cumm (mild thrombocytopenia). Peripheral blood smear (thick and thin film): Plasmodium vivax trophozoites identified \u2014 enlarged red blood cells with Sch\u00fcffner's stippling, amoeboid trophozoites seen. Parasite density: low (<1%). Rapid Diagnostic Test (RDT): Pan-malaria antigen (pLDH) positive, PfHRP2 negative (ruling out P. falciparum). Dengue NS1 antigen and IgM: Negative. Widal test: Non-significant titers (TO 1:80, TH 1:80). LFT: Total bilirubin 1.6 mg/dL (indirect predominant), AST 52 U/L, ALT 48 U/L, Albumin 3.5 g/dL. Renal function: Creatinine 0.9 mg/dL, BUN 18 mg/dL. Blood glucose: 96 mg/dL. Urine routine: Normal."
+      }
+    ],
+    "diagnosis": "Plasmodium vivax malaria (uncomplicated)",
+    "differentials": [
+      "Plasmodium falciparum malaria",
+      "Dengue fever",
+      "Enteric (typhoid) fever",
+      "Scrub typhus",
+      "Viral fever (influenza or other)"
+    ],
+    "learning_points": [
+      "P. vivax malaria classically presents with tertian periodicity (fever every 48 hours) with chills, rigors, sweating, and relative well-being between paroxysms; P. vivax infects reticulocytes causing enlarged RBCs with Sch\u00fcffner's stippling on peripheral smear",
+      "Both thick smear (higher sensitivity for detection) and thin smear (species identification) should be examined; RDT differentiates falciparum (PfHRP2) from non-falciparum (pLDH/aldolase) malaria",
+      "Treatment of uncomplicated P. vivax: Chloroquine (25 mg/kg over 3 days) PLUS Primaquine (0.25 mg/kg/day for 14 days) for radical cure to eliminate hypnozoites in the liver and prevent relapse; G6PD testing should be done before starting primaquine to avoid hemolytic anemia",
+      "Travel history is crucial \u2014 Chhattisgarh, Odisha, Jharkhand, and northeastern states are high malaria-endemic zones in India; the National Vector Borne Disease Control Programme (NVBDCP) recommends ACT only for P. falciparum, while chloroquine remains first-line for P. vivax in India"
+    ],
+    "atypical_features": "This is a straightforward beginner-level case with a classic presentation. The slight challenge lies in eliciting a clear travel history to an endemic area (Bastar, Chhattisgarh) which is the key epidemiological clue, and in differentiating vivax from falciparum malaria using smear findings and RDT results, as management differs significantly between the two species.",
+    "specialty": "infectious",
+    "difficulty": "beginner",
+    "id": "2bad4bc0"
+  },
+  "timestamp": "2026-02-15T08:51:59.096442"
+}

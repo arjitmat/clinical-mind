@@ -1,0 +1,52 @@
+{
+  "case_id": "16d24529",
+  "case_data": {
+    "patient": {
+      "age": 28,
+      "gender": "Female",
+      "location": "Varanasi, Uttar Pradesh"
+    },
+    "chief_complaint": "Recurrent episodes of palpitations and breathlessness on exertion for 3 months",
+    "initial_presentation": "A 28-year-old married woman from Varanasi presents to the cardiology OPD with a 3-month history of episodic palpitations, exertional breathlessness, and one episode of near-syncope while climbing stairs last week. She also reports a recent episode of right-sided body weakness lasting 20 minutes that resolved spontaneously.",
+    "vital_signs": {
+      "bp": "118/74",
+      "hr": 92,
+      "rr": 18,
+      "temp": 37.0,
+      "spo2": 97
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Palpitations are episodic, lasting 15-30 minutes, irregular in rhythm, occurring 2-3 times per week. Breathlessness is progressive \u2014 initially noticed while running but now occurs while climbing one flight of stairs (NYHA Class II-III). One episode of near-syncope last week while climbing stairs at home. Three weeks ago, she experienced sudden onset right arm and leg weakness with slurred speech that resolved completely in 20 minutes (TIA). No headache, no visual disturbance, no fever. She had rheumatic fever at age 12 with joint pains and was on penicillin prophylaxis for 3 years but discontinued on her own at age 15. She denies oral contraceptive use. No history of thyroid disease. She is a homemaker, married with one child (normal delivery 2 years ago, uncomplicated). No family history of cardiac disease. Non-smoker, no alcohol. No history of deep vein thrombosis or pulmonary embolism."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Thin built woman, BMI 20. Malar flush present bilaterally. Pulse: Irregularly irregular, rate 92/min, variable volume. JVP: Prominent 'a' waves with intermittent cannon waves. Apex beat: Tapping quality, non-displaced, in 5th intercostal space midclavicular line. Auscultation: Loud S1, opening snap present in early diastole best heard at apex, low-pitched rumbling mid-diastolic murmur at apex best heard in left lateral position using the bell of the stethoscope. P2 loud. No pan-systolic murmur. No S3. Lungs: Fine bilateral basal crepitations. Abdomen: No hepatomegaly, no ascites. No pedal edema. Neurological exam: Completely normal, no residual focal deficit."
+      },
+      {
+        "stage": "labs",
+        "info": "ECG: Atrial fibrillation with ventricular rate 88-96/min, right axis deviation, P mitrale absent (due to AF), RVH pattern (tall R in V1). CXR: Straightening of left heart border, double density sign at right heart border, prominent upper lobe pulmonary veins (cephalization), Kerley B lines at lung bases, no pleural effusion. 2D Echocardiography: Mitral valve thickened with restricted leaflet motion (hockey-stick appearance of anterior mitral leaflet), commissural fusion, MVA by planimetry 1.1 cm\u00b2 (severe MS), mean gradient 14 mmHg, mild MR (Grade I), LA dilated (50 mm), spontaneous echo contrast (SEC/smoke) in LA, no LA thrombus on TTE, PASP 52 mmHg, LV function normal (EF 60%), no other valvular lesion. TEE: Confirms no LA appendage thrombus. Wilkins score 7/16 (leaflet mobility 2, thickening 2, calcification 1, subvalvular 2). CBC: Hb 11.8, WBC 7200, Platelets 2.1 lakh. RFT and LFT: Normal. TSH: 3.8 mIU/L (normal). ASO titre: 380 IU/mL (elevated). CRP: 8 mg/L (mildly elevated). INR: 1.0 (not on anticoagulation). CT Brain (done at outside hospital after TIA): No acute infarct, no hemorrhage."
+      }
+    ],
+    "diagnosis": "Severe rheumatic mitral stenosis with atrial fibrillation complicated by transient ischemic attack (cardioembolic), suitable for percutaneous balloon mitral valvotomy (PBMV)",
+    "differentials": [
+      "Rheumatic mitral stenosis",
+      "Left atrial myxoma",
+      "Cor triatriatum sinister",
+      "Infective endocarditis with embolic phenomenon",
+      "Non-rheumatic mitral annular calcification"
+    ],
+    "learning_points": [
+      "Rheumatic heart disease remains the leading cause of valvular heart disease in India, particularly affecting young women. Mitral stenosis is the most common rheumatic valvular lesion.",
+      "Atrial fibrillation in mitral stenosis significantly increases thromboembolic risk (TIA/stroke). Anticoagulation with warfarin (target INR 2-3) is mandatory in MS with AF, regardless of CHA2DS2-VASc score. DOACs are NOT recommended in valvular AF due to mechanical/rheumatic causes.",
+      "Wilkins echocardiographic score \u22648 with less than moderate MR and no LA thrombus makes the patient suitable for percutaneous balloon mitral valvotomy (PBMV) \u2014 a less invasive alternative to surgical commissurotomy or valve replacement.",
+      "Secondary prophylaxis with benzathine penicillin G (1.2 MU IM every 3 weeks) should be continued until age 40 or for 10 years after the last episode of rheumatic fever (whichever is longer). Discontinuation leads to recurrent carditis and progressive valve damage."
+    ],
+    "atypical_features": "The presentation is challenging because of the young age, the TIA as a presenting feature which may initially misdirect towards a neurological workup, the history of discontinued penicillin prophylaxis requiring the student to connect childhood rheumatic fever to current valvular disease, and the need to assess PBMV eligibility using Wilkins score rather than defaulting to surgical management. The irregularly irregular pulse with AF in a 28-year-old without typical risk factors should prompt consideration of underlying structural heart disease.",
+    "specialty": "cardiology",
+    "difficulty": "intermediate",
+    "id": "16d24529"
+  },
+  "timestamp": "2026-02-15T08:58:18.264909"
+}

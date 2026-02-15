@@ -1,0 +1,52 @@
+{
+  "case_id": "0a787e10",
+  "case_data": {
+    "patient": {
+      "age": 28,
+      "gender": "Female",
+      "location": "Jaipur, Rajasthan"
+    },
+    "chief_complaint": "Persistent right hip and thigh pain for 4 months with progressive difficulty in walking",
+    "initial_presentation": "A 28-year-old married woman from Jaipur presents with a 4-month history of deep-seated right hip pain radiating to the anterior thigh and knee, gradually worsening. She reports increasing difficulty in squatting, climbing stairs, and sitting cross-legged. She has no history of trauma but mentions receiving multiple intramuscular steroid injections for severe asthma exacerbations over the past 18 months.",
+    "vital_signs": {
+      "bp": "118/76",
+      "hr": 82,
+      "rr": 18,
+      "temp": 37.0,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient has had bronchial asthma since childhood, with frequent exacerbations over the past 2 years requiring multiple emergency department visits. She received intramuscular triamcinolone acetonide injections (40 mg each) approximately 6-8 times over 18 months from a local clinic, in addition to short oral prednisolone courses (40 mg tapering over 2 weeks, at least 4 courses). She also takes inhaled budesonide-formoterol regularly. Pain started insidiously 4 months ago as a dull ache in the right groin, gradually worsening. It radiates to the anterior thigh and sometimes to the right knee (she initially consulted for 'knee pain'). Pain is worse with weight-bearing and prolonged walking and partially relieved by rest. She has noticed a limp developing over the past 6 weeks. She has difficulty squatting for Indian-style toilet use and cannot sit cross-legged on the floor for meals. No night pain, no fever, no weight loss. No history of alcohol consumption. No history of SLE, sickle cell disease, or previous hip problems. She had an uncomplicated normal delivery 3 years ago. Menstrual cycles are regular. No family history of bone disease. She is a homemaker and her daily activities are significantly limited."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "The patient walks with an antalgic gait, taking shorter steps on the right side. Mild Trendelenburg sign on the right. Cushingoid features are absent. BMI: 22.5 kg/m\u00b2. Right hip examination: Flexion 100 degrees (reduced from normal 120), internal rotation markedly restricted to 10 degrees (normal 40) with pain reproduced on forced internal rotation \u2014 this is the earliest and most sensitive clinical finding for hip pathology. External rotation 25 degrees (reduced). Abduction 30 degrees (mildly reduced). FIRA (Flexion-Internal Rotation-Adduction) test: Positive, reproducing deep groin pain. Thomas test: Negative \u2014 no fixed flexion deformity. No tenderness over the greater trochanter (rules out trochanteric bursitis). Log roll test: Painful on the right. Left hip: Full, painless range of motion in all directions. True leg length: Equal bilaterally. No limb length discrepancy. Right knee examination: Normal \u2014 full range of motion, no effusion, ligaments stable (knee was the initial presenting complaint due to referred pain). Lumbar spine: Normal range of motion, SLR negative bilaterally. Peripheral pulses intact. No skin changes or lymphadenopathy."
+      },
+      {
+        "stage": "labs",
+        "info": "X-ray pelvis AP with both hips: Right femoral head shows patchy sclerosis in the anterosuperior weight-bearing area with a subtle radiolucent crescent line (crescent sign) beneath the subchondral bone. Femoral head sphericity is maintained. Joint space is preserved. Left hip appears normal. Ficat and Arlet staging: Right hip \u2014 Stage III (crescent sign present indicating subchondral fracture). MRI both hips (coronal T1, T2, STIR sequences): Right femoral head: Serpiginous low-signal band on T1-weighted images in the anterosuperior femoral head, representing the reactive interface between necrotic and viable bone. On T2-weighted images, the classic 'double line sign' is present \u2014 an outer hypointense line (sclerotic bone) with an inner hyperintense line (granulation tissue/hyperemic zone). The necrotic segment involves approximately 35-40% of the weight-bearing surface. Subchondral fracture line visible on sagittal sequences. Mild joint effusion present. Modified Kerboul combined necrotic angle: 190 degrees (moderate-sized lesion). Steinberg classification: Stage IIIA. Left femoral head: A small area of serpiginous band pattern involving the anterosuperior femoral head, involving <15% of the weight-bearing surface. No subchondral fracture, head spherical, no effusion. Steinberg Stage IIA. Blood investigations: CBC \u2014 Hb 12.8 g/dL, TLC 9,200/mm\u00b3, Platelets 2.4 lakh. ESR: 12 mm/hr, CRP: 3 mg/L (both normal \u2014 argues against infection or inflammatory arthritis). Serum calcium: 9.2 mg/dL, phosphorus: 3.8 mg/dL, alkaline phosphatase: 78 U/L (all normal). Lipid profile: Total cholesterol 218 mg/dL, Triglycerides 188 mg/dL (mildly deranged). Fasting blood glucose: 108 mg/dL (impaired fasting glucose \u2014 steroid effect). HbA1c: 5.9%. Vitamin D: 16 ng/mL (deficient). Serum cortisol (8 AM): 4.2 \u00b5g/dL (low-normal, suggesting some degree of HPA axis suppression from exogenous steroids). HIV: Negative. RA factor: Negative. Sickle cell screen: Negative. Urine routine: Normal."
+      }
+    ],
+    "diagnosis": "Bilateral avascular necrosis (osteonecrosis) of the femoral heads \u2014 steroid-induced (from repeated parenteral and oral corticosteroids for asthma). Right hip: Ficat Stage III (subchondral collapse/crescent sign). Left hip: Ficat Stage II (pre-collapse, detected on screening MRI).",
+    "differentials": [
+      "Avascular necrosis of the femoral head (steroid-induced)",
+      "Osteoarthritis of the hip (unusual at age 28 without predisposing factors; joint space preserved on X-ray)",
+      "Transient osteoporosis of the hip (self-limiting, diffuse bone marrow edema on MRI without serpiginous band)",
+      "Inflammatory arthritis of the hip (RA, ankylosing spondylitis \u2014 normal inflammatory markers, no sacroiliitis)",
+      "Stress fracture of the femoral neck (acute onset, linear edema on MRI, no necrotic band pattern)"
+    ],
+    "learning_points": [
+      "Corticosteroids are the most common cause of non-traumatic AVN; both oral and parenteral (intramuscular depot) formulations carry significant risk. Cumulative dose >2 g prednisolone equivalent and depot IM steroids (triamcinolone) are particularly associated with AVN. Always inquire about steroid use in any young patient with hip or groin pain.",
+      "The earliest clinical sign of hip pathology is restriction and pain on internal rotation. Referred pain to the knee from hip pathology (via the obturator nerve) is a classic diagnostic pitfall \u2014 always examine the hip in any young patient presenting with anterior thigh or knee pain of unclear etiology.",
+      "MRI is the gold standard for early AVN diagnosis (sensitivity >95%). The 'double line sign' on T2-weighted images (inner bright line of granulation tissue, outer dark line of sclerotic bone) is pathognomonic. The modified Kerboul combined necrotic angle helps predict outcomes: <200\u00b0 is favorable for head-preserving surgery, >200\u00b0 predicts failure.",
+      "Bilateral involvement occurs in 40-80% of steroid-induced AVN cases. The contralateral hip must always be screened with MRI even if asymptomatic. In this case, early asymptomatic left hip involvement was detected on screening MRI, enabling early intervention."
+    ],
+    "atypical_features": "This case is challenging because: (1) The patient initially presented with right knee pain as her primary complaint \u2014 referred pain from the hip to the knee via the obturator nerve is a classic clinical pitfall that can delay diagnosis if the hip is not examined. (2) The steroid exposure was primarily through repeated intramuscular depot injections (triamcinolone) rather than the more commonly recognized prolonged oral prednisolone, which students may not immediately associate with AVN risk. (3) The patient is a young woman of reproductive age, which is a less typical demographic for AVN compared to the more commonly tested scenario of a young male with alcohol or steroid use. (4) Bilateral but asymmetric disease requiring different management strategies for each hip \u2014 the right hip (Stage III, post-collapse) likely needs arthroplasty while the left hip (Stage II, pre-collapse) is a candidate for head-preserving core decompression.",
+    "specialty": "orthopedics",
+    "difficulty": "intermediate",
+    "id": "0a787e10"
+  },
+  "timestamp": "2026-02-14T17:05:33.441973"
+}

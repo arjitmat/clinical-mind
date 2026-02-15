@@ -1,6 +1,7 @@
 """Family member agent — brings cultural context, emotional pressure, and additional history in Hinglish."""
 
 from app.core.agents.base_agent import BaseAgent
+from app.core.agents.symptom_translator import get_family_friendly_description
 
 
 FAMILY_SYSTEM_PROMPT = """You are a family member of a patient in an Indian government hospital. A medical student (junior doctor) is examining your relative.
@@ -52,7 +53,12 @@ CULTURAL CONTEXT:
 - Socioeconomic: Government hospital implies middle/lower-middle class
 - You may reference local beliefs and practices specific to the region
 
-Respond ONLY as the family member. Stay in character completely. Be emotionally authentic."""
+Respond ONLY as the family member. Stay in character completely. Be emotionally authentic.
+
+FORMATTING RULES:
+- Do NOT use markdown formatting like ** or * in your responses
+- Write in plain text only
+- For actions or expressions, use plain text like: (doing something) instead of *doing something*"""
 
 
 class FamilyAgent(BaseAgent):
@@ -284,42 +290,45 @@ class FamilyAgent(BaseAgent):
 
     def get_initial_context(self) -> dict:
         """Generate the family member's first statement when they arrive."""
-        cc = self.family_info.get("chief_complaint", "problem").lower()
+        cc_original = self.family_info.get("chief_complaint", "problem")
         age = self.family_info.get("patient_age", 45)
         gender = self.family_info.get("patient_gender", "Male")
         location = self.family_info.get("location", "Delhi")
         patient_ref = "yeh" if self.relationship in ("Mother", "Father", "Wife", "Husband") else "mere papa" if self.relationship == "Son" else "meri mummy" if self.relationship == "Daughter" else "yeh"
 
+        # Get family-friendly description of symptoms
+        family_description = get_family_friendly_description(cc_original, "kuch din")
+
         greetings = {
             "Mother": (
-                f"Doctor sahab, namaste! Mera bachcha bahut bimar hai, {cc} ho raha hai. "
-                f"2-3 din se dekh rahe hain, local doctor ke paas bhi gaye the par kuch nahi hua. "
+                f"Doctor sahab, namaste! Mera bachcha bahut bimar hai, {family_description}. "
+                f"Local doctor ke paas bhi gaye the par kuch nahi hua. "
                 f"Please doctor, inka kuch karo! Hum bahut pareshan hain."
             ),
             "Father": (
                 f"Namaste doctor sahab. Yeh mera {('beta' if gender == 'Male' else 'beti')} hai, "
-                f"{age} saal ka hai. {cc.capitalize()} ki problem hai. "
+                f"{age} saal ka hai. {family_description}. "
                 f"Pehle private mein dikhaya, bahut kharcha hua, ab yahan laaye hain. Dekhiye please."
             ),
             "Wife": (
-                f"Doctor sahab, namaste. Yeh mere husband hain, inko {cc} ho raha hai. "
-                f"3-4 din se kaam pe bhi nahi ja pa rahe. Maine bola doctor ke paas chalo, "
+                f"Doctor sahab, namaste. Yeh mere husband hain, {family_description}. "
+                f"Kaam pe bhi nahi ja pa rahe. Maine bola doctor ke paas chalo, "
                 f"par sunte nahi. Aaj bahut zyada ho gaya toh laaye hain. Please dekh lo."
             ),
             "Husband": (
-                f"Doctor sahab, meri wife ko {cc} ki problem hai. Kaafi dino se hai, "
-                f"ghar pe kadha pila rahe the, thoda aram tha par ab bahut badh gaya hai. "
+                f"Doctor sahab, meri wife ko {family_description}. "
+                f"Ghar pe kadha pila rahe the, thoda aram tha par ab bahut badh gaya hai. "
                 f"Please jaldi check karo, bacche ghar pe akele hain."
             ),
             "Son": (
                 f"Namaste doctor. Yeh mere {('papa' if gender == 'Male' else 'mummy')} hain, "
-                f"age {age} hai. {cc.capitalize()} ki problem hai kaafi dino se. "
+                f"age {age} hai. {family_description}. "
                 f"Pehle batate nahi the, aaj achanak tabiyat bigad gayi toh le aaye. "
                 f"Please achhe se check kar lo."
             ),
             "Daughter": (
                 f"Doctor sahab, yeh meri {('mummy' if gender == 'Female' else 'papa')} hain. "
-                f"Inko {cc} ho raha hai, bohot dino se. Dawai lene mein aanakaani karte hain, "
+                f"{family_description}. Dawai lene mein aanakaani karte hain, "
                 f"humne zabardasti hospital laaya hai. Please inka dhyan se treatment karo."
             ),
         }
@@ -327,7 +336,7 @@ class FamilyAgent(BaseAgent):
         content = greetings.get(
             self.relationship,
             (
-                f"Doctor sahab, namaste. {patient_ref} ko {cc} hai. "
+                f"Doctor sahab, namaste. {patient_ref} ko {cc_original} hai. "
                 f"Bahut pareshan hain hum, please jaldi dekh lo."
             ),
         )

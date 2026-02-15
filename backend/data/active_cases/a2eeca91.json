@@ -1,0 +1,52 @@
+{
+  "case_id": "a2eeca91",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Female",
+      "location": "Chandigarh, Punjab"
+    },
+    "chief_complaint": "Recurrent episodes of painless bloody diarrhea with progressive fatigue for 3 months",
+    "initial_presentation": "A 34-year-old schoolteacher from Chandigarh presents with 8-10 episodes of bloody mucoid stools daily for the past 3 months, associated with urgency and tenesmus. She reports progressive fatigue, unintentional weight loss of 6 kg, and a painful red swelling over her right shin for 2 weeks. She has no prior significant medical history.",
+    "vital_signs": {
+      "bp": "104/68",
+      "hr": 102,
+      "rr": 20,
+      "temp": 37.8,
+      "spo2": 97
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Bloody mucoid diarrhea started insidiously 3 months ago with 4-5 stools/day, now progressed to 8-10 stools/day with nocturnal episodes (waking 2-3 times at night to pass stool). Stools are mixed with blood and mucus, no formed component. Constant urgency and tenesmus. Intermittent diffuse lower abdominal cramping that is partially relieved after defecation. Unintentional weight loss of 6 kg over 3 months despite maintaining appetite initially (now anorexic). Progressive fatigue affecting her ability to teach. A painful, tender, raised erythematous nodule appeared on the anterior aspect of her right shin 2 weeks ago - not associated with trauma. Intermittent bilateral knee joint pain without swelling for 1 month. No oral ulcers, no eye symptoms. No recent travel, no antibiotic use, no NSAID use. No history of tuberculosis or contact. No family history of IBD or colorectal malignancy. She is vegetarian, non-smoker, and does not consume alcohol. She had an uneventful normal delivery 2 years ago. She was initially treated by a local practitioner with metronidazole and ciprofloxacin for presumed amoebic dysentery for 2 weeks with no improvement. A stool routine showed RBCs and pus cells but no trophozoites or cysts. Stool culture was negative."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Thin, pale woman appearing fatigued. BMI: 18.2 kg/m2 (underweight). Pallor present (conjunctival and palmar). No icterus, no lymphadenopathy, no clubbing. Oral cavity: Two small aphthous ulcers on buccal mucosa (previously unnoticed by patient). Abdomen: Soft, mild diffuse tenderness over the left iliac fossa and suprapubic region. No guarding, no rigidity, no rebound tenderness. No hepatosplenomegaly. No palpable mass. Bowel sounds: Hyperactive. PR examination: Tender anal canal, blood and mucus on examining finger, no fissure, no fistula, no perianal abscess. Rectal mucosa feels granular. Right shin: 3 cm x 2 cm raised, tender, warm, erythematous nodule on anterior tibial surface consistent with erythema nodosum. Bilateral knee joints: Mild tenderness, no effusion, full range of motion. Cardiovascular and respiratory examination: Unremarkable."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hb 8.2 g/dL, MCV 72 fL (microcytic), WBC 13,500, Platelets 5,20,000 (reactive thrombocytosis), ESR: 68 mm/hr. Iron studies: Serum ferritin 8 ng/mL, serum iron low, TIBC elevated (iron deficiency anemia). CRP: 85 mg/L (markedly elevated). LFT: Normal except albumin 2.6 g/dL (hypoalbuminemia). Renal function: Normal. Stool: RBCs +++, pus cells +++, no ova/cysts/parasites, stool culture negative, C. difficile toxin negative. Fecal calprotectin: 1250 \u00b5g/g (markedly elevated, normal <50 - indicates significant intestinal inflammation). Colonoscopy: Continuous mucosal inflammation starting from the rectum and extending proximally up to the splenic flexure (left-sided colitis). Mucosa shows diffuse erythema, granularity, loss of vascular pattern, contact bleeding, superficial ulcerations with pseudopolyps in the sigmoid colon. No skip lesions. Terminal ileum: Normal (intubated and visualized). The transition from inflamed to normal mucosa is well-demarcated at the splenic flexure. Biopsy (multiple from affected and unaffected areas): Chronic active colitis with diffuse mucosal and submucosal inflammation, crypt abscesses, crypt architectural distortion (branching and shortening), goblet cell depletion. No granulomas. No dysplasia. No features suggestive of CMV inclusions. p-ANCA: Positive. ASCA: Negative. TB PCR from biopsy: Negative. IGRA (QuantiFERON-TB Gold): Negative. Abdominal X-ray: No toxic dilatation. Modified Truelove and Witts criteria assessment: Moderately severe disease (6-8 bloody stools/day, pulse >90, Hb <10.5, ESR >30)."
+      }
+    ],
+    "diagnosis": "Ulcerative colitis - left-sided (E2 by Montreal classification), moderately severe (Truelove and Witts), with extraintestinal manifestations (erythema nodosum, peripheral arthropathy, aphthous ulcers)",
+    "differentials": [
+      "Ulcerative colitis",
+      "Crohn's colitis",
+      "Intestinal tuberculosis",
+      "Amoebic colitis",
+      "Infectious colitis (bacterial - Shigella, Salmonella, C. difficile)"
+    ],
+    "learning_points": [
+      "Ulcerative colitis involves continuous mucosal inflammation starting from the rectum and extending proximally without skip lesions. Montreal classification: E1 (proctitis), E2 (left-sided, up to splenic flexure), E3 (extensive/pancolitis). Distinguishing UC from Crohn's is critical: UC has continuous disease, mucosal/submucosal involvement, no granulomas, rectal involvement; Crohn's has skip lesions, transmural inflammation, granulomas, and can involve any part of the GI tract.",
+      "Extraintestinal manifestations (EIMs) of IBD: Erythema nodosum and peripheral (Type 1 pauciarticular) arthropathy correlate with disease activity and improve with colitis treatment. Pyoderma gangrenosum, primary sclerosing cholangitis (more with UC), uveitis/episcleritis, and sacroiliitis/ankylosing spondylitis (HLA-B27 associated) are other important EIMs.",
+      "In India, intestinal tuberculosis is the most important differential for IBD and must be excluded before starting immunosuppressive therapy. Key distinguishing features: TB has transverse ulcers, ileocecal involvement, caseating granulomas, positive IGRA/TB PCR; UC has longitudinal continuous inflammation, rectal involvement, crypt abscesses, no granulomas. The ISG recommends TB exclusion in every suspected IBD case in India.",
+      "Moderately severe UC (Truelove and Witts) is managed with oral + topical (enema) 5-ASA (mesalamine). If no response in 2-4 weeks, oral corticosteroids (prednisolone 40 mg/day, tapering over 8 weeks) are added. Steroid-refractory or steroid-dependent disease requires thiopurines (azathioprine) or biologics (infliximab, vedolizumab). Fecal calprotectin is a useful non-invasive marker for disease activity and monitoring treatment response."
+    ],
+    "atypical_features": "The presence of prominent extraintestinal manifestations (erythema nodosum, arthropathy, aphthous ulcers) as concurrent presenting features in a young woman, combined with the Indian clinical imperative to rigorously exclude intestinal tuberculosis before initiating immunosuppression, makes this case diagnostically challenging. The initial misdiagnosis as amoebic dysentery (common in Indian practice) with failed empirical antimicrobial therapy adds a realistic layer of diagnostic delay. Additionally, reactive thrombocytosis and severe iron deficiency anemia as markers of chronicity require the student to integrate systemic findings with GI pathology.",
+    "specialty": "gastro",
+    "difficulty": "intermediate",
+    "id": "a2eeca91"
+  },
+  "timestamp": "2026-02-15T08:53:54.007323"
+}

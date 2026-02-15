@@ -1,6 +1,8 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
+:root {
   /* Primary Colors */
   --color-cream-white: #FFFCF7;
   --color-warm-gray-50: #F5F3F0;
@@ -136,6 +138,21 @@ body {
 }
 .animate-urgent-pulse {
   animation: urgentPulse 1.5s ease-in-out infinite;
+}
+
+/* Loading bar animation for agent initialization */
+@keyframes loadingBar {
+  0% { width: 0%; }
+  10% { width: 10%; }
+  20% { width: 25%; }
+  40% { width: 45%; }
+  60% { width: 65%; }
+  80% { width: 85%; }
+  100% { width: 100%; }
+}
+
+.animate-loading-bar {
+  animation: loadingBar 180s ease-out forwards; /* 3 minutes */
 }
 
 /* Scrollbar styling */

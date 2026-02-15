@@ -1,0 +1,52 @@
+{
+  "case_id": "a8a85293",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Female",
+      "location": "Bhopal, Madhya Pradesh"
+    },
+    "chief_complaint": "Recurrent episodes of watery diarrhea with blood and mucus, joint pains, and a painful red rash on the shins for 3 months",
+    "initial_presentation": "A 34-year-old schoolteacher from Bhopal presents with a 3-month history of worsening bloody diarrhea (6-8 episodes/day), crampy lower abdominal pain, urgency, and tenesmus. She also reports painful swollen ankles bilaterally and tender red nodular lesions over both shins that appeared 2 weeks ago. She has lost 7 kg in 3 months.",
+    "vital_signs": {
+      "bp": "104/68",
+      "hr": 102,
+      "rr": 20,
+      "temp": 37.8,
+      "spo2": 97
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Diarrhea began insidiously 3 months ago with 2-3 loose stools/day, now progressed to 6-8 bloody mucoid stools/day. Nocturnal diarrhea present (wakes her up 1-2 times at night). Crampy left lower quadrant and suprapubic pain, partially relieved after defecation. Urgency and tenesmus prominent. Painful bilateral ankle swelling for 6 weeks \u2014 migratory, affecting ankles and knees, non-deforming. Tender red nodules over both shins for 2 weeks (erythema nodosum). Mouth ulcers (aphthous) recurring for 2 months. Unintentional weight loss of 7 kg. No history of recent travel, antibiotic use, or sick contacts. No family history of IBD or autoimmune conditions. She was previously treated by a local practitioner with metronidazole and ciprofloxacin for 'amoebic dysentery' twice \u2014 brief partial response, then relapse. Non-smoker, no alcohol use. No NSAID use. No history of tuberculosis or TB contact. Menstrual history: Irregular periods for 3 months. No prior surgical history."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Thin, pale-appearing woman in mild distress. BMI 18.2 (underweight). Pallor present. Two aphthous ulcers on buccal mucosa. No icterus, no lymphadenopathy. Abdomen: Mild diffuse tenderness, more in the left iliac fossa and suprapubic region. No guarding or rigidity. No palpable masses. No hepatosplenomegaly. Bowel sounds: hyperactive. PR examination: Tender, mucoid bloody stool on glove; no perianal fissures, fistulae, or skin tags. Musculoskeletal: Bilateral ankle joint swelling, warm and tender, full range of motion preserved, non-deforming. Knees \u2014 mild effusion on left. Skin: Multiple tender, raised, erythematous nodules (2-4 cm) over anterior tibiae bilaterally \u2014 consistent with erythema nodosum. No pyoderma gangrenosum. Eyes: No uveitis on bedside examination (penlight exam normal)."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hb 8.5 g/dL, MCV 72 fL (microcytic), WBC 13,500, Platelets 5,20,000 (reactive thrombocytosis). ESR: 68 mm/hr. CRP: 85 mg/L. Serum albumin: 2.6 g/dL. Iron studies: Ferritin 8 ng/mL, serum iron low, TIBC elevated (iron deficiency anemia). LFT: Normal except albumin. Renal function: Normal. Stool microscopy: RBCs and WBCs present; no ova, cysts, or parasites; no amoebic trophozoites. Stool culture: No Salmonella, Shigella, or Campylobacter. Clostridium difficile toxin: Negative. Stool for calprotectin: 850 \u00b5g/g (markedly elevated, normal <50). Mantoux test: 8 mm (non-significant). Chest X-ray: Normal. Colonoscopy: Continuous mucosal inflammation starting from the rectum and extending proximally to the splenic flexure (left-sided colitis). Findings: Loss of vascular pattern, diffuse erythema, granularity, friability, spontaneous bleeding, shallow ulcers, and pseudopolyps in the sigmoid colon. No skip lesions. Terminal ileum: Normal (intubated). No strictures or fistulae. Biopsy (multiple sites): Chronic active colitis with crypt distortion, crypt abscesses, goblet cell depletion, basal plasmacytosis. No granulomas. No dysplasia. No viral inclusions (CMV negative on immunohistochemistry). pANCA: Positive. ASCA: Negative. QuantiFERON-TB Gold: Negative (helps rule out intestinal TB \u2014 important Indian differential)."
+      }
+    ],
+    "diagnosis": "Ulcerative colitis (left-sided, E2 by Montreal classification) with extraintestinal manifestations \u2014 erythema nodosum, peripheral arthropathy (Type 1 \u2014 pauciarticular), and aphthous stomatitis",
+    "differentials": [
+      "Intestinal tuberculosis",
+      "Crohn's colitis",
+      "Amoebic colitis",
+      "Infectious colitis (Shigella/Campylobacter)",
+      "Beh\u00e7et's disease"
+    ],
+    "learning_points": [
+      "Ulcerative colitis must be distinguished from intestinal tuberculosis in the Indian setting \u2014 QuantiFERON-TB Gold, absence of granulomas on biopsy, continuous (non-skip) colonic involvement starting from the rectum, and negative TB workup help differentiate. ISG guidelines recommend excluding TB before starting immunosuppression.",
+      "Extraintestinal manifestations (EIMs) of IBD include erythema nodosum and Type 1 peripheral arthropathy (pauciarticular, large joint, correlates with disease activity) \u2014 their presence should raise suspicion for IBD in a patient with chronic bloody diarrhea.",
+      "Fecal calprotectin is an excellent non-invasive biomarker to distinguish inflammatory diarrhea from functional diarrhea (IBS). Values >250 \u00b5g/g strongly suggest mucosal inflammation and warrant colonoscopy.",
+      "Montreal classification of UC extent: E1 (proctitis), E2 (left-sided \u2014 up to splenic flexure), E3 (extensive/pancolitis). Treatment intensity is guided by both extent and severity (Truelove-Witts criteria). Left-sided UC can be managed with combination oral + topical (rectal) 5-ASA (mesalamine) as first-line therapy."
+    ],
+    "atypical_features": "The prominent extraintestinal manifestations (erythema nodosum, peripheral arthropathy, aphthous ulcers) dominating the presentation alongside the GI symptoms can mislead toward a primary rheumatological or dermatological diagnosis. Additionally, the repeated misdiagnosis as amoebic dysentery (extremely common in Indian practice) with partial antibiotic response delays the correct diagnosis. The need to rigorously exclude intestinal tuberculosis before initiating immunosuppressive therapy adds a critical diagnostic step unique to the Indian clinical context.",
+    "specialty": "gastro",
+    "difficulty": "intermediate",
+    "id": "a8a85293"
+  },
+  "timestamp": "2026-02-15T09:02:56.720487"
+}

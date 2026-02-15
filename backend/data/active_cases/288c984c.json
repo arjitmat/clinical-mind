@@ -1,0 +1,53 @@
+{
+  "case_id": "288c984c",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Male",
+      "location": "Lucknow, Uttar Pradesh"
+    },
+    "chief_complaint": "Progressive difficulty walking and urinary retention for 6 weeks with episodic painful spasms in both legs",
+    "initial_presentation": "A 34-year-old government clerk from Lucknow presents with progressive weakness and stiffness in both lower limbs for 6 weeks, making it increasingly difficult to walk. He reports urinary retention requiring catheterization twice in the past week. He also describes episodes of excruciatingly painful extensor spasms in both legs triggered by minor stimuli like bedsheet contact. He had an episode of transient bilateral visual blurring 3 months ago that resolved without treatment.",
+    "vital_signs": {
+      "bp": "118/76",
+      "hr": 78,
+      "rr": 16,
+      "temp": 37.1,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Progressive bilateral lower limb weakness and stiffness over 6 weeks \u2014 initially noticed difficulty climbing stairs, now requires support to walk. Painful tonic spasms in both legs (lasting 30-60 seconds) triggered by touch, noise, or movement \u2014 occurring 8-10 times/day. Urinary retention for 2 weeks \u2014 required intermittent catheterization twice. Constipation for 3 weeks. Episode of bilateral visual blurring with mild eye pain 3 months ago, lasted 10 days, resolved spontaneously \u2014 did not seek medical attention. Persistent band-like tightness around the lower chest and upper abdomen for the past 4 weeks (girdle sensation). Intractable hiccups for 5 days (new symptom). No limb numbness but describes 'electric shock' sensation running down spine and into legs on neck flexion. No fever, no weight loss, no joint pains, no oral/genital ulcers, no skin rash. No recent vaccination or diarrheal illness. Non-smoker, occasional alcohol. No family history of neurological illness. No history of tuberculosis or contact. He is of Indian ethnicity, Hindu, vegetarian."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Higher mental functions: Alert, oriented, MMSE 30/30. Cranial nerves: Visual acuity 6/9 both eyes, RAPD absent, color vision intact on Ishihara, fundoscopy shows bilateral temporal pallor of optic discs. Horizontal nystagmus on lateral gaze bilaterally. No other cranial nerve deficits. Motor \u2014 Upper limbs: Power 5/5 throughout, tone normal, reflexes 3+ bilaterally with finger flexor jerks and Hoffmann sign positive bilaterally. Lower limbs: Power 3/5 hip flexors, 3/5 knee flexors, 4/5 knee extensors, 4/5 ankle dorsiflexors bilaterally (pyramidal pattern weakness). Tone markedly increased \u2014 spastic catch bilaterally, more in extensors. Sustained ankle clonus bilaterally (>10 beats). Bilateral Babinski positive. Sensory: Diminished pinprick and temperature below T6 dermatome bilaterally (spinothalamic). Posterior column: Joint position sense and vibration mildly reduced at toes. Band of hyperaesthesia at T6 level. Triggered painful tonic spasm of both lower limbs during examination (legs extending, adducting, feet plantarflexing) lasting 45 seconds \u2014 patient in severe distress. Lhermitte sign positive. No cerebellar signs. Gait: Spastic paraparetic gait with scissoring, requires bilateral support."
+      },
+      {
+        "stage": "labs",
+        "info": "MRI brain with gadolinium: Two periventricular white matter lesions (one perpendicular to body of lateral ventricle \u2014 Dawson finger pattern), one juxtacortical lesion in left frontal lobe, one lesion in the area postrema/dorsal medulla (explaining intractable hiccups). No enhancing lesions on brain MRI. MRI spine with gadolinium: Long segment enhancing intramedullary lesion extending from T3 to T8 (longitudinally extensive transverse myelitis \u2014 LETM, spanning >3 vertebral segments) with cord swelling and central T2 hyperintensity. A second shorter lesion at C2-C3 (non-enhancing, likely old). CSF analysis: WBC 35 cells (lymphocytes 70%, neutrophils 20%, eosinophils 10%), Protein 0.85 g/L, Glucose 55 mg/dL (blood glucose 95), OCBs: Positive in CSF and serum (mirror pattern \u2014 type 4), IgG index borderline. Serum anti-AQP4 (aquaporin-4) antibody (cell-based assay): POSITIVE. Serum anti-MOG antibody: Negative. NMO-IgG by ELISA: Positive. VEP: Prolonged P100 latency bilaterally (worse on right). Blood: CBC normal, ESR 28, ANA weakly positive (1:80 speckled), dsDNA negative, TSH normal, B12 normal, ACE levels normal. Anti-SSA/SSB: Negative. HIV and VDRL: Negative."
+      }
+    ],
+    "diagnosis": "Neuromyelitis Optica Spectrum Disorder (NMOSD) \u2014 AQP4-IgG seropositive \u2014 presenting with longitudinally extensive transverse myelitis (LETM), area postrema syndrome (intractable hiccups), and prior bilateral optic neuritis",
+    "differentials": [
+      "Multiple sclerosis (RRMS)",
+      "MOG antibody-associated disease (MOGAD)",
+      "Neurosarcoidosis with spinal cord involvement",
+      "Spinal cord tumor (intramedullary \u2014 ependymoma/astrocytoma)",
+      "Systemic lupus erythematosus with CNS involvement (lupus myelitis)"
+    ],
+    "learning_points": [
+      "NMOSD with AQP4-IgG positivity requires only ONE core clinical characteristic (optic neuritis, LETM, area postrema syndrome, diencephalic syndrome, brainstem syndrome, or cerebral syndrome) for diagnosis \u2014 this patient has THREE (LETM, area postrema syndrome with intractable hiccups, and bilateral optic neuritis).",
+      "Longitudinally extensive transverse myelitis (\u22653 vertebral segments) is a hallmark of NMOSD and should trigger AQP4 antibody testing \u2014 unlike MS which typically causes short-segment (<2 vertebral segments) cord lesions. Central cord involvement (grey matter-predominant) is characteristic of NMOSD versus peripheral/dorsal cord in MS.",
+      "Area postrema syndrome (intractable nausea, vomiting, or hiccups) is a highly specific presentation of NMOSD and may be the first or presenting feature. The area postrema is an AQP4-rich circumventricular organ lacking blood-brain barrier \u2014 explaining vulnerability in NMOSD.",
+      "Treatment of NMOSD differs critically from MS: azathioprine, mycophenolate, rituximab, eculizumab, satralizumab, or inebilizumab for relapse prevention. Interferon-beta and fingolimod (MS drugs) can WORSEN NMOSD. Acute attacks require high-dose IV methylprednisolone and plasma exchange (PLEX) if steroid-refractory. In India, rituximab and azathioprine are most commonly used due to cost considerations.",
+      "OCB pattern helps differentiate: Type 2 (CSF-restricted) OCBs are seen in >90% of MS but only 15-30% of NMOSD. Mirror pattern (Type 4 \u2014 identical bands in CSF and serum) suggests systemic immune activation, more consistent with NMOSD. Cell-based assay for AQP4-IgG is more sensitive and specific than ELISA."
+    ],
+    "atypical_features": "This case is challenging because the combination of periventricular brain lesions (mimicking MS Dawson fingers), positive Lhermitte sign, and spastic paraparesis can easily lead to a misdiagnosis of MS. However, several red flags against MS and pointing to NMOSD include: (1) longitudinally extensive cord lesion (>3 segments \u2014 rare in MS), (2) area postrema lesion causing intractable hiccups, (3) bilateral optic neuritis rather than unilateral, (4) painful tonic spasms (common in NMOSD due to extensive cord involvement), (5) mirror pattern OCBs rather than CSF-restricted bands, and (6) weakly positive ANA suggesting autoimmune predisposition. The co-existence of brain lesions can occur in up to 60% of NMOSD patients and does not exclude the diagnosis. Misdiagnosing as MS and starting interferon-beta could catastrophically worsen the disease. The case also tests knowledge of NMOSD-specific acute management (PLEX) and long-term immunosuppression distinct from MS disease-modifying therapies.",
+    "specialty": "neurology",
+    "difficulty": "advanced",
+    "id": "288c984c"
+  },
+  "timestamp": "2026-02-15T09:15:29.093978"
+}

@@ -1,0 +1,52 @@
+{
+  "case_id": "1dae06e6",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Male",
+      "location": "Dibrugarh, Assam"
+    },
+    "chief_complaint": "Severe abdominal pain, coffee-ground vomiting, and progressive confusion for 6 hours",
+    "initial_presentation": "A 34-year-old tea garden worker from Dibrugarh, Assam is brought to the district hospital emergency by co-workers after being found disoriented near the plantation shed with multiple episodes of coffee-ground vomiting and severe abdominal pain. His colleagues report he had been complaining of a headache and body aches for the past 5 days, which he attributed to 'monsoon fever.' He appears jaundiced, confused, and is bleeding from his gums.",
+    "vital_signs": {
+      "bp": "85/50",
+      "hr": 132,
+      "rr": 28,
+      "temp": 39.2,
+      "spo2": 92
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient has been working in the tea gardens during the monsoon season (July). Co-workers report he had intermittent high-grade fever with rigors for 5 days, body aches, myalgia, and conjunctival suffusion. He took paracetamol from the local pharmacist but did not seek medical care. He consumed locally brewed rice beer (apong) 2 days ago. Yesterday evening he developed severe epigastric and right hypochondrial pain, followed by 4 episodes of coffee-ground vomiting. He became progressively confused over the past 6 hours. His urine had turned dark brown/cola-colored since yesterday. He passed minimal urine today. No history of any chronic illness, no prior hospitalizations. No history of similar episodes. No history of recent travel outside Assam. No history of rat bite but his living quarters (tea garden labor lines) are poorly maintained with frequent rodent sightings. No known allergies. He was previously well and active. One of his co-workers had been hospitalized last week for a 'kidney problem with fever' at the same hospital."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "GCS: 10 (E3V3M4) - confused, incomprehensible speech, localizes pain. Marked icterus with lemon-yellow scleral discoloration. Bilateral conjunctival suffusion (hemorrhagic) - prominent and characteristic. Bilateral subconjunctival hemorrhage. Gingival bleeding noted. Multiple petechiae over trunk and extremities. Tender hepatomegaly (liver palpable 4 cm below costal margin, firm, smooth). No splenomegaly. Severe tenderness in epigastrium and right hypochondrium with voluntary guarding but no rigidity. Bilateral calf muscle tenderness elicited (marked). Bilateral lung bases: Fine crepitations up to mid-zones (possible pulmonary hemorrhage or ARDS). No neck stiffness (rules out meningitis). Skin: No eschar or rash suggestive of scrub typhus. No lymphadenopathy. Oliguria - Foley catheter drains 50 mL of dark cola-colored urine over 2 hours."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hb 8.5 g/dL (drop from likely normal baseline - hemorrhage + hemolysis), WBC 16,500 (neutrophilic predominance), Platelets 28,000 (severe thrombocytopenia). Peripheral smear: No malarial parasites on thick and thin smear (repeated twice). Features of intravascular hemolysis (fragmented RBCs, polychromasia). Reticulocyte count: 4.2%. LFT: Total bilirubin 18.5 mg/dL (direct 12.8 mg/dL), AST 185, ALT 95 (AST >> ALT pattern), ALP 280, Albumin 2.4, GGT 110. Renal: BUN 85, Creatinine 6.8 (oliguric AKI), K+ 6.1, Na+ 128. ABG: pH 7.18, PaCO2 24, PaO2 68, HCO3 12, Lactate 7.5 (severe metabolic acidosis with respiratory compensation). Coagulation: INR 2.1, aPTT 52 seconds, Fibrinogen 150 (DIC developing). LDH: 1850 IU/L (markedly elevated - hemolysis + organ injury). Haptoglobin: Undetectable. Direct Coombs test: Negative. CPK: 4200 IU/L (rhabdomyolysis). Urine: Dark brown, 3+ blood on dipstick but few RBCs on microscopy (myoglobinuria/hemoglobinuria), granular casts. Rapid malaria antigen (RDT): Negative for Pf and Pv. Leptospira IgM ELISA (rapid): Positive. Leptospira MAT (sent to regional lab - result pending): Titres later confirmed \u22651:800 (serogroup Icterohaemorrhagiae). Blood culture: No growth at 48 hours. Dengue NS1/IgM: Negative. Scrub typhus IgM: Negative. CXR (portable): Bilateral diffuse alveolar infiltrates in lower and mid zones (pulmonary hemorrhage vs ARDS). No cardiomegaly, no pleural effusion. USG Abdomen: Enlarged liver (17 cm), bilateral enlarged echogenic kidneys (acute renal injury pattern), mild ascites, no biliary obstruction, no splenic enlargement. Bedside echocardiography: LVEF 45%, no pericardial effusion, no valvular vegetations."
+      }
+    ],
+    "diagnosis": "Weil's disease (severe leptospirosis) with hepatorenal syndrome, pulmonary hemorrhage, DIC, rhabdomyolysis, and multi-organ dysfunction syndrome (MODS)",
+    "differentials": [
+      "Severe falciparum malaria with multi-organ dysfunction (algid malaria)",
+      "Dengue hemorrhagic fever with expanded dengue syndrome (hepatorenal involvement)",
+      "Scrub typhus with multi-organ involvement",
+      "Hantavirus hemorrhagic fever with renal syndrome",
+      "Hepatitis E with acute liver failure and hemolysis (in G6PD-deficient individual)"
+    ],
+    "learning_points": [
+      "Weil's disease triad: Jaundice + Renal failure + Hemorrhage. The combination of conjugated hyperbilirubinemia with disproportionately mild hepatocellular injury (bilirubin-transaminase dissociation where bilirubin is very high but ALT is only mildly elevated) is characteristic and differentiates it from viral hepatitis.",
+      "Conjunctival suffusion (redness without exudate) is a hallmark early sign of leptospirosis, present in 30-40% of cases. Combined with calf muscle tenderness, it should raise strong clinical suspicion in endemic monsoon settings even before serology returns.",
+      "Pulmonary hemorrhage is the most feared and lethal complication of severe leptospirosis (mortality 30-60%). Suspect when bilateral alveolar infiltrates appear with hemoptysis or unexplained hypoxia. It results from vasculitis and does NOT correlate with DIC severity. Manage with lung-protective ventilation; pulse methylprednisolone (1g IV x 3 days) may be considered though evidence is limited.",
+      "Treatment: IV crystalline penicillin G (1.5 MU q6h) or IV ceftriaxone (1g q12h) for severe leptospirosis. Doxycycline is used for mild cases and prophylaxis. Early initiation of antibiotics reduces mortality even if given after day 4 of illness. Dialysis support for AKI (which is usually reversible), platelet transfusion for active bleeding with severe thrombocytopenia, and early ICU care for MODS are critical."
+    ],
+    "atypical_features": "This case is challenging because: (1) The initial presentation mimics multiple monsoon-season tropical infections endemic to Northeast India (malaria, dengue, scrub typhus), making clinical differentiation critical; (2) Negative malaria smear and RDT in an endemic region can create false reassurance - the student must consider alternative diagnoses; (3) The bilirubin-transaminase dissociation (bilirubin 18.5 with ALT only 95) is a key distinguishing clue from viral hepatitis or malaria where transaminases are proportionally higher; (4) Co-existing rhabdomyolysis (CPK 4200) contributes to AKI and confounds the urinalysis interpretation (myoglobinuria vs hemoglobinuria); (5) The occupational exposure history (tea garden worker in monsoon, rodent-infested living quarters) and the epidemiological clue of a co-worker recently hospitalized with similar illness must be actively elicited; (6) The patient presents in frank MODS requiring simultaneous multi-system stabilization including airway management, aggressive fluid resuscitation balanced against pulmonary hemorrhage risk, renal replacement therapy consideration, and DIC management - testing prioritization and resuscitation skills.",
+    "specialty": "emergency",
+    "difficulty": "advanced",
+    "id": "1dae06e6"
+  },
+  "timestamp": "2026-02-15T09:08:15.130089"
+}

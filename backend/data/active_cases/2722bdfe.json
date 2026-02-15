@@ -1,0 +1,52 @@
+{
+  "case_id": "2722bdfe",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Female",
+      "location": "Bhopal, Madhya Pradesh"
+    },
+    "chief_complaint": "Recurrent episodes of painless bloody diarrhea with mucus for 3 months, now worsened over the past 5 days",
+    "initial_presentation": "A 34-year-old schoolteacher from Bhopal presents to the GI OPD with worsening bloody diarrhea (10-12 episodes/day) with mucus for the past 5 days, on a background of intermittent bloody stools for 3 months. She reports significant weight loss, fatigue, and low-grade fever. She was treated twice with antibiotics (metronidazole and ciprofloxacin) by a local practitioner for presumed amoebic dysentery with only transient improvement.",
+    "vital_signs": {
+      "bp": "100/64",
+      "hr": 108,
+      "rr": 20,
+      "temp": 38.1,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Intermittent episodes of bloody mucoid diarrhea for 3 months, gradually increasing in frequency. Current exacerbation: 10-12 bloody stools per day for 5 days, with urgency, tenesmus, and nocturnal diarrhea (waking up 2-3 times at night). Crampy lower abdominal pain preceding defecation, partially relieved after passing stool. No vomiting. Low-grade fever for 1 week. Unintentional weight loss of 6 kg over 3 months. Increased fatigue and easy bruising. No joint pains, skin rashes, or eye symptoms currently. Treated twice with metronidazole + ciprofloxacin courses by local physician \u2014 initial partial response then relapse. Stool microscopy done outside showed 'plenty of RBCs and pus cells' but no amoebic trophozoites. No history of travel, no sick contacts, no contaminated water exposure. No NSAID use. No family history of IBD or colorectal cancer. Vegetarian diet. Non-smoker, non-alcoholic. Married with one child (uncomplicated delivery 4 years ago). No prior surgeries. Menstrual history: Periods regular but heavier than usual for the past 2 months."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Thin-built, pale, appears unwell. BMI 18.2 kg/m\u00b2. Marked pallor of conjunctivae and nail beds. No icterus. No oral ulcers. No lymphadenopathy. No peripheral edema. Abdomen: Mild diffuse tenderness over the left iliac fossa and hypogastrium, no guarding or rigidity, no rebound tenderness, no palpable mass. Bowel sounds active and exaggerated. No hepatosplenomegaly. No perianal disease (no fissure, fistula, or skin tags). PR examination: Tender anal canal, blood and mucus on examining finger, no mass palpable. Skin: Two small erythematous nodules on anterior shins bilaterally (erythema nodosum \u2014 tender, raised, 1.5 cm each). Musculoskeletal: No active joint swelling. Eyes: No redness or pain."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hb 7.8 g/dL, MCV 72 fL (microcytic), WBC 14,200 (neutrophilia), Platelets 5,60,000 (reactive thrombocytosis). ESR: 68 mm/hr. CRP: 85 mg/L. Iron studies: Ferritin 8 ng/mL, serum iron low, TIBC elevated (iron deficiency anemia). Albumin: 2.6 g/dL. LFT: Otherwise normal. Renal function: Normal. Stool routine: Plenty of RBCs, pus cells (20-25/hpf), no ova/cysts/parasites, no amoebic trophozoites. Stool culture: No Salmonella, Shigella, or Campylobacter. Stool for C. difficile toxin: Negative. Fecal calprotectin: 1200 \u00b5g/g (markedly elevated, normal <50). Blood culture: Sterile. Colonoscopy: Continuous mucosal inflammation starting from the rectum and extending proximally to the hepatic flexure (left-sided + extending into transverse colon \u2014 extensive colitis). Mucosa shows erythema, loss of vascular pattern, granularity, contact friability, superficial ulcerations with pseudopolyps in the sigmoid. No skip lesions. Terminal ileum: Normal (intubated). Biopsy (multiple sites): Diffuse chronic active colitis with crypt architectural distortion, crypt abscesses, goblet cell depletion, and basal plasmacytosis. No granulomas. No dysplasia. CMV immunohistochemistry: Negative. Mayo Endoscopic Subscore: 3 (severe). Truelove and Witts criteria assessment: >6 bloody stools/day, tachycardia >100, Hb <10.5, ESR >30, temperature >37.8\u00b0C \u2014 classifies as ACUTE SEVERE ULCERATIVE COLITIS (ASUC). Plain abdominal X-ray: No evidence of toxic megacolon (transverse colon diameter <5.5 cm). No free air."
+      }
+    ],
+    "diagnosis": "Acute severe ulcerative colitis (extensive colitis \u2014 E3 by Montreal classification) with erythema nodosum as extraintestinal manifestation, complicated by severe iron deficiency anemia",
+    "differentials": [
+      "Ulcerative colitis (acute severe flare)",
+      "Crohn's colitis",
+      "Amoebic colitis",
+      "Infectious colitis (Shigella/Campylobacter/C. difficile)",
+      "Intestinal tuberculosis"
+    ],
+    "learning_points": [
+      "Truelove and Witts criteria for acute severe UC: \u22656 bloody stools/day PLUS any one of \u2014 pulse >90, temp >37.8\u00b0C, Hb <10.5, ESR >30. ASUC requires hospitalization and IV corticosteroids (hydrocortisone 100 mg QID or methylprednisolone 60 mg/day) as first-line. Assess response at Day 3 using Oxford criteria \u2014 if no response, escalate to IV cyclosporine or infliximab as rescue therapy.",
+      "Ulcerative colitis characteristically causes continuous mucosal inflammation starting from the rectum, with no skip lesions and no terminal ileum involvement \u2014 key distinguishing features from Crohn's disease. Histology shows crypt architectural distortion, crypt abscesses, and basal plasmacytosis without granulomas.",
+      "Fecal calprotectin is an excellent non-invasive biomarker for intestinal inflammation (sensitivity >95% for active IBD). In India, it is increasingly available and useful for monitoring disease activity and response to therapy without repeated colonoscopies.",
+      "Erythema nodosum is the most common dermatologic extraintestinal manifestation of UC and correlates with disease activity \u2014 it typically resolves with treatment of the underlying colitis. Other EIMs include pyoderma gangrenosum (independent of disease activity), primary sclerosing cholangitis, and sacroiliitis."
+    ],
+    "atypical_features": "The case is challenging because the patient was repeatedly misdiagnosed as amoebic dysentery (extremely common diagnostic confusion in India where both conditions are prevalent), the partial response to antibiotics delayed the correct diagnosis by 3 months. The presence of erythema nodosum \u2014 a subtle extraintestinal manifestation \u2014 provides an important clinical clue that this is IBD rather than infection. Additionally, the severity meets Truelove and Witts criteria for ASUC requiring urgent inpatient management, and the student must recognize this as a medical emergency rather than outpatient management. The reactive thrombocytosis and markedly elevated fecal calprotectin further reinforce the need to differentiate chronic inflammatory from infectious etiology.",
+    "specialty": "gastro",
+    "difficulty": "intermediate",
+    "id": "2722bdfe"
+  },
+  "timestamp": "2026-02-15T09:05:01.618996"
+}

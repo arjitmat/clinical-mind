@@ -1,0 +1,52 @@
+{
+  "case_id": "c134b28f",
+  "case_data": {
+    "patient": {
+      "age": 28,
+      "gender": "Female",
+      "location": "Bhopal, Madhya Pradesh"
+    },
+    "chief_complaint": "Recurrent episodes of palpitations and breathlessness for 3 months",
+    "initial_presentation": "A 28-year-old married woman, a schoolteacher from Bhopal, presents to the medicine OPD with recurrent episodes of palpitations, breathlessness on exertion (climbing one flight of stairs), and occasional dull chest discomfort for the past 3 months. She reports one episode of near-syncope 2 weeks ago while standing in a school assembly. She has no known prior cardiac history.",
+    "vital_signs": {
+      "bp": "108/70",
+      "hr": 92,
+      "rr": 20,
+      "temp": 37.0,
+      "spo2": 97
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Patient describes palpitations as sudden onset, rapid heartbeats lasting 10-30 minutes, occurring 2-3 times per week, sometimes at rest. Breathlessness is progressive over 3 months from NYHA I to II. She had one near-syncopal episode but no frank syncope. She reports recurrent sore throats in childhood, approximately 4-5 episodes between ages 8-14 years, some requiring penicillin injections. She recalls being told she had 'joint pains and fever' at age 10, managed at a local PHC. No documentation available. She denies any history of chorea, rash, or nodules. Married for 3 years, has a 1-year-old child, uneventful pregnancy. No family history of cardiac disease. No thyroid symptoms. No stimulant or substance use. No oral contraceptive use. Recently noticed mild swelling of feet at end of day."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "General: Malar flush noted on both cheeks. No pallor, no clubbing, no cyanosis. JVP: Normal. Pulse: Irregularly irregular at 92/min, variable volume. CVS: Apex beat tapping quality, felt in 5th ICS just lateral to MCL. Loud S1 at apex. Opening snap followed by low-pitched mid-diastolic rumbling murmur at apex, best heard in left lateral decubitus position with bell of stethoscope. Loud P2 appreciated. A pansystolic murmur at apex radiating to axilla is also faintly audible. No S3 or S4. Lungs: Fine bibasal crepitations in lower zones. Abdomen: Soft, no hepatomegaly, no ascites. Extremities: Mild bilateral pedal edema."
+      },
+      {
+        "stage": "labs",
+        "info": "ECG: Atrial fibrillation with controlled ventricular rate (~90/min), broad bifid P waves absent (AF), right axis deviation, RVH pattern (tall R in V1). CXR PA view: Left atrial enlargement (straightening of left heart border, double density sign, splayed carina), prominent pulmonary conus, upper lobe pulmonary venous diversion, Kerley B lines. No cardiomegaly. Echocardiography: Rheumatic mitral valve with thickened leaflets, restricted mobility, hockey-stick appearance of anterior mitral leaflet. Mitral valve area by planimetry: 1.1 cm\u00b2 (severe MS). Mean gradient across mitral valve: 14 mmHg. Mild mitral regurgitation (MR grade I-II). LA dilated (LA diameter 4.8 cm). PASP estimated at 55 mmHg (moderate pulmonary hypertension). LVEF 60%, normal LV dimensions. Wilkins score: 8/16. No LA thrombus on TTE. CBC: Hb 11.8, WBC 7200, Platelets 2.4 lakh. TFT: Normal. ASO titre: 320 IU/mL (elevated). CRP: 8 mg/L (mildly elevated). RFT and LFT: Normal. INR: 1.0. BNP: 380 pg/mL (elevated)."
+      }
+    ],
+    "diagnosis": "Severe rheumatic mitral stenosis with new-onset atrial fibrillation and early heart failure (NYHA Class II)",
+    "differentials": [
+      "Rheumatic mitral stenosis",
+      "Left atrial myxoma mimicking mitral stenosis",
+      "Cor triatriatum sinister",
+      "Thyrotoxic atrial fibrillation with valvulopathy",
+      "Peripartum cardiomyopathy with functional MR"
+    ],
+    "learning_points": [
+      "Rheumatic heart disease (RHD) remains the leading cause of valvular heart disease in India, especially in young women. History of recurrent sore throats and childhood joint pains should raise suspicion for prior rheumatic fever even without documentation.",
+      "Mitral stenosis presents with exertional dyspnea, palpitations, and hemoptysis. Atrial fibrillation occurs due to LA dilatation and is the most common arrhythmia in MS. AF in MS carries a high thromboembolic risk (stroke risk ~5%/year), mandating anticoagulation with warfarin (NOACs not recommended for valvular AF due to MS).",
+      "Wilkins echocardiographic score (leaflet mobility, thickening, calcification, subvalvular disease; each 0-4) guides intervention: score \u22648 with no significant MR and no LA thrombus favors percutaneous balloon mitral valvotomy (PBMV). Score >8 or significant MR favors surgical mitral valve replacement.",
+      "Auscultatory findings in MS: Loud S1 (pliable valve), opening snap (the shorter the S2-OS interval, the more severe the MS), low-pitched mid-diastolic rumble at apex in left lateral position. Loud P2 indicates pulmonary hypertension."
+    ],
+    "atypical_features": "This case is intermediate in difficulty because the patient is a young woman whose symptoms began postpartum, potentially confusing the picture with peripartum cardiomyopathy. The new-onset atrial fibrillation at age 28 without typical risk factors should prompt evaluation for structural heart disease. The absence of documented rheumatic fever history and the relatively mild symptoms despite severe stenosis (MVA 1.1 cm\u00b2) require the student to piece together the clinical picture from the childhood history of recurrent sore throats and joint pains. The mildly elevated ASO titre and CRP add a layer of complexity regarding possible ongoing rheumatic activity versus chronic RHD.",
+    "specialty": "cardiology",
+    "difficulty": "intermediate",
+    "id": "c134b28f"
+  },
+  "timestamp": "2026-02-15T08:56:26.046664"
+}

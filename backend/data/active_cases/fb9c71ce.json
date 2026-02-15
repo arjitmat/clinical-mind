@@ -1,0 +1,52 @@
+{
+  "case_id": "fb9c71ce",
+  "case_data": {
+    "patient": {
+      "age": 28,
+      "gender": "Female",
+      "location": "Jaipur, Rajasthan"
+    },
+    "chief_complaint": "Pain and swelling in the right wrist for 3 months with progressive difficulty gripping objects",
+    "initial_presentation": "A 28-year-old married woman from Jaipur presents with a 3-month history of progressive right wrist pain and swelling with difficulty gripping objects such as kitchen utensils and water pots. She reports no history of trauma but mentions that the pain worsens significantly during repetitive activities like grinding spices and wringing clothes. She has recently noticed a visible bump on the back of her wrist that has been gradually increasing in size.",
+    "vital_signs": {
+      "bp": "118/74",
+      "hr": 78,
+      "rr": 16,
+      "temp": 37.0,
+      "spo2": 99
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Pain started insidiously 3 months ago in the dorsal aspect of the right wrist. Initially mild and intermittent, now constant dull ache with sharp exacerbations during gripping, lifting, and twisting motions. She is right-hand dominant. She noticed a small swelling on the dorsum of the wrist approximately 6 weeks ago, which has gradually increased to its current size. She reports occasional tingling in the index and middle fingers, especially at night, but no frank numbness. No history of trauma, fall on outstretched hand, or repetitive occupational stress beyond household work. She had a normal vaginal delivery 8 months ago and is currently breastfeeding. She was prescribed calcium and iron supplements postpartum. No history of tuberculosis, rheumatoid arthritis, gout, or any systemic illness. No fever, weight loss, or night sweats. No history of similar swelling in any other joint. Family history unremarkable. She visited a local bone-setter 2 weeks ago who applied turmeric paste and bandaging without relief."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Right wrist: A firm, smooth, well-defined, non-tender to mildly tender, 2.5 x 2 cm swelling on the dorsum of the wrist overlying the scapholunate interval. The swelling is transilluminant (positive transillumination test with pen torch in a dark room). The lump is non-pulsatile, non-compressible, and slightly mobile. It becomes more prominent on wrist flexion and less prominent on extension. Skin over the swelling is normal, no warmth or erythema. Wrist range of motion: flexion 50 degrees (reduced, normal 80), extension 60 degrees (mildly reduced), radial deviation 15 degrees, ulnar deviation 25 degrees. Grip strength reduced on the right compared to left (assessed clinically with handshake). Finkelstein test: Negative (rules out De Quervain tenosynovitis). Phalen test: Weakly positive at 50 seconds (mild tingling in median nerve distribution \u2014 suggests possible extrinsic compression of carpal tunnel by the ganglion). Tinel sign at carpal tunnel: Equivocal. Watson scaphoid shift test: Negative (no scapholunate instability). No tenderness in the anatomical snuffbox. No wasting of thenar muscles. Distal neurovascular status: Intact, Allen test normal. Examination of the left wrist, bilateral elbows, and other joints: Normal. No subcutaneous nodules, no skin rash, no lymphadenopathy."
+      },
+      {
+        "stage": "labs",
+        "info": "X-ray right wrist AP and lateral: No bony abnormality, no fracture, no erosions, no calcification. Joint spaces are maintained. Scapholunate interval normal (<3 mm). Carpal alignment normal. Soft tissue shadow visible on the dorsum of the wrist corresponding to the palpable lump. Ultrasound right wrist: Well-defined anechoic cystic lesion (2.4 x 1.8 x 1.5 cm) with posterior acoustic enhancement arising from the dorsal scapholunate ligament region, communicating with the wrist joint via a narrow stalk. No solid component, no vascularity on Doppler. Findings consistent with a dorsal wrist ganglion cyst. MRI right wrist (done to evaluate stalk and rule out occult pathology): Well-defined T2 hyperintense, T1 hypointense cystic lesion on the dorsum arising from the scapholunate ligament, with a pedicle connecting to the joint capsule. No intraosseous ganglion. Scapholunate ligament shows mild degeneration but is intact. No triangular fibrocartilage complex (TFCC) tear. No features of rheumatoid arthritis or synovial proliferation. No occult scaphoid fracture. Nerve conduction study (done for the tingling complaint): Mild prolongation of distal motor latency of the right median nerve (4.8 ms, normal <4.2 ms) with normal sensory conduction \u2014 suggestive of early carpal tunnel syndrome likely from extrinsic compression. Blood investigations: Hb 11.2 g/dL (mild anemia), CBC otherwise normal, ESR 12 mm/hr, CRP 3 mg/L, RA factor negative, Anti-CCP antibodies negative, serum uric acid 4.8 mg/dL, calcium 9.1 mg/dL, phosphorus 3.4 mg/dL, vitamin D: 14 ng/mL (deficient), serum albumin 3.8 g/dL."
+      }
+    ],
+    "diagnosis": "Dorsal wrist ganglion cyst arising from the scapholunate ligament with secondary early carpal tunnel syndrome due to extrinsic compression, in a vitamin D deficient lactating woman",
+    "differentials": [
+      "Dorsal wrist ganglion cyst (most common soft tissue tumor of the hand/wrist)",
+      "Giant cell tumor of tendon sheath (solid, non-transilluminant)",
+      "Extensor tenosynovitis (rheumatoid or tubercular \u2014 diffuse swelling, inflammatory markers elevated)",
+      "Occult scaphoid fracture with dorsal wrist swelling",
+      "Carpal boss (bony prominence at 2nd/3rd CMC joint \u2014 hard, non-transilluminant)"
+    ],
+    "learning_points": [
+      "Ganglion cysts are the most common soft tissue tumors of the hand and wrist (60-70%), with the dorsal wrist ganglion arising from the scapholunate ligament being the single most common type (60-70% of all ganglion cysts). They contain thick, clear, mucoid (hyaluronic acid-rich) fluid and communicate with the joint via a one-way valve mechanism through a pedicle.",
+      "Transillumination test is a crucial bedside clinical test to differentiate cystic from solid swellings: a ganglion cyst is brilliantly transilluminant, while solid tumors (giant cell tumor of tendon sheath, lipoma, sarcoma) are not. This simple test can guide diagnosis without imaging in resource-limited settings.",
+      "Dorsal wrist ganglions can cause secondary carpal tunnel syndrome through extrinsic compression of the carpal tunnel contents, even when located dorsally \u2014 this occurs via mass effect through the intercarpal space or via associated volar extension. This explains the tingling symptoms in this patient and highlights the need to examine for CTS in all wrist ganglion presentations.",
+      "Treatment options range from observation (40-50% resolve spontaneously) to aspiration with or without corticosteroid injection (recurrence rate 50%) to surgical excision of the cyst along with its stalk and a cuff of joint capsule (recurrence rate 5-15%). The historical 'Bible therapy' (hitting with a heavy book) is mentioned in textbooks but is NOT recommended. Arthroscopic excision is increasingly performed and has lower recurrence rates in some studies."
+    ],
+    "atypical_features": "This case is made challenging by the coexistence of early carpal tunnel syndrome symptoms (nocturnal tingling in median nerve distribution) secondary to the dorsal ganglion, which may mislead students into pursuing a neurological workup before identifying the primary pathology. The patient is a young lactating woman with vitamin D deficiency, which could cause students to consider metabolic bone disease or postpartum De Quervain tenosynovitis. The negative Finkelstein test and characteristic transilluminant dorsal swelling are key differentiating features. The history of visiting a bone-setter reflects a common Indian healthcare-seeking pattern that delays appropriate diagnosis.",
+    "specialty": "orthopedics",
+    "difficulty": "intermediate",
+    "id": "fb9c71ce"
+  },
+  "timestamp": "2026-02-14T17:07:56.392843"
+}

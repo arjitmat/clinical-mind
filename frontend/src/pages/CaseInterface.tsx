@@ -1,14 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { Button, Card, Badge, Input } from '../components/ui';
+import { Button, Card, Badge } from '../components/ui';
 import {
   AgentMessage,
   type AgentMessageData,
   TypingIndicator,
-  LanguageToggle,
   ExaminationModal,
   type ExaminationFindings,
   UrgentTimer,
+  InlineHelpPanel,
+  VitalsHistoryPanel,
+  SuggestedQuestions,
 } from '../components/case';
 import {
   fetchCase,
@@ -17,6 +19,7 @@ import {
   initializeAgents,
   sendAgentAction,
   advanceSimulationTime,
+  fetchAgentVitals,
   type GeneratedCase,
   type DiagnosisResult,
   type VitalsData,
@@ -112,14 +115,14 @@ export const CaseInterface: React.FC = () => {
   const [inputValue, setInputValue] = useState('');
   const [sendingMessage, setSendingMessage] = useState(false);
   const [typingAgent, setTypingAgent] = useState<{ name: string; type: string } | null>(null);
+  const [initializingAgents, setInitializingAgents] = useState(false);
 
   // Simulation state
   const [vitalsData, setVitalsData] = useState<VitalsData | null>(null);
   const [investigations, setInvestigations] = useState<InvestigationItem[]>([]);
   const [, setTimeline] = useState<TimelineEvent[]>([]);
+  const [vitalsHistory, setVitalsHistory] = useState<any[]>([]);
 
-  // Language toggle
-  const [language, setLanguage] = useState<'en' | 'hi'>('hi');
 
   // Examination modal
   const [examFindings, setExamFindings] = useState<ExaminationFindings | null>(null);
@@ -134,7 +137,12 @@ export const CaseInterface: React.FC = () => {
   const [showDiagnosisInput, setShowDiagnosisInput] = useState(false);
   const [diagnosisResult, setDiagnosisResult] = useState<DiagnosisResult | null>(null);
 
+  // Clinical progress tracking for suggested questions
+  const [hasHistory, setHasHistory] = useState(false);
+  const [hasExamination, setHasExamination] = useState(false);
+
   const chatEndRef = useRef<HTMLDivElement>(null);
+  const vitalsPollingRef = useRef<NodeJS.Timeout | null>(null);
 
   // Load existing case by ID, or generate new one
   useEffect(() => {
@@ -161,12 +169,20 @@ export const CaseInterface: React.FC = () => {
     if (!caseData) return;
     const studentLevel = searchParams.get('level') || 'intern';
 
+    setInitializingAgents(true);
     initializeAgents(caseData.id, studentLevel)
       .then((res) => {
+        console.log('Agents initialized, session_id:', res.session_id);
         setAgentSessionId(res.session_id);
         setVitalsData(res.vitals);
         setTimeline(res.timeline || []);
         setInvestigations(res.investigations || []);
+
+        // Initialize vitals history with first reading
+        if (res.vitals?.vitals) {
+          setVitalsHistory([res.vitals.vitals]);
+        }
+
         const initialMsgs: AgentMessageData[] = res.messages.map((m, i) => ({
           id: `init-${i}`,
           agent_type: m.agent_type as AgentMessageData['agent_type'],
@@ -190,6 +206,10 @@ export const CaseInterface: React.FC = () => {
           content: "Let's work through this case together. Start by examining the patient's presentation and vitals. What catches your attention?",
           timestamp: new Date(),
         }]);
+        setAgentSessionId('fallback'); // Set fallback session to allow interaction
+      })
+      .finally(() => {
+        setInitializingAgents(false);
       });
   }, [caseData, searchParams]);
 
@@ -206,6 +226,49 @@ export const CaseInterface: React.FC = () => {
       setUrgentTimer({ seconds: 600, label: 'Patient Deteriorating', active: true });
     }
   }, [vitalsData?.trajectory]);
+
+  // Live vitals polling - update every 5 seconds
+  useEffect(() => {
+    // Only poll if we have an active session and haven't submitted diagnosis
+    if (!agentSessionId || showDiagnosis) return;
+
+    const pollVitals = async () => {
+      try {
+        const newVitals = await fetchAgentVitals(agentSessionId);
+        setVitalsData(newVitals);
+      } catch (error) {
+        // Silently fail - don't disrupt the simulation if vitals polling fails
+        console.error('Failed to fetch vitals:', error);
+      }
+    };
+
+    // Initial poll after 5 seconds
+    vitalsPollingRef.current = setTimeout(() => {
+      pollVitals();
+      // Then poll every 5 seconds
+      vitalsPollingRef.current = setInterval(pollVitals, 5000);
+    }, 5000);
+
+    // Cleanup on unmount or when dependencies change
+    return () => {
+      if (vitalsPollingRef.current) {
+        clearTimeout(vitalsPollingRef.current);
+        clearInterval(vitalsPollingRef.current);
+        vitalsPollingRef.current = null;
+      }
+    };
+  }, [agentSessionId, showDiagnosis]);
+
+  // Track vitals history for sparklines
+  useEffect(() => {
+    if (!vitalsData?.vitals) return;
+
+    setVitalsHistory(prev => {
+      const newHistory = [...prev, vitalsData.vitals];
+      // Keep only last 10 readings for performance
+      return newHistory.slice(-10);
+    });
+  }, [vitalsData]);
 
   const updateSimState = (res: { vitals: VitalsData; timeline?: TimelineEvent[]; investigations?: InvestigationItem[] }) => {
     if (res.vitals) setVitalsData(res.vitals);
@@ -233,7 +296,25 @@ export const CaseInterface: React.FC = () => {
   };
 
   const sendMessage = async () => {
-    if (!inputValue.trim() || !agentSessionId) return;
+    console.log('sendMessage called', { inputValue, agentSessionId, activeAction });
+
+    if (!inputValue.trim()) {
+      console.log('Empty input, returning');
+      return;
+    }
+
+    if (!agentSessionId) {
+      console.log('No agentSessionId, returning');
+      return;
+    }
+
+    // Track clinical progress for suggested questions
+    if (activeAction === 'talk_to_patient' && inputValue.toLowerCase().includes('history')) {
+      setHasHistory(true);
+    }
+    if (activeAction === 'examine_patient') {
+      setHasExamination(true);
+    }
 
     const studentMsg: AgentMessageData = {
       id: Date.now().toString(),
@@ -395,12 +476,9 @@ export const CaseInterface: React.FC = () => {
             {caseData.chief_complaint}
           </h1>
         </div>
-        <div className="flex items-center gap-3">
-          <LanguageToggle language={language} onToggle={setLanguage} />
-          <Button variant="tertiary" onClick={() => navigate('/')}>
-            Exit Case
-          </Button>
-        </div>
+        <Button variant="tertiary" onClick={() => navigate('/')}>
+          Exit Case
+        </Button>
       </div>
 
       {/* Urgent Timer */}
@@ -433,7 +511,14 @@ export const CaseInterface: React.FC = () => {
           {/* Live Vitals Monitor */}
           <Card padding="md">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-semibold text-text-primary">Live Vitals</h3>
+              <div className="flex items-center gap-2">
+                <h3 className="text-sm font-semibold text-text-primary">Live Vitals</h3>
+                {/* Live indicator */}
+                <div className="flex items-center gap-1">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <span className="text-[10px] text-green-600 font-medium">LIVE</span>
+                </div>
+              </div>
               {vitalsData && (
                 <span className={`text-xs font-medium ${
                   vitalsData.urgency_level === 'critical' ? 'text-red-600 animate-pulse' :
@@ -466,6 +551,13 @@ export const CaseInterface: React.FC = () => {
                 );
               })}
             </div>
+
+            {/* Vitals History Sparklines */}
+            {vitalsHistory.length > 1 && (
+              <div className="mt-3 pt-3 border-t border-warm-gray-200">
+                <VitalsHistoryPanel vitalsHistory={vitalsHistory} />
+              </div>
+            )}
           </Card>
 
           {/* Patient Card */}
@@ -555,11 +647,18 @@ export const CaseInterface: React.FC = () => {
               ) : (
                 <div>
                   <h3 className="text-sm font-semibold text-text-primary mb-3">Your Diagnosis</h3>
-                  <Input
+                  <input
+                    type="text"
                     placeholder="Enter your diagnosis..."
                     value={studentDiagnosis}
-                    onChange={setStudentDiagnosis}
-                    onKeyPress={(e) => e.key === 'Enter' && handleSubmitDiagnosis()}
+                    onChange={(e) => setStudentDiagnosis(e.target.value)}
+                    onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                      if (e.key === 'Enter') {
+                        e.preventDefault();
+                        handleSubmitDiagnosis();
+                      }
+                    }}
+                    className="w-full p-2.5 rounded-lg border-[1.5px] border-warm-gray-100 bg-cream-white text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:border-forest-green transition-colors"
                   />
                   <div className="mt-3 flex gap-2">
                     <Button size="sm" onClick={handleSubmitDiagnosis}>Submit</Button>
@@ -632,7 +731,73 @@ export const CaseInterface: React.FC = () => {
         {/* Multi-Agent Hospital Chat (7/12) */}
         <div className="lg:col-span-7">
           <div className="sticky top-20">
-            <Card padding="md" className="h-[calc(100vh-7rem)] flex flex-col">
+            <Card padding="md" className="h-[calc(100vh-7rem)] flex flex-col relative">
+              {/* Initialization Loading Overlay */}
+              {initializingAgents && (
+                <div className="absolute inset-0 bg-cream-white/95 backdrop-blur-sm z-50 flex flex-col items-center justify-center rounded-lg">
+                  <div className="text-center space-y-4 max-w-sm px-6">
+                    {/* Animated Hospital Icon */}
+                    <div className="mx-auto w-20 h-20 relative">
+                      <div className="absolute inset-0 bg-forest-green/10 rounded-full animate-ping"></div>
+                      <div className="relative w-20 h-20 bg-forest-green/20 rounded-full flex items-center justify-center">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2D5C3F" strokeWidth="2" className="animate-pulse">
+                          <path d="M3 9h18"/>
+                          <path d="M3 15h18"/>
+                          <rect x="4" y="3" width="16" height="18" rx="2"/>
+                          <path d="M8 3v18"/>
+                          <path d="M16 3v18"/>
+                          <path d="M12 3v18"/>
+                          <circle cx="12" cy="12" r="3"/>
+                          <path d="M12 9v6"/>
+                          <path d="M9 12h6"/>
+                        </svg>
+                      </div>
+                    </div>
+
+                    {/* Loading Text */}
+                    <div>
+                      <h3 className="text-lg font-semibold text-text-primary mb-2">Preparing Hospital Ward</h3>
+                      <p className="text-sm text-text-secondary mb-3">
+                        5 agents are studying this case and preparing their specialized knowledge...
+                      </p>
+
+                      {/* Agent Status List */}
+                      <div className="space-y-2 text-left bg-warm-gray-50 rounded-lg p-3">
+                        <div className="flex items-center gap-2 text-xs">
+                          <div className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></div>
+                          <span className="text-text-secondary">Patient learning symptoms...</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs">
+                          <div className="w-1.5 h-1.5 bg-purple-500 rounded-full animate-pulse"></div>
+                          <span className="text-text-secondary">Family understanding context...</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs">
+                          <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                          <span className="text-text-secondary">Nurse Priya reviewing vitals...</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs">
+                          <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full animate-pulse"></div>
+                          <span className="text-text-secondary">Lab Tech preparing tests...</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs">
+                          <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
+                          <span className="text-text-secondary">Dr. Sharma reviewing case...</span>
+                        </div>
+                      </div>
+
+                      <p className="text-xs text-text-tertiary mt-3">
+                        This may take 2-3 minutes for complex cases...
+                      </p>
+                    </div>
+
+                    {/* Progress Bar */}
+                    <div className="w-full h-1 bg-warm-gray-200 rounded-full overflow-hidden">
+                      <div className="h-full bg-forest-green rounded-full animate-loading-bar"></div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Header */}
               <div className="flex items-center justify-between mb-3 pb-3 border-b border-warm-gray-100">
                 <div className="flex items-center gap-2">
@@ -686,20 +851,48 @@ export const CaseInterface: React.FC = () => {
               </div>
 
               {/* Input */}
-              <div className="mt-auto pt-2 border-t border-warm-gray-100">
-                <div className="flex gap-2">
-                  <input
-                    type="text"
-                    placeholder={activeConfig.placeholder}
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+              <div className="mt-auto">
+                {/* Suggested Questions */}
+                {!initializingAgents && (
+                  <SuggestedQuestions
+                    activeAction={activeAction}
+                    messageCount={agentMessages.length}
+                    hasVitals={!!vitalsData}
+                    hasHistory={hasHistory}
+                    hasExamination={hasExamination}
+                    hasInvestigations={investigations.length > 0}
+                    onSelectQuestion={(question) => {
+                      setInputValue(question);
+                      // Auto-focus the input
+                      const input = document.querySelector('input[type="text"]') as HTMLInputElement;
+                      if (input) {
+                        input.focus();
+                      }
+                    }}
                     disabled={sendingMessage}
-                    className="flex-1 p-2.5 rounded-lg border-[1.5px] border-warm-gray-100 bg-cream-white text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:border-forest-green transition-colors disabled:opacity-50"
                   />
-                  <Button size="sm" onClick={sendMessage} disabled={sendingMessage || !inputValue.trim()}>
-                    Send
-                  </Button>
+                )}
+
+                <div className="pt-2 border-t border-warm-gray-100">
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      placeholder={activeConfig.placeholder}
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault();
+                          sendMessage();
+                        }
+                      }}
+                      disabled={sendingMessage || initializingAgents}
+                      className="flex-1 p-2.5 rounded-lg border-[1.5px] border-warm-gray-100 bg-cream-white text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:border-forest-green transition-colors disabled:opacity-50"
+                    />
+                    <Button size="sm" onClick={sendMessage} disabled={sendingMessage || !inputValue.trim() || initializingAgents}>
+                      Send
+                    </Button>
+                  </div>
                 </div>
               </div>
             </Card>
@@ -715,6 +908,9 @@ export const CaseInterface: React.FC = () => {
           findings={examFindings}
         />
       )}
+
+      {/* Inline Help Panel */}
+      <InlineHelpPanel />
     </div>
   );
 };

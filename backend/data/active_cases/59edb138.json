@@ -1,0 +1,52 @@
+{
+  "case_id": "59edb138",
+  "case_data": {
+    "patient": {
+      "age": 42,
+      "gender": "Female",
+      "location": "Nagpur, Maharashtra"
+    },
+    "chief_complaint": "Recurrent episodes of palpitations and breathlessness on exertion for 3 months",
+    "initial_presentation": "A 42-year-old homemaker from Nagpur presents to the cardiology OPD with complaints of episodic palpitations lasting 15-30 minutes, occurring 2-3 times per week for the past 3 months, along with gradually worsening breathlessness on exertion. She also reports a recent episode of transient weakness in her right hand lasting 10 minutes that resolved spontaneously.",
+    "vital_signs": {
+      "bp": "130/80",
+      "hr": 92,
+      "rr": 18,
+      "temp": 37.0,
+      "spo2": 97
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Palpitations are episodic, irregular, lasting 15-30 minutes, sometimes associated with mild lightheadedness. Breathlessness has progressed from NYHA class I to II over 3 months \u2014 now gets dyspneic climbing one flight of stairs. Reports one episode of transient right-hand weakness and numbness 2 weeks ago lasting ~10 minutes, spontaneously resolved (TIA). She had rheumatic fever at age 14 with joint pains, treated at a local hospital \u2014 no follow-up since. No chest pain. No orthopnea or PND currently. No hemoptysis. She is a non-smoker, non-alcoholic, vegetarian. Has 2 children, both normal deliveries. Last delivery was 10 years ago. Family history: mother has diabetes, father had a stroke at 65. Not on any medications. No history of thyroid disease."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Patient is of average build, BMI 24. Mild malar flush noted. No pallor, cyanosis, or clubbing. JVP: Normal. Pulse: Irregularly irregular, rate ~92/min, variable volume. BP equal in both arms. CVS: Loud S1, opening snap followed by a low-pitched mid-diastolic rumbling murmur at the apex best heard in left lateral decubitus with the bell, accentuated pre-systolically. Loud P2. No parasternal heave. Apex beat: Tapping, not displaced. Lungs: Fine bibasal crepitations, more on the right side. Abdomen: Soft, no hepatosplenomegaly. No pedal edema. CNS: No focal neurological deficit at present."
+      },
+      {
+        "stage": "labs",
+        "info": "ECG: Atrial fibrillation with controlled ventricular rate (~94 bpm), no ST-T changes, P-mitrale absent (AF), left atrial abnormality pattern in prior sinus rhythm ECGs unavailable. CXR PA view: Straightening of left heart border, double density sign at right heart border, prominent upper lobe pulmonary veins (cephalization), Kerley B lines at both lung bases, no pleural effusion. 2D Echocardiography: Mitral valve thickened and doming ('hockey-stick' pattern), commissural fusion, mitral valve area 1.1 cm\u00b2 by planimetry (severe MS), mean gradient 14 mmHg, Wilkins score 9/16, mild MR (grade I), left atrium severely dilated (LA diameter 5.4 cm), LVEF 58%, moderate pulmonary hypertension (PASP 52 mmHg), no LA appendage thrombus on TTE. TEE: Confirms no LA/LAA thrombus. Dense spontaneous echo contrast (smoke) in LA. CBC: Hb 12.1, WBC 7,200, Platelet 2.1 lakh. TSH: 3.8 mIU/L (normal). INR: 1.0 (not anticoagulated). CRP: 4 mg/L. ASO titre: Negative. Renal and liver function: Normal. HbA1c: 5.6%."
+      }
+    ],
+    "diagnosis": "Severe rheumatic mitral stenosis with atrial fibrillation and recent transient ischemic attack (cardioembolic), candidate for percutaneous transvenous mitral commissurotomy (PTMC)",
+    "differentials": [
+      "Rheumatic mitral stenosis",
+      "Left atrial myxoma causing mitral valve obstruction",
+      "Cor triatriatum sinister",
+      "Mitral annular calcification with functional stenosis",
+      "Non-valvular atrial fibrillation with TIA"
+    ],
+    "learning_points": [
+      "Rheumatic mitral stenosis remains the most common valvular heart disease in India, often presenting decades after the initial episode of rheumatic fever. A history of joint pains in childhood should raise suspicion.",
+      "Atrial fibrillation in mitral stenosis significantly increases thromboembolic risk (up to 5-fold). Anticoagulation with warfarin (target INR 2-3) is mandatory; DOACs are NOT recommended in moderate-severe MS.",
+      "Wilkins echocardiographic score (leaflet mobility, thickening, calcification, subvalvular involvement; each scored 0-4) \u22648 favors PTMC. A score of 9 is borderline \u2014 PTMC can still be considered if MR is \u2264 mild and there is no LA thrombus.",
+      "TIA in a young woman with no conventional stroke risk factors should prompt evaluation for a cardiac embolic source \u2014 atrial fibrillation with valvular heart disease is a high-risk combination requiring urgent anticoagulation."
+    ],
+    "atypical_features": "The transient neurological episode (TIA) as a presenting feature in a relatively young woman without conventional stroke risk factors creates a diagnostic challenge. The AF was not previously diagnosed, and the rheumatic heart disease was undetected for nearly 28 years. The borderline Wilkins score of 9 adds a management decision dilemma \u2014 whether to proceed with PTMC or refer for surgical mitral valve replacement. The presence of dense spontaneous echo contrast without formed thrombus requires careful TEE evaluation before any intervention.",
+    "specialty": "cardiology",
+    "difficulty": "intermediate",
+    "id": "59edb138"
+  },
+  "timestamp": "2026-02-15T09:16:02.624881"
+}

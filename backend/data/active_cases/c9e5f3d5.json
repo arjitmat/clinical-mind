@@ -1,0 +1,52 @@
+{
+  "case_id": "c9e5f3d5",
+  "case_data": {
+    "patient": {
+      "age": 22,
+      "gender": "Male",
+      "location": "Varanasi, Uttar Pradesh"
+    },
+    "chief_complaint": "High-grade fever with chills and body aches for 5 days",
+    "initial_presentation": "A 22-year-old college student from Varanasi presents to the medicine OPD with high-grade intermittent fever for 5 days, associated with rigors, chills, and diffuse body aches. He also complains of headache and nausea for the past 3 days.",
+    "vital_signs": {
+      "bp": "110/70",
+      "hr": 104,
+      "rr": 20,
+      "temp": 39.4,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Fever is high-grade (up to 103-104\u00b0F), intermittent, occurring every 48 hours with classic pattern: cold stage (rigors and shivering for ~1 hour), followed by hot stage (high fever with headache, flushing for 4-6 hours), followed by sweating stage (profuse diaphoresis with defervescence). Between episodes he feels relatively well but fatigued. Associated headache, nausea, and loss of appetite for 3 days. No vomiting, diarrhea, cough, rash, or bleeding manifestations. No altered sensorium or seizures. No dysuria or joint pain. He recently returned 10 days ago from a college trip to a rural area near Raipur, Chhattisgarh, where he stayed for 1 week. He did not use bed nets or mosquito repellent during the trip. No significant past medical history. No drug allergies. No prior similar episodes."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Patient appears febrile and mildly dehydrated. Mild pallor present. No jaundice, cyanosis, or lymphadenopathy. No skin rash or petechiae. Oral cavity: Normal, no thrush. Abdomen: Soft, mild tenderness in left hypochondrium. Spleen palpable 2 cm below the left costal margin (Hackett grade 1), firm and non-tender. Liver just palpable. No ascites. Chest: Bilateral clear breath sounds, no adventitious sounds. Cardiovascular: Tachycardic, S1S2 normal, no murmurs. CNS: Fully conscious, oriented, GCS 15/15, no neck stiffness, no focal neurological deficits. Fundi normal."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hb 11.8 g/dL, WBC 4,200/cumm (mild leukopenia), Platelets 1,05,000/cumm (mild thrombocytopenia). Peripheral blood smear (Giemsa-stained thick and thin films): Plasmodium vivax trophozoites seen \u2014 enlarged RBCs with Sch\u00fcffner's stippling, amoeboid trophozoites, parasite density low (<1%). Rapid Diagnostic Test (RDT): PfHRP2 Negative, Pan-pLDH Positive (consistent with non-falciparum species). Renal function: Creatinine 0.9 mg/dL, BUN 18 mg/dL \u2014 normal. LFT: Bilirubin 1.8 mg/dL (mildly elevated, indirect predominant), AST 45, ALT 38 \u2014 mildly deranged. Blood glucose: 92 mg/dL \u2014 normal. Dengue NS1 and IgM: Negative. Widal test: Negative. Urine routine: Normal."
+      }
+    ],
+    "diagnosis": "Plasmodium vivax malaria (uncomplicated)",
+    "differentials": [
+      "Plasmodium falciparum malaria",
+      "Dengue fever",
+      "Enteric (typhoid) fever",
+      "Scrub typhus",
+      "Viral fever (influenza/other)"
+    ],
+    "learning_points": [
+      "The classic malarial paroxysm follows three stages: cold stage (rigors), hot stage (high fever), and sweating stage (defervescence) \u2014 tertian periodicity (48-hour cycle) is characteristic of P. vivax.",
+      "Diagnosis of malaria requires Giemsa-stained thick and thin peripheral blood smear \u2014 thick smear for detection, thin smear for species identification. RDTs provide rapid results but smear remains the gold standard.",
+      "P. vivax shows Sch\u00fcffner's stippling, enlarged RBCs, and amoeboid trophozoites on thin smear, differentiating it from P. falciparum (banana-shaped gametocytes, multiple ring forms in normal-sized RBCs).",
+      "Treatment of uncomplicated P. vivax malaria per NVBDCP guidelines: Chloroquine (25 mg/kg over 3 days) PLUS Primaquine (0.25 mg/kg daily for 14 days) for anti-relapse therapy \u2014 G6PD testing must be done before starting primaquine to avoid hemolytic anemia."
+    ],
+    "atypical_features": "This is a straightforward beginner-level case with classic tertian fever pattern and typical P. vivax findings. The main clinical reasoning challenge is correlating the travel history to an endemic area (Chhattisgarh) with the periodic fever pattern and splenomegaly to arrive at a clinical suspicion of malaria before investigations confirm it, and distinguishing it from other common causes of acute undifferentiated fever in India such as dengue and typhoid.",
+    "specialty": "infectious",
+    "difficulty": "beginner",
+    "id": "c9e5f3d5"
+  },
+  "timestamp": "2026-02-15T08:56:56.853377"
+}

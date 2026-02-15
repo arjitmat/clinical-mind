@@ -1,0 +1,52 @@
+{
+  "case_id": "767aef48",
+  "case_data": {
+    "patient": {
+      "age": 28,
+      "gender": "Male",
+      "location": "Lucknow, Uttar Pradesh"
+    },
+    "chief_complaint": "Cough with blood-streaked sputum, evening fever, and weight loss for 6 weeks",
+    "initial_presentation": "A 28-year-old male security guard from a congested locality in Lucknow presents to the OPD with a persistent cough producing whitish sputum that has recently become blood-streaked, low-grade evening fever with night sweats, and unintentional weight loss of 5 kg over the past 6 weeks. He appears thin and anxious about his symptoms.",
+    "vital_signs": {
+      "bp": "110/70",
+      "hr": 96,
+      "rr": 22,
+      "temp": 37.9,
+      "spo2": 96
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient reports cough starting about 6 weeks ago, initially dry but becoming productive of whitish mucoid sputum. Over the last 10 days, he has noticed blood streaks in the sputum (approximately 2-3 episodes per day, small quantity each time). He has low-grade fever in the evenings (self-measured 99-100\u00b0F) with drenching night sweats requiring change of clothes. Appetite is markedly reduced and he has lost approximately 5 kg. He denies chest pain, breathlessness at rest, or leg swelling. No history of asthma or allergies. He is a non-smoker and a teetotaler. He works night shifts as a security guard at a construction site and sleeps in a shared room with 4 other workers. He reports that one of his roommates was treated for tuberculosis 8 months ago but the patient himself never got screened. No significant past medical history. No diabetes or immunosuppressive conditions. No recent travel. Family history is unremarkable."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "The patient is thin and pale-appearing. BMI 18.2. No peripheral lymphadenopathy. No clubbing or cyanosis. Mild pallor of conjunctivae. Oral cavity: no thrush or ulcers. Chest examination: Chest wall is symmetrical with normal movement. On auscultation, there are coarse crepitations heard over the right supra- and infra-clavicular areas (right upper zone) that do not clear with coughing. Post-tussive crepitations are present. Vocal resonance is slightly increased over the right upper zone. Remaining lung fields are clear. Cardiovascular examination: S1, S2 normal, no murmurs. Abdomen: Soft, non-tender, no organomegaly. No pedal edema."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hb 11.2 g/dL, WBC 8,500/mm\u00b3 (neutrophils 65%, lymphocytes 28%), Platelets 3,10,000, ESR 52 mm/hr. Random blood sugar: 98 mg/dL. Renal and liver function tests: Within normal limits. HIV rapid test: Non-reactive. Sputum for AFB (2 early morning samples): Sputum smear 1 \u2014 AFB positive (1+). Sputum smear 2 \u2014 AFB positive (1+). GeneXpert MTB/RIF: Mycobacterium tuberculosis DETECTED, Rifampicin resistance NOT detected. Chest X-ray PA view: Heterogeneous opacity with a small cavity (approximately 2 cm) in the right upper zone. No pleural effusion. No mediastinal widening. Left lung field is clear. Mantoux test (done prior to sputum results): 22 mm induration at 72 hours."
+      }
+    ],
+    "diagnosis": "Sputum smear-positive pulmonary tuberculosis (drug-sensitive), new case",
+    "differentials": [
+      "Pulmonary tuberculosis",
+      "Community-acquired pneumonia (bacterial)",
+      "Lung abscess",
+      "Bronchiectasis with hemoptysis",
+      "Pulmonary malignancy (less likely at this age)"
+    ],
+    "learning_points": [
+      "Classic presentation of pulmonary TB includes chronic cough (>2 weeks), hemoptysis, evening fever with night sweats, and weight loss \u2014 always suspect TB in an Indian patient with cough >2 weeks",
+      "GeneXpert MTB/RIF is the WHO-recommended initial diagnostic test for TB that simultaneously detects MTB and rifampicin resistance within 2 hours; it is the preferred first-line test under India's NTEP",
+      "Under India's NTEP (National Tuberculosis Elimination Programme), all newly diagnosed drug-sensitive TB patients receive a fixed-dose combination (FDC) regimen: 2 months intensive phase (HRZE \u2014 Isoniazid, Rifampicin, Pyrazinamide, Ethambutol) followed by 4 months continuation phase (HRE), with daily dosing",
+      "Contact tracing is crucial \u2014 all close household and workplace contacts (especially the roommate previously treated for TB) must be screened. Under NTEP, contacts should undergo symptom screening and chest X-ray, and eligible contacts should receive TB preventive therapy (TPT)"
+    ],
+    "atypical_features": "This is a straightforward classic case of smear-positive pulmonary TB in a young adult with a clear epidemiological link (close contact with a prior TB patient). The case is designed as a beginner-level presentation to reinforce systematic approach to chronic cough evaluation, appropriate diagnostic workup (sputum AFB, GeneXpert), and NTEP treatment guidelines. The key learning challenge is recognizing that the close contact history and occupational setting (shared accommodation, night shifts affecting health-seeking behavior) are important risk factors, and that contact tracing is a critical public health step.",
+    "specialty": "respiratory",
+    "difficulty": "beginner",
+    "id": "767aef48"
+  },
+  "timestamp": "2026-02-15T09:01:39.020715"
+}

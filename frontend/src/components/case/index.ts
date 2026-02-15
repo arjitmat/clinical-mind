@@ -5,3 +5,6 @@ export { LanguageToggle } from './LanguageToggle';
 export { ExaminationModal } from './ExaminationModal';
 export type { ExaminationFindings } from './ExaminationModal';
 export { UrgentTimer } from './UrgentTimer';
+export { InlineHelpPanel } from './InlineHelpPanel';
+export { VitalsSparkline, VitalsHistoryPanel } from './VitalsSparkline';
+export { SuggestedQuestions } from './SuggestedQuestions';

@@ -1,0 +1,52 @@
+{
+  "case_id": "d72718cf",
+  "case_data": {
+    "patient": {
+      "age": 28,
+      "gender": "Male",
+      "location": "Lucknow, Uttar Pradesh"
+    },
+    "chief_complaint": "Cough with blood-streaked sputum, evening fever, and weight loss for 6 weeks",
+    "initial_presentation": "A 28-year-old male factory worker from Lucknow presents to the Medicine OPD with a 6-week history of persistent productive cough with occasional blood-streaked sputum, low-grade evening fever, night sweats, and unintentional weight loss of approximately 5 kg. He appears thin and anxious about his symptoms.",
+    "vital_signs": {
+      "bp": "110/70",
+      "hr": 96,
+      "rr": 22,
+      "temp": 37.9,
+      "spo2": 96
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient reports a productive cough for 6 weeks that has gradually worsened. Initially mucopurulent sputum, but for the past 10 days he has noticed intermittent blood streaks in the sputum (approximately 2-3 teaspoons of blood-tinged sputum per day). He has low-grade evening fever (not documented, feels warm every evening) with drenching night sweats requiring change of clothes. Appetite is markedly reduced with 5 kg weight loss over 6 weeks. He works in a plastics factory with poor ventilation. He shares a small rented room with 3 other migrant workers. One of his roommates was treated for TB 2 years ago but the patient is unsure whether the roommate completed treatment. The patient is a non-smoker, drinks alcohol occasionally (country liquor on weekends). No prior history of TB, diabetes, asthma, or any chronic illness. No HIV risk factors. No history of ATT intake previously. No significant family history. He has not taken any treatment except over-the-counter cough syrups from a local pharmacy."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "The patient is thin and appears chronically ill. BMI is 18.2 kg/m\u00b2. Pallor is present. No icterus, cyanosis, clubbing, or pedal edema. No significant peripheral lymphadenopathy. Oral cavity is normal. Chest examination: Inspection shows reduced movement on the right upper chest. Palpation confirms reduced expansion on the right side superiorly. Percussion reveals impaired note (dull) over the right suprascapular and infraclavicular areas. Auscultation: Bronchial breath sounds with post-tussive coarse crepitations heard over the right upper zone (suprascapular and infraclavicular region). Left lung is clear. Cardiovascular examination is normal with no murmurs. Abdomen is soft, non-tender, no organomegaly. No focal neurological deficits."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hb 10.8 g/dL (mild anemia), WBC 9,200/mm\u00b3 (lymphocyte predominant differential), Platelets 3,20,000, ESR 55 mm/hr (elevated). Random blood sugar: 102 mg/dL. Renal function: Normal. Liver function: Normal. HIV rapid test: Non-reactive. Sputum for AFB (2 early morning samples): Smear-positive (2+ on ZN staining in both samples). GeneXpert MTB/RIF: Mycobacterium tuberculosis DETECTED, Rifampicin resistance NOT detected. Chest X-ray PA view: Heterogeneous opacity with a 2.5 cm cavity in the right upper zone, with surrounding infiltrates. No pleural effusion. Left lung fields are clear. Cardiac silhouette is normal. Mantoux test: 22 mm induration at 48 hours (strongly positive)."
+      }
+    ],
+    "diagnosis": "Sputum smear-positive pulmonary tuberculosis (drug-sensitive) with right upper lobe cavity",
+    "differentials": [
+      "Pulmonary tuberculosis",
+      "Lung abscess",
+      "Community-acquired pneumonia (atypical or partially treated)",
+      "Bronchiectasis with secondary infection",
+      "Pulmonary mycosis (histoplasmosis or aspergilloma)"
+    ],
+    "learning_points": [
+      "Pulmonary TB classically presents with cough >2 weeks, hemoptysis, evening fever, night sweats, and weight loss \u2014 the combination of constitutional symptoms with hemoptysis in a young Indian adult should always raise suspicion for TB",
+      "GeneXpert MTB/RIF is the WHO-recommended initial diagnostic test for TB; it simultaneously detects MTB and rifampicin resistance within 2 hours and is now available at all district-level NTEP centers in India",
+      "Upper lobe predilection (especially posterior segment of right upper lobe) and cavitation are hallmarks of post-primary (reactivation/adult-type) pulmonary TB due to higher oxygen tension in apices favoring mycobacterial growth",
+      "Under India's NTEP (National TB Elimination Programme), all newly diagnosed drug-sensitive TB patients receive a fixed-dose combination (FDC) regimen: 2 months intensive phase (HRZE) + 4 months continuation phase (HRE), with daily dosing and Nikshay notification is mandatory"
+    ],
+    "atypical_features": "This is a straightforward beginner-level case with classic presentation of pulmonary TB. The minor challenge lies in recognizing the epidemiological link (close contact with a prior TB patient whose treatment completion is uncertain), appreciating the importance of GeneXpert for ruling out drug resistance upfront, and recalling the need for contact screening of the patient's three roommates under NTEP guidelines.",
+    "specialty": "respiratory",
+    "difficulty": "beginner",
+    "id": "d72718cf"
+  },
+  "timestamp": "2026-02-15T09:05:32.951430"
+}

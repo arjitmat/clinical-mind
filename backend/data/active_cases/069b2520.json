@@ -1,0 +1,52 @@
+{
+  "case_id": "069b2520",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Male",
+      "location": "Jorhat, Assam"
+    },
+    "chief_complaint": "Severe abdominal pain, black vomitus, and altered consciousness after snake bite",
+    "initial_presentation": "A 34-year-old tea garden worker from Jorhat, Assam, is brought to the district hospital emergency at 11 PM by coworkers after being bitten by a snake on his left foot approximately 6 hours ago while working in the tea garden during evening hours. He initially refused hospital visit and applied a tourniquet and herbal paste from a local ojha (traditional healer). He now has progressive abdominal pain, multiple episodes of black-colored vomitus, bleeding from the bite site, and is increasingly drowsy.",
+    "vital_signs": {
+      "bp": "82/48",
+      "hr": 132,
+      "rr": 28,
+      "temp": 36.2,
+      "spo2": 93
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Bitten on dorsum of left foot at approximately 5 PM while plucking tea leaves. Felt a sharp sting and saw a 'dark brown thick snake' slither away (likely Russell's viper based on description and geography). Coworker applied a tight cloth tourniquet above the left ankle immediately. Patient went to local ojha who applied herbal paste and performed incision over fang marks with a razor blade. Pain and swelling rapidly progressed up the leg over the next 3 hours. Developed nausea and vomiting of initially clear then coffee-ground material (approximately 5 episodes). Noticed blood oozing persistently from bite site and gum bleeding while chewing betel nut. Passed dark reddish-brown urine once approximately 2 hours ago (reported by coworkers). Became increasingly confused and drowsy over the last hour. No seizures witnessed. No prior snake bite. No known medical conditions. No regular medications. No allergies. Consumes rice beer (apong) regularly. Tourniquet has been in place for approximately 6 hours. No history of any previous anti-snake venom administration."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Drowsy, confused, GCS 11 (E3V3M5). Pallor present. Marked periorbital puffiness and facial swelling. Active bleeding from gums (gingivorrhagia). Bilateral subconjunctival hemorrhage. Left foot: Two fang marks on dorsum with persistent oozing, surrounding necrotic-appearing tissue from ojha's incision, massive edema extending up to mid-thigh. Tight cloth tourniquet in situ above left ankle with dusky, tense, cyanotic distal foot and absent dorsalis pedis and posterior tibial pulses (compartment syndrome concern). Tender, non-pulsatile swelling of entire left lower limb. Abdomen: Diffusely tender, guarding in right upper quadrant and epigastrium, no rigidity. Bilateral flank tenderness (more on left). Chest: Bilateral air entry present, scattered crepitations at bases. No hemoptysis. Skin: Multiple ecchymoses over venipuncture sites from ojha's razor attempts, petechiae over trunk. Urine in catheter bag: Frank cola-colored (suggesting hemoglobinuria/myoglobinuria). No ptosis, no ophthalmoplegia, no bulbar weakness (rules out significant neurotoxic component). 20-minute Whole Blood Clotting Test (20WBCT): Blood completely incoagulable \u2014 remains liquid after 20 minutes in clean glass tube."
+      },
+      {
+        "stage": "labs",
+        "info": "20WBCT: Incoagulable (confirmed venom-induced consumption coagulopathy - VICC). CBC: Hb 7.2 g/dL (dropping - microangiopathic hemolysis + GI bleed), WBC 18,500 (neutrophilic leukocytosis), Platelets 28,000 (severe thrombocytopenia). Peripheral smear: Schistocytes, fragmented RBCs, polychromasia (microangiopathic hemolytic anemia - TMA/DIC). PT/INR: INR >6 (unmeasurable), aPTT >180 seconds. Fibrinogen: <50 mg/dL (critically low - DIC). D-dimer: >10,000 ng/mL. LDH: 2800 U/L (hemolysis + tissue injury). Serum creatinine: 4.8 mg/dL (acute kidney injury). BUN: 68 mg/dL. Potassium: 6.2 mEq/L (hyperkalemia - rhabdomyolysis + AKI + hemolysis). Sodium: 131 mEq/L. CPK: 12,500 U/L (rhabdomyolysis from envenomation + tourniquet-induced ischemia). Serum bilirubin: Total 5.8, indirect 4.2 (hemolysis). AST: 450, ALT: 180. ABG: pH 7.18, PaCO2 24, PaO2 72, HCO3 10, Lactate 8.5 mmol/L (severe high-anion-gap metabolic acidosis with respiratory compensation). Urine: Dark cola-colored, dipstick 3+ blood but no RBCs on microscopy (myoglobinuria/hemoglobinuria), proteinuria 2+. ECG: Sinus tachycardia, tall peaked T waves in V2-V5 (hyperkalemia), no ST elevation. CXR (portable): Bilateral mild pleural effusions, no pulmonary hemorrhage. USG abdomen (bedside): Bilateral enlarged kidneys with increased cortical echogenicity (acute cortical necrosis concern), no hydronephrosis, minimal free fluid in pelvis, liver and spleen normal. Left lower limb: Tense compartments on clinical exam, Doppler shows absent distal arterial flow below tourniquet level."
+      }
+    ],
+    "diagnosis": "Russell's viper envenomation with venom-induced consumption coagulopathy (VICC), disseminated intravascular coagulation (DIC), acute kidney injury (pigment nephropathy + cortical necrosis), rhabdomyolysis, microangiopathic hemolytic anemia, and impending compartment syndrome of left lower limb secondary to prolonged tourniquet application",
+    "differentials": [
+      "Russell's viper envenomation with systemic toxicity (most likely)",
+      "Saw-scaled viper (Echis carinatus) envenomation with VICC",
+      "Hump-nosed pit viper envenomation with AKI and coagulopathy",
+      "Thrombotic thrombocytopenic purpura (TTP) triggered by envenomation",
+      "Sepsis with DIC secondary to wound infection from traditional healer intervention"
+    ],
+    "learning_points": [
+      "The 20-minute Whole Blood Clotting Test (20WBCT) is the single most important bedside test for viperine envenomation in resource-limited Indian settings \u2014 if blood remains incoagulable, it confirms VICC and mandates polyvalent anti-snake venom (ASV) administration. ASV should be given as 10 vials (100 mL) in 200 mL NS IV over 1 hour, repeated every 6 hours if 20WBCT remains incoagulable (maximum 30 vials as per national snakebite protocol).",
+      "Tourniquets are HARMFUL in viper bites \u2014 they concentrate venom locally causing severe tissue necrosis, compartment syndrome, and ischemic injury. The WHO and Indian National Snakebite Protocol explicitly advise AGAINST tourniquets. Traditional healer incisions increase infection risk and bleeding. First aid should be immobilization with pressure-immobilization bandage (mainly for neurotoxic bites) and rapid hospital transfer.",
+      "Russell's viper envenomation causes a unique triad: coagulopathy (VICC/DIC via prothrombin activators and factor V/X activators), acute kidney injury (via direct nephrotoxicity, myoglobinuria, hemoglobinuria, cortical necrosis, and DIC-related microthrombi), and capillary leak/local tissue destruction. AKI may require dialysis and can progress to bilateral renal cortical necrosis (irreversible).",
+      "Emergency management priorities: (1) Remove tourniquet IMMEDIATELY with ASV running; (2) Polyvalent ASV 10 vials IV per national protocol; (3) Manage hyperkalemia urgently (IV calcium gluconate, insulin-dextrose, nebulized salbutamol); (4) Aggressive fluid resuscitation with monitoring for fluid overload; (5) Blood products only AFTER ASV (FFP for active life-threatening hemorrhage, platelets if <20,000 with active bleeding); (6) Surgical consultation for fasciotomy if compartment syndrome confirmed (only after coagulopathy correction); (7) Early nephrology consultation for potential hemodialysis."
+    ],
+    "atypical_features": "This case is challenging because of the compounding iatrogenic harm from prolonged tourniquet application (6 hours) causing ischemia-reperfusion injury and rhabdomyolysis superimposed on venom-induced rhabdomyolysis, worsening the AKI from multiple simultaneous mechanisms (pigment nephropathy, direct venom nephrotoxicity, DIC-related microthrombi, and potential cortical necrosis). The traditional healer's incision introduces infection risk and worsened hemorrhage. The delayed presentation (6 hours) with established multi-organ dysfunction (coagulopathy, AKI, hemolysis, metabolic acidosis, hyperkalemia) creates a critically narrow therapeutic window. The student must simultaneously address life-threatening hyperkalemia, incoagulable blood with active GI hemorrhage, impending compartment syndrome requiring fasciotomy (but contraindicated until coagulopathy is corrected), and acute kidney injury likely requiring emergency dialysis \u2014 all in a district hospital with limited resources. The absence of neurotoxic features despite severe systemic toxicity helps differentiate from cobra/krait bites but the combination of VICC + TMA + AKI mimics TTP-HUS, requiring clinical differentiation.",
+    "specialty": "emergency",
+    "difficulty": "advanced",
+    "id": "069b2520"
+  },
+  "timestamp": "2026-02-15T09:03:54.490080"
+}

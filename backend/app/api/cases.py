@@ -1,11 +1,10 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import Optional
-from app.core.rag.generator import CaseGenerator
+from app.core.rag.shared import case_generator
 from app.core.session import session
 
 router = APIRouter()
-case_generator = CaseGenerator()
 
 SPECIALTIES = [
     {"id": "cardiology", "name": "Cardiology", "icon": "heart", "cases_available": 12, "description": "STEMI, heart failure, IE, AF, aortic dissection, rheumatic heart disease"},

@@ -1,0 +1,52 @@
+{
+  "case_id": "297b5635",
+  "case_data": {
+    "patient": {
+      "age": 22,
+      "gender": "Male",
+      "location": "Mangalore, Karnataka"
+    },
+    "chief_complaint": "High-grade fever with body aches and rash for 5 days",
+    "initial_presentation": "A 22-year-old college student from Mangalore presents to the emergency department with high-grade fever, severe body aches, and a rash over his trunk and limbs for 5 days. He reports the fever started abruptly and is associated with intense retro-orbital headache and joint pain that is making it difficult for him to move around.",
+    "vital_signs": {
+      "bp": "100/60",
+      "hr": 98,
+      "rr": 20,
+      "temp": 39.4,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient developed sudden-onset high-grade fever (documented 103-104\u00b0F at home) 5 days ago, associated with severe frontal and retro-orbital headache, generalized myalgia ('bone-breaking' pain in his words), arthralgia involving knees and wrists, and nausea with 2 episodes of non-bilious vomiting. A red rash appeared on his trunk on day 3 of fever, spreading to his limbs. He noticed some bleeding from his gums while brushing today morning. He lives in a college hostel near a construction site with stagnant water collection. Several of his hostel mates have also been having fevers over the past 2 weeks. There is no history of travel outside Mangalore in the last 2 months. No prior significant medical illness. No drug allergies. He has been taking paracetamol at home for fever relief. No history of recent antibiotic use. No similar episode in the past."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "The patient appears flushed, fatigued, and mildly dehydrated. A diffuse blanching maculopapular rash is noted over the trunk, arms, and thighs with islands of sparing ('white islands in a sea of red'). Mild periorbital puffiness present. No jaundice. Conjunctival injection bilaterally, no hemorrhage. Gum bleeding on examination with gentle pressure. Tourniquet test (Hess test) is positive (>20 petechiae per square inch). No cervical lymphadenopathy. Chest is clear. Abdomen is soft, mild tenderness in the right hypochondrium, liver palpable 2 cm below the costal margin, no splenomegaly, no free fluid clinically. No neck stiffness. Neurological examination is unremarkable. No joint swelling."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hemoglobin 14.8 g/dL, WBC 3,200/cumm (leukopenia with relative lymphocytosis), Platelets 68,000/cumm (thrombocytopenia). Hematocrit: 42%. ESR: 18 mm/hr. Dengue NS1 antigen (ELISA): Positive. Dengue IgM: Positive. Dengue IgG: Negative (suggesting primary dengue infection). Peripheral smear for malaria parasite: Negative. Widal test: Negative. LFT: AST 120 U/L, ALT 95 U/L (mildly elevated transaminases), Bilirubin 0.9 mg/dL, Albumin 3.4 g/dL. Renal function: Creatinine 0.9 mg/dL, BUN 18 mg/dL. PT/INR: 1.1 (normal). CXR: No pleural effusion. USG abdomen: Mild hepatomegaly, no ascites, no pleural effusion, gall bladder wall edema (4 mm)."
+      }
+    ],
+    "diagnosis": "Dengue fever with warning signs (gum bleeding, thrombocytopenia, hepatomegaly with tenderness, and rising hematocrit)",
+    "differentials": [
+      "Dengue fever",
+      "Chikungunya fever",
+      "Enteric fever (Typhoid)",
+      "Scrub typhus",
+      "Leptospirosis"
+    ],
+    "learning_points": [
+      "Dengue presents with sudden-onset high fever, retro-orbital headache, myalgia ('breakbone fever'), arthralgia, and a characteristic maculopapular rash with islands of sparing appearing around day 3-5 of illness",
+      "Dengue warning signs (as per WHO) include: abdominal pain/tenderness, persistent vomiting, clinical fluid accumulation, mucosal bleeding, lethargy, hepatomegaly >2 cm, and rising hematocrit with falling platelets \u2014 these require close monitoring and admission",
+      "NS1 antigen is positive in the first 5 days of illness (febrile phase) and is the most useful early diagnostic test; IgM becomes positive after day 5; negative IgG suggests primary infection while positive IgG in early illness suggests secondary infection (higher risk of severe dengue)",
+      "Management of dengue is primarily supportive: oral/IV fluid therapy, paracetamol for fever (avoid NSAIDs and aspirin as they worsen bleeding risk), serial platelet and hematocrit monitoring every 6-12 hours during the critical phase (defervescence around day 4-7), and platelet transfusion only if active bleeding or platelets <10,000/cumm"
+    ],
+    "atypical_features": "This is a straightforward classic dengue presentation appropriate for a beginner-level case. The presence of warning signs (gum bleeding, hepatomegaly, thrombocytopenia) makes it important for the student to classify it correctly as 'dengue with warning signs' rather than simple dengue or severe dengue, which determines the level of monitoring and management. The epidemiological setting with a construction site and stagnant water near the hostel, along with a cluster of febrile cases, provides classic clues for Aedes mosquito-borne transmission.",
+    "specialty": "infectious",
+    "difficulty": "beginner",
+    "id": "297b5635"
+  },
+  "timestamp": "2026-02-15T08:58:50.106015"
+}

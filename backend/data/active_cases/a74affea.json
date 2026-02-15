@@ -1,0 +1,52 @@
+{
+  "case_id": "a74affea",
+  "case_data": {
+    "patient": {
+      "age": 42,
+      "gender": "Female",
+      "location": "Nagpur, Maharashtra"
+    },
+    "chief_complaint": "Recurrent episodes of palpitations and breathlessness on exertion for 6 weeks",
+    "initial_presentation": "A 42-year-old homemaker from Nagpur presents to the cardiology OPD with complaints of episodic palpitations lasting 15-30 minutes occurring 2-3 times per week, associated with exertional breathlessness (climbing one flight of stairs). She also reports a single episode of transient right-sided weakness lasting 10 minutes three days ago, which resolved completely.",
+    "vital_signs": {
+      "bp": "130/80",
+      "hr": 82,
+      "rr": 18,
+      "temp": 36.8,
+      "spo2": 97
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Palpitations started 6 weeks ago, initially once a week, now 2-3 times per week. Described as rapid, irregular heartbeats lasting 15-30 minutes, occasionally terminating spontaneously. Exertional dyspnea (NYHA Class II) for the past 2 months - she can no longer do her household chores comfortably. Transient right-sided weakness and slurred speech 3 days ago lasting ~10 minutes - she did not seek medical attention at the time. No chest pain, syncope, or hemoptysis. Past history: Diagnosed with rheumatic fever at age 14 with joint pains and was given penicillin injections for a few years, then lost to follow-up. No hypertension, diabetes, or thyroid disease. Menstrual history: regular cycles. Family history: non-contributory. No tobacco or alcohol use. Diet: vegetarian. Medications: None currently."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "General: No pallor, no cyanosis, no clubbing. Mild malar flush noted on both cheeks. JVP: Prominent 'a' waves. Peripheral pulses: irregularly irregular pulse noted on careful palpation, though currently in sinus rhythm at presentation. Precordium: Apex beat not displaced but tapping in character. Auscultation: Loud S1, opening snap followed by a low-pitched rumbling mid-diastolic murmur best heard at the apex in the left lateral decubitus position with the bell of the stethoscope. A soft pansystolic murmur at the apex radiating to the axilla. Loud P2 component of S2. Lungs: Fine bibasal crepitations. Abdomen: No hepatosplenomegaly. No pedal edema. Neurological examination: Completely normal at present, no residual deficit."
+      },
+      {
+        "stage": "labs",
+        "info": "ECG: Normal sinus rhythm, broad bifid P waves in lead II (P-mitrale, duration >120ms), P-wave terminal force negative in V1. No LVH criteria. Normal QRS axis. 24-hour Holter monitor: Three episodes of paroxysmal atrial fibrillation lasting 5-20 minutes with ventricular rate up to 145/min. CXR: Straightening of left heart border, double density sign at right heart border (enlarged LA), upper lobe pulmonary venous congestion, Kerley B lines at right costophrenic angle. CTR: 0.52. 2D Echocardiography: Thickened and calcified mitral valve leaflets with restricted mobility, doming of anterior mitral leaflet (hockey stick sign). Mitral valve area by planimetry: 1.1 cm\u00b2 (severe MS). Mean transmitral gradient: 14 mmHg. Moderate mitral regurgitation. LA dilated (5.2 cm). LVEF: 60%. PASP: 50 mmHg (moderate pulmonary hypertension). No LA thrombus on TTE. TEE: Small thrombus in left atrial appendage (1.2 x 0.8 cm). Wilkins score: 9/16. CBC: Hb 12.0, WBC 7,500, Plt 2.2 lakh. RFT/LFT: Normal. TSH: 3.8 mIU/L (normal). INR: 1.0 (not on anticoagulation). ASO titre: Elevated (320 IU/mL). CRP: 8 mg/L (mildly elevated). MRI Brain (DWI): Two small acute infarcts in left MCA territory (likely embolic)."
+      }
+    ],
+    "diagnosis": "Rheumatic severe mitral stenosis with paroxysmal atrial fibrillation complicated by cardioembolic TIA/small strokes, with left atrial appendage thrombus",
+    "differentials": [
+      "Rheumatic mitral stenosis with atrial fibrillation",
+      "Mitral valve prolapse with atrial arrhythmia",
+      "Left atrial myxoma mimicking mitral stenosis",
+      "Infective endocarditis with embolic phenomena",
+      "Cor triatriatum sinister"
+    ],
+    "learning_points": [
+      "Rheumatic heart disease remains the leading cause of mitral stenosis in India, affecting patients at a younger age compared to the West. A history of rheumatic fever in childhood, even if incompletely treated, should raise suspicion.",
+      "Paroxysmal atrial fibrillation in mitral stenosis significantly increases thromboembolic risk. Even brief episodes mandate anticoagulation. CHA2DS2-VASc score should be calculated, but mitral stenosis itself is an independent indication for anticoagulation regardless of the score.",
+      "Transient neurological deficits (TIA) in a patient with mitral stenosis should prompt urgent TEE to evaluate for LA/LAA thrombus and MRI brain for silent infarcts. TEE is superior to TTE for detecting LAA thrombus.",
+      "Percutaneous balloon mitral valvotomy (PBMV) is the treatment of choice for severe MS with favorable valve morphology (Wilkins score \u22648). In this patient with Wilkins score 9, moderate MR, and LAA thrombus, PBMV is relatively contraindicated \u2014 surgical mitral valve replacement is preferred after adequate anticoagulation."
+    ],
+    "atypical_features": "The combination of paroxysmal (not persistent) atrial fibrillation with an already formed LAA thrombus makes this case challenging, as students may underestimate the thromboembolic risk of paroxysmal AF. The transient neurological event could easily be dismissed, and the Wilkins score of 9 with coexisting moderate MR and LAA thrombus creates a management dilemma where PBMV \u2014 the usual first-line treatment \u2014 is not suitable, pushing the decision toward surgical intervention. The mildly elevated ASO titre and CRP add a layer of diagnostic complexity, raising the question of whether there is ongoing subclinical rheumatic activity.",
+    "specialty": "cardiology",
+    "difficulty": "intermediate",
+    "id": "a74affea"
+  },
+  "timestamp": "2026-02-15T08:51:30.886334"
+}

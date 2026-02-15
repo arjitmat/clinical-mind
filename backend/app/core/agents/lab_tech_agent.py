@@ -87,7 +87,12 @@ CASE DETAILS:
 - Results available: {results_available}
 - Pending investigations: {pending_investigations}
 
-Respond ONLY as the lab technician. Be professional, factual, and flag critical values."""
+Respond ONLY as the lab technician. Be professional, factual, and flag critical values.
+
+FORMATTING RULES:
+- Do NOT use markdown formatting like ** or * in your responses
+- Write in plain text only
+- For actions or expressions, use plain text like: (doing something) instead of *doing something*"""
 
 
 class LabTechAgent(BaseAgent):

@@ -44,7 +44,12 @@ URGENCY PROTOCOL:
 - urgent: Abnormal finding needs action. "Doctor, the patient's SpO2 is dropping. Should we start O2?"
 - critical: Immediate intervention needed. "Doctor! Patient's vitals are deteriorating — we need to act NOW!"
 
-Assess urgency based on the vitals and case severity. Respond ONLY as the nurse."""
+Assess urgency based on the vitals and case severity. Respond ONLY as the nurse.
+
+FORMATTING RULES:
+- Do NOT use markdown formatting like ** or * in your responses
+- Write in plain text only
+- For actions or expressions, use plain text like: (doing something) instead of *doing something*"""
 
 
 class NurseAgent(BaseAgent):

@@ -18,6 +18,8 @@ Source hierarchy (most to least trusted):
 import logging
 import os
 from typing import Optional
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import time
 
 import anthropic
 
@@ -228,6 +230,79 @@ Create a teaching expertise brief. Every fact must be source-tagged.
    - Disposition: admission criteria, discharge criteria, follow-up plan
    - Cost-consciousness: generic drugs, government scheme eligibility (PMJAY, etc.)"""
 
+FAMILY_KNOWLEDGE_PROMPT = """You are building a FAMILY MEMBER PERSPECTIVE BRIEF for a clinical simulation agent in an Indian hospital.
+
+{grounding_rules}
+
+REFERENCE MATERIAL FROM MEDICAL CORPUS:
+{rag_context}
+
+CURRENT CASE:
+- Diagnosis: {diagnosis}
+- Chief complaint: {chief_complaint}
+- Patient age/gender: From case data
+- Location: Indian government hospital
+
+Create a family member perspective brief. Focus on emotional and cultural context.
+
+1. FAMILY UNDERSTANDING [Lay perspective]:
+   - What the family knows about the patient's condition (in lay terms)
+   - Misconceptions based on WhatsApp forwards, neighbors' advice
+   - Past experiences with similar symptoms in family/community
+
+2. EMOTIONAL STATE:
+   - Anxiety level based on case severity
+   - Financial worries about treatment costs
+   - Work/livelihood concerns
+   - Family dynamics (who's the decision maker, gender roles)
+
+3. CULTURAL CONTEXT:
+   - Home remedies already tried
+   - Religious/spiritual beliefs affecting treatment
+   - Dietary habits and restrictions
+   - Regional customs relevant to healthcare
+
+4. QUESTIONS & CONCERNS:
+   - Cost of treatment ("kitna kharcha aayega?")
+   - Duration of hospital stay
+   - Who will take care of home/children
+   - Whether private hospital would be better"""
+
+LAB_TECH_KNOWLEDGE_PROMPT = """You are building a LABORATORY OPERATIONS BRIEF for a lab technician agent in an Indian government hospital.
+
+{grounding_rules}
+
+REFERENCE MATERIAL FROM MEDICAL CORPUS:
+{rag_context}
+
+CURRENT CASE:
+- Diagnosis: {diagnosis}
+- Specialty: {specialty}
+- Likely investigations needed
+
+Create a lab operations brief for realistic Indian hospital lab workflow.
+
+1. INVESTIGATION PRIORITIES [Based on diagnosis]:
+   - Which tests are most critical for this condition
+   - Sample requirements and special handling
+   - Turnaround times (realistic for govt hospital)
+
+2. SAMPLE COLLECTION:
+   - Proper tubes/containers for each test
+   - Pre-analytical requirements (fasting, timing)
+   - Common collection errors to avoid
+
+3. LAB CONSTRAINTS [Indian govt hospital reality]:
+   - Tests available in-house vs outsourced
+   - Weekend/night availability limitations
+   - Machine downtime issues
+   - Reagent stock situations
+
+4. RESULT INTERPRETATION HINTS:
+   - Critical values to flag immediately
+   - Common interferences or artifacts
+   - When to suggest repeat sampling"""
+
 
 # Verified Indian medical source patterns for confidence classification
 VERIFIED_SOURCES = {
@@ -297,7 +372,7 @@ class DynamicKnowledgeBuilder:
 
         Args:
             case_data: The full case dict (with id, diagnosis, specialty, etc.)
-            role: One of 'patient', 'nurse', 'senior_doctor'
+            role: One of 'patient', 'nurse', 'senior_doctor', 'family', 'lab_tech'
 
         Returns:
             Synthesized knowledge string to inject into the agent's system prompt.
@@ -339,6 +414,65 @@ class DynamicKnowledgeBuilder:
             logger.info(f"Built {role} knowledge for case {case_id} ({len(knowledge)} chars, {len(sources)} sources)")
 
         return knowledge or ""
+
+    def build_all_agent_knowledge(self, case_data: dict) -> dict[str, str]:
+        """Build knowledge for ALL 5 agents in PARALLEL using ThreadPoolExecutor.
+
+        This is 5x faster than sequential building since all Claude API calls run concurrently.
+
+        Args:
+            case_data: The full case dict
+
+        Returns:
+            Dict mapping role -> knowledge string for all 5 agents
+        """
+        start_time = time.time()
+        case_id = case_data.get("id", "unknown")
+        roles = ["patient", "nurse", "senior_doctor", "family", "lab_tech"]
+
+        # Check cache first
+        all_cached = True
+        cached_knowledge = {}
+        for role in roles:
+            cache_key = (case_id, role)
+            if cache_key in self._cache:
+                cached_knowledge[role] = self._cache[cache_key]
+            else:
+                all_cached = False
+                break
+
+        if all_cached:
+            logger.info(f"All agent knowledge cached for case {case_id}")
+            return cached_knowledge
+
+        logger.info(f"Building knowledge for all 5 agents in parallel for case {case_id}")
+
+        knowledge_results = {}
+
+        # Use ThreadPoolExecutor to run all 5 knowledge builds in parallel
+        with ThreadPoolExecutor(max_workers=5) as executor:
+            # Submit all tasks
+            future_to_role = {
+                executor.submit(self.build_knowledge, case_data, role): role
+                for role in roles
+            }
+
+            # Collect results as they complete
+            for future in as_completed(future_to_role):
+                role = future_to_role[future]
+                try:
+                    knowledge = future.result(timeout=15)  # 15 second timeout per agent (Opus adaptive is fast)
+                    knowledge_results[role] = knowledge
+                    logger.info(f"Completed knowledge for {role} ({len(knowledge)} chars)")
+                except Exception as e:
+                    logger.error(f"Failed to build knowledge for {role}: {e}")
+                    # Use fallback for this role
+                    knowledge_results[role] = self._fallback_knowledge(case_data, role, "")
+
+        elapsed = time.time() - start_time
+        logger.info(f"Built knowledge for all 5 agents in {elapsed:.2f}s (parallel execution)")
+
+        return knowledge_results
 
     def _gather_rag_context(self, case_data: dict, role: str) -> tuple[str, list[dict]]:
         """Query RAG for role-appropriate medical knowledge.
@@ -429,6 +563,26 @@ class DynamicKnowledgeBuilder:
                 )
                 _add_results(results, f"{label} FROM CORPUS")
 
+        elif role == "family":
+            # Family needs patient experience and cultural context
+            results = self.vector_store.query(
+                query_text=f"Patient family perspective {chief_complaint} {diagnosis}",
+                specialty=specialty,
+                n_results=3,
+                chunk_type="presentation",
+            )
+            _add_results(results, "SIMILAR PATIENT/FAMILY EXPERIENCES FROM CORPUS")
+
+        elif role == "lab_tech":
+            # Lab tech needs investigation and diagnostic info
+            results = self.vector_store.query(
+                query_text=f"Laboratory investigations diagnosis {diagnosis} {specialty}",
+                specialty=specialty,
+                n_results=5,
+                chunk_type="full_narrative",
+            )
+            _add_results(results, "INVESTIGATION REFERENCE FROM CORPUS")
+
         context_text = "\n".join(context_parts) if context_parts else ""
         return context_text, sources
 
@@ -447,10 +601,13 @@ class DynamicKnowledgeBuilder:
             "patient": PATIENT_KNOWLEDGE_PROMPT,
             "nurse": NURSE_KNOWLEDGE_PROMPT,
             "senior_doctor": SENIOR_KNOWLEDGE_PROMPT,
+            "family": FAMILY_KNOWLEDGE_PROMPT,
+            "lab_tech": LAB_TECH_KNOWLEDGE_PROMPT,
         }
         prompt_template = prompts.get(role)
         if not prompt_template:
-            return None
+            logger.warning(f"No prompt template for role: {role}")
+            return self._fallback_knowledge(case_data, role, rag_context)
 
         vitals = case_data.get("vital_signs", {})
 
@@ -476,10 +633,9 @@ class DynamicKnowledgeBuilder:
             response = self.client.messages.create(
                 model="claude-opus-4-6",
                 max_tokens=8000,
-                temperature=1,  # required for extended thinking
+                temperature=1,  # Required to be 1 for adaptive thinking
                 thinking={
-                    "type": "enabled",
-                    "budget_tokens": 8000,
+                    "type": "adaptive",  # Use adaptive thinking for better performance
                 },
                 messages=[{"role": "user", "content": prompt}],
             )
@@ -543,6 +699,26 @@ class DynamicKnowledgeBuilder:
                 f"LEARNING POINTS: {'; '.join(case_data.get('learning_points', []))}\n"
                 f"Teach using Socratic method. Only reference facts from the case data or reference material.\n\n"
                 f"REFERENCE MATERIAL [Corpus]:\n{rag_context[:3000]}"
+            )
+
+        if role == "family":
+            return (
+                f"{header}"
+                f"PATIENT CONDITION: {chief_complaint}\n"
+                f"You are a worried family member. Express concern in Hinglish.\n"
+                f"Share what home remedies you tried, cost concerns, work worries.\n"
+                f"Only describe what a family member would know in lay terms.\n\n"
+                f"REFERENCE MATERIAL [Corpus]:\n{rag_context[:1500]}"
+            )
+
+        if role == "lab_tech":
+            return (
+                f"{header}"
+                f"CASE: {chief_complaint} ({specialty})\n"
+                f"Focus on sample collection, turnaround times, and result reporting.\n"
+                f"Mention realistic govt hospital lab constraints.\n"
+                f"Use technical terms for tests but explain in simple terms to students.\n\n"
+                f"REFERENCE MATERIAL [Corpus]:\n{rag_context[:1500]}"
             )
 
         return f"{header}{rag_context[:2000]}" if rag_context else header

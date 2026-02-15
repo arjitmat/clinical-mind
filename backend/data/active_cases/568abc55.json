@@ -1,0 +1,52 @@
+{
+  "case_id": "568abc55",
+  "case_data": {
+    "patient": {
+      "age": 42,
+      "gender": "Male",
+      "location": "Lucknow, Uttar Pradesh"
+    },
+    "chief_complaint": "Progressive fatigue, joint pains, and darkening of skin for 4 months",
+    "initial_presentation": "A 42-year-old government clerk from Lucknow presents to the medicine OPD with complaints of progressive fatigue, generalized joint pains predominantly involving the knuckles, and diffuse darkening of skin over the past 4 months. He also reports recently diagnosed diabetes mellitus despite having no family history of diabetes and maintaining a normal BMI.",
+    "vital_signs": {
+      "bp": "118/74",
+      "hr": 82,
+      "rr": 16,
+      "temp": 36.9,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient describes progressive fatigue and lethargy for 4 months that has affected his work performance. He developed pain, stiffness, and mild swelling of the 2nd and 3rd MCP joints bilaterally about 3 months ago, initially attributed to 'arthritis' by a local practitioner who prescribed NSAIDs with partial relief. He noticed generalized darkening of skin, especially prominent over exposed areas and in the axillae and groin. He was diagnosed with type 2 diabetes mellitus 2 months ago (fasting glucose 210 mg/dL) and started on metformin 500 mg BD. His BMI is 23. He reports decreased libido and occasional erectile dysfunction for the past 6 months. He consumes alcohol socially (2-3 drinks per month). No history of blood transfusions. No known liver disease. No family history of diabetes, liver disease, or joint disease. No iron supplementation or tonic intake. He is vegetarian. He reports mild right upper quadrant discomfort after meals for the last month. No jaundice, no hematemesis, no melena. He has noticed slight reduction in body hair over the chest."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "General: Diffuse bronze-grey hyperpigmentation, most prominent in axillae, groin, and sun-exposed areas. Mild pallor of conjunctivae absent. No icterus. Sparse body hair over chest and axillae. Musculoskeletal: Mild bony swelling and tenderness of 2nd and 3rd MCP joints bilaterally. Grip strength mildly reduced. No synovial thickening of large joints. No tophi. Abdomen: Liver palpable 3 cm below right costal margin, firm, non-tender, smooth surface. Spleen not palpable. No ascites. No spider naevi, no palmar erythema, no gynecomastia. Cardiovascular: S1S2 normal, no murmurs. No signs of heart failure. Respiratory: Clear. Genitalia: Testes mildly soft and reduced in size bilaterally (clinical impression of testicular atrophy). No peripheral neuropathy."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hb 13.2 g/dL, WBC 6800/cumm, Platelets 1,85,000/cumm. Fasting glucose: 198 mg/dL. HbA1c: 8.1%. LFT: Total bilirubin 1.0, AST 68 U/L (mildly elevated), ALT 72 U/L (mildly elevated), ALP 110 U/L (normal), Albumin 3.8, GGT 55 U/L. Serum iron: 285 mcg/dL (elevated, normal 60-170). TIBC: 220 mcg/dL (low, normal 250-370). Transferrin saturation: 78% (markedly elevated, normal 20-50%). Serum ferritin: 1850 ng/mL (markedly elevated, normal 20-250). CRP: 8 mg/L (mildly elevated). Rheumatoid factor: Negative. Anti-CCP antibodies: Negative. Uric acid: 5.2 mg/dL (normal). Testosterone: 180 ng/dL (low, normal 300-1000). LH/FSH: Low (secondary hypogonadism pattern). X-ray hands: Chondrocalcinosis of triangular fibrocartilage of wrist bilaterally. Hook-like osteophytes at 2nd and 3rd MCP joints. USG abdomen: Hepatomegaly (16.5 cm), diffusely hyperechoic liver suggestive of iron overload/steatosis. No focal lesion. No splenomegaly. MRI liver (T2*): Significantly reduced T2* signal consistent with hepatic iron overload. HFE gene testing: C282Y homozygous mutation. Liver biopsy (Perl's Prussian blue stain): Grade 4 hepatic iron deposition with early periportal fibrosis (stage F2). Hepatic iron index: 3.2 (>1.9 supports hereditary hemochromatosis)."
+      }
+    ],
+    "diagnosis": "Hereditary hemochromatosis (HFE-related, C282Y homozygous) with hepatic iron overload, secondary diabetes mellitus ('bronze diabetes'), hypogonadotropic hypogonadism, and arthropathy with chondrocalcinosis",
+    "differentials": [
+      "Hereditary hemochromatosis",
+      "Secondary iron overload (transfusional or dietary)",
+      "Rheumatoid arthritis with concurrent liver disease",
+      "CPPD arthropathy (pseudogout) from other etiology",
+      "Non-alcoholic fatty liver disease with metabolic syndrome"
+    ],
+    "learning_points": [
+      "The classic triad of hereditary hemochromatosis is cirrhosis, diabetes mellitus, and skin pigmentation ('bronze diabetes'), but early presentations may be subtle \u2014 fatigue, arthralgia, and new-onset diabetes in a non-obese patient without family history should raise suspicion.",
+      "Transferrin saturation >45% is the best initial screening test for hemochromatosis; serum ferritin indicates iron burden. Fasting transferrin saturation is more specific than ferritin alone, which is an acute phase reactant.",
+      "Arthropathy of hemochromatosis characteristically involves the 2nd and 3rd MCP joints with chondrocalcinosis (CPPD deposition), and may be the presenting feature \u2014 it mimics but is distinct from rheumatoid arthritis (RF and anti-CCP negative).",
+      "Treatment is serial phlebotomy (removal of 500 mL blood weekly) aiming for serum ferritin <50 ng/mL, followed by maintenance phlebotomy every 2-3 months. Arthropathy and hypogonadism may not fully reverse even with iron depletion. First-degree relatives must be screened."
+    ],
+    "atypical_features": "This case is challenging because hereditary hemochromatosis is considered rare in India and is often not suspected. The patient presents with a constellation of seemingly unrelated problems \u2014 new-onset diabetes without typical risk factors, arthropathy mimicking RA or gout, skin hyperpigmentation that could be dismissed as constitutional, and hypogonadism \u2014 requiring the student to connect these disparate findings through a unifying diagnosis. The MCP joint involvement with chondrocalcinosis is a strong clue that may be overlooked. Additionally, C282Y homozygosity is uncommon in Indian populations compared to Northern Europeans, making this a diagnostic challenge requiring awareness that HFE mutations, though less frequent, do occur in the Indian subcontinent.",
+    "specialty": "internal_medicine",
+    "difficulty": "intermediate",
+    "id": "568abc55"
+  },
+  "timestamp": "2026-02-14T15:08:25.888720"
+}

@@ -1,0 +1,52 @@
+{
+  "case_id": "ef4d67d8",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Male",
+      "location": "Lucknow, Uttar Pradesh"
+    },
+    "chief_complaint": "Progressive difficulty walking and recurrent falls for 3 months with recent onset urinary urgency",
+    "initial_presentation": "A 34-year-old bank clerk from Lucknow presents with progressive unsteadiness of gait and frequent falls over 3 months. He also reports new-onset urinary urgency and occasional incontinence for 2 weeks. His wife has noticed that his speech has become slightly slurred over the past month.",
+    "vital_signs": {
+      "bp": "130/80",
+      "hr": 78,
+      "rr": 16,
+      "temp": 36.8,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient describes progressive difficulty with balance, initially noticed when climbing stairs 3 months ago, now requiring support while walking on flat ground. He has fallen 6-7 times in the last month. He reports urinary urgency and frequency for 2 weeks with 2 episodes of urge incontinence. He denies visual symptoms, limb weakness, or sensory disturbances. His speech has become 'thick' per his wife. He reports erectile dysfunction for 4 months. He also describes episodic dizziness on standing from a seated position for the past 2 months. No headache, no seizures, no cognitive decline. He had an episode of syncopal attack 6 weeks ago while standing in a bank queue. No family history of neurological disease. No alcohol or substance use. No prior significant illness. He was prescribed sildenafil by a local doctor for ED, which caused a severe hypotensive episode. No exposure to toxins or drugs causing parkinsonism. He has noticed mild stiffness in both limbs but no tremor at any time. He was initially seen by a urologist who found no urological cause for his symptoms."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "GCS 15/15, fully alert and oriented. Speech: Mildly dysarthric with a scanning quality (cerebellar). Cranial nerves: No nystagmus at primary gaze; gaze-evoked nystagmus on lateral gaze bilaterally; saccadic pursuit movements. No optic disc abnormality. No facial asymmetry. Motor: Tone mildly increased bilaterally in lower limbs (spastic, not cogwheel); power 5/5 all limbs; no tremor at rest or with posture or action. Deep tendon reflexes: Brisk throughout, bilateral ankle clonus (3-4 beats). Plantars: Bilateral extensor (Babinski positive). Cerebellar signs: Bilateral heel-shin ataxia (left > right), dysdiadochokinesia bilaterally, wide-based gait with inability to tandem walk. Romberg test: Negative (cerebellar, not sensory ataxia). Finger-nose test: Past-pointing bilateral. Autonomic testing: Orthostatic hypotension \u2014 supine BP 130/80, standing BP 90/60 at 3 minutes with inadequate heart rate rise (78 to 84 bpm). No parkinsonian rest tremor. Mild bilateral upper limb rigidity without cogwheeling. Cold, mottled hands. No subcutaneous nodules. No skin abnormalities. Fundoscopy normal."
+      },
+      {
+        "stage": "labs",
+        "info": "MRI brain (3T with volumetry): Cerebellar atrophy (vermis and hemispheres), pontine atrophy with characteristic 'hot cross bun' sign on axial T2, cruciform hyperintensity in pons. Mild putaminal atrophy with slit-like hyperintensity along lateral putaminal margin on T2. Middle cerebellar peduncle T2 hyperintensity bilaterally. No supratentorial white matter lesions. No gadolinium enhancement. MRI cervical spine: Normal, no compressive myelopathy, no demyelinating lesions. CSF analysis: Normal protein (38 mg/dL), no cells, no oligoclonal bands, normal glucose. Serum ceruloplasmin: Normal (32 mg/dL). Serum B12: Normal. HIV and VDRL: Negative. Thyroid function: Normal. Anti-GAD65 antibodies: Negative. Anti-AQP4 and anti-MOG: Negative. Serum vitamin E: Normal. Genetic testing (SCA panel): Negative for SCA 1, 2, 3, 6, 7, 12. EMG/NCV: Normal (no peripheral neuropathy). Urodynamic study: Detrusor overactivity with incomplete bladder emptying (post-void residual 120 mL). Tilt table test: Confirmed severe orthostatic hypotension with neurogenic pattern (absent compensatory tachycardia). Cardiac autonomic function tests: Reduced heart rate variability, abnormal Valsalva ratio. Anal sphincter EMG: Denervation changes in external anal sphincter (Onuf's nucleus involvement). DaTSCAN (referred to SGPGI): Bilateral reduced putaminal uptake, symmetric. Clonidine growth hormone stimulation test: Blunted GH response (central autonomic dysfunction)."
+      }
+    ],
+    "diagnosis": "Multiple System Atrophy \u2014 Cerebellar type (MSA-C) with prominent autonomic failure",
+    "differentials": [
+      "Spinocerebellar ataxia (hereditary)",
+      "Idiopathic Parkinson's disease with cerebellar features",
+      "Neuromyelitis optica spectrum disorder (NMOSD)",
+      "Paraneoplastic cerebellar degeneration",
+      "Autoimmune cerebellar ataxia (anti-GAD)"
+    ],
+    "learning_points": [
+      "MSA is characterized by the triad of cerebellar ataxia or parkinsonism + severe autonomic failure + pyramidal signs; MSA-C (formerly sporadic olivopontocerebellar atrophy) predominates with cerebellar features while MSA-P (formerly Shy-Drager/striatonigral degeneration) with parkinsonism",
+      "The 'hot cross bun' sign on pontine T2 MRI is characteristic (though not pathognomonic) of MSA-C, caused by selective neuronal loss in pontine nuclei and preserved pontine tegmentum and raphe; slit-like putaminal hyperintensity suggests MSA-P overlap",
+      "Red flags distinguishing MSA from Parkinson's disease include: rapid progression, poor levodopa response, early severe autonomic failure (orthostatic hypotension >30 mmHg systolic within 3 minutes of standing, urinary incontinence), symmetric presentation, absence of rest tremor, cerebellar signs, and denervation on sphincter EMG (Onuf's nucleus involvement is highly specific for MSA)",
+      "MSA carries a poor prognosis (median survival 6-9 years from symptom onset) with no disease-modifying therapy; management is symptomatic \u2014 midodrine/fludrocortisone for orthostatic hypotension, intermittent catheterization for urinary retention, physiotherapy for ataxia; levodopa trial is warranted but response is typically poor or transient"
+    ],
+    "atypical_features": "Young age of onset (34 years, whereas MSA typically presents at 50-60 years) requiring thorough exclusion of hereditary ataxias and treatable causes; the initial presentation mimicking a urological or spinal cord disorder leading to diagnostic delay; absence of any tremor throughout the course making initial parkinsonism assessment difficult; the combination of cerebellar, pyramidal, and autonomic features at a young age creates a wide differential including hereditary ataxias, demyelinating disease, and paraneoplastic syndromes; the symmetric bilateral DaTSCAN reduction without classic parkinsonian rest tremor adds complexity to the diagnostic workup",
+    "specialty": "neurology",
+    "difficulty": "advanced",
+    "id": "ef4d67d8"
+  },
+  "timestamp": "2026-02-15T08:52:42.322081"
+}

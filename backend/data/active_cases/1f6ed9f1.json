@@ -1,0 +1,52 @@
+{
+  "case_id": "1f6ed9f1",
+  "case_data": {
+    "patient": {
+      "age": 22,
+      "gender": "Male",
+      "location": "Dibrugarh, Assam"
+    },
+    "chief_complaint": "High-grade fever with chills and body aches for 4 days",
+    "initial_presentation": "A 22-year-old college student from Dibrugarh, Assam presents to the district hospital with high-grade intermittent fever for 4 days associated with rigors, chills, and generalized body aches. He also reports headache and nausea. He returned from a visit to his village in a tea garden area one week ago.",
+    "vital_signs": {
+      "bp": "110/70",
+      "hr": 104,
+      "rr": 20,
+      "temp": 39.4,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient describes high-grade fever occurring every alternate day with intense shaking chills followed by profuse sweating. Each episode lasts 6-8 hours. He has associated severe headache, nausea, and two episodes of non-bilious vomiting. He reports myalgia and fatigue between febrile episodes. He stayed in his village near a tea garden in upper Assam for 10 days, where he slept without a mosquito net. No history of diarrhea, cough, rash, or urinary symptoms. No history of recent antibiotic use. No known chronic illnesses. No history of similar illness in the past. No IV drug use. He is a non-smoker and occasional social drinker. Some of his neighbors in the village had similar fever recently."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "The patient appears acutely ill and diaphoretic during the examination. Mild pallor present. No icterus. No lymphadenopathy. No rash or petechiae. Oral mucosa is dry. Abdomen: soft, non-tender, spleen palpable 2 cm below the left costal margin (mild splenomegaly). Liver is just palpable. No ascites. Chest: bilateral air entry clear, no adventitious sounds. CVS: S1S2 normal, tachycardic, no murmur. CNS: conscious, oriented, GCS 15/15. No neck stiffness, no focal deficits. No pedal edema."
+      },
+      {
+        "stage": "labs",
+        "info": "CBC: Hb 11.8 g/dL, WBC 4,200/cumm (normal differential), Platelets 1,10,000/cumm (mild thrombocytopenia). Peripheral blood smear: Ring-form trophozoites of Plasmodium vivax identified within enlarged red blood cells with Sch\u00fcffner's stippling. Parasite density: 2%. Rapid diagnostic test (RDT): Pv positive, Pf negative. Blood glucose: 96 mg/dL. Serum creatinine: 0.9 mg/dL. Bilirubin: 1.4 mg/dL (mildly elevated, indirect predominant). AST: 52 U/L, ALT: 48 U/L (mildly elevated). Urine routine: Normal. Dengue NS1 and IgM: Negative. Widal test: Negative."
+      }
+    ],
+    "diagnosis": "Plasmodium vivax malaria (uncomplicated)",
+    "differentials": [
+      "Plasmodium falciparum malaria",
+      "Dengue fever",
+      "Enteric (typhoid) fever",
+      "Scrub typhus",
+      "Viral fever (influenza)"
+    ],
+    "learning_points": [
+      "P. vivax malaria classically presents with alternate-day (tertian) fever with rigors, chills, and sweating; Sch\u00fcffner's stippling and enlarged RBCs on peripheral smear are characteristic of P. vivax",
+      "First-line treatment for uncomplicated P. vivax malaria in India (NVBDCP guidelines): Chloroquine (25 mg/kg over 3 days) followed by Primaquine (0.25 mg/kg daily for 14 days) for radical cure to eliminate hypnozoites in the liver",
+      "G6PD testing should be done before prescribing primaquine to prevent hemolytic anemia; primaquine is contraindicated in G6PD-deficient patients and in pregnancy",
+      "Assam and the northeastern states are endemic for both P. vivax and P. falciparum malaria; tea garden and forested areas are high-transmission zones, and sleeping without mosquito nets is a major risk factor"
+    ],
+    "atypical_features": "This is a straightforward beginner-level case with a classic presentation of uncomplicated P. vivax malaria. The periodicity of fever (alternate-day pattern), characteristic peripheral smear findings (Sch\u00fcffner's stippling, enlarged RBCs), mild splenomegaly, and relevant epidemiological exposure make the diagnosis relatively straightforward, testing the student's ability to correlate history, examination, and lab findings systematically.",
+    "specialty": "infectious",
+    "difficulty": "beginner",
+    "id": "1f6ed9f1"
+  },
+  "timestamp": "2026-02-15T08:47:07.633581"
+}

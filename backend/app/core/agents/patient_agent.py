@@ -1,6 +1,7 @@
 """Patient agent — speaks in Hindi/English mix with realistic distress levels."""
 
 from app.core.agents.base_agent import BaseAgent
+from app.core.agents.symptom_translator import get_patient_friendly_description
 
 
 PATIENT_SYSTEM_PROMPT = """You are a patient in an Indian government hospital. You are being examined by a medical student (junior doctor).
@@ -40,7 +41,12 @@ DISTRESS BEHAVIOR:
 - high: In visible distress, may cry or groan. "Aaahhh... bahut dard ho raha hai doctor... please kuch karo!"
 - critical: Severe pain/panic, short responses. "Doctor... saans... nahi aa rahi... please..."
 
-Respond ONLY as the patient. Stay in character completely."""
+Respond ONLY as the patient. Stay in character completely.
+
+FORMATTING RULES:
+- Do NOT use markdown formatting like ** or * in your responses
+- Write in plain text only
+- For actions or expressions, use plain text like: (dard se karaahte hue) or crying... instead of *dard se karaahte hue*"""
 
 
 class PatientAgent(BaseAgent):
@@ -151,13 +157,15 @@ class PatientAgent(BaseAgent):
         cc = self.patient_info.get("chief_complaint", "problem")
         age = self.patient_info.get("age", 45)
         gender = self.patient_info.get("gender", "Male")
-        honorific = "beti" if gender == "Female" and age < 30 else "bhai" if gender == "Male" and age < 40 else "uncle" if gender == "Male" else "aunty"
+
+        # Get patient-friendly description of symptoms
+        lay_description = get_patient_friendly_description(cc, self.distress_level)
 
         greetings = {
-            "critical": f"Doctor sahab... please... {cc.lower()}... bahut... zyada hai... saans nahi aa rahi...",
-            "high": f"Doctor sahab, namaste... mujhe bahut zyada problem ho rahi hai... {cc.lower()}... please jaldi check karo!",
-            "moderate": f"Namaste doctor sahab. Mein aapke paas aaya hoon kyunki mujhe {cc.lower()} ki problem hai. 2-3 din se ho raha hai, ab zyada ho gaya.",
-            "low": f"Namaste doctor sahab. Mujhe {cc.lower()} ki thodi si problem hai, isliye aaya hoon. Dekhiye na please.",
+            "critical": f"Doctor sahab... please... {lay_description}... saans nahi aa rahi...",
+            "high": f"Doctor sahab, namaste... mujhe bahut zyada problem ho rahi hai... {lay_description}... please jaldi check karo!",
+            "moderate": f"Namaste doctor sahab. Mein aapke paas aaya hoon kyunki mujhe {lay_description}. 2-3 din se ho raha hai, ab zyada ho gaya.",
+            "low": f"Namaste doctor sahab. Mujhe {lay_description}, isliye aaya hoon. Dekhiye na please.",
         }
 
         content = greetings.get(self.distress_level, greetings["moderate"])

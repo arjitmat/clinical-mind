@@ -1,0 +1,52 @@
+{
+  "case_id": "2d656242",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Male",
+      "location": "Lucknow, Uttar Pradesh"
+    },
+    "chief_complaint": "Progressive difficulty walking and double vision for 6 weeks with recent onset urinary retention",
+    "initial_presentation": "A 34-year-old government clerk from Lucknow presents to the neurology OPD with progressive unsteadiness of gait for 6 weeks, double vision for 3 weeks, and inability to pass urine requiring catheterization for 2 days. He also reports intermittent tingling and numbness in both feet. He was initially treated for 'cervical spondylosis' at a local clinic without improvement.",
+    "vital_signs": {
+      "bp": "128/82",
+      "hr": 80,
+      "rr": 16,
+      "temp": 37.2,
+      "spo2": 98
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient describes progressive gait unsteadiness beginning insidiously 6 weeks ago \u2014 initially stumbling on uneven surfaces, now needing support to walk. He developed horizontal double vision 3 weeks ago, worse on looking to the left. Over the past 2 weeks, he has noticed tingling and 'band-like tightness' around his upper abdomen. Two days ago he developed acute urinary retention requiring Foley catheterization at a local hospital. He reports a 10 kg weight loss over 3 months, intermittent low-grade fever, and drenching night sweats. He denies any preceding diarrheal illness or respiratory infection. He has no history of oral or genital ulcers, joint pain, skin rashes, or photosensitivity. He consumes alcohol socially (occasional), does not smoke, and is vegetarian. He was diagnosed with pulmonary tuberculosis 2 years ago and completed 6 months of ATT (Cat-I DOTS) with documented sputum conversion. He has no known HIV risk factors but has never been tested. Family history is unremarkable. He was empirically started on gabapentin and a cervical collar 4 weeks ago with no improvement. He also reports progressive difficulty with concentration and a single episode of transient left facial drooping lasting a few hours, 5 weeks ago, which he did not seek medical attention for."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "General: Thin, cachectic (BMI 18.2). No lymphadenopathy. No skin lesions. No oral ulcers. Cranial nerves: Left abducens (6th) nerve palsy with limited abduction of left eye. Right lower motor neuron facial weakness (incomplete eye closure, flattened nasolabial fold \u2014 recovered but residual). Subtle left optic disc pallor on fundoscopy; right disc normal. No papilledema. Hearing intact bilaterally. Other cranial nerves normal. Motor: Upper limbs \u2014 power 4+/5 bilateral grip, mild wasting of intrinsic hand muscles (left > right). Lower limbs \u2014 spastic paraparesis, power 3/5 hip flexion bilaterally, 4/5 knee extension, 3/5 ankle dorsiflexion. Tone increased in both lower limbs with clonus at ankles (sustained, >5 beats). DTRs: Upper limbs 3+, lower limbs 4+ with crossed adductor reflex. Plantar responses: bilateral extensor (Babinski positive). Sensory: Sensory level at approximately T8 (reduced pinprick and temperature below this level bilaterally). Impaired joint position sense in toes. Vibration sense absent at ankles, reduced at knees, present at iliac crests. Cerebellar: Bilateral heel-shin ataxia (out of proportion to weakness), impaired tandem gait, mild finger-nose dysmetria on the left. Gait: Spastic-ataxic, broad-based, needs bilateral support. Romberg positive. Spine: No tenderness. No gibbus."
+      },
+      {
+        "stage": "labs",
+        "info": "MRI brain with gadolinium: Multiple ring-enhancing lesions in the pons (left side, explaining abducens palsy), right cerebellar peduncle, and left frontal white matter. There is also leptomeningeal enhancement along the basal cisterns and Sylvian fissures bilaterally. No midline shift. MRI whole spine with gadolinium: Intradural extramedullary enhancing lesion at T7-T8 level with cord compression and cord edema. Multiple enhancing leptomeningeal nodules along the thoracic and lumbar cord surface (sugar-coating appearance). CSF analysis (done after imaging): Opening pressure 260 mmH2O. Appearance: slightly turbid. WBC 120 cells/mm\u00b3 (lymphocytes 90%, neutrophils 10%). Protein markedly elevated at 3.5 g/L. Glucose 22 mg/dL (blood glucose 95 mg/dL, ratio 0.23). ADA: 28 U/L (elevated). Chloride: 102 mEq/L (low). CSF GeneXpert MTB/RIF: MTB detected, Rifampicin resistance NOT detected. CSF AFB smear: Negative. CSF cytology: No malignant cells. CSF VDRL: Non-reactive. CSF Cryptococcal antigen: Negative. CSF oligoclonal bands: Negative. HIV ELISA: Negative (confirmed with rapid test). CBC: Hb 10.2 g/dL, TLC 6800, ESR 65 mm/hr. LFT: Mildly elevated ALT (52 U/L). CXR: Old fibrotic lesion in left upper zone, no active infiltrates. CT chest: Left upper lobe fibrosis consistent with healed TB, no active parenchymal disease. Serum ACE levels: Normal. Anti-AQP4 and Anti-MOG antibodies: Negative. Serum B12: 180 pg/mL (low-normal)."
+      }
+    ],
+    "diagnosis": "CNS tuberculosis with paradoxical relapse \u2014 Tubercular leptomeningitis with intracranial tuberculomas, spinal leptomeningeal tuberculosis (arachnoiditis), and intradural spinal tuberculoma causing myelopathy, occurring 18 months after completion of ATT",
+    "differentials": [
+      "Neurosarcoidosis with multifocal CNS involvement",
+      "CNS lymphoma with leptomeningeal carcinomatosis",
+      "Neuromyelitis optica spectrum disorder (NMOSD) with brainstem and spinal involvement",
+      "Multiple sclerosis with tumefactive lesions",
+      "Chronic meningitis due to fungal infection (Cryptococcus/Aspergillus)"
+    ],
+    "learning_points": [
+      "Paradoxical TB reaction (immune reconstitution-like phenomenon) can occur during or even after completion of ATT, presenting as new or worsening CNS lesions despite microbiological cure of pulmonary TB. This does not necessarily imply treatment failure or drug resistance.",
+      "CNS TB can present with disseminated involvement \u2014 simultaneous basal meningitis, intracranial tuberculomas, spinal arachnoiditis, and intradural tuberculomas \u2014 the combination of ring-enhancing brain lesions + leptomeningeal enhancement + spinal 'sugar-coating' pattern is highly suggestive of neurotuberculosis.",
+      "Spinal tubercular arachnoiditis can mimic intradural extramedullary tumors (meningioma, schwannoma) or leptomeningeal carcinomatosis. CSF with very high protein, very low glucose (ratio <0.3), lymphocytic pleocytosis, elevated ADA, and positive GeneXpert clinches the diagnosis.",
+      "Treatment of CNS TB with paradoxical worsening: Restart or continue intensive phase ATT (HRZE) with extended total duration of 12-18 months, add high-dose corticosteroids (dexamethasone 0.4 mg/kg/day with slow taper over 8 weeks), and consider neurosurgical decompression if significant spinal cord compression is present."
+    ],
+    "atypical_features": "This case is challenging because: (1) Neurotuberculosis presents 18 months AFTER completing standard ATT, raising the dilemma of paradoxical reaction vs. relapse vs. drug-resistant TB vs. entirely new non-TB diagnosis; (2) Multifocal CNS involvement \u2014 simultaneous brainstem, cerebellar, cerebral, and spinal disease \u2014 mimics CNS lymphoma, sarcoidosis, or NMOSD; (3) The intradural extramedullary spinal lesion mimics a tumor, and the spinal leptomeningeal nodularity mimics carcinomatous meningitis; (4) The patient has no active pulmonary TB on imaging, making the connection to tuberculosis less obvious; (5) Prior history of treated TB could be dismissed as irrelevant by a less careful clinician, and the relapsing-remitting cranial nerve palsies (facial, then abducens) could mislead toward MS or NMOSD.",
+    "specialty": "neurology",
+    "difficulty": "advanced",
+    "id": "2d656242"
+  },
+  "timestamp": "2026-02-15T08:47:56.097403"
+}

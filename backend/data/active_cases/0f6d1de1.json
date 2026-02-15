@@ -1,0 +1,52 @@
+{
+  "case_id": "0f6d1de1",
+  "case_data": {
+    "patient": {
+      "age": 28,
+      "gender": "Male",
+      "location": "Lucknow, Uttar Pradesh"
+    },
+    "chief_complaint": "Cough with blood-streaked sputum, evening fever, and weight loss for 6 weeks",
+    "initial_presentation": "A 28-year-old male tailor from a congested mohalla in Lucknow presents to the OPD with a 6-week history of persistent cough with blood-streaked sputum, low-grade evening fever, night sweats, and significant weight loss. He appears thin and fatigued, and mentions that a co-worker in his tailoring workshop was recently diagnosed with tuberculosis.",
+    "vital_signs": {
+      "bp": "110/70",
+      "hr": 96,
+      "rr": 22,
+      "temp": 38.2,
+      "spo2": 96
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient reports a cough that started as dry 6 weeks ago but became productive with yellowish sputum over the past 3 weeks. He noticed streaks of blood in the sputum for the last 10 days, approximately 2-3 episodes per day, small volume (less than a teaspoon each time). He has low-grade fever predominantly in the evenings (self-recorded up to 100.5\u00b0F), drenching night sweats requiring change of clothes, and has lost approximately 6 kg over 6 weeks. He has poor appetite and generalized weakness. He has no history of breathlessness at rest but gets winded climbing stairs. No chest pain. No previous history of TB or ATT intake. No diabetes, no asthma, no prior hospitalizations. He is a non-smoker and does not consume alcohol. He works as a tailor in a small, poorly ventilated workshop with 8 other workers. His co-worker sitting adjacent to him was diagnosed with sputum-positive pulmonary TB 2 months ago and is currently on ATT. The patient lives in a one-room house with his wife and two young children. No BCG scar visible. No history of immunosuppressive drugs or HIV risk factors."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Thin, ill-appearing male. BMI 17.8 (height 170 cm, weight 51.5 kg). Pallor present. No icterus, no cyanosis, no pedal edema. No peripheral lymphadenopathy. No finger clubbing. Chest examination: Inspection - reduced movement on the right upper chest. Palpation - decreased vocal fremitus right infraclavicular area. Percussion - impaired note right supra- and infraclavicular regions. Auscultation - bronchial breath sounds with post-tussive crepitations heard over the right upper zone (suprascapular and infraclavicular areas). Left lung is clear. Cardiovascular examination: Tachycardia, no murmurs. Abdomen: Soft, non-tender, no organomegaly. No spinal tenderness."
+      },
+      {
+        "stage": "labs",
+        "info": "Sputum for AFB (ZN stain): Two samples sent - both POSITIVE for acid-fast bacilli (2+). GeneXpert MTB/RIF: Mycobacterium tuberculosis DETECTED, Rifampicin resistance NOT detected. CXR PA view: Right upper zone heterogeneous opacity with a 2.5 cm cavity with irregular walls; no air-fluid level; no pleural effusion; no hilar lymphadenopathy; rest of the lung fields are clear. CBC: Hb 10.8 g/dL (mild normocytic anemia), WBC 9,500 (neutrophils 70%, lymphocytes 24%), Platelets 3.2 lakh, ESR 55 mm/hr. RBS: 102 mg/dL. HIV rapid test: Non-reactive. Liver function tests: Total bilirubin 0.8, SGOT 28, SGPT 22, Alkaline phosphatase 82 (all within normal limits). Renal function tests: Urea 22, Creatinine 0.9 (normal). Urine routine: Normal."
+      }
+    ],
+    "diagnosis": "Drug-sensitive pulmonary tuberculosis (new case, sputum smear-positive with right upper lobe cavitary disease)",
+    "differentials": [
+      "Pulmonary tuberculosis",
+      "Community-acquired pneumonia (bacterial)",
+      "Lung abscess",
+      "Bronchiectasis with secondary infection",
+      "Pulmonary malignancy (less likely given age)"
+    ],
+    "learning_points": [
+      "The classic triad of pulmonary TB includes chronic cough (>2 weeks), hemoptysis, and constitutional symptoms (evening fever, night sweats, weight loss). Upper lobe predilection with cavitation on CXR is characteristic.",
+      "GeneXpert MTB/RIF (CBNAAT) is the initial diagnostic test recommended by NTEP for all presumptive TB cases - it simultaneously detects MTB and rifampicin resistance within 2 hours, guiding treatment decisions.",
+      "Under NTEP (National Tuberculosis Elimination Programme), this patient qualifies as a new sputum-positive case and should be started on the standard regimen: 2 months intensive phase (HRZE - Isoniazid, Rifampicin, Pyrazinamide, Ethambutol) followed by 4 months continuation phase (HRE), using daily fixed-dose combinations.",
+      "Close contact tracing is essential - the patient's wife and two young children must be screened for TB (symptom screening, chest X-ray, and TST/IGRA for children). Under NTEP, TB preventive therapy (TPT) with Isoniazid or 3HP regimen should be offered to eligible contacts, especially children under 5 years."
+    ],
+    "atypical_features": "This is a straightforward beginner-level case with classic presentation of pulmonary TB. The key clinical reasoning challenge is recognizing the epidemiological link (close contact with a confirmed TB patient in a poorly ventilated workspace), correlating the classic symptoms and examination findings to the correct diagnosis, and understanding the importance of GeneXpert as the first-line diagnostic test. Students must also think about contact tracing and public health notification as part of complete case management.",
+    "specialty": "respiratory",
+    "difficulty": "beginner",
+    "id": "0f6d1de1"
+  },
+  "timestamp": "2026-02-15T09:01:09.659269"
+}

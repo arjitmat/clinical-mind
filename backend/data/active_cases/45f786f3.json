@@ -1,0 +1,53 @@
+{
+  "case_id": "45f786f3",
+  "case_data": {
+    "patient": {
+      "age": 34,
+      "gender": "Male",
+      "location": "Dibrugarh, Assam"
+    },
+    "chief_complaint": "Sudden severe headache, neck stiffness, and altered consciousness after a seizure episode",
+    "initial_presentation": "A 34-year-old tea plantation worker from Dibrugarh, Assam is brought to the district hospital emergency department by co-workers after he suddenly collapsed with a generalized tonic-clonic seizure while working. He had complained of an excruciating headache ('worst headache of my life') approximately 30 minutes before the seizure. On arrival, he is drowsy, groaning, and vomiting repeatedly. There is no history of trauma.",
+    "vital_signs": {
+      "bp": "210/120",
+      "hr": 55,
+      "rr": 10,
+      "temp": 37.2,
+      "spo2": 93
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Collateral history from co-workers: He was working normally when he suddenly grabbed his head and screamed about a severe headache. He vomited twice, became confused, and then had a generalized seizure lasting approximately 2 minutes followed by loss of consciousness. No head trauma or fall preceding the event. Past medical history: He has been taking over-the-counter 'headache tablets' (likely NSAIDs) for recurrent headaches over the past 3 weeks, which he attributed to heat and exhaustion. He drinks locally brewed rice beer (Apong) regularly \u2014 approximately 500-700 mL daily. Smokes 10 bidis/day for 15 years. No known hypertension, diabetes, or cardiac disease. No prior seizure history. He uses khaini (smokeless tobacco). Family history: Father died of a 'brain hemorrhage' at age 48 \u2014 no further details available. No history of bleeding disorders. Medications: Only OTC analgesics. No blood thinners. Three weeks ago, he had an episode of sudden severe headache with neck stiffness that resolved spontaneously over 2 days \u2014 he did not seek medical attention (possible sentinel bleed/warning leak)."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "GCS: E2V2M5 = 9/15 (localizes to pain, incomprehensible sounds, eye opening to pain). WFNS Grade IV subarachnoid hemorrhage. Severe neck rigidity \u2014 positive Kernig's and Brudzinski's signs. Bilateral subhyaloid (pre-retinal) hemorrhages on fundoscopy (Terson syndrome \u2014 highly suggestive of subarachnoid hemorrhage). Pupils: Left pupil 5 mm, sluggishly reactive; Right pupil 3 mm, briskly reactive (anisocoria \u2014 concerning for uncal herniation or posterior communicating artery aneurysm compressing CN III). Left partial ptosis noted. No focal limb weakness appreciable (bilateral withdrawal to pain). Bilateral extensor plantar responses. No external signs of trauma. No Battle's sign, raccoon eyes, or hemotympanum. Lungs: Bilateral basal crepitations (neurogenic pulmonary edema). Heart: Bradycardic, regular, no murmurs. Abdomen: Soft, no organomegaly. Tongue laceration on left lateral border (seizure-related bite). Cushing response present: hypertension + bradycardia + irregular respirations (Cushing triad \u2014 indicates raised intracranial pressure)."
+      },
+      {
+        "stage": "labs",
+        "info": "Non-contrast CT head (NCCT \u2014 performed urgently): Diffuse subarachnoid hemorrhage in basal cisterns, sylvian fissures bilaterally, and interhemispheric fissure. Blood pooling predominantly in the left sylvian fissure. Early hydrocephalus \u2014 temporal horn dilation bilaterally. Fisher Grade 4 (diffuse SAH with intraventricular hemorrhage \u2014 blood visible in the 3rd and 4th ventricles). No intraparenchymal hematoma. Midline shift: 3 mm to right. CT Angiography (available at this district hospital via recently installed 64-slice CT): 7 mm saccular aneurysm at the left posterior communicating artery (PComm) \u2014 left ICA-PComm junction. Irregular lobulated contour \u2014 suggests recent rupture point. No other aneurysms detected. ABG: pH 7.32, PaCO2 48, PaO2 68, HCO3 24 (respiratory acidosis \u2014 hypoventilation from decreased consciousness). Serum sodium: 128 mEq/L (hyponatremia \u2014 likely early cerebral salt wasting or SIADH). Potassium: 3.4 mEq/L. Blood glucose: 195 mg/dL (stress hyperglycemia). Creatinine: 0.9 mg/dL. CBC: Hb 14.8, WBC 16,500 (stress leukocytosis), Platelets 2,30,000. INR: 1.0. ECG: Sinus bradycardia 55 bpm, deep widespread T-wave inversions with prolonged QTc (520 ms) \u2014 'cerebral T waves' consistent with SAH (neurogenic cardiac changes, not primary cardiac pathology). Troponin I: 0.8 ng/mL (mildly elevated \u2014 neurogenic stunned myocardium). Serum lactate: 3.2 mmol/L."
+      }
+    ],
+    "diagnosis": "Aneurysmal subarachnoid hemorrhage (Hunt-Hess Grade IV, Fisher Grade 4) from ruptured left posterior communicating artery aneurysm, complicated by Cushing response, early hydrocephalus, Terson syndrome, hyponatremia, and neurogenic cardiac changes",
+    "differentials": [
+      "Aneurysmal subarachnoid hemorrhage (confirmed)",
+      "Hypertensive intracerebral hemorrhage with intraventricular extension",
+      "Cerebral venous sinus thrombosis with hemorrhagic infarction",
+      "Arteriovenous malformation rupture",
+      "Meningoencephalitis (bacterial/tubercular) with secondary seizure",
+      "Reversible cerebral vasoconstriction syndrome (RCVS) \u2014 thunderclap headache"
+    ],
+    "learning_points": [
+      "Sentinel headache (warning leak) occurs in 30-50% of SAH patients days to weeks before a major rupture \u2014 this patient's recurrent severe headaches 3 weeks prior likely represented a sentinel bleed. Recognizing and investigating thunderclap headache with NCCT and LP (if CT negative within 6 hours) is critical to preventing catastrophic rebleeding.",
+      "Cushing triad (hypertension, bradycardia, irregular respirations) indicates critically raised intracranial pressure and impending herniation \u2014 requires emergent ICP management: head elevation 30\u00b0, IV mannitol 1 g/kg or hypertonic saline 3% 150-250 mL, intubation with controlled ventilation targeting PaCO2 30-35 mmHg temporarily, and urgent neurosurgical referral.",
+      "Hyponatremia after SAH can result from cerebral salt wasting (CSW) or SIADH \u2014 differentiating them is critical as treatment is opposite. CSW presents with volume depletion and requires isotonic/hypertonic saline replacement, whereas SIADH presents with euvolemia and requires fluid restriction. In SAH, fluid restriction is dangerous as it worsens vasospasm risk \u2014 hence CSW should be treated aggressively with saline.",
+      "ECG changes in SAH (deep T-wave inversions, prolonged QTc, ST changes, elevated troponin) mimic acute coronary syndrome but represent neurogenic stunned myocardium from catecholamine surge \u2014 misdiagnosing as primary ACS and administering antiplatelets/anticoagulants would be catastrophic. Bedside echocardiography showing apical ballooning (Takotsubo pattern) without coronary territory distribution helps differentiate."
+    ],
+    "atypical_features": "This case is challenging for multiple reasons: (1) The history of recurrent headaches over 3 weeks represents a missed sentinel bleed \u2014 a critical diagnostic window that was lost. (2) The left pupil dilation mimics uncal herniation but is actually due to direct compression of the left CN III by the PComm aneurysm, creating a diagnostic overlap. (3) The ECG showing deep T-wave inversions, prolonged QTc, and elevated troponin can mislead toward a primary cardiac diagnosis (ACS or arrhythmia causing syncope/seizure), especially if CT is not performed promptly. (4) The Cushing response with bradycardia and hypertension may be misinterpreted as a hypertensive emergency requiring aggressive BP lowering, which would be harmful \u2014 SBP should be maintained <160 mmHg in SAH but not aggressively dropped. (5) The patient is young (34 years), and SAH may not be immediately considered. (6) Management decisions at a district hospital with CT angiography but no neurosurgical capability require telemedicine coordination, ICP management, nimodipine initiation, seizure prophylaxis, and safe transfer \u2014 testing the student's ability to stabilize and triage in a resource-limited setting.",
+    "specialty": "emergency",
+    "difficulty": "advanced",
+    "id": "45f786f3"
+  },
+  "timestamp": "2026-02-15T09:09:43.410287"
+}

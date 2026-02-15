@@ -1,0 +1,52 @@
+{
+  "case_id": "45cd86f3",
+  "case_data": {
+    "patient": {
+      "age": 28,
+      "gender": "Female",
+      "location": "Jaipur, Rajasthan"
+    },
+    "chief_complaint": "Pain and swelling in the right wrist for 3 months with progressive difficulty gripping objects",
+    "initial_presentation": "A 28-year-old female school teacher from Jaipur presents with a 3-month history of progressive right wrist pain, diffuse swelling, and weakening grip strength. She denies any history of trauma but mentions she was treated for pulmonary tuberculosis 18 months ago and completed a full course of ATT. She is otherwise healthy with no comorbidities.",
+    "vital_signs": {
+      "bp": "118/74",
+      "hr": 82,
+      "rr": 16,
+      "temp": 37.2,
+      "spo2": 99
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Insidious onset of dull aching pain in the right wrist 3 months ago, initially mild and intermittent, now constant and moderate in severity. Pain worsens with wrist movements, particularly extension and gripping (writing on the blackboard, wringing clothes). Progressive swelling over the dorsum of the wrist noticed over the past 2 months \u2014 described as 'boggy' and gradually increasing. Grip strength has reduced significantly \u2014 she drops chalk and has difficulty turning keys or opening jars. Occasional numbness and tingling in the thumb, index, and middle fingers, especially at night (suggestive of carpal tunnel involvement). No history of fever, night sweats, or weight loss currently. Completed 6 months of Category I ATT (2HRZE + 4HR) 12 months ago for sputum-positive pulmonary TB \u2014 declared cured with negative sputum at end of treatment. No history of trauma, no occupational exposure to vibrating tools. No history of rheumatoid arthritis, gout, diabetes, or immunosuppressive therapy. Right-hand dominant. She is anxious as the symptoms are affecting her ability to teach and write."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Right wrist: Diffuse, boggy, non-tender to mildly tender swelling over the dorsal aspect of the wrist extending to the radial and ulnar sides. Skin overlying is normal \u2014 no erythema, no sinus tracts, no warmth (notably 'cold swelling'). Fluctuation positive over the dorsum. Cross-fluctuation test (compound palmar ganglion test): Positive \u2014 pressure on the dorsal swelling transmits a fluid thrill to the volar aspect of the wrist beneath the flexor retinaculum, suggesting a dumbbell-shaped swelling communicating through the carpal tunnel (compound palmar ganglion). Range of motion: Flexion 40 degrees (reduced from normal 80), extension 35 degrees (reduced from normal 70), radial deviation 10 degrees, ulnar deviation 20 degrees \u2014 all movements restricted and painful at extremes. Grip strength measured by dynamometer: 12 kg on right vs. 28 kg on left (significantly reduced). Tinel sign at the wrist: Positive (tingling in median nerve distribution on tapping over the carpal tunnel \u2014 suggesting median nerve compression). Phalen test: Positive at 20 seconds (early positivity). No thenar muscle wasting. No axillary or epitrochlear lymphadenopathy. No other joint involvement. Chest examination: Clear lung fields bilaterally. Left wrist: Normal."
+      },
+      {
+        "stage": "labs",
+        "info": "X-ray right wrist AP and lateral: Periarticular osteopenia involving the carpal bones, particularly the lunate and capitate. Phemister triad partially evident \u2014 juxta-articular osteoporosis and peripheral osseous erosions of the carpal bones noted; joint space is relatively preserved (early disease). No fracture or dislocation. Kissing sequestra not seen. Chest X-ray PA view: Fibrotic changes with calcified lesion in the right upper zone \u2014 consistent with healed pulmonary TB. No active disease. MRI right wrist (1.5T with gadolinium): Diffuse synovial thickening and enhancement involving the radiocarpal, midcarpal, and carpometacarpal joints with a large fluid collection extending along the flexor tendon sheaths through the carpal tunnel to the palmar aspect \u2014 classic appearance of a compound palmar ganglion. Rice bodies (multiple small hypointense filling defects within the fluid on T2-weighted images) are seen \u2014 highly suggestive of tubercular tenosynovitis. Marrow edema in lunate and scaphoid. No tendon rupture. Blood investigations: Hb 11.2 g/dL, TLC 7,800/mm3 (DLC: L 48%, N 42%), ESR 52 mm/hr (elevated), CRP 18 mg/L (mildly elevated). RBS 94 mg/dL, Creatinine 0.7 mg/dL. RA factor: Negative. Anti-CCP antibody: Negative. Serum uric acid: 4.8 mg/dL (normal). Mantoux test: 22 mm induration at 48 hours (strongly positive). Ultrasound-guided aspiration of the dorsal swelling: Turbid straw-colored fluid with rice body-like fragments. Synovial fluid: WBC 4,200/mm3 (predominantly lymphocytes \u2014 78%), Gram stain negative, no crystals on polarized microscopy. Cartridge-Based Nucleic Acid Amplification Test (CBNAAT/GeneXpert) of aspirate: Mycobacterium tuberculosis DETECTED, Rifampicin resistance NOT detected. Histopathology of synovial biopsy (obtained during aspiration): Granulomatous inflammation with epithelioid cell granulomas, Langhans-type giant cells, and caseating necrosis \u2014 consistent with tubercular synovitis."
+      }
+    ],
+    "diagnosis": "Tubercular arthritis of the right wrist with compound palmar ganglion (tubercular tenosynovitis of flexor tendons) and secondary carpal tunnel syndrome",
+    "differentials": [
+      "Tubercular arthritis with compound palmar ganglion",
+      "Rheumatoid arthritis of the wrist with tenosynovitis",
+      "Fungal arthritis (sporotrichosis or coccidioidomycosis)",
+      "Non-tubercular mycobacterial (atypical mycobacterial) infection",
+      "Pigmented villonodular synovitis (PVNS)"
+    ],
+    "learning_points": [
+      "Compound palmar ganglion (bilocular swelling with cross-fluctuation across the flexor retinaculum) is a classic clinical sign of tubercular tenosynovitis of the flexor tendons of the wrist and is a high-yield clinical finding for NEET-PG; it presents as a dumbbell-shaped swelling with a dorsal component communicating with a volar component through the carpal tunnel.",
+      "Rice bodies (fibrin debris resembling rice grains) seen on MRI or during aspiration are highly characteristic of tubercular synovitis/tenosynovitis, though they can also be seen in rheumatoid arthritis; their presence in a chronic cold swelling of the wrist should strongly raise suspicion for TB, especially in endemic countries like India.",
+      "Phemister triad \u2014 juxta-articular osteoporosis, peripheral osseous erosions, and gradual joint space narrowing \u2014 is the classic radiological hallmark of tubercular arthritis; compared to pyogenic arthritis, TB arthritis shows a slower, more indolent course with relatively preserved joint space until late stages.",
+      "CBNAAT (GeneXpert) of synovial fluid or tissue is a rapid and highly sensitive diagnostic tool for musculoskeletal TB with results available within 2 hours; it simultaneously detects rifampicin resistance. Treatment involves extended ATT (2HRZE + 7-10 months of HR, total 9-12 months for osteoarticular TB) combined with wrist splinting, and surgical synovectomy may be needed for extensive disease."
+    ],
+    "atypical_features": "The patient is a young woman with no current systemic symptoms of TB (no fever, weight loss, or night sweats) who completed full ATT 12 months prior \u2014 making osteoarticular TB initially less obvious and raising the possibility of reactivation at an extrapulmonary site. The presentation mimics a chronic inflammatory arthropathy, and the compound palmar ganglion with secondary carpal tunnel syndrome adds clinical complexity. Negative RA factor and anti-CCP help exclude rheumatoid arthritis, but the diagnosis hinges on recognizing the 'cold swelling' nature, rice bodies on MRI, and obtaining tissue/fluid for GeneXpert and histopathology.",
+    "specialty": "orthopedics",
+    "difficulty": "intermediate",
+    "id": "45cd86f3"
+  },
+  "timestamp": "2026-02-14T19:13:29.232759"
+}

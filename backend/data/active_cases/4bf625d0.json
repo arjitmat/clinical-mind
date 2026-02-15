@@ -1,0 +1,52 @@
+{
+  "case_id": "4bf625d0",
+  "case_data": {
+    "patient": {
+      "age": 28,
+      "gender": "Female",
+      "location": "Varanasi, Uttar Pradesh"
+    },
+    "chief_complaint": "Recurrent episodes of palpitations and one episode of syncope",
+    "initial_presentation": "A 28-year-old married woman, a schoolteacher from Varanasi, presents to the cardiology OPD with recurrent episodes of sudden-onset rapid palpitations lasting 10-30 minutes over the past 8 months. Two days ago, she had a syncopal episode while climbing stairs at school. She was brought to the district hospital where an ECG was taken during a symptomatic episode.",
+    "vital_signs": {
+      "bp": "104/70",
+      "hr": 82,
+      "rr": 16,
+      "temp": 36.8,
+      "spo2": 99
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Palpitations began 8 months ago, initially once a month, now occurring 2-3 times per week. Episodes are sudden in onset and offset, described as 'heart racing very fast', lasting 10-30 minutes. She has tried bearing down and splashing cold water on her face, which occasionally terminates the episodes. Associated with lightheadedness and mild chest discomfort during episodes. Two days ago, she felt a rapid episode while climbing stairs, became dizzy, and lost consciousness for approximately 30 seconds \u2014 recovered spontaneously, no tonic-clonic movements, no tongue bite, no urinary incontinence. No history of rheumatic fever, joint pains, or childhood cardiac illness. No thyroid disease. No prior cardiac evaluation. She drinks 4-5 cups of chai daily. No tobacco or alcohol use. No significant family history of sudden cardiac death or arrhythmias. She takes no regular medications. She recently discovered she is 10 weeks pregnant (confirmed by urine pregnancy test 1 week ago). Menstrual history: LMP 10 weeks ago. No prior pregnancies."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Currently asymptomatic, well-oriented, no distress. No pallor, no cyanosis, no clubbing, no pedal edema. JVP normal, no cannon 'a' waves at present. Cardiovascular exam: Regular rhythm at 82 bpm, normal S1 and S2, no murmurs, no S3 or S4. Lungs: Clear bilaterally. Abdomen: Soft, non-tender, uterus not palpable. Thyroid: No goiter. Neurological examination: Normal. During the OPD visit, she develops a sudden episode of palpitation \u2014 pulse becomes rapid and regular at approximately 190 bpm, BP drops to 90/60 mmHg, she appears pale and lightheaded. Carotid sinus massage is attempted: the tachycardia abruptly terminates."
+      },
+      {
+        "stage": "labs",
+        "info": "Baseline ECG (asymptomatic): Sinus rhythm, HR 80 bpm, short PR interval (100 ms), delta wave present in leads V1-V3 and I/aVL, QRS mildly widened (120 ms), no ST-T changes. Secondary R' pattern in V1 with positive delta wave (Type A pattern). ECG during tachycardia episode: Narrow complex regular tachycardia at 192 bpm, no visible P waves, pseudo r' in V1 and pseudo S in II/III/aVF \u2014 consistent with orthodromic AVRT. Post-conversion ECG: Returns to WPW pattern. CBC: Hb 11.8, WBC 7200, Platelets 2.1 lakh. Thyroid: TSH 2.4 mIU/L (normal), free T4 normal. Electrolytes: Na+ 140, K+ 4.2, Ca2+ 9.1, Mg2+ 2.0. Echocardiography: Structurally normal heart, no Ebstein anomaly, LVEF 62%, no valvular abnormality, no LVH. Holter monitoring (24 hours): 3 episodes of narrow complex SVT (longest 18 minutes, max rate 198 bpm), intermittent delta wave on baseline rhythm. Urine pregnancy test: Positive. Serum beta-hCG: 45,000 mIU/mL (consistent with 10 weeks gestation)."
+      }
+    ],
+    "diagnosis": "Wolff-Parkinson-White (WPW) syndrome with orthodromic AVRT and syncope, in the setting of early pregnancy",
+    "differentials": [
+      "WPW syndrome with orthodromic AVRT",
+      "AV nodal reentrant tachycardia (AVNRT)",
+      "Atrial tachycardia",
+      "Inappropriate sinus tachycardia of pregnancy",
+      "Ebstein anomaly with accessory pathway"
+    ],
+    "learning_points": [
+      "WPW pattern on ECG is defined by short PR interval (<120 ms), delta wave, and widened QRS; WPW syndrome is diagnosed when the pattern is associated with symptomatic tachyarrhythmias",
+      "Orthodromic AVRT (the commonest arrhythmia in WPW) presents as narrow complex tachycardia because antegrade conduction occurs via the AV node \u2014 it can be terminated by vagal maneuvers or adenosine",
+      "In pregnancy, arrhythmia frequency may increase due to hemodynamic changes (increased blood volume, heart rate, and catecholamines); catheter ablation is relatively contraindicated in the first trimester due to radiation exposure and is ideally deferred to post-partum or second trimester if unavoidable",
+      "Flecainide or propafenone (IC agents) are avoided in WPW with structural heart disease; beta-blockers (metoprolol, preferred in pregnancy) can be used for rate control, but definitive management is radiofrequency catheter ablation \u2014 AV nodal blocking agents like verapamil and digoxin are contraindicated in WPW with pre-excited atrial fibrillation as they may enhance conduction via the accessory pathway"
+    ],
+    "atypical_features": "The case is made challenging by the co-existence of early pregnancy, which limits pharmacological options (many antiarrhythmics are contraindicated) and defers catheter ablation due to radiation concerns in the first trimester. The syncopal episode raises concern about risk stratification for sudden cardiac death in WPW (need to assess the refractory period of the accessory pathway). Students must integrate arrhythmia management with obstetric safety considerations \u2014 a common real-world dilemma in Indian clinical practice.",
+    "specialty": "cardiology",
+    "difficulty": "intermediate",
+    "id": "4bf625d0"
+  },
+  "timestamp": "2026-02-15T08:46:44.078772"
+}
