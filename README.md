@@ -1,3 +1,14 @@
+---
+title: Clinical Mind
+emoji: 🏥
+colorFrom: green
+colorTo: blue
+sdk: docker
+pinned: false
+license: mit
+app_port: 7860
+---
+
 # Clinical-Mind
 
 **Master clinical reasoning, one case at a time.**
