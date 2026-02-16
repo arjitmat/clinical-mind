@@ -721,3 +721,166 @@ class AgentOrchestrator:
 
 # Singleton orchestrator shared across the app
 orchestrator = AgentOrchestrator()
+
+
+class SimulationOrchestrator:
+    """Simplified orchestrator for the /api/simulation endpoints.
+
+    Wraps case generation + simulation state management to provide
+    the interface expected by simulation.py (start_simulation,
+    process_student_message, complete_simulation, get_simulation).
+    """
+
+    def __init__(self):
+        from app.core.rag.shared import case_generator
+        from app.models.simulation import (
+            SimulationState,
+            PatientProfile,
+            PatientGender,
+            EmotionalState,
+            RapportLevel,
+            SimulationMessage,
+            TutorFeedback,
+            FeedbackType,
+        )
+
+        self._case_generator = case_generator
+        self._simulations: dict[str, SimulationState] = {}
+
+        # Store model refs for use in methods
+        self._SimulationState = SimulationState
+        self._PatientProfile = PatientProfile
+        self._PatientGender = PatientGender
+        self._EmotionalState = EmotionalState
+        self._RapportLevel = RapportLevel
+        self._SimulationMessage = SimulationMessage
+        self._TutorFeedback = TutorFeedback
+        self._FeedbackType = FeedbackType
+
+    def start_simulation(self, specialty: str = "general_medicine", difficulty: str = "intermediate"):
+        """Start a new patient simulation, returning a SimulationState."""
+        case = self._case_generator.generate_case(specialty=specialty, difficulty=difficulty)
+        case_id = case.get("id", str(uuid.uuid4())[:8])
+
+        # Map case data to PatientProfile
+        gender_raw = case.get("patient_gender", "male").lower()
+        gender_map = {"male": self._PatientGender.MALE, "female": self._PatientGender.FEMALE,
+                       "pregnant": self._PatientGender.PREGNANT}
+        gender = gender_map.get(gender_raw, self._PatientGender.MALE)
+
+        profile = self._PatientProfile(
+            age=case.get("patient_age", 45),
+            gender=gender,
+            name=case.get("patient_name", "Patient"),
+            chief_complaint=case.get("chief_complaint", ""),
+            setting=case.get("setting", "OPD"),
+            specialty=specialty,
+            difficulty=difficulty,
+            actual_diagnosis=case.get("diagnosis", "Unknown"),
+            key_history_points=case.get("key_history", case.get("learning_points", [])),
+            physical_exam_findings=case.get("physical_exam", {}),
+        )
+
+        initial_message = self._SimulationMessage(
+            role="patient",
+            content=case.get("initial_presentation", f"Doctor, {profile.chief_complaint}"),
+            emotional_state=self._EmotionalState.CONCERNED,
+        )
+
+        sim = self._SimulationState(
+            case_id=case_id,
+            patient_profile=profile,
+            emotional_state=self._EmotionalState.CONCERNED,
+            rapport_level=self._RapportLevel.MODERATE,
+            messages=[initial_message],
+        )
+
+        self._simulations[case_id] = sim
+        return sim
+
+    def process_student_message(self, case_id: str, student_message: str):
+        """Process a student message and return the updated SimulationState."""
+        sim = self._get_or_raise(case_id)
+
+        # Record student message
+        sim.messages.append(self._SimulationMessage(role="student", content=student_message))
+
+        # Generate patient response using the agent orchestrator if possible
+        patient_response = self._generate_patient_response(sim, student_message)
+
+        sim.messages.append(self._SimulationMessage(
+            role="patient",
+            content=patient_response,
+            emotional_state=sim.emotional_state,
+        ))
+
+        # Generate tutor feedback
+        feedback_type, feedback_msg = self._evaluate_student_message(student_message)
+        sim.tutor_feedback.append(self._TutorFeedback(type=feedback_type, message=feedback_msg))
+
+        return sim
+
+    def complete_simulation(self, case_id: str, diagnosis: str, reasoning: str):
+        """Mark simulation as complete with student's diagnosis."""
+        from datetime import datetime
+
+        sim = self._get_or_raise(case_id)
+        sim.student_diagnosis = diagnosis
+        sim.student_reasoning = reasoning
+        sim.completed_at = datetime.now()
+        return sim
+
+    def get_simulation(self, case_id: str):
+        """Get simulation state by case_id."""
+        return self._get_or_raise(case_id)
+
+    def _get_or_raise(self, case_id: str):
+        sim = self._simulations.get(case_id)
+        if not sim:
+            raise ValueError(f"Simulation {case_id} not found")
+        return sim
+
+    def _generate_patient_response(self, sim, student_message: str) -> str:
+        """Generate a contextual patient response."""
+        complaint = sim.patient_profile.chief_complaint
+        name = sim.patient_profile.name
+
+        open_ended_markers = ["tell me", "describe", "how", "what", "when", "where"]
+        is_open = any(m in student_message.lower() for m in open_ended_markers)
+
+        empathy_markers = ["understand", "worried", "difficult", "sorry", "must be"]
+        shows_empathy = any(m in student_message.lower() for m in empathy_markers)
+
+        if shows_empathy:
+            if sim.rapport_level.value < 5:
+                sim.rapport_level = self._RapportLevel(min(5, sim.rapport_level.value + 1))
+            sim.emotional_state = self._EmotionalState.CALM
+            return (
+                f"Thank you doctor, that makes me feel better. "
+                f"Actually, I also wanted to mention that the {complaint} has been getting worse at night."
+            )
+
+        if is_open:
+            return (
+                f"Doctor, the {complaint} started about 3-4 days ago. "
+                f"First I thought it was nothing, tried some home remedies. "
+                f"But it kept getting worse so my family brought me here."
+            )
+
+        return (
+            f"Yes doctor, the {complaint} is still bothering me. "
+            f"What do you think it could be?"
+        )
+
+    def _evaluate_student_message(self, message: str):
+        """Simple heuristic evaluation of student communication."""
+        empathy_markers = ["understand", "worried", "difficult", "sorry", "must be", "concern"]
+        open_markers = ["tell me", "describe", "how do you", "what happened", "can you explain"]
+
+        if any(m in message.lower() for m in empathy_markers):
+            return self._FeedbackType.POSITIVE, "Good empathetic communication. This builds rapport."
+        if any(m in message.lower() for m in open_markers):
+            return self._FeedbackType.POSITIVE, "Nice open-ended question. This encourages the patient to share more."
+        if message.strip().endswith("?") and len(message.split()) > 5:
+            return self._FeedbackType.WARNING, "Consider using more open-ended questions to gather richer history."
+        return self._FeedbackType.WARNING, "Try to build rapport with empathetic language before diving into clinical questions."

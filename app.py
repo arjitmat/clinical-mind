@@ -14,6 +14,9 @@ sys.path.insert(0, str(Path(__file__).parent / "backend"))
 # Set environment variables for Hugging Face Spaces
 os.environ["HF_SPACE"] = "1"
 
+# Disable ChromaDB telemetry to avoid posthog capture() errors
+os.environ["ANONYMIZED_TELEMETRY"] = "False"
+
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, HTMLResponse
