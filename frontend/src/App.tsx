@@ -6,7 +6,6 @@ import { CaseBrowser } from './pages/CaseBrowser';
 import { CaseInterface } from './pages/CaseInterface';
 import { Dashboard } from './pages/Dashboard';
 import { KnowledgeGraphPage } from './pages/KnowledgeGraph';
-import { DemoLive } from './pages/DemoLive';
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
           <Route path="/case/:id" element={<CaseInterface />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/knowledge-graph" element={<KnowledgeGraphPage />} />
-          <Route path="/demo" element={<DemoLive />} />
         </Routes>
       </Layout>
     </Router>
