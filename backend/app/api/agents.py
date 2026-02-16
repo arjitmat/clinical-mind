@@ -1,11 +1,14 @@
 """API routes for the multi-agent hospital simulation."""
 
+import logging
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import Optional
 
 from app.core.agents.orchestrator import orchestrator
 from app.core.rag.shared import case_generator
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
@@ -81,11 +84,15 @@ async def agent_action(request: AgentActionRequest):
     Returns agent responses, updated vitals, timeline events, investigation status,
     and any triggered complications.
     """
-    result = orchestrator.process_action(
-        session_id=request.session_id,
-        action_type=request.action_type,
-        student_input=request.student_input,
-    )
+    try:
+        result = orchestrator.process_action(
+            session_id=request.session_id,
+            action_type=request.action_type,
+            student_input=request.student_input,
+        )
+    except Exception as e:
+        logger.error(f"process_action failed for session={request.session_id}, action={request.action_type}: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Internal error processing action: {e}")
     if "error" in result:
         raise HTTPException(status_code=404, detail=result["error"])
     return result

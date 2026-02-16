@@ -632,10 +632,10 @@ class DynamicKnowledgeBuilder:
         try:
             response = self.client.messages.create(
                 model="claude-opus-4-6",
-                max_tokens=8000,
-                temperature=1,  # Required to be 1 for adaptive thinking
+                max_tokens=16000,
+                temperature=1,  # Required when thinking is enabled
                 thinking={
-                    "type": "adaptive",  # Use adaptive thinking for better performance
+                    "type": "adaptive",  # Opus 4.6: model decides when/how much to think
                 },
                 messages=[{"role": "user", "content": prompt}],
             )
