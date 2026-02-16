@@ -86,6 +86,32 @@ class BaseAgent(ABC):
         # Get system prompt with filtered knowledge
         system = self.get_system_prompt(case_context)
 
+        # Inject current vitals and ward transcript into system prompt
+        # so this agent knows the current state and what others have said
+        ward_transcript = case_context.get("ward_transcript", "")
+        elapsed = case_context.get("elapsed_minutes", 0)
+        if ward_transcript:
+            system += (
+                f"\n\n=== CURRENT WARD STATUS (Minute {elapsed}) ===\n"
+                f"Current vitals: BP {case_context.get('current_bp', 'N/A')}, "
+                f"HR {case_context.get('current_hr', 'N/A')}, "
+                f"RR {case_context.get('current_rr', 'N/A')}, "
+                f"Temp {case_context.get('current_temp', 'N/A')}°C, "
+                f"SpO2 {case_context.get('current_spo2', 'N/A')}%\n\n"
+                f"Recent ward conversation (what others have said):\n{ward_transcript}\n\n"
+                "Use this context to avoid repeating what has already been said. "
+                "Build on the conversation naturally — acknowledge what others mentioned if relevant."
+            )
+        elif elapsed:
+            system += (
+                f"\n\n=== CURRENT STATUS (Minute {elapsed}) ===\n"
+                f"Current vitals: BP {case_context.get('current_bp', 'N/A')}, "
+                f"HR {case_context.get('current_hr', 'N/A')}, "
+                f"RR {case_context.get('current_rr', 'N/A')}, "
+                f"Temp {case_context.get('current_temp', 'N/A')}°C, "
+                f"SpO2 {case_context.get('current_spo2', 'N/A')}%"
+            )
+
         # Apply smart context filtering to reduce prompt size
         if self.specialized_knowledge and len(self.specialized_knowledge) > 1000:
             filtered_knowledge = context_filter.filter_knowledge_for_query(

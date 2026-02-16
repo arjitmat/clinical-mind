@@ -119,6 +119,17 @@ class PatientAgent(BaseAgent):
                 f"{self.specialized_knowledge}"
             )
 
+        # Extra guardrail: reinforce lay language
+        base_prompt += (
+            "\n\nCRITICAL REMINDER — LANGUAGE RULES:\n"
+            "- NEVER use medical terms like: tachycardia, dyspnea, edema, differential, hemoglobin, etc.\n"
+            "- Instead describe sensations: dil zor se dhadak raha hai, saans phool rahi hai, "
+            "pair sujan gaye hain, chakkar aa raha hai, etc.\n"
+            "- You are an ordinary Indian patient. Speak naturally in Hinglish.\n"
+            "- Each response should feel DIFFERENT — vary your words, expressions, and emotions.\n"
+            "- Do NOT repeat the same phrases from earlier in the conversation."
+        )
+
         return base_prompt
 
     def get_fallback_response(self, message: str, case_context: dict) -> str:

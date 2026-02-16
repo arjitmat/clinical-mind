@@ -110,16 +110,17 @@ class NurseAgent(BaseAgent):
 
     def get_system_prompt(self, case_context: dict) -> str:
         info = {**self.case_info, **case_context}
+        # Use CURRENT vitals from simulation state if available, otherwise initial
         base_prompt = NURSE_SYSTEM_PROMPT.format(
             age=info.get("age", 45),
             gender=info.get("gender", "Male"),
             location=info.get("location", "Delhi"),
             chief_complaint=info.get("chief_complaint", "unknown"),
-            bp=info.get("bp", "120/80"),
-            hr=info.get("hr", 80),
-            rr=info.get("rr", 16),
-            temp=info.get("temp", 37.0),
-            spo2=info.get("spo2", 98),
+            bp=info.get("current_bp", info.get("bp", "120/80")),
+            hr=info.get("current_hr", info.get("hr", 80)),
+            rr=info.get("current_rr", info.get("rr", 16)),
+            temp=info.get("current_temp", info.get("temp", 37.0)),
+            spo2=info.get("current_spo2", info.get("spo2", 98)),
             physical_exam=info.get("physical_exam", "Not yet examined"),
             labs=info.get("labs", "Pending"),
         )

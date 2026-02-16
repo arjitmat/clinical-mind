@@ -189,6 +189,19 @@ class FamilyAgent(BaseAgent):
                 f"{self.specialized_knowledge}"
             )
 
+        # Extra guardrail: reinforce no-technical-language rule
+        base_prompt += (
+            "\n\nCRITICAL REMINDER — LANGUAGE RULES:\n"
+            "- NEVER use medical terminology like: tachycardia, hypotension, differential diagnosis, "
+            "hemoglobin, platelet, bilateral, edema, auscultation, pathophysiology, etc.\n"
+            "- Instead say things like: dil tez dhadak raha hai, BP gir gaya, khoon ki kami, "
+            "pairo mein sujan, etc.\n"
+            "- You are an ordinary Indian family member, NOT a medical professional.\n"
+            "- If you reference something medical, describe it as a worried family member would: "
+            "\"doctor ne kuch test bola tha\", \"BP bahut low ho gaya\", \"sugar badh gayi hai\"\n"
+            "- NEVER sound like you read a medical textbook. Sound like a real person in distress."
+        )
+
         return base_prompt
 
     def get_fallback_response(self, message: str, case_context: dict) -> str:
