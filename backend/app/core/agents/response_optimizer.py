@@ -32,7 +32,9 @@ class ResponseCache:
         normalized_msg = re.sub(r'\s+', ' ', normalized_msg)
 
         # Include key context elements
-        context_key = f"{context.get('chief_complaint', '')}-{context.get('simulation_state', {}).get('elapsed_minutes', 0)}"
+        sim_state = context.get('simulation_state', {})
+        elapsed = sim_state.get('elapsed_minutes', 0) if isinstance(sim_state, dict) else 0
+        context_key = f"{context.get('chief_complaint', '')}-{elapsed}"
 
         key_string = f"{agent_type}:{normalized_msg}:{context_key}"
         return hashlib.md5(key_string.encode()).hexdigest()

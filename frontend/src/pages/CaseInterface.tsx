@@ -180,7 +180,16 @@ export const CaseInterface: React.FC = () => {
 
         // Initialize vitals history with first reading
         if (res.vitals?.vitals) {
-          setVitalsHistory([res.vitals.vitals]);
+          const v = res.vitals.vitals;
+          const bpParts = String(v.bp || '120/80').split('/');
+          setVitalsHistory([{
+            bp_systolic: parseInt(bpParts[0]) || 120,
+            bp_diastolic: parseInt(bpParts[1]) || 80,
+            hr: Number(v.hr) || 80,
+            rr: Number(v.rr) || 16,
+            temp: Number(v.temp) || 37.0,
+            spo2: Number(v.spo2) || 98,
+          }]);
         }
 
         const initialMsgs: AgentMessageData[] = res.messages.map((m, i) => ({
@@ -263,8 +272,19 @@ export const CaseInterface: React.FC = () => {
   useEffect(() => {
     if (!vitalsData?.vitals) return;
 
+    const v = vitalsData.vitals;
+    const bpParts = String(v.bp || '120/80').split('/');
+    const parsed = {
+      bp_systolic: parseInt(bpParts[0]) || 120,
+      bp_diastolic: parseInt(bpParts[1]) || 80,
+      hr: Number(v.hr) || 80,
+      rr: Number(v.rr) || 16,
+      temp: Number(v.temp) || 37.0,
+      spo2: Number(v.spo2) || 98,
+    };
+
     setVitalsHistory(prev => {
-      const newHistory = [...prev, vitalsData.vitals];
+      const newHistory = [...prev, parsed];
       // Keep only last 10 readings for performance
       return newHistory.slice(-10);
     });
