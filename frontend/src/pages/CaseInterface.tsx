@@ -356,13 +356,14 @@ export const CaseInterface: React.FC = () => {
       });
       setAgentMessages((prev) => [...prev, ...newMsgs]);
       updateSimState(res);
-    } catch {
+    } catch (err) {
+      console.error('sendAgentAction failed:', err);
       setTypingAgent(null);
       setAgentMessages((prev) => [...prev, {
         id: (Date.now() + 1).toString(),
-        agent_type: 'senior_doctor',
-        display_name: 'Dr. Sharma',
-        content: 'Good thinking. Can you explain your reasoning further?',
+        agent_type: 'system',
+        display_name: 'System',
+        content: 'Message could not be delivered. Please try again.',
         timestamp: new Date(),
       }]);
     } finally {
