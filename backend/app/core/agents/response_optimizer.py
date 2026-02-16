@@ -31,9 +31,8 @@ class ResponseCache:
         normalized_msg = message.lower().strip()
         normalized_msg = re.sub(r'\s+', ' ', normalized_msg)
 
-        # Include key context elements
-        sim_state = context.get('simulation_state', {})
-        elapsed = sim_state.get('elapsed_minutes', 0) if isinstance(sim_state, dict) else 0
+        # Include key context elements — elapsed_minutes ensures time-dependent responses aren't stale
+        elapsed = context.get('elapsed_minutes', 0)
         context_key = f"{context.get('chief_complaint', '')}-{elapsed}"
 
         key_string = f"{agent_type}:{normalized_msg}:{context_key}"
@@ -143,8 +142,8 @@ class ContextFilter:
         if len(history) > max_messages + 5:
             older_count = len(history) - max_messages
             summary_msg = {
-                "role": "system",
-                "content": f"[Previous {older_count} messages summarized - Patient has been discussing symptoms and undergoing examination]"
+                "role": "user",
+                "content": f"[Context: {older_count} earlier messages omitted. Patient has been discussing symptoms and undergoing examination. Continue from here.]"
             }
             return [summary_msg] + recent
 

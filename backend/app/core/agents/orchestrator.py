@@ -116,6 +116,7 @@ class AgentSession:
             "specialty": self.case_data.get("specialty", ""),
             "difficulty": self.case_data.get("difficulty", ""),
             "simulation_state": state_summary,
+            "elapsed_minutes": self.state.elapsed_minutes,
             "student_level": self.student_level,
         }
 
