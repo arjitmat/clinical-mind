@@ -438,11 +438,12 @@ class AgentOrchestrator:
             pass  # Handled separately in process_action
 
         else:
-            resp = session.senior.respond(
-                enriched_input or "I need guidance on what to do next.",
-                context,
-            )
-            messages.append(resp)
+            logger.warning(f"Unknown action_type received: {action_type}")
+            messages.append({
+                "agent_type": "system",
+                "display_name": "System",
+                "content": f"Unknown action: {action_type}. Please select a valid action.",
+            })
 
         return messages
 
