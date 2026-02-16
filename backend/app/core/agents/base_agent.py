@@ -7,6 +7,8 @@ from typing import Optional
 
 import anthropic
 
+from app.core.agents.response_optimizer import response_cache, context_filter
+
 logger = logging.getLogger(__name__)
 
 
@@ -44,6 +46,11 @@ class BaseAgent(ABC):
 
         Returns dict with: agent_type, display_name, content, metadata
         """
+        # Check cache first
+        cached_response = response_cache.get(self.agent_type, message, case_context)
+        if cached_response:
+            return cached_response
+
         self.conversation_history.append({"role": "user", "content": message})
 
         content = ""
@@ -66,19 +73,41 @@ class BaseAgent(ABC):
         }
         if thinking:
             response["thinking"] = thinking
+
+        # Cache the response
+        response_cache.set(self.agent_type, message, case_context, response)
+
         return response
 
     def _respond_with_claude(
         self, message: str, case_context: dict
     ) -> Optional[tuple[str, str]]:
         """Call Claude with extended thinking. Returns (content, thinking) or None."""
+        # Get system prompt with filtered knowledge
         system = self.get_system_prompt(case_context)
-        messages = self.conversation_history.copy()
+
+        # Apply smart context filtering to reduce prompt size
+        if self.specialized_knowledge and len(self.specialized_knowledge) > 1000:
+            filtered_knowledge = context_filter.filter_knowledge_for_query(
+                self.specialized_knowledge,
+                message,
+                self.agent_type
+            )
+            # Replace the full knowledge with filtered version in system prompt
+            if filtered_knowledge and len(filtered_knowledge) < len(self.specialized_knowledge):
+                system = system.replace(self.specialized_knowledge, filtered_knowledge)
+                logger.info(f"Filtered knowledge from {len(self.specialized_knowledge)} to {len(filtered_knowledge)} chars")
+
+        # Compress conversation history to reduce token count
+        messages = context_filter.compress_conversation_history(
+            self.conversation_history.copy(),
+            max_messages=8  # Keep only last 8 messages
+        )
 
         try:
             response = self.client.messages.create(
                 model="claude-opus-4-6",
-                max_tokens=4000,
+                max_tokens=2000,  # Reduced from 4000 for faster responses
                 temperature=1,  # Required to be 1 for adaptive thinking
                 thinking={
                     "type": "adaptive",  # Use adaptive thinking for better performance

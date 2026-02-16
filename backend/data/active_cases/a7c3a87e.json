@@ -1,0 +1,52 @@
+{
+  "case_id": "a7c3a87e",
+  "case_data": {
+    "patient": {
+      "age": 42,
+      "gender": "Female",
+      "location": "Varanasi, Uttar Pradesh"
+    },
+    "chief_complaint": "Recurrent episodes of palpitations and breathlessness for 3 months",
+    "initial_presentation": "A 42-year-old homemaker from Varanasi presents to the medicine OPD with complaints of episodic palpitations lasting 15-30 minutes, associated with breathlessness and lightheadedness, occurring 2-3 times per week for the past 3 months. She reports one episode of transient right-sided weakness lasting 10 minutes last week, which resolved completely. She was previously told she has a 'valve problem' during a pregnancy 14 years ago but never followed up.",
+    "vital_signs": {
+      "bp": "118/74",
+      "hr": 136,
+      "rr": 22,
+      "temp": 37.0,
+      "spo2": 96
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "The patient describes palpitations as sudden onset, rapid, and irregular, sometimes waking her from sleep. Associated with dyspnea (NYHA II-III) and occasional dizziness. One episode of transient right arm and leg weakness with slurred speech lasting ~10 minutes one week ago \u2014 resolved spontaneously, she did not seek medical attention. She had rheumatic fever at age 12, treated with injections for a few years but stopped taking them by age 18. Told during her second pregnancy (age 28) that she has a 'valve problem' but declined further evaluation due to financial constraints. Deliveries: 3 normal vaginal deliveries, uncomplicated. No history of hypertension, diabetes, or thyroid disease. No tobacco or alcohol use. Diet: vegetarian. Family history: unremarkable. No history of recent dental procedures or prolonged fever."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Patient appears thin (BMI 20). Irregularly irregular pulse. Malar flush present. JVP normal. CVS: Loud S1, opening snap followed by low-pitched rumbling mid-diastolic murmur best heard at the apex in left lateral decubitus position with the bell of the stethoscope. A pansystolic murmur is also heard at the apex radiating to the axilla. P2 loud. No parasternal heave. Lungs: Fine bibasal crepitations. Abdomen: No hepatomegaly, no ascites. No peripheral edema. Neurological examination: Completely normal at present, no residual deficit."
+      },
+      {
+        "stage": "labs",
+        "info": "ECG: Atrial fibrillation with rapid ventricular response (rate ~138/min), right axis deviation, P-mitrale absent (fibrillation waves), RVH pattern (tall R in V1). CXR: Straightening of left heart border, double density sign at right heart border, prominent upper lobe pulmonary veins (cephalization), Kerley B lines at lung bases. No cardiomegaly by CTR (0.50). Echo: Mitral valve thickened with restricted mobility, hockey-stick pattern of anterior mitral leaflet, mitral valve area 1.1 cm\u00b2 by planimetry (severe MS), mean gradient 14 mmHg. Moderate mitral regurgitation. Wilkins score: 9/16. LA dilated (52 mm), spontaneous echo contrast ('smoke') in LA. No LA thrombus on TTE. PASP estimated at 55 mmHg. LVEF 58%. TEE: 1.2 cm thrombus in left atrial appendage. CT brain: Small acute infarct in left MCA territory (likely embolic). CBC: Hb 11.4, WBC 7,200, Platelets 2.1 lakh. RFT/LFT: Normal. TSH: 4.2 mIU/L (normal). INR: 1.0 (not anticoagulated). ASO titre: Negative (remote infection)."
+      }
+    ],
+    "diagnosis": "Rheumatic mitral stenosis (severe) with atrial fibrillation and cardioembolic transient ischemic attack/minor stroke",
+    "differentials": [
+      "Rheumatic mitral stenosis with AF",
+      "Non-valvular atrial fibrillation with stroke",
+      "Infective endocarditis with septic embolism",
+      "Left atrial myxoma with embolization",
+      "Mitral annular calcification with AF"
+    ],
+    "learning_points": [
+      "Rheumatic heart disease remains the leading cause of valvular heart disease in India, with mitral stenosis being the most common lesion. RHD accounts for >70% of mitral stenosis in developing countries.",
+      "Atrial fibrillation in mitral stenosis dramatically increases thromboembolic risk (17-fold). LA appendage thrombus on TEE is a contraindication to percutaneous balloon mitral valvotomy (PBMV) \u2014 anticoagulation for 3-6 weeks and repeat TEE is required before intervention.",
+      "Wilkins (Abascal) echocardiographic scoring system (leaflet mobility, thickening, calcification, subvalvular thickening; each 1-4) guides suitability for PBMV: score \u22648 is ideal, 9-11 may be considered, >11 favors surgical intervention. MR >moderate is also a relative contraindication.",
+      "All patients with rheumatic mitral stenosis and AF require lifelong anticoagulation with warfarin (target INR 2-3). NOACs are NOT recommended in moderate-severe mitral stenosis \u2014 this is a key distinction from non-valvular AF."
+    ],
+    "atypical_features": "The case is challenging because the presenting complaint focuses on palpitations and a transient neurological event rather than classic dyspnea, requiring the student to connect AF and embolism to underlying valvular disease. The presence of LA appendage thrombus on TEE despite no thrombus on TTE highlights the importance of TEE before planning PBMV. Additionally, the borderline Wilkins score of 9 combined with moderate MR creates a decision-making dilemma between PBMV and surgical mitral valve replacement, adding complexity to management planning.",
+    "specialty": "cardiology",
+    "difficulty": "intermediate",
+    "id": "a7c3a87e"
+  },
+  "timestamp": "2026-02-15T19:38:24.410504"
+}

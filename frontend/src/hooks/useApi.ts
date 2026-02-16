@@ -1,4 +1,13 @@
-const API_BASE = 'http://localhost:8000/api';
+// Dynamic API URL for local and Hugging Face deployment
+const getApiBaseUrl = () => {
+  if (window.location.hostname.includes('hf.space') ||
+      window.location.hostname.includes('huggingface.co')) {
+    return '/api';
+  }
+  return process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
+};
+
+const API_BASE = getApiBaseUrl();
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, {

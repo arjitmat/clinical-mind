@@ -1,0 +1,44 @@
+# Demo automation (local only, not for HF)
+demo-automation/
+
+# Git
+.git/
+.gitignore
+
+# Environment files
+.env
+.env.local
+backend/.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+backend/venv/
+backend/env/
+
+# Node
+frontend/node_modules/
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Build artifacts (we'll build in Docker)
+frontend/build/
+
+# IDEs
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Documentation
+*.md
+!README_HF.md
+
+# Testing
+*.test.js
+*.spec.js

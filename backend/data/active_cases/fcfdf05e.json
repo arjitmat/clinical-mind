@@ -1,0 +1,52 @@
+{
+  "case_id": "fcfdf05e",
+  "case_data": {
+    "patient": {
+      "age": 42,
+      "gender": "Female",
+      "location": "Varanasi, Uttar Pradesh"
+    },
+    "chief_complaint": "Recurrent episodes of palpitations and breathlessness on exertion for 3 months",
+    "initial_presentation": "A 42-year-old housewife from Varanasi presents to the cardiology OPD with recurrent episodes of palpitations lasting 10-30 minutes, associated with breathlessness on climbing stairs (NYHA II). She also reports a recent episode of transient right-sided weakness lasting 20 minutes that spontaneously resolved 1 week ago.",
+    "vital_signs": {
+      "bp": "128/82",
+      "hr": 142,
+      "rr": 22,
+      "temp": 37.0,
+      "spo2": 96
+    },
+    "stages": [
+      {
+        "stage": "history",
+        "info": "Palpitations started 3 months ago, initially once a week but now almost daily, described as rapid and irregular heartbeat. Each episode lasts 10-30 minutes. Associated with mild dizziness and breathlessness during episodes. Exertional dyspnea on climbing one flight of stairs (NYHA II) for the past 6 weeks, progressive. One episode of transient right-sided weakness and slurred speech 1 week ago lasting ~20 minutes, did not seek medical attention, attributing it to weakness. History of recurrent sore throat and joint pains during childhood (ages 8-14), treated with penicillin injections irregularly. No history of diabetes, hypertension, or thyroid disorder. Married with 3 children, all normal deliveries. Last child born 5 years ago. Non-smoker, no alcohol. No family history of cardiac disease. Takes no regular medications. Diet: predominantly vegetarian. Socioeconomic status: lower middle class."
+      },
+      {
+        "stage": "physical_exam",
+        "info": "Thin built, BMI 21. Irregularly irregular pulse, varying volume, rate approximately 140/min (pulse deficit of 18). Malar flush present. JVP slightly elevated with absent 'a' waves. Apex beat tapping quality, not displaced. Auscultation: Loud S1 (variable intensity), opening snap followed by low-pitched rumbling mid-diastolic murmur best heard at the apex in left lateral decubitus with the bell, accentuated by exercise. Loud P2. No pan-systolic murmur. Lungs: Fine bilateral basal crepitations. Abdomen: No hepatosplenomegaly. No pedal edema. CNS examination: No residual neurological deficit currently."
+      },
+      {
+        "stage": "labs",
+        "info": "ECG: Atrial fibrillation with rapid ventricular response (rate ~140/min), right axis deviation, P mitrale absent (no P waves due to AF), RVH pattern in V1 (tall R wave). CXR: Straightening of left heart border, double density sign at right heart border, prominent pulmonary conus, upper lobe pulmonary venous diversion, Kerley B lines at lung bases, CTR 0.52. 2D Echocardiography: Severe mitral stenosis with MVA 0.9 cm\u00b2 (by planimetry), mean gradient 14 mmHg, Wilkins score 8/16. Left atrium severely dilated (52 mm). Spontaneous echo contrast (smoke) in LA. No LA thrombus on TTE. LVEF 60%. Moderate pulmonary artery hypertension (PASP 55 mmHg). Mild tricuspid regurgitation. No aortic valve involvement. TEE: Confirms severe MS, reveals a small thrombus (8 mm) in the left atrial appendage. CBC: Hb 11.2, WBC 7,800, Platelets 2.1 lakh. RFT and LFT: Normal. TSH: 3.8 mIU/L (normal). ASO titre: Elevated at 320 IU/mL. CRP: 8 mg/L (mildly elevated). INR: 1.0 (not on anticoagulation). MRI Brain (done after TIA history): Small acute lacunar infarct in left internal capsule."
+      }
+    ],
+    "diagnosis": "Rheumatic mitral stenosis (severe) with atrial fibrillation, left atrial appendage thrombus, and cardioembolic transient ischemic attack / small stroke",
+    "differentials": [
+      "Rheumatic mitral stenosis with atrial fibrillation",
+      "Non-valvular atrial fibrillation with stroke",
+      "Left atrial myxoma causing mitral obstruction",
+      "Cor triatriatum sinister",
+      "Lutembacher syndrome (ASD with MS)"
+    ],
+    "learning_points": [
+      "Rheumatic heart disease remains the leading cause of mitral stenosis in India, affecting predominantly young women. History of recurrent sore throat and joint pains in childhood should raise suspicion for prior rheumatic fever.",
+      "Atrial fibrillation in mitral stenosis leads to loss of atrial contraction, causing hemodynamic deterioration and high risk of LA thrombus formation and systemic embolization. Absent 'a' waves in JVP and variable S1 intensity are clinical clues to AF.",
+      "TIA or stroke in a young patient without traditional vascular risk factors should prompt evaluation for cardioembolic sources, especially rheumatic mitral valve disease with AF. TEE is superior to TTE for detecting LA appendage thrombus.",
+      "Management priorities: Rate control (beta-blockers/digoxin), therapeutic anticoagulation with warfarin (target INR 2-3) given LAA thrombus, and planning for percutaneous balloon mitral valvotomy (PBMV) once thrombus resolves and if Wilkins score \u22648. Secondary prophylaxis with penicillin is essential."
+    ],
+    "atypical_features": "The challenging aspect of this case is the young woman presenting with what she dismissed as 'weakness' that was actually a TIA/small cardioembolic stroke, requiring the student to connect the neurological event with underlying valvular heart disease. Additionally, the presence of LAA thrombus on TEE (missed on TTE) changes the management plan \u2014 PBMV cannot be performed until the thrombus resolves with anticoagulation, and the Wilkins score of 8 places her at the borderline for valvotomy suitability. The mildly elevated ASO titre and CRP raise the question of whether there is ongoing subclinical rheumatic activity requiring anti-inflammatory treatment.",
+    "specialty": "cardiology",
+    "difficulty": "intermediate",
+    "id": "fcfdf05e"
+  },
+  "timestamp": "2026-02-15T19:39:01.052460"
+}

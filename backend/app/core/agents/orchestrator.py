@@ -24,6 +24,7 @@ from app.core.agents.case_state_manager import CaseStateManager
 from app.core.agents.treatment_engine import treatment_engine
 from app.core.agents.clinical_validator import clinical_validator
 from app.core.agents.complication_engine import ComplicationEngine
+from app.core.agents.response_optimizer import parallel_processor
 
 logger = logging.getLogger(__name__)
 
@@ -320,20 +321,28 @@ class AgentOrchestrator:
         messages = []
         enriched_input = student_input or ""
 
+        # Use parallel processing for actions involving multiple agents
         if action_type == "talk_to_patient":
-            resp = session.patient.respond(
+            # Prepare agents to process in parallel
+            agents_to_process = [(
+                session.patient,
                 enriched_input or "Tell me about your problem",
                 context,
-            )
-            messages.append(resp)
+            )]
 
             # Family may interject (50% chance on patient conversations)
             if random.random() < 0.5:
-                family_resp = session.family.respond(
+                agents_to_process.append((
+                    session.family,
                     f"The doctor is asking the patient: {enriched_input}. You may add context or interject.",
                     context,
-                )
-                messages.append(family_resp)
+                ))
+
+            # Process in parallel if multiple agents
+            if len(agents_to_process) > 1:
+                messages = parallel_processor.process_agents_parallel(agents_to_process, max_workers=2)
+            else:
+                messages.append(session.patient.respond(agents_to_process[0][1], context))
 
         elif action_type == "ask_nurse":
             resp = session.nurse.respond(
@@ -364,17 +373,21 @@ class AgentOrchestrator:
             messages.append(resp)
 
         elif action_type == "examine_patient":
-            patient_resp = session.patient.respond(
-                f"The doctor is examining you. {enriched_input or 'General examination.'}",
-                context,
-            )
-            messages.append(patient_resp)
+            # Parallel processing for patient and nurse during examination
+            agents_to_process = [
+                (
+                    session.patient,
+                    f"The doctor is examining you. {enriched_input or 'General examination.'}",
+                    context,
+                ),
+                (
+                    session.nurse,
+                    f"Assisting with examination. Student is examining: {enriched_input or 'general exam'}. Report relevant findings from the case.",
+                    context,
+                ),
+            ]
 
-            nurse_resp = session.nurse.respond(
-                f"Assisting with examination. Student is examining: {enriched_input or 'general exam'}. Report relevant findings from the case.",
-                context,
-            )
-            messages.append(nurse_resp)
+            messages = parallel_processor.process_agents_parallel(agents_to_process, max_workers=2)
 
             exam_data = self._extract_examination_findings(session, enriched_input)
             if exam_data:
@@ -388,26 +401,33 @@ class AgentOrchestrator:
                 })
 
         elif action_type == "team_huddle":
-            nurse_resp = session.nurse.respond(
-                f"Team huddle called. Report current patient status, pending investigations, and any concerns. Student's question: {enriched_input or 'Let us discuss the case.'}",
-                context,
-            )
-            messages.append(nurse_resp)
+            # Team huddle involves multiple agents - process first 3 in parallel
+            agents_to_process = [
+                (
+                    session.nurse,
+                    f"Team huddle called. Report current patient status, pending investigations, and any concerns. Student's question: {enriched_input or 'Let us discuss the case.'}",
+                    context,
+                ),
+                (
+                    session.patient,
+                    "The doctors are discussing your case. Is there anything new you want to tell them?",
+                    context,
+                ),
+                (
+                    session.family,
+                    "The medical team is discussing your relative's case. Share any concerns.",
+                    context,
+                ),
+            ]
 
-            patient_resp = session.patient.respond(
-                "The doctors are discussing your case. Is there anything new you want to tell them?",
-                context,
-            )
-            messages.append(patient_resp)
+            # Process first 3 agents in parallel
+            parallel_messages = parallel_processor.process_agents_parallel(agents_to_process, max_workers=3)
+            messages.extend(parallel_messages)
 
-            family_resp = session.family.respond(
-                "The medical team is discussing your relative's case. Share any concerns.",
-                context,
-            )
-            messages.append(family_resp)
-
+            # Senior doctor needs nurse's response, so process after
+            nurse_content = parallel_messages[0].get('content', '')[:200] if parallel_messages else ""
             senior_resp = session.senior.respond(
-                f"Team huddle. Nurse has reported: {nurse_resp.get('content', '')[:200]}. "
+                f"Team huddle. Nurse has reported: {nurse_content}. "
                 f"Student asks: {enriched_input or 'What should we focus on?'}. "
                 "Guide the student based on current case progress.",
                 context,
