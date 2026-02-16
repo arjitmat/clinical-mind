@@ -83,6 +83,9 @@ class BaseAgent(ABC):
         self, message: str, case_context: dict
     ) -> Optional[tuple[str, str]]:
         """Call Claude with extended thinking. Returns (content, thinking) or None."""
+        if not case_context or not isinstance(case_context, dict):
+            case_context = {}
+
         # Get system prompt with filtered knowledge
         system = self.get_system_prompt(case_context)
 
