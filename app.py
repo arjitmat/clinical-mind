@@ -52,6 +52,9 @@ if frontend_build_path.exists():
     @app.get("/case/{path:path}", response_class=HTMLResponse)
     @app.get("/dashboard", response_class=HTMLResponse)
     @app.get("/profile", response_class=HTMLResponse)
+    @app.get("/knowledge-graph", response_class=HTMLResponse)
+    @app.get("/adversarial", response_class=HTMLResponse)
+    @app.get("/reasoning", response_class=HTMLResponse)
     async def serve_spa(path: str = None):
         """Serve the React single-page application"""
         index_file = frontend_build_path / "index.html"
