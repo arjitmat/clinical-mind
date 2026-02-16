@@ -100,7 +100,7 @@ class PatientAgent:
 
         try:
             response = self.client.messages.create(
-                model="claude-opus-4-20250514",
+                model="claude-opus-4-6",
                 max_tokens=400,
                 system=system_prompt,
                 messages=messages,
@@ -131,7 +131,7 @@ Show your emotional state."""
 
         try:
             response = self.client.messages.create(
-                model="claude-opus-4-20250514",
+                model="claude-opus-4-6",
                 max_tokens=150,
                 system=system_prompt,
                 messages=[{

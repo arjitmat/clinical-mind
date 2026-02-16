@@ -146,11 +146,11 @@ Return your analysis in this JSON format:
 
         client = anthropic.Anthropic(api_key=api_key)
         response = client.messages.create(
-            model="claude-opus-4-20250514",
+            model="claude-opus-4-6",
             max_tokens=16000,
+            temperature=1,
             thinking={
-                "type": "enabled",
-                "budget_tokens": 10000  # 10-minute thinking budget
+                "type": "adaptive",
             },
             messages=[{
                 "role": "user",

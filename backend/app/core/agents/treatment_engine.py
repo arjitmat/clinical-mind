@@ -133,8 +133,7 @@ Assess this treatment order. Respond ONLY with the JSON object."""
                 max_tokens=2000,
                 temperature=1,
                 thinking={
-                    "type": "enabled",
-                    "budget_tokens": 5000,
+                    "type": "adaptive",
                 },
                 messages=[{"role": "user", "content": prompt}],
             )

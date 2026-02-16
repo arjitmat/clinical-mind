@@ -109,8 +109,26 @@ class AgentSession:
                     logger.warning(f"{label} knowledge build failed: {e}")
 
     def get_enriched_context(self) -> dict:
-        """Build context dict enriched with current simulation state."""
+        """Build context dict enriched with current simulation state.
+
+        Includes current vitals and a shared ward transcript so every agent
+        knows what other agents have said — critical for coherent conversations.
+        """
         state_summary = self.state.get_state_summary()
+        current_vitals = self.state.current_vitals
+
+        # Build a shared ward transcript from recent messages (last 12)
+        # so each agent knows what other agents and the student have said
+        ward_transcript = ""
+        recent_msgs = self.message_history[-12:]
+        if recent_msgs:
+            lines = []
+            for m in recent_msgs:
+                speaker = m.get("display_name", m.get("agent_type", "Unknown"))
+                content = m.get("content", "")[:200]  # Truncate long messages
+                lines.append(f"  {speaker}: {content}")
+            ward_transcript = "\n".join(lines)
+
         return {
             "chief_complaint": self.case_data.get("chief_complaint", ""),
             "specialty": self.case_data.get("specialty", ""),
@@ -118,6 +136,14 @@ class AgentSession:
             "simulation_state": state_summary,
             "elapsed_minutes": self.state.elapsed_minutes,
             "student_level": self.student_level,
+            # Current vitals (may differ from initial)
+            "current_bp": f"{current_vitals.get('bp_systolic', 120)}/{current_vitals.get('bp_diastolic', 80)}",
+            "current_hr": current_vitals.get("hr", 80),
+            "current_rr": current_vitals.get("rr", 16),
+            "current_temp": current_vitals.get("temp", 37.0),
+            "current_spo2": current_vitals.get("spo2", 98),
+            # Shared transcript so agents know what happened in the ward
+            "ward_transcript": ward_transcript,
         }
 
     def get_vitals(self) -> dict:

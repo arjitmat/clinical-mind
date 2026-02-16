@@ -144,8 +144,7 @@ class ClinicalValidator:
                 max_tokens=1500,
                 temperature=1,
                 thinking={
-                    "type": "enabled",
-                    "budget_tokens": 4000,
+                    "type": "adaptive",
                 },
                 messages=[{"role": "user", "content": prompt}],
             )

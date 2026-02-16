@@ -31,9 +31,16 @@ class ResponseCache:
         normalized_msg = message.lower().strip()
         normalized_msg = re.sub(r'\s+', ' ', normalized_msg)
 
-        # Include key context elements — elapsed_minutes ensures time-dependent responses aren't stale
+        # Include multiple context dimensions so cache doesn't return stale responses:
+        # - elapsed_minutes: time-dependent responses
+        # - current vitals: responses should reflect latest vitals
+        # - ward_transcript hash: responses should reflect what others said
         elapsed = context.get('elapsed_minutes', 0)
-        context_key = f"{context.get('chief_complaint', '')}-{elapsed}"
+        vitals_key = f"{context.get('current_hr', '')}-{context.get('current_spo2', '')}"
+        transcript_hash = hashlib.md5(
+            context.get('ward_transcript', '').encode()
+        ).hexdigest()[:8]
+        context_key = f"{context.get('chief_complaint', '')}-{elapsed}-{vitals_key}-{transcript_hash}"
 
         key_string = f"{agent_type}:{normalized_msg}:{context_key}"
         return hashlib.md5(key_string.encode()).hexdigest()
@@ -206,6 +213,6 @@ class ParallelAgentProcessor:
 
 
 # Singleton instances
-response_cache = ResponseCache(max_size=200, ttl_seconds=600)  # 10 minute TTL
+response_cache = ResponseCache(max_size=200, ttl_seconds=120)  # 2 minute TTL (reduced from 10 min to avoid stale responses)
 context_filter = ContextFilter()
 parallel_processor = ParallelAgentProcessor()
