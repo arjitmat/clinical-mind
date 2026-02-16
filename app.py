@@ -45,6 +45,12 @@ app.add_middleware(
 # Check if frontend build exists
 frontend_build_path = Path(__file__).parent / "frontend" / "build"
 if frontend_build_path.exists():
+    # Remove the backend's default "/" route so the SPA can serve index.html instead
+    app.routes[:] = [
+        route for route in app.routes
+        if not (hasattr(route, "path") and route.path == "/")
+    ]
+
     # Mount static files
     app.mount("/static", StaticFiles(directory=str(frontend_build_path / "static")), name="static")
 
