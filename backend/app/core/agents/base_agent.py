@@ -108,10 +108,9 @@ class BaseAgent(ABC):
             response = self.client.messages.create(
                 model="claude-opus-4-6",
                 max_tokens=4000,
-                temperature=1,  # Required for extended thinking
+                temperature=1,  # Required when thinking is enabled
                 thinking={
-                    "type": "enabled",
-                    "budget_tokens": 1024,
+                    "type": "adaptive",  # Opus 4.6: model decides when/how much to think
                 },
                 system=system,
                 messages=messages,
