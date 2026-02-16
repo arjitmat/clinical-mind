@@ -41,12 +41,6 @@ export const Header: React.FC = () => {
           >
             Knowledge Map
           </Link>
-          <Link
-            to="/demo"
-            className={`text-base font-medium no-underline transition-colors duration-300 ${isActive('/demo') ? 'text-forest-green' : 'text-text-secondary hover:text-forest-green'} px-3 py-1 rounded-md bg-coral-orange/10 border border-coral-orange/20`}
-          >
-            Demo
-          </Link>
         </nav>
 
         <div className="flex items-center gap-4">
