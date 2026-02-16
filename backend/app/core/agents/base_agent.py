@@ -23,11 +23,18 @@ class BaseAgent(ABC):
         self.specialized_knowledge: str = ""  # Dynamic RAG+Claude expertise
         self.api_key = os.environ.get("ANTHROPIC_API_KEY")
         self.client: Optional[anthropic.Anthropic] = None
-        if self.api_key and self.api_key != "sk-ant-your-key-here":
+
+        # Check if API key is properly set
+        if not self.api_key:
+            logger.error(f"{self.display_name}: ANTHROPIC_API_KEY not found in environment")
+        elif self.api_key == "sk-ant-your-key-here" or "your_anthropic_api_key" in self.api_key:
+            logger.warning(f"{self.display_name}: ANTHROPIC_API_KEY is placeholder, not actual key")
+        else:
             try:
                 self.client = anthropic.Anthropic(api_key=self.api_key)
+                logger.info(f"{self.display_name}: Anthropic client initialized successfully")
             except Exception as e:
-                logger.warning(f"{self.display_name} client init failed: {e}")
+                logger.error(f"{self.display_name} client init failed: {e}")
 
     def set_specialized_knowledge(self, knowledge: str):
         """Inject dynamically built expertise into this agent."""
@@ -49,20 +56,30 @@ class BaseAgent(ABC):
         # Check cache first
         cached_response = response_cache.get(self.agent_type, message, case_context)
         if cached_response:
+            logger.debug(f"{self.display_name}: Using cached response")
             return cached_response
 
         self.conversation_history.append({"role": "user", "content": message})
 
         content = ""
         thinking = ""
+        using_fallback = False
 
         if self.client:
             result = self._respond_with_claude(message, case_context)
             if result:
                 content, thinking = result
+                logger.debug(f"{self.display_name}: Generated Claude response")
+            else:
+                logger.warning(f"{self.display_name}: Claude response failed, using fallback")
+                using_fallback = True
+        else:
+            logger.warning(f"{self.display_name}: No Claude client, using fallback")
+            using_fallback = True
 
-        if not content:
+        if not content or using_fallback:
             content = self.get_fallback_response(message, case_context)
+            logger.info(f"{self.display_name}: Using fallback response")
 
         self.conversation_history.append({"role": "assistant", "content": content})
 
@@ -74,8 +91,9 @@ class BaseAgent(ABC):
         if thinking:
             response["thinking"] = thinking
 
-        # Cache the response
-        response_cache.set(self.agent_type, message, case_context, response)
+        # Cache the response only if it's from Claude, not fallback
+        if not using_fallback:
+            response_cache.set(self.agent_type, message, case_context, response)
 
         return response
 
@@ -135,25 +153,25 @@ class BaseAgent(ABC):
 
         try:
             response = self.client.messages.create(
-                model="claude-opus-4-6",
-                max_tokens=4000,
-                temperature=1,  # Required when thinking is enabled
-                thinking={
-                    "type": "adaptive",  # Opus 4.6: model decides when/how much to think
-                },
+                model="claude-3-haiku-20240307",  # Fast, cost-effective model for agents
+                max_tokens=500,  # Shorter for faster responses
+                temperature=0.8,  # Slightly creative but consistent
                 system=system,
                 messages=messages,
             )
 
+            # Handle response content properly
             content = ""
-            thinking = ""
-            for block in response.content:
-                if block.type == "thinking":
-                    thinking = block.thinking
-                elif block.type == "text":
-                    content = block.text.strip()
+            if hasattr(response, 'content'):
+                if isinstance(response.content, list):
+                    for block in response.content:
+                        if hasattr(block, 'text'):
+                            content = block.text.strip()
+                            break
+                elif isinstance(response.content, str):
+                    content = response.content.strip()
 
-            return (content, thinking) if content else None
+            return (content, "") if content else None
         except Exception as e:
             logger.error(f"{self.display_name} Claude API error: {e}")
             return None
